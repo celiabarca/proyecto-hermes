@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,16 +19,19 @@ class User
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @var string
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @var string
      */
     private $telefono;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @var string
      */
     private $password;
 
@@ -38,8 +42,21 @@ class User
 
     /**
      * @ORM\Column(type="boolean")
+     * @var bool
      */
     private $destacado = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="autor")
+     * @var ArrayCollection
+     */
+    private $comentarios;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Donacion", mappedBy="usuario")
+     * @var ArrayCollection
+     */
+    private $donaciones;
 
     public function getId() {
         return $this->id;
@@ -113,6 +130,22 @@ class User
      */
     public function setDestacado(bool $destacado): void {
         $this->destacado = $destacado;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComentarios(): ArrayCollection
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param ArrayCollection $comentarios
+     */
+    public function setComentarios(ArrayCollection $comentarios): void
+    {
+        $this->comentarios = $comentarios;
     }
 
 }
