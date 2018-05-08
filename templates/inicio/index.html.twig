@@ -6,49 +6,122 @@
                 {% block fila_titulo %}
                     <div><!-- envoltorio de fila -->
                         <div><!-- contenedor de fila -->
-                            {% for proyecto in proyectos %}
-                                <div><!-- envoltorio del proyecto -->
-                                    <div><!-- contenedor del proyecto -->
-                                        <div><!-- envoltorio de la imagen -->
-                                            <div><!-- contenedor de la imagen -->
-                                                <img src="{{proyecyo.img}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div><!-- envoltorio del resumen -->
-                                            <div><!-- contenedor del resumen -->
-                                                <p>{{proyecto.descripcion}}</p>
-                                            </div>
-                                        </div>
+                            <div id="principio1"><!-- envoltorio hijo para principios de nuestra empresa -->
+                                <div><!-- contenedor hijo para principios de nuestra empresa -->
+                                    <div>
+                                        <img src="" alt="">
+                                    </div>
+                                    <div>
+                                        <p>
+                                            Proyecto Hermes es una empresa sin ánimo de lucro dedicada a la gestión y publicitación de proyectos.
+                                        </p>
                                     </div>
                                 </div>
-                            {% endfor %}
+                            </div>
+                            <div id="pincipio2"><!-- envoltorio hijo para principios de nuestra empresa -->
+                                <div><!-- contenedor hijo para principios de nuestra empresa -->
+                                    <div>
+                                        <img src="" alt="">
+                                    </div>
+                                    <div>
+                                        <p>
+                                            Proyecto Hermes gana solo si tú ganas, por ello te ofrecemos una herramienta donde poder publicitar tu idea
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="principio3"><!-- envoltorio hijo para principios de nuestra empresa -->
+                                <div><!-- contenedor hijo para principios de nuestra empresa -->
+                                    <div>
+                                        <img src="" alt="">
+                                    </div>
+                                    <div>
+                                        <p>
+                                            Nuestro equipo se encargará de que tus proyectos lleguen a todo el mundo a través de las búsquedas de nuestros usuarios en nuestra aplicación, tu solo tienes que describir tu proyecto
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 {% endblock %}
             </article>
-            <div><!-- envoltorio del registro -->
-                <div><!-- contenedor del registro -->
-                    {% block registrate %}
-                        <div>
+            {% block registro_inicio %}
+                <article><!-- envoltorio del registro -->
+                    <div><!-- contenedor del registro -->
+                        {% block registrate %}
                             <div>
-                                <h1>¿Por qué quieres registrarte?</h1>
-                                <p>
-                                    Gracias a proyecto Hermes muchas ideas han conseguido financiación y se han convertido en proyectos de éxito, no seas menos que nadie, tú también puedes lograrlo y recuerda, ¡Es gratis!
-                                </p>
-                            </div>  
-                        </div>
-                        <div><!-- envoltorio formulario registro -->
-                            <div><!-- contenedor formulario registro -->
                                 <div>
-                                    {{form.start}}
-                                    {{form.widget}}
-                                    {{form.end}}
+                                    <h1>¿Por qué quieres registrarte?</h1>
+                                    <p>
+                                        Gracias a proyecto Hermes muchas ideas han conseguido financiación y se han convertido en proyectos de éxito, no seas menos que nadie, tú también puedes lograrlo y recuerda, ¡Es gratis!
+                                    </p>
+                                </div>  
+                            </div>
+                            <div><!-- envoltorio formulario registro -->
+                                <div><!-- contenedor formulario registro -->
+                                    <div>
+                                        {{form.start}}
+                                        {{form.widget}}
+                                        {{form.end}}
+                                    </div>
                                 </div>
                             </div>
+                        {% endblock %}   
+                    </div>
+                </article>
+            {% endblock %}
+            {% block top_usuarios %}
+                <article><!-- envoltorio usuarios mas valorados -->
+                    <div><!-- contenedor usuarios mas valorados -->
+                       {% for usuario in usuarios %}
+                            <div><!-- envoltorio del usuario -->
+                                <div><!-- contenedor del usuario -->
+                                    <div><!-- envoltorio de la imagen -->
+                                        <div><!-- contenedor de la imagen -->
+                                            <img src="{{usuario.img}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div><!-- envoltorio del resumen -->
+                                        <div><!-- contenedor del resumen -->
+                                            <p>{{usuario.descripcion}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </article>
+            {% endblock %}
+            <article><!-- envoltorio para el top de proyectos -->
+                <div> <!-- contenedor de proyectos -->
+                    {% block top_proyectos %}
+                        <div>
+                            <h1>Proyectos más puntuados por nuestros usuarios</h1>
                         </div>
-                    {% endblock %}   
-                </div>
-            </div>                       
+                        <div><!-- envoltorio proyectos mas valorados -->
+                            <div><!-- contenedor proyectos mas valorados -->
+                                {% for proyecto in proyectos %}
+                                    <div><!-- envoltorio del proyecto -->
+                                        <div><!-- contenedor del proyecto -->
+                                            <div><!-- envoltorio de la imagen -->
+                                                <div><!-- contenedor de la imagen -->
+                                                    <img src="{{proyecyo.img}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div><!-- envoltorio del resumen -->
+                                                <div><!-- contenedor del resumen -->
+                                                    <p>{{proyecto.descripcion}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                </div>                       
+            </article>                       
         {% endblock %}
     </section>
 {% endblock %}
