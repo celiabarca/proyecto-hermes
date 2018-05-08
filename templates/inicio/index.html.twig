@@ -30,15 +30,25 @@
                 <div><!-- contenedor del registro -->
                     {% block registrate %}
                         <div>
-                            <h1>¿Por qué quieres registrarte?</h1>
-                            <p>Gracias a proyecto Hermes muchas ideas han conseguido financiación y se han convertido en proyectos de éxito, no seas menos que nadie, tú también puedes lograrlo y recuerda, ¡Es gratis!</p>
+                            <div>
+                                <h1>¿Por qué quieres registrarte?</h1>
+                                <p>
+                                    Gracias a proyecto Hermes muchas ideas han conseguido financiación y se han convertido en proyectos de éxito, no seas menos que nadie, tú también puedes lograrlo y recuerda, ¡Es gratis!
+                                </p>
+                            </div>  
                         </div>
-                        <div>
-                            
+                        <div><!-- envoltorio formulario registro -->
+                            <div><!-- contenedor formulario registro -->
+                                <div>
+                                    {{form.start}}
+                                    {{form.widget}}
+                                    {{form.end}}
+                                </div>
+                            </div>
                         </div>
                     {% endblock %}   
                 </div>
-            </div>               
+            </div>                       
         {% endblock %}
     </section>
 {% endblock %}
