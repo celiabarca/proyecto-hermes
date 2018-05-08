@@ -4,9 +4,20 @@
         <article><!-- contenedor de las secciones -->
             {% block seccion %}
                 <div><!-- envoltorio de fila -->
-                    {% block fila %}
+                    {% block titulo_inicio %}
                         <div>
-
+                            <h1>Titulo de la pagina</h1>
+                        </div>
+                        <div>
+                            <div>
+                               {% block proyectos_destacados %}
+                                    {% for proyecto in proyectos %}
+                                        <div>
+                                            
+                                        </div>
+                                    {% endfor %}
+                                {% endblock %} 
+                            </div>
                         </div>
                     {% endblock %}
                 </div>
