@@ -9,7 +9,7 @@ security:
         user_db_provider:
                 entity:
                     class: App\Entity\User
-                    property: nombre
+                    property: email
         in_memory: { memory: ~ }
 
     firewalls:
