@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,10 +24,16 @@ class Project
     private $titulo;
 
     /**
-     * @ORM\Column(type="string", length=1024)
+     * @ORM\Column(type="string", length=250)
      * @var string
      */
     private $descripcion;
+
+    /**
+     * @ORM\Column(type="string", length=2048)
+     * @var string
+     */
+    private $contenido;
 
     /**
      * @ORM\Column(type="datetime")
@@ -37,11 +42,12 @@ class Project
     private $fechaCreacion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proyectos")
+     * @ORM\JoinTable(name="proyectos_autores")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="proyectos")
      * @ORM\JoinColumn(nullable=false)
      * @var ArrayCollection
      */
-    private $autor;
+    private $autores;
 
     /**
      * @ORM\JoinTable(name="proyectos_patrocinadores")
@@ -102,6 +108,15 @@ class Project
      */
     private $meta;
 
+    public function __construct() {
+        $this->autores = new ArrayCollection();
+        $this->comentarios = new ArrayCollection();
+        $this->donaciones = new ArrayCollection();
+        $this->valoraciones = new ArrayCollection();
+        $this->etiquetas = new ArrayCollection();
+        $this->colaboradores = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
@@ -140,6 +155,38 @@ class Project
     }
 
     /**
+     * @return string
+     */
+    public function getContenido(): string
+    {
+        return $this->contenido;
+    }
+
+    /**
+     * @param string $contenido
+     */
+    public function setContenido(string $contenido): void
+    {
+        $this->contenido = $contenido;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAutores(): ArrayCollection
+    {
+        return $this->autores;
+    }
+
+    /**
+     * @param ArrayCollection $autores
+     */
+    public function setAutores(ArrayCollection $autores): void
+    {
+        $this->autores = $autores;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getFechaCreacion(): \DateTime
@@ -153,22 +200,6 @@ class Project
     public function setFechaCreacion(\DateTime $fechaCreacion): void
     {
         $this->fechaCreacion = $fechaCreacion;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getAutor(): ArrayCollection
-    {
-        return $this->autor;
-    }
-
-    /**
-     * @param ArrayCollection $autor
-     */
-    public function setAutor(ArrayCollection $autor): void
-    {
-        $this->autor = $autor;
     }
 
     /**
@@ -217,6 +248,18 @@ class Project
     public function setEtiquetas(ArrayCollection $etiquetas): void
     {
         $this->etiquetas = $etiquetas;
+    }
+
+    public function addEtiquetas(Tag $etiquetas) {
+        foreach($etiquetas as $etiqueta) {
+            if(!$this->etiquetas->contains($etiqueta)) {
+                $this->etiquetas->add($etiqueta);
+            }
+        }
+    }
+
+    public function removeEtiqueta(Tag $etiqueta) {
+        $this->etiquetas->removeElement($etiqueta);
     }
 
     /**

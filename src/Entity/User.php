@@ -36,9 +36,16 @@ class User
     private $password;
 
     /**
-     * TODO
+     * @ORM\OneToMany(targetEntity="App\Entity\ValoracionUsuario", mappedBy="usuario")
+     * @var ArrayCollection
      */
-    private $valoracion;
+    private $valorados;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ValoracionUsuario", mappedBy="usuarioValorado")
+     * @var ArrayCollection
+     */
+    private $valoraciones;
 
     /**
      * @ORM\Column(type="boolean")
@@ -59,7 +66,7 @@ class User
     private $donaciones;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Project", mappedBy="autor")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="autor")
      * @var ArrayCollection
      */
     private $proyectos;
@@ -68,6 +75,7 @@ class User
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
+        $this->valoraciones = new ArrayCollection();
     }
 
     public function getId() {
@@ -190,6 +198,38 @@ class User
     public function setProyectos(ArrayCollection $proyectos): void
     {
         $this->proyectos = $proyectos;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getValorados(): ArrayCollection
+    {
+        return $this->valorados;
+    }
+
+    /**
+     * @param ArrayCollection $valorados
+     */
+    public function setValorados(ArrayCollection $valorados): void
+    {
+        $this->valorados = $valorados;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getValoraciones(): ArrayCollection
+    {
+        return $this->valoraciones;
+    }
+
+    /**
+     * @param ArrayCollection $valoraciones
+     */
+    public function setValoraciones(ArrayCollection $valoraciones): void
+    {
+        $this->valoraciones = $valoraciones;
     }
 
 }
