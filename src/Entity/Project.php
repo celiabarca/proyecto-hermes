@@ -108,6 +108,12 @@ class Project
      */
     private $meta;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $img;
+
     public function __construct() {
         $this->autores = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
@@ -356,6 +362,22 @@ class Project
     public function setMeta(float $meta): void
     {
         $this->meta = $meta;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImg(): string
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param string $img
+     */
+    public function setImg(string $img): void
+    {
+        $this->img = $img;
     }
 
 }
