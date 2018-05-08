@@ -44,6 +44,7 @@ class Project
     private $autor;
 
     /**
+     * @ORM\JoinTable(name="proyectos_patrocinadores")
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="patrocinios")
      * @ORM\JoinColumn(nullable=false)
      * @var ArrayCollection
@@ -51,6 +52,7 @@ class Project
     private $patrocinadores;
 
     /**
+     * @ORM\JoinTable(name="proyectos_colaboradores")
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="colaboraciones")
      * @ORM\JoinColumn(nullable=false)
      * @var ArrayCollection
@@ -65,12 +67,14 @@ class Project
     private $etiquetas;
 
     /**
-     * TODO seguimiento. Posible many to many
+     * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto")
+     * @var ArrayCollection
      */
-    private $seguimiento;
+    private $seguimientos;
 
     /**
-     * TODO valoraciones
+     * @ORM\OneToMany(targetEntity="App\Entity\Valoracion", mappedBy="proyecto")
+     * @var ArrayCollection
      */
     private $valoraciones;
 
@@ -94,6 +98,7 @@ class Project
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @var float
      */
     private $meta;
 
@@ -101,4 +106,213 @@ class Project
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getTitulo(): string
+    {
+        return $this->titulo;
+    }
+
+    /**
+     * @param string $titulo
+     */
+    public function setTitulo(string $titulo): void
+    {
+        $this->titulo = $titulo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescripcion(): string
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param string $descripcion
+     */
+    public function setDescripcion(string $descripcion): void
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaCreacion(): \DateTime
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * @param \DateTime $fechaCreacion
+     */
+    public function setFechaCreacion(\DateTime $fechaCreacion): void
+    {
+        $this->fechaCreacion = $fechaCreacion;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAutor(): ArrayCollection
+    {
+        return $this->autor;
+    }
+
+    /**
+     * @param ArrayCollection $autor
+     */
+    public function setAutor(ArrayCollection $autor): void
+    {
+        $this->autor = $autor;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPatrocinadores(): ArrayCollection
+    {
+        return $this->patrocinadores;
+    }
+
+    /**
+     * @param ArrayCollection $patrocinadores
+     */
+    public function setPatrocinadores(ArrayCollection $patrocinadores): void
+    {
+        $this->patrocinadores = $patrocinadores;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getColaboradores(): ArrayCollection
+    {
+        return $this->colaboradores;
+    }
+
+    /**
+     * @param ArrayCollection $colaboradores
+     */
+    public function setColaboradores(ArrayCollection $colaboradores): void
+    {
+        $this->colaboradores = $colaboradores;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getEtiquetas(): ArrayCollection
+    {
+        return $this->etiquetas;
+    }
+
+    /**
+     * @param ArrayCollection $etiquetas
+     */
+    public function setEtiquetas(ArrayCollection $etiquetas): void
+    {
+        $this->etiquetas = $etiquetas;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSeguimientos(): ArrayCollection
+    {
+        return $this->seguimientos;
+    }
+
+    /**
+     * @param ArrayCollection $seguimientos
+     */
+    public function setSeguimientos(ArrayCollection $seguimientos): void
+    {
+        $this->seguimientos = $seguimientos;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getValoraciones(): ArrayCollection
+    {
+        return $this->valoraciones;
+    }
+
+    /**
+     * @param ArrayCollection $valoraciones
+     */
+    public function setValoraciones(ArrayCollection $valoraciones): void
+    {
+        $this->valoraciones = $valoraciones;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComentarios(): ArrayCollection
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param ArrayCollection $comentarios
+     */
+    public function setComentarios(ArrayCollection $comentarios): void
+    {
+        $this->comentarios = $comentarios;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDestacado(): bool
+    {
+        return $this->destacado;
+    }
+
+    /**
+     * @param bool $destacado
+     */
+    public function setDestacado(bool $destacado): void
+    {
+        $this->destacado = $destacado;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDonaciones(): ArrayCollection
+    {
+        return $this->donaciones;
+    }
+
+    /**
+     * @param ArrayCollection $donaciones
+     */
+    public function setDonaciones(ArrayCollection $donaciones): void
+    {
+        $this->donaciones = $donaciones;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMeta(): float
+    {
+        return $this->meta;
+    }
+
+    /**
+     * @param float $meta
+     */
+    public function setMeta(float $meta): void
+    {
+        $this->meta = $meta;
+    }
+
 }

@@ -58,6 +58,18 @@ class User
      */
     private $donaciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Project", mappedBy="autor")
+     * @var ArrayCollection
+     */
+    private $proyectos;
+
+    public function __construct() {
+        $this->proyectos = new ArrayCollection();
+        $this->donaciones = new ArrayCollection();
+        $this->comentarios = new ArrayCollection();
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -146,6 +158,38 @@ class User
     public function setComentarios(ArrayCollection $comentarios): void
     {
         $this->comentarios = $comentarios;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDonaciones(): ArrayCollection
+    {
+        return $this->donaciones;
+    }
+
+    /**
+     * @param ArrayCollection $donaciones
+     */
+    public function setDonaciones(ArrayCollection $donaciones): void
+    {
+        $this->donaciones = $donaciones;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProyectos(): ArrayCollection
+    {
+        return $this->proyectos;
+    }
+
+    /**
+     * @param ArrayCollection $proyectos
+     */
+    public function setProyectos(ArrayCollection $proyectos): void
+    {
+        $this->proyectos = $proyectos;
     }
 
 }
