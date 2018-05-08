@@ -60,9 +60,11 @@
                         <div><!-- envoltorio formulario registro -->
                             <div><!-- contenedor formulario registro -->
                                 <div>
+                                    {#
                                     {{form.start}}
                                     {{form.widget}}
                                     {{form.end}}
+                                    #}
                                 </div>
                             </div>
                         </div>
@@ -160,8 +162,11 @@
                     {% endblock %}
                 </div>                       
             </article> 
-            <form action="{{path('login')}}" method="get" accept-charset="utf-8">
+            <form action="{{path('login')}}" method="post" accept-charset="utf-8">
                 <h1>inicia sesion</h1>
+                {% if error is not null %}
+                    {{ error }}
+                {% endif %}
                 <input type="text" name="_username" value="">
                 <input type="password" name="_password" value="" placeholder="">
                 <input type="submit" name="" value="">
