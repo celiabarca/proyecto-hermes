@@ -30,6 +30,12 @@ class User
     private $telefono;
 
     /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     * @var string
+     */
+    private $email;
+
+    /**
      * @ORM\Column(type="string", length=60)
      * @var string
      */
@@ -125,20 +131,6 @@ class User
     }
 
     /**
-     * @return mixed
-     */
-    public function getValoracion() {
-        return $this->valoracion;
-    }
-
-    /**
-     * @param mixed $valoracion
-     */
-    public function setValoracion($valoracion): void {
-        $this->valoracion = $valoracion;
-    }
-
-    /**
      * @return bool
      */
     public function getDestacado(): bool {
@@ -230,6 +222,22 @@ class User
     public function setValoraciones(ArrayCollection $valoraciones): void
     {
         $this->valoraciones = $valoraciones;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
 }
