@@ -1,27 +1,54 @@
 {% extends 'base.html.twig' %}
 {% block contenido %}
-    <section><!-- envoltorio de las secciones -->
-        <article><!-- contenedor de las secciones -->
-            {% block seccion %}
-                <div><!-- envoltorio de fila -->
-                    {% block titulo_inicio %}
-                        <div>
-                            <h1>Titulo de la pagina</h1>
+    <section><!-- envoltorio de los articulos -->
+        {% block pagina_inicio %}
+            <article><!-- contenedor de las secciones -->
+                {% block fila_titulo %}
+                    <div><!-- envoltorio de fila -->
+                        <div><!-- contenedor de fila -->
+                            {% for proyecto in proyectos %}
+                                <div><!-- envoltorio del proyecto -->
+                                    <div><!-- contenedor del proyecto -->
+                                        <div><!-- envoltorio de la imagen -->
+                                            <div><!-- contenedor de la imagen -->
+                                                <img src="{{proyecyo.img}}" alt="">
+                                            </div>
+                                        </div>
+                                        <div><!-- envoltorio del resumen -->
+                                            <div><!-- contenedor del resumen -->
+                                                <p>{{proyecto.descripcion}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
+                    </div>
+                {% endblock %}
+            </article>
+            <div><!-- envoltorio del registro -->
+                <div><!-- contenedor del registro -->
+                    {% block registrate %}
                         <div>
                             <div>
-                               {% block proyectos_destacados %}
-                                    {% for proyecto in proyectos %}
-                                        <div>
-                                            
-                                        </div>
-                                    {% endfor %}
-                                {% endblock %} 
+                                <h1>¿Por qué quieres registrarte?</h1>
+                                <p>
+                                    Gracias a proyecto Hermes muchas ideas han conseguido financiación y se han convertido en proyectos de éxito, no seas menos que nadie, tú también puedes lograrlo y recuerda, ¡Es gratis!
+                                </p>
+                            </div>  
+                        </div>
+                        <div><!-- envoltorio formulario registro -->
+                            <div><!-- contenedor formulario registro -->
+                                <div>
+                                    {{form.start}}
+                                    {{form.widget}}
+                                    {{form.end}}
+                                </div>
                             </div>
                         </div>
-                    {% endblock %}
+                    {% endblock %}   
                 </div>
-            {% endblock %}
-        </article>
+            </div>                       
+        {% endblock %}
     </section>
 {% endblock %}
