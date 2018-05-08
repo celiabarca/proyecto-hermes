@@ -66,7 +66,7 @@ class Project
     private $colaboradores;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="proyectos")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="proyectos", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @var ArrayCollection
      */
