@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block contenido %}
+    <section><!-- envoltorio de las secciones -->
+        <article><!-- contenedor de las secciones -->
+            {% block seccion %}
+                <div><!-- envoltorio de fila -->
+                    {% block fila %}
+                        <div>
+
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </article>
+    </section>
+{% endblock %}
