@@ -77,6 +77,12 @@ class User
      */
     private $proyectos;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $img;
+
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -238,6 +244,22 @@ class User
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImg(): string
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param string $img
+     */
+    public function setImg(string $img): void
+    {
+        $this->img = $img;
     }
 
 }
