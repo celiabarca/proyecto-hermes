@@ -13,7 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller {
 
     public function index() {
-        return $this->render('inicio/index.html.twig');
+        return $this->render('inicio/index.html.twig', [
+            'usuarios' => [],
+            'proyectos' => []
+        ]);
     }
 
 }
