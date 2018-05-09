@@ -18,19 +18,16 @@ class Valoracionusuario
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valorados")
-     * @var User
      */
     private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valoraciones")
-     * @var User
      */
     private $usuarioValorado;
 
     /**
      * @ORM\Column(type="float")
-     * @var float
      */
     private $valoracion;
 
@@ -40,17 +37,17 @@ class Valoracionusuario
     }
 
     /**
-     * @return User
+     * @return mixed
      */
-    public function getUsuario(): User
+    public function getUsuario()
     {
         return $this->usuario;
     }
 
     /**
-     * @param User $usuario
+     * @param mixed $usuario
      */
-    public function setUsuario(User $usuario): void
+    public function setUsuario($usuario): void
     {
         $this->usuario = $usuario;
     }
@@ -58,7 +55,7 @@ class Valoracionusuario
     /**
      * @return mixed
      */
-    public function getUsuarioValorado(): User
+    public function getUsuarioValorado()
     {
         return $this->usuarioValorado;
     }
@@ -66,23 +63,23 @@ class Valoracionusuario
     /**
      * @param mixed $usuarioValorado
      */
-    public function setUsuarioValorado(User $usuarioValorado): void
+    public function setUsuarioValorado($usuarioValorado): void
     {
         $this->usuarioValorado = $usuarioValorado;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getValoracion(): float
+    public function getValoracion()
     {
         return $this->valoracion;
     }
 
     /**
-     * @param float $valoracion
+     * @param mixed $valoracion
      */
-    public function setValoracion(float $valoracion): void
+    public function setValoracion($valoracion): void
     {
         $this->valoracion = $valoracion;
     }

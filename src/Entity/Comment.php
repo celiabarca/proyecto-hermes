@@ -18,25 +18,21 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @var string
      */
     private $contenido;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="comentarios")
-     * @var Project
      */
     private $proyecto;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comentarios")
-     * @var User
      */
     private $autor;
 
     /**
      * @ORM\Column(type="datetime")
-     * @var \DateTime
      */
     private $fechacreacion;
 
@@ -46,65 +42,65 @@ class Comment
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getContenido(): string
+    public function getContenido()
     {
         return $this->contenido;
     }
 
     /**
-     * @param string $contenido
+     * @param mixed $contenido
      */
-    public function setContenido(string $contenido): void
+    public function setContenido($contenido): void
     {
         $this->contenido = $contenido;
     }
 
     /**
-     * @return Project
+     * @return mixed
      */
-    public function getProyecto(): Project
+    public function getProyecto()
     {
         return $this->proyecto;
     }
 
     /**
-     * @param Project $proyecto
+     * @param mixed $proyecto
      */
-    public function setProyecto(Project $proyecto): void
+    public function setProyecto($proyecto): void
     {
         $this->proyecto = $proyecto;
     }
 
     /**
-     * @return User
+     * @return mixed
      */
-    public function getAutor(): User
+    public function getAutor()
     {
         return $this->autor;
     }
 
     /**
-     * @param User $autor
+     * @param mixed $autor
      */
-    public function setAutor(User $autor): void
+    public function setAutor($autor): void
     {
         $this->autor = $autor;
     }
 
     /**
-     * @return \DateTime
+     * @return mixed
      */
-    public function getFechacreacion(): \DateTime
+    public function getFechacreacion()
     {
         return $this->fechacreacion;
     }
 
     /**
-     * @param \DateTime $fechacreacion
+     * @param mixed $fechacreacion
      */
-    public function setFechacreacion(\DateTime $fechacreacion): void
+    public function setFechacreacion($fechacreacion): void
     {
         $this->fechacreacion = $fechacreacion;
     }

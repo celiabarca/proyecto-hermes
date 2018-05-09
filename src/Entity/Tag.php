@@ -19,13 +19,11 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=30)
-     * @var string
      */
     private $nombre;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="etiquetas")
-     * @var ArrayCollection
      */
     private $proyectos;
 
@@ -35,33 +33,33 @@ class Tag
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getNombre(): string
+    public function getNombre()
     {
         return $this->nombre;
     }
 
     /**
-     * @param string $nombre
+     * @param mixed $nombre
      */
-    public function setNombre(string $nombre): void
+    public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getProyectos(): ArrayCollection
+    public function getProyectos()
     {
         return $this->proyectos;
     }
 
     /**
-     * @param ArrayCollection $proyectos
+     * @param mixed $proyectos
      */
-    public function setProyectos(ArrayCollection $proyectos): void
+    public function setProyectos($proyectos): void
     {
         $this->proyectos = $proyectos;
     }

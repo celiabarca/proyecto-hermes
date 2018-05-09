@@ -20,81 +20,73 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=30)
-     * @var string
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=15, nullable=true)
-     * @var mixed
      */
     private $telefono;
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
-     * @var string
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=60)
-     * @var string
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
-     * @var mixed
      */
     private $empresa;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
-     * @var mixed
      */
     private $sector;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Valoracionusuario", mappedBy="usuario")
-     * @var ArrayCollection
      */
     private $valorados;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Valoracionusuario", mappedBy="usuarioValorado")
-     * @var ArrayCollection
      */
     private $valoraciones;
 
     /**
      * @ORM\Column(type="boolean")
-     * @var bool
      */
     private $destacado = false;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="autor")
-     * @var ArrayCollection
      */
     private $comentarios;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Donacion", mappedBy="usuario")
-     * @var ArrayCollection
      */
     private $donaciones;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="autor")
-     * @var ArrayCollection
      */
     private $proyectos;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
+     * @ORM\Column(type="string", length=20)
      */
-    private $img;
+    private $rol = 'ROLE_USER';
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $img = '/assets/img/mi_imagen.png';
 
     public function __construct() {
         $this->proyectos = new ArrayCollection();
@@ -108,171 +100,67 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getNombre(): string {
+    public function getNombre()
+    {
         return $this->nombre;
     }
 
     /**
-     * @param string $nombre
+     * @param mixed $nombre
      */
-    public function setNombre(string $nombre): void {
+    public function setNombre($nombre): void
+    {
         $this->nombre = $nombre;
     }
 
     /**
      * @return mixed
      */
-    public function getTelefono() {
+    public function getTelefono()
+    {
         return $this->telefono;
     }
 
     /**
      * @param mixed $telefono
      */
-    public function setTelefono($telefono): void {
+    public function setTelefono($telefono): void
+    {
         $this->telefono = $telefono;
     }
 
     /**
      * @return mixed
      */
-    public function getPassword() {
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
         return $this->password;
     }
 
     /**
      * @param mixed $password
      */
-    public function setPassword($password): void {
+    public function setPassword($password): void
+    {
         $this->password = $password;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getDestacado(): bool {
-        return $this->destacado;
-    }
-
-    /**
-     * @param bool $destacado
-     */
-    public function setDestacado(bool $destacado): void {
-        $this->destacado = $destacado;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getComentarios(): ArrayCollection
-    {
-        return $this->comentarios;
-    }
-
-    /**
-     * @param ArrayCollection $comentarios
-     */
-    public function setComentarios(ArrayCollection $comentarios): void
-    {
-        $this->comentarios = $comentarios;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getDonaciones(): ArrayCollection
-    {
-        return $this->donaciones;
-    }
-
-    /**
-     * @param ArrayCollection $donaciones
-     */
-    public function setDonaciones(ArrayCollection $donaciones): void
-    {
-        $this->donaciones = $donaciones;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getProyectos(): ArrayCollection
-    {
-        return $this->proyectos;
-    }
-
-    /**
-     * @param ArrayCollection $proyectos
-     */
-    public function setProyectos(ArrayCollection $proyectos): void
-    {
-        $this->proyectos = $proyectos;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getValorados(): ArrayCollection
-    {
-        return $this->valorados;
-    }
-
-    /**
-     * @param ArrayCollection $valorados
-     */
-    public function setValorados(ArrayCollection $valorados): void
-    {
-        $this->valorados = $valorados;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getValoraciones(): ArrayCollection
-    {
-        return $this->valoraciones;
-    }
-
-    /**
-     * @param ArrayCollection $valoraciones
-     */
-    public function setValoraciones(ArrayCollection $valoraciones): void
-    {
-        $this->valoraciones = $valoraciones;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email): void
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImg(): string
-    {
-        return $this->img;
-    }
-
-    /**
-     * @param string $img
-     */
-    public function setImg(string $img): void
-    {
-        $this->img = $img;
     }
 
     /**
@@ -307,6 +195,118 @@ class User implements UserInterface
         $this->sector = $sector;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getValorados()
+    {
+        return $this->valorados;
+    }
+
+    /**
+     * @param mixed $valorados
+     */
+    public function setValorados($valorados): void
+    {
+        $this->valorados = $valorados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValoraciones()
+    {
+        return $this->valoraciones;
+    }
+
+    /**
+     * @param mixed $valoraciones
+     */
+    public function setValoraciones($valoraciones): void
+    {
+        $this->valoraciones = $valoraciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDestacado()
+    {
+        return $this->destacado;
+    }
+
+    /**
+     * @param mixed $destacado
+     */
+    public function setDestacado($destacado): void
+    {
+        $this->destacado = $destacado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param mixed $comentarios
+     */
+    public function setComentarios($comentarios): void
+    {
+        $this->comentarios = $comentarios;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDonaciones()
+    {
+        return $this->donaciones;
+    }
+
+    /**
+     * @param mixed $donaciones
+     */
+    public function setDonaciones($donaciones): void
+    {
+        $this->donaciones = $donaciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProyectos()
+    {
+        return $this->proyectos;
+    }
+
+    /**
+     * @param mixed $proyectos
+     */
+    public function setProyectos($proyectos): void
+    {
+        $this->proyectos = $proyectos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img): void
+    {
+        $this->img = $img;
+    }
+
 
     /**
      * Returns the roles granted to the user.
@@ -326,7 +326,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return [$this->rol];
     }
 
     /**

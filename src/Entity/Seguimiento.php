@@ -18,25 +18,21 @@ class Seguimiento
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="seguimientos")
-     * @var Project
      */
     private $proyecto;
 
     /**
      * @ORM\Column(type="datetime")
-     * @var \DateTime
      */
     private $fecha;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="seguimientos")
-     * @var User
      */
     private $usuario;
 
     /**
      * @ORM\Column(type="string", length=60)
-     * @var string
      */
     private $situacion;
 
@@ -46,65 +42,65 @@ class Seguimiento
     }
 
     /**
-     * @return Project
+     * @return mixed
      */
-    public function getProyecto(): Project
+    public function getProyecto()
     {
         return $this->proyecto;
     }
 
     /**
-     * @param Project $proyecto
+     * @param mixed $proyecto
      */
-    public function setProyecto(Project $proyecto): void
+    public function setProyecto($proyecto): void
     {
         $this->proyecto = $proyecto;
     }
 
     /**
-     * @return \DateTime
+     * @return mixed
      */
-    public function getFecha(): \DateTime
+    public function getFecha()
     {
         return $this->fecha;
     }
 
     /**
-     * @param \DateTime $fecha
+     * @param mixed $fecha
      */
-    public function setFecha(\DateTime $fecha): void
+    public function setFecha($fecha): void
     {
         $this->fecha = $fecha;
     }
 
     /**
-     * @return User
+     * @return mixed
      */
-    public function getUsuario(): User
+    public function getUsuario()
     {
         return $this->usuario;
     }
 
     /**
-     * @param User $usuario
+     * @param mixed $usuario
      */
-    public function setUsuario(User $usuario): void
+    public function setUsuario($usuario): void
     {
         $this->usuario = $usuario;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getSituacion(): string
+    public function getSituacion()
     {
         return $this->situacion;
     }
 
     /**
-     * @param string $situacion
+     * @param mixed $situacion
      */
-    public function setSituacion(string $situacion): void
+    public function setSituacion($situacion): void
     {
         $this->situacion = $situacion;
     }
