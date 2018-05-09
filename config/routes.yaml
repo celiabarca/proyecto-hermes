@@ -5,7 +5,10 @@ index:
 login:
   path: /login
   controller: App\Controller\UserController::login
-  
+
+registrarse:
+  path: /registrarse
+  controller: App\Controller\UserController::registrarUsuario
 
 nuevoProyecto:
     path: /nuevo/proyecto
@@ -15,6 +18,7 @@ listaProyectos:
     path: /proyectos
     controller: App\Controller\ProyectController::indice
         
+    
 =======
 
 >>>>>>> 95f00dbce002308bae3a16332416c9e01bbbbf5e
