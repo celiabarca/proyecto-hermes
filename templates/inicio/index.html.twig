@@ -60,11 +60,9 @@
                         <div><!-- envoltorio formulario registro -->
                             <div><!-- contenedor formulario registro -->
                                 <div>
-                                    {#
-                                    {{form.start}}
-                                    {{form.widget}}
-                                    {{form.end}}
-                                    #}
+                                    {{ form_start(form) }}
+                                    {{ form_widget(form) }}
+                                    {{ form_end(form) }}
                                 </div>
                             </div>
                         </div>
