@@ -133,6 +133,10 @@ class Project
      */
     public function getTitulo(): string
     {
+        if (!$this->titulo)
+        {
+            return "";
+        }
         return $this->titulo;
     }
 
@@ -149,6 +153,10 @@ class Project
      */
     public function getDescripcion(): string
     {
+        if (!$this->descripcion)
+        {
+            return "";
+        }
         return $this->descripcion;
     }
 
@@ -165,6 +173,10 @@ class Project
      */
     public function getContenido(): string
     {
+        if (!$this->contenido)
+        {
+            return "";
+        }
         return $this->contenido;
     }
 
@@ -197,6 +209,11 @@ class Project
      */
     public function getFechaCreacion(): \DateTime
     {
+        if (!$this->titulo)
+        {
+            return new Datetime();
+        }
+        
         return $this->fechaCreacion;
     }
 
@@ -353,6 +370,10 @@ class Project
      */
     public function getMeta(): float
     {
+        if(!$this->meta)
+        {
+            return 0;
+        }
         return $this->meta;
     }
 
