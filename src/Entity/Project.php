@@ -19,41 +19,33 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=60)
-     * @var string
      */
     private $titulo;
 
     /**
      * @ORM\Column(type="string", length=250)
-     * @var string
      */
     private $descripcion;
 
     /**
      * @ORM\Column(type="string", length=2048)
-     * @var string
      */
     private $contenido;
 
     /**
      * @ORM\Column(type="datetime")
-     * @var \DateTime
      */
     private $fechaCreacion;
 
     /**
-     * @ORM\JoinTable(name="proyectos_autores")
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="proyectos")
-     * @ORM\JoinColumn(nullable=false)
-     * @var ArrayCollection
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proyectos")
      */
-    private $autores;
+    private $autor;
 
     /**
      * @ORM\JoinTable(name="proyectos_patrocinadores")
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="patrocinios")
      * @ORM\JoinColumn(nullable=false)
-     * @var ArrayCollection
      */
     private $patrocinadores;
 
@@ -61,61 +53,51 @@ class Project
      * @ORM\JoinTable(name="proyectos_colaboradores")
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="colaboraciones")
      * @ORM\JoinColumn(nullable=false)
-     * @var ArrayCollection
      */
     private $colaboradores;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="proyectos", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @var ArrayCollection
      */
     private $etiquetas;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto")
-     * @var ArrayCollection
      */
     private $seguimientos;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Valoracion", mappedBy="proyecto")
-     * @var ArrayCollection
      */
     private $valoraciones;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="proyecto")
-     * @var ArrayCollection
      */
     private $comentarios;
 
     /**
      * @ORM\Column(type="boolean")
-     * @var bool
      */
     private $destacado = false;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Donacion", mappedBy="proyecto")
-     * @var ArrayCollection
      */
     private $donaciones;
 
     /**
      * @ORM\Column(type="float", nullable=true)
-     * @var float
      */
     private $meta;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @var string
      */
     private $img;
 
     public function __construct() {
-        $this->autores = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
         $this->valoraciones = new ArrayCollection();
@@ -129,9 +111,9 @@ class Project
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTitulo(): string
+    public function getTitulo()
     {
         if (!$this->titulo)
         {
@@ -141,17 +123,17 @@ class Project
     }
 
     /**
-     * @param string $titulo
+     * @param mixed $titulo
      */
-    public function setTitulo(string $titulo): void
+    public function setTitulo($titulo): void
     {
         $this->titulo = $titulo;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getDescripcion(): string
+    public function getDescripcion()
     {
         if (!$this->descripcion)
         {
@@ -161,17 +143,17 @@ class Project
     }
 
     /**
-     * @param string $descripcion
+     * @param mixed $descripcion
      */
-    public function setDescripcion(string $descripcion): void
+    public function setDescripcion($descripcion): void
     {
         $this->descripcion = $descripcion;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getContenido(): string
+    public function getContenido()
     {
         if (!$this->contenido)
         {
@@ -181,97 +163,198 @@ class Project
     }
 
     /**
-     * @param string $contenido
+     * @param mixed $contenido
      */
-    public function setContenido(string $contenido): void
+    public function setContenido($contenido): void
     {
         $this->contenido = $contenido;
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getAutores(): ArrayCollection
+    public function getFechaCreacion()
     {
-        return $this->autores;
-    }
-
-    /**
-     * @param ArrayCollection $autores
-     */
-    public function setAutores(ArrayCollection $autores): void
-    {
-        $this->autores = $autores;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaCreacion(): \DateTime
-    {
-        if (!$this->titulo)
-        {
-            return new Datetime();
-        }
-        
         return $this->fechaCreacion;
     }
 
     /**
-     * @param \DateTime $fechaCreacion
+     * @param mixed $fechaCreacion
      */
-    public function setFechaCreacion(\DateTime $fechaCreacion): void
+    public function setFechaCreacion($fechaCreacion): void
     {
         $this->fechaCreacion = $fechaCreacion;
     }
 
+
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getPatrocinadores(): ArrayCollection
+    public function getPatrocinadores()
     {
         return $this->patrocinadores;
     }
 
     /**
-     * @param ArrayCollection $patrocinadores
+     * @param mixed $patrocinadores
      */
-    public function setPatrocinadores(ArrayCollection $patrocinadores): void
+    public function setPatrocinadores($patrocinadores): void
     {
         $this->patrocinadores = $patrocinadores;
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getColaboradores(): ArrayCollection
+    public function getColaboradores()
     {
         return $this->colaboradores;
     }
 
     /**
-     * @param ArrayCollection $colaboradores
+     * @param mixed $colaboradores
      */
-    public function setColaboradores(ArrayCollection $colaboradores): void
+    public function setColaboradores($colaboradores): void
     {
         $this->colaboradores = $colaboradores;
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getEtiquetas(): ArrayCollection
+    public function getEtiquetas()
     {
         return $this->etiquetas;
     }
 
     /**
-     * @param ArrayCollection $etiquetas
+     * @param mixed $etiquetas
      */
-    public function setEtiquetas(ArrayCollection $etiquetas): void
+    public function setEtiquetas($etiquetas): void
     {
         $this->etiquetas = $etiquetas;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSeguimientos()
+    {
+        return $this->seguimientos;
+    }
+
+    /**
+     * @param mixed $seguimientos
+     */
+    public function setSeguimientos($seguimientos): void
+    {
+        $this->seguimientos = $seguimientos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValoraciones()
+    {
+        return $this->valoraciones;
+    }
+
+    /**
+     * @param mixed $valoraciones
+     */
+    public function setValoraciones($valoraciones): void
+    {
+        $this->valoraciones = $valoraciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param mixed $comentarios
+     */
+    public function setComentarios($comentarios): void
+    {
+        $this->comentarios = $comentarios;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDestacado()
+    {
+        return $this->destacado;
+    }
+
+    /**
+     * @param mixed $destacado
+     */
+    public function setDestacado($destacado): void
+    {
+        $this->destacado = $destacado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDonaciones()
+    {
+        return $this->donaciones;
+    }
+
+    /**
+     * @param mixed $donaciones
+     */
+    public function setDonaciones($donaciones): void
+    {
+        $this->donaciones = $donaciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMeta()
+    {
+        if(!$this->meta)
+        {
+            return 0;
+        }
+        return $this->meta;
+    }
+
+    /**
+     * @param mixed $meta
+     */
+    public function setMeta($meta): void
+    {
+        $this->meta = $meta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        if(!$this->img)
+        {
+            return "";
+        }
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img): void
+    {
+        $this->img = $img;
+    }
+
 
     public function addEtiquetas(Tag $etiquetas) {
         foreach($etiquetas as $etiqueta) {
@@ -286,123 +369,19 @@ class Project
     }
 
     /**
-     * @return ArrayCollection
+     * @return mixed
      */
-    public function getSeguimientos(): ArrayCollection
+    public function getAutor()
     {
-        return $this->seguimientos;
+        return $this->autor;
     }
 
     /**
-     * @param ArrayCollection $seguimientos
+     * @param mixed $autor
      */
-    public function setSeguimientos(ArrayCollection $seguimientos): void
+    public function setAutor($autor): void
     {
-        $this->seguimientos = $seguimientos;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getValoraciones(): ArrayCollection
-    {
-        return $this->valoraciones;
-    }
-
-    /**
-     * @param ArrayCollection $valoraciones
-     */
-    public function setValoraciones(ArrayCollection $valoraciones): void
-    {
-        $this->valoraciones = $valoraciones;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getComentarios(): ArrayCollection
-    {
-        return $this->comentarios;
-    }
-
-    /**
-     * @param ArrayCollection $comentarios
-     */
-    public function setComentarios(ArrayCollection $comentarios): void
-    {
-        $this->comentarios = $comentarios;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isDestacado(): bool
-    {
-        return $this->destacado;
-    }
-
-    /**
-     * @param bool $destacado
-     */
-    public function setDestacado(bool $destacado): void
-    {
-        $this->destacado = $destacado;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getDonaciones(): ArrayCollection
-    {
-        return $this->donaciones;
-    }
-
-    /**
-     * @param ArrayCollection $donaciones
-     */
-    public function setDonaciones(ArrayCollection $donaciones): void
-    {
-        $this->donaciones = $donaciones;
-    }
-
-    /**
-     * @return float
-     */
-    public function getMeta(): float
-    {
-        if(!$this->meta)
-        {
-            return 0;
-        }
-        return $this->meta;
-    }
-
-    /**
-     * @param float $meta
-     */
-    public function setMeta(float $meta): void
-    {
-        $this->meta = $meta;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImg(): string
-    {
-        if(!$this->img)
-        {
-            return "";
-        }
-        return $this->img;
-    }
-
-    /**
-     * @param string $img
-     */
-    public function setImg(string $img): void
-    {
-        $this->img = $img;
+        $this->autor = $autor;
     }
 
 }

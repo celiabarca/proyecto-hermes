@@ -18,19 +18,16 @@ class Valoracion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valoracion")
-     * @var User
      */
     private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="valoraciones")
-     * @var Project
      */
     private $proyecto;
 
     /**
      * @ORM\Column(type="float")
-     * @var float
      */
     private $puntuacion;
 
@@ -40,49 +37,49 @@ class Valoracion
     }
 
     /**
-     * @return User
+     * @return mixed
      */
-    public function getUsuario(): User
+    public function getUsuario()
     {
         return $this->usuario;
     }
 
     /**
-     * @param User $usuario
+     * @param mixed $usuario
      */
-    public function setUsuario(User $usuario): void
+    public function setUsuario($usuario): void
     {
         $this->usuario = $usuario;
     }
 
     /**
-     * @return Project
+     * @return mixed
      */
-    public function getProyecto(): Project
+    public function getProyecto()
     {
         return $this->proyecto;
     }
 
     /**
-     * @param Project $proyecto
+     * @param mixed $proyecto
      */
-    public function setProyecto(Project $proyecto): void
+    public function setProyecto($proyecto): void
     {
         $this->proyecto = $proyecto;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getPuntuacion(): float
+    public function getPuntuacion()
     {
         return $this->puntuacion;
     }
 
     /**
-     * @param float $puntuacion
+     * @param mixed $puntuacion
      */
-    public function setPuntuacion(float $puntuacion): void
+    public function setPuntuacion($puntuacion): void
     {
         $this->puntuacion = $puntuacion;
     }

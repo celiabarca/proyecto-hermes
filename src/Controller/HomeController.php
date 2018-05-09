@@ -8,15 +8,21 @@
 
 namespace App\Controller;
 
+use App\Form\RegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomeController extends Controller {
 
     public function index() {
+        $form = $this->createForm(RegisterType::class, null, [
+            'action' => '/registrarse'
+        ]);
+
         return $this->render('inicio/index.html.twig', [
             'usuarios' => [],
             'proyectos' => [],
-            'error' => null
+            'error' => null,
+            'form' => $form->createView()
         ]);
     }
 

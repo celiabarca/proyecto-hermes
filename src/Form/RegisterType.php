@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,43 +24,36 @@ class RegisterType extends AbstractType {
         $builder
             ->add('nombre', TextType::class, [
                 'label' => 'Nombre de usuario',
-                'required' => true,
-                'attr' => [
-                    'pattern' => '(.){30}'
-                ]
+                'required' => true
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Correo Electronico',
-                'required' => true,
-                'pattern' => '((.+)@(.+)\.(.+)){60}'
+                'required' => true
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => true,
-                'first_option' => [
+                'first_options' => [
                     'label' => 'Contraseña'
                 ],
-                'second_option' => [
+                'second_options' => [
                     'label' => 'Repetir contraseña'
                 ]
             ])
             ->add('telefono', TextType::class, [
                 'label' => 'Telefono',
-                'attr' => [
-                    'pattern' => '(\+[0-9]{,3}\ )?[0-9]{,9}'
-                ]
+                'required' => false
             ])
             ->add('empresa', TextType::class, [
                 'label' => 'Empresa',
-                'attr' => [
-                    'pattern' => '.{30}'
-                ]
+                'required' => false
             ])
             ->add('sector', TextType::class, [
                 'label' => 'Sector',
-                'attr' => [
-                    'pattern' => '.{30}'
-                ]
+                'required' => false
+            ])
+            ->add('registrarse', SubmitType::class, [
+                'label' => 'Registrarme'
             ]);
     }
 

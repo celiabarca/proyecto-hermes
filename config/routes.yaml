@@ -6,10 +6,15 @@ login:
   path: /login
   controller: App\Controller\UserController::login
   
+
 nuevoProyecto:
     path: /nuevo/proyecto
     controller: App\Controller\ProyectController::altaProyecto
+<<<<<<< HEAD
 listaProyectos:
     path: /proyectos
     controller: App\Controller\ProyectController::indice
-    
+        
+=======
+
+>>>>>>> 95f00dbce002308bae3a16332416c9e01bbbbf5e

@@ -18,25 +18,21 @@ class Donacion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="donaciones")
-     * @var User
      */
     private $usuario;
 
     /**
      * @ORM\Column(type="float")
-     * @var float
      */
     private $cantidad;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="donaciones")
-     * @var Project
      */
     private $proyecto;
 
     /**
      * @ORM\Column(type="datetime")
-     * @var \DateTime
      */
     private $fechaDonacion;
 
@@ -46,65 +42,65 @@ class Donacion
     }
 
     /**
-     * @return User
+     * @return mixed
      */
-    public function getUsuario(): User
+    public function getUsuario()
     {
         return $this->usuario;
     }
 
     /**
-     * @param User $usuario
+     * @param mixed $usuario
      */
-    public function setUsuario(User $usuario): void
+    public function setUsuario($usuario): void
     {
         $this->usuario = $usuario;
     }
 
     /**
-     * @return float
+     * @return mixed
      */
-    public function getCantidad(): float
+    public function getCantidad()
     {
         return $this->cantidad;
     }
 
     /**
-     * @param float $cantidad
+     * @param mixed $cantidad
      */
-    public function setCantidad(float $cantidad): void
+    public function setCantidad($cantidad): void
     {
         $this->cantidad = $cantidad;
     }
 
     /**
-     * @return Project
+     * @return mixed
      */
-    public function getProyecto(): Project
+    public function getProyecto()
     {
         return $this->proyecto;
     }
 
     /**
-     * @param Project $proyecto
+     * @param mixed $proyecto
      */
-    public function setProyecto(Project $proyecto): void
+    public function setProyecto($proyecto): void
     {
         $this->proyecto = $proyecto;
     }
 
     /**
-     * @return \DateTime
+     * @return mixed
      */
-    public function getFechaDonacion(): \DateTime
+    public function getFechaDonacion()
     {
         return $this->fechaDonacion;
     }
 
     /**
-     * @param \DateTime $fechaDonacion
+     * @param mixed $fechaDonacion
      */
-    public function setFechaDonacion(\DateTime $fechaDonacion): void
+    public function setFechaDonacion($fechaDonacion): void
     {
         $this->fechaDonacion = $fechaDonacion;
     }
