@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ error }}
-<form action="{{path('login')}}" method="post" accept-charset="utf-8">
-    <h1>inicia sesion</h1>
-    <input type="text" name="_username" value="">
-    <input type="password" name="_password" value="" placeholder="">
-    <input type="submit" name="" value="Inciar sesion">
-</form>
+<section>
+    <form action="{{path('login')}}" method="post" accept-charset="utf-8">
+        <h1>inicia sesion</h1>
+        <p>{{ error }}</p>
+        <label id="email-label">E-mail</label>
+        <input type="text" name="_username" aria-labelledby="email-label">
+        <label id="password-label">Contraseña</label>
+        <input type="password" name="_password" aria-labelledby="password-label">
+        <input type="submit" name="" value="Inciar sesion" aria-label="Iniciar sesion">
+    </form>
+</section>
 {% endblock %}
