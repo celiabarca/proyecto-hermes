@@ -25,8 +25,8 @@ class User implements UserInterface
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", length=15)
-     * @var string
+     * @ORM\Column(type="string", length=15, nullable=true)
+     * @var mixed
      */
     private $telefono;
 
@@ -41,6 +41,18 @@ class User implements UserInterface
      * @var string
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     * @var mixed
+     */
+    private $empresa;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     * @var mixed
+     */
+    private $sector;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Valoracionusuario", mappedBy="usuario")
@@ -110,16 +122,16 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTelefono(): string {
+    public function getTelefono() {
         return $this->telefono;
     }
 
     /**
-     * @param string $telefono
+     * @param mixed $telefono
      */
-    public function setTelefono(string $telefono): void {
+    public function setTelefono($telefono): void {
         $this->telefono = $telefono;
     }
 
@@ -264,6 +276,39 @@ class User implements UserInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * @param mixed $empresa
+     */
+    public function setEmpresa($empresa): void
+    {
+        $this->empresa = $empresa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSector()
+    {
+        return $this->sector;
+    }
+
+    /**
+     * @param mixed $sector
+     */
+    public function setSector($sector): void
+    {
+        $this->sector = $sector;
+    }
+
+
+    /**
      * Returns the roles granted to the user.
      *
      * <code>
@@ -281,9 +326,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return [
-            'ROLE_USER'
-        ];
+        return ['ROLE_USER'];
     }
 
     /**
