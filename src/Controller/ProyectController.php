@@ -28,6 +28,10 @@ class ProyectController extends Controller
         if($formularioProyecto->isSubmitted()&& $formularioProyecto->isValid())
         {
             $projecto->setFechaCreacion(new \Datetime());
+            if(!$projecto->getImg())
+            {
+                $projecto->setImg("");
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
             $entityManager->flush();

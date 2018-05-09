@@ -18,13 +18,13 @@ class ProjectType extends AbstractType
         $builder
             ->add('titulo', TextType::class,
                     [
-                        'label' => 'Descripcion'
+                        'label' => 'Titulo'
                     ])
             ->add('descripcion', TextareaType::class,
                     [
                         'label' => 'Descripcion'
                     ])
-            ->add('contenido', TextType::class)
+            ->add('contenido', TextareaType::class)
             ->add('meta', NumberType::class)
          // ->add('img', TextType::class)
          //->add('etiquetas', TextType::class)

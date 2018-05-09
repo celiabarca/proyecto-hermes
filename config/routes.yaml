@@ -9,5 +9,7 @@ login:
 nuevoProyecto:
     path: /nuevo/proyecto
     controller: App\Controller\ProyectController::altaProyecto
-    
+listaProyectos:
+    path: /proyectos
+    controller: App\Controller\ProyectController::indice
     
