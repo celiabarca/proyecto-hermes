@@ -390,6 +390,10 @@ class Project
      */
     public function getImg(): string
     {
+        if(!$this->img)
+        {
+            return "";
+        }
         return $this->img;
     }
 
