@@ -160,15 +160,6 @@
                     {% endblock %}
                 </div>                       
             </article> 
-            <form action="{{path('login')}}" method="post" accept-charset="utf-8">
-                <h1>inicia sesion</h1>
-                {% if error is not null %}
-                    {{ error }}
-                {% endif %}
-                <input type="text" name="_username" value="">
-                <input type="password" name="_password" value="" placeholder="">
-                <input type="submit" name="" value="">
-            </form>
         {% endblock %}
     </section>
 {% endblock %}

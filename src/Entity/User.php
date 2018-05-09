@@ -74,7 +74,7 @@ class User implements UserInterface
     private $donaciones;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="autor")
+     * @ORM\OneToMany(targetEntity="App\Entity\Project", mappedBy="autor")
      */
     private $proyectos;
 

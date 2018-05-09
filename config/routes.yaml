@@ -9,3 +9,8 @@ login:
 registrarse:
   path: /registrarse
   controller: App\Controller\UserController::registrarUsuario
+
+nuevoProyecto:
+    path: /nuevo/proyecto
+    controller: App\Controller\ProyectController::altaProyecto
+

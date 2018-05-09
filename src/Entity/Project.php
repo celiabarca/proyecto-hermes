@@ -38,11 +38,9 @@ class Project
     private $fechaCreacion;
 
     /**
-     * @ORM\JoinTable(name="proyectos_autores")
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="proyectos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proyectos")
      */
-    private $autores;
+    private $autor;
 
     /**
      * @ORM\JoinTable(name="proyectos_patrocinadores")
@@ -100,7 +98,6 @@ class Project
     private $img;
 
     public function __construct() {
-        $this->autores = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
         $this->valoraciones = new ArrayCollection();
@@ -118,6 +115,10 @@ class Project
      */
     public function getTitulo()
     {
+        if (!$this->titulo)
+        {
+            return "";
+        }
         return $this->titulo;
     }
 
@@ -134,6 +135,10 @@ class Project
      */
     public function getDescripcion()
     {
+        if (!$this->descripcion)
+        {
+            return "";
+        }
         return $this->descripcion;
     }
 
@@ -150,6 +155,10 @@ class Project
      */
     public function getContenido()
     {
+        if (!$this->contenido)
+        {
+            return "";
+        }
         return $this->contenido;
     }
 
@@ -177,21 +186,6 @@ class Project
         $this->fechaCreacion = $fechaCreacion;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAutores()
-    {
-        return $this->autores;
-    }
-
-    /**
-     * @param mixed $autores
-     */
-    public function setAutores($autores): void
-    {
-        $this->autores = $autores;
-    }
 
     /**
      * @return mixed
@@ -326,6 +320,10 @@ class Project
      */
     public function getMeta()
     {
+        if(!$this->meta)
+        {
+            return 0;
+        }
         return $this->meta;
     }
 
@@ -342,6 +340,10 @@ class Project
      */
     public function getImg()
     {
+        if(!$this->img)
+        {
+            return "";
+        }
         return $this->img;
     }
 
@@ -364,6 +366,22 @@ class Project
 
     public function removeEtiqueta(Tag $etiqueta) {
         $this->etiquetas->removeElement($etiqueta);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAutor()
+    {
+        return $this->autor;
+    }
+
+    /**
+     * @param mixed $autor
+     */
+    public function setAutor($autor): void
+    {
+        $this->autor = $autor;
     }
 
 }
