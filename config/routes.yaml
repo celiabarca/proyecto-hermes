@@ -2,6 +2,7 @@ index:
     path: /
     controller: App\Controller\HomeController::index
 
+#Usuario
 login:
     path: /login
     controller: App\Controller\UserController::login
@@ -10,22 +11,26 @@ registrarse:
     path: /registrarse
     controller: App\Controller\UserController::registrarUsuario
 
+usuario_perfil:
+    path: /usuario/{id}
+    controller: App\Controller\UserController::perfilUsuario
+    
+#Proyecto
 nuevoProyecto:
     path: /nuevo/proyecto
     controller: App\Controller\ProyectController::altaProyecto
 
 listaProyectos:
     path: /proyectos
-<<<<<<< HEAD
-    controller: App\Controller\ProyectController::indice
-=======
     controller: App\Controller\ProyectController::indice
 
 proyecto:
     path: /proyecto/{id}
     controller: App\Controller\ProyectController::proyecto
+    defaults:
+        id: null
 
-usuario_perfil:
-    path: /usuario/{id}
-    controller: App\Controller\UserController::perfilUsuario
->>>>>>> f1a481ad7136762f9b761fe3d883926a9cf080c6
+#api
+
+
+
