@@ -34,3 +34,9 @@ proyecto:
 
 
 
+<<<<<<< HEAD
+=======
+usuario_perfil:
+    path: /usuario/{id}
+    controller: App\Controller\UserController::perfilUsuario
+>>>>>>> af36cbbbf0d2fd46431f4de6ce952906a44ed23d
