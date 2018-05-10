@@ -88,11 +88,17 @@ class User implements UserInterface
      */
     private $img = '/assets/img/mi_imagen.png';
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="usuario")
+     */
+    private $actividades;
+
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
         $this->valoraciones = new ArrayCollection();
+        $this->actividades = new ArrayCollection();
     }
 
     public function getId() {
@@ -307,6 +313,37 @@ class User implements UserInterface
         $this->img = $img;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * @param mixed $rol
+     */
+    public function setRol($rol): void
+    {
+        $this->rol = $rol;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActividades()
+    {
+        return $this->actividades;
+    }
+
+    /**
+     * @param mixed $actividades
+     */
+    public function setActividades($actividades): void
+    {
+        $this->actividades = $actividades;
+    }
 
     /**
      * Returns the roles granted to the user.

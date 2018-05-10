@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Yaml\Tests\A;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -98,12 +99,18 @@ class Project
      */
     private $img;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="proyecto")
+     */
+    private $actividades;
+
     public function __construct() {
         $this->comentarios = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
         $this->valoraciones = new ArrayCollection();
         $this->etiquetas = new ArrayCollection();
         $this->colaboradores = new ArrayCollection();
+        $this->actividades = new ArrayCollection();
     }
 
     public function getId()
@@ -383,6 +390,22 @@ class Project
     public function setAutor($autor): void
     {
         $this->autor = $autor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActividades()
+    {
+        return $this->actividades;
+    }
+
+    /**
+     * @param mixed $actividades
+     */
+    public function setActividades($actividades): void
+    {
+        $this->actividades = $actividades;
     }
 
 }
