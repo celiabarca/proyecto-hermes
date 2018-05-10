@@ -8,9 +8,19 @@ use App\Controller\CommentController;
 use App\Entity\Project;
 use App\Form\ProjectType;
 
+class ProyectController extends Controller {
 
     public function indice()
     {
+    	$proyectos = $this->getDoctrine()
+                        ->getRepository(Project::class)
+                        ->findBy([], [
+                            'fechaCreacion' => 'desc'
+                        ]);
+
+        return $this->render('proyect/index.html.twig', [
+            'proyectos' => $proyectos,
+        ]);
     }
     
     public function altaProyecto(Request $peticion)
@@ -19,6 +29,7 @@ use App\Form\ProjectType;
         $formularioProyecto = $this->createForm(ProjectType::class, $projecto);
         
         $formularioProyecto->handleRequest($peticion);
+        if($formularioProyecto->isSubmitted() && $formularioProyecto->isValid())
         {
             $projecto->setFechaCreacion(new \Datetime());
             if(!$projecto->getImg())
@@ -36,11 +47,7 @@ use App\Form\ProjectType;
         ]);
     }
     
-<<<<<<< HEAD
-    static public function dameProyectos($total)
-=======
     public function dameProyectos($total = null)
->>>>>>> bf9316992ad9f7ef0c555e7a6c73d78cbf3076db
     {
         if (isset($total) && $total > 0) {
             $proyectos = $this->getDoctrine()
