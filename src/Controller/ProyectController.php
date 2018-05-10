@@ -42,7 +42,7 @@ class ProyectController extends Controller
         return $this->render('project/nuevo.html.twig',['FormularioProyecto'=>$formularioProyecto->createView()]);
     }
     
-    static public function dameProyectos($total = 0)
+    static public function dameProyectos($total)
     {
         $proyectos = [];
         if (total == 0)
