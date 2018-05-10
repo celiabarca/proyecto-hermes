@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\CommentController;
 use App\Entity\Project;
 use App\Form\ProjectType;
 
