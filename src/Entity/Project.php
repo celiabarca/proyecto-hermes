@@ -47,14 +47,12 @@ class Project
     /**
      * @ORM\JoinTable(name="proyectos_patrocinadores")
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="patrocinios")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $patrocinadores;
 
     /**
      * @ORM\JoinTable(name="proyectos_colaboradores")
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="colaboraciones")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $colaboradores;
 

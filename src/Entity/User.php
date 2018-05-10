@@ -93,12 +93,24 @@ class User implements UserInterface
      */
     private $actividades;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="patrocinadores")
+     */
+    private $patrocinios;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="colaboradores")
+     */
+    private $colaboraciones;
+
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
         $this->comentarios = new ArrayCollection();
         $this->valoraciones = new ArrayCollection();
         $this->actividades = new ArrayCollection();
+        $this->patrocinios = new ArrayCollection();
+        $this->colaboraciones = new ArrayCollection();
     }
 
     public function getId() {
@@ -343,6 +355,38 @@ class User implements UserInterface
     public function setActividades($actividades): void
     {
         $this->actividades = $actividades;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPatrocinios()
+    {
+        return $this->patrocinios;
+    }
+
+    /**
+     * @param mixed $patrocinios
+     */
+    public function setPatrocinios($patrocinios): void
+    {
+        $this->patrocinios = $patrocinios;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getColaboraciones()
+    {
+        return $this->colaboraciones;
+    }
+
+    /**
+     * @param mixed $colaboraciones
+     */
+    public function setColaboraciones($colaboraciones): void
+    {
+        $this->colaboraciones = $colaboraciones;
     }
 
     /**
