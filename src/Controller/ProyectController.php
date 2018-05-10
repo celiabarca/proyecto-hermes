@@ -2,22 +2,15 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\CommentController;
 use App\Entity\Project;
 use App\Form\ProjectType;
 
-class ProyectController extends Controller
-{
+
     public function indice()
     {
-    	$proyectos = $this->getDoctrine()->getRepository(ProyectRepository::class)->findAll();
-        return $this->render('proyect/index.html.twig', 
-                [
-                    'proyectos' => $proyectos,
-                ]);
     }
     
     public function altaProyecto(Request $peticion)
@@ -26,7 +19,6 @@ class ProyectController extends Controller
         $formularioProyecto = $this->createForm(ProjectType::class, $projecto);
         
         $formularioProyecto->handleRequest($peticion);
-        if($formularioProyecto->isSubmitted()&& $formularioProyecto->isValid())
         {
             $projecto->setFechaCreacion(new \Datetime());
             if(!$projecto->getImg())
@@ -37,21 +29,14 @@ class ProyectController extends Controller
             $entityManager->persist($projecto);
             $entityManager->flush();
             
-            return $this->redirectToRoute("");
         }
-        return $this->render('project/nuevo.html.twig',['FormularioProyecto'=>$formularioProyecto->createView()]);
     }
     
+<<<<<<< HEAD
     static public function dameProyectos($total)
+=======
+>>>>>>> bf9316992ad9f7ef0c555e7a6c73d78cbf3076db
     {
-        $proyectos = [];
-        if (total == 0)
-        {
-            $proyectos = $this->getDoctrine()->getRepository(ProyectRepository::class)->findAll();
-        }
-        else
-        {
-            $proyectos = $this->getDoctrine()->getRepository(ProyectRepository::class)->findBy(['id'=> $total],null,$total);
         }
         
         return $proyectos;

@@ -13,14 +13,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomeController extends Controller {
 
+    private $pc;
+
+    public function __construct(ProyectController $pc) {
+        $this->pc = $pc;
+    }
+
     public function index() {
+        $proyectos = $this->pc->dameProyectos();
+
         $form = $this->createForm(RegisterType::class, null, [
             'action' => '/registrarse'
         ]);
 
         return $this->render('inicio/index.html.twig', [
             'usuarios' => [],
-            'proyectos' => [],
+            'proyectos' => $proyectos,
             'error' => null,
             'form' => $form->createView()
         ]);
