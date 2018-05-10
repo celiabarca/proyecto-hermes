@@ -2,21 +2,24 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Project;
 use App\Form\ProjectType;
 
-class ProyectController extends Controller
-{
+class ProyectController extends Controller {
+
     public function indice()
     {
-    	$proyectos = $this->getDoctrine()->getRepository(ProyectRepository::class)->findAll();
-        return $this->render('proyect/index.html.twig', 
-                [
-                    'proyectos' => $proyectos,
-                ]);
+    	$proyectos = $this->getDoctrine()
+                        ->getRepository(Project::class)
+                        ->findBy([], [
+                            'fechaCreacion' => 'desc'
+                        ]);
+
+        return $this->render('proyect/index.html.twig', [
+            'proyectos' => $proyectos,
+        ]);
     }
     
     public function altaProyecto(Request $peticion)
@@ -25,7 +28,7 @@ class ProyectController extends Controller
         $formularioProyecto = $this->createForm(ProjectType::class, $projecto);
         
         $formularioProyecto->handleRequest($peticion);
-        if($formularioProyecto->isSubmitted()&& $formularioProyecto->isValid())
+        if($formularioProyecto->isSubmitted() && $formularioProyecto->isValid())
         {
             $projecto->setFechaCreacion(new \Datetime());
             if(!$projecto->getImg())
@@ -36,23 +39,29 @@ class ProyectController extends Controller
             $entityManager->persist($projecto);
             $entityManager->flush();
             
-            return $this->redirectToRoute("");
+            return $this->redirectToRoute("index");
         }
-        return $this->render('project/nuevo.html.twig',['FormularioProyecto'=>$formularioProyecto->createView()]);
+        return $this->render('project/nuevo.html.twig', [
+            'FormularioProyecto' => $formularioProyecto->createView()
+        ]);
     }
     
-    static public function dameProyectos($total = 0)
+    public function dameProyectos($total = null)
     {
-        $proyectos = [];
-        if (total == 0)
-        {
-            $proyectos = $this->getDoctrine()->getRepository(ProyectRepository::class)->findAll();
-        }
-        else
-        {
-            $proyectos = $this->getDoctrine()->getRepository(ProyectRepository::class)->findBy(['id'=> $total],null,$total);
+        if (isset($total) && $total > 0) {
+            $proyectos = $this->getDoctrine()
+                            ->getRepository(Project::class)
+                            ->findBy([], null, $total);
+        } else {
+            $proyectos = $this->getDoctrine()->getRepository(Project::class)->findAll();
         }
         
         return $proyectos;
+    }
+
+    public function proyecto(Project $proyecto) {
+        return $this->render('project/index.html.twig', [
+            'proyecto' => $proyecto
+        ]);
     }
 }

@@ -47,4 +47,25 @@ class UserController extends Controller {
         ]);
     }
 
+    public function perfilUsuario(User $usuario) {
+        return $this->render('usuario/perfil.html.twig', [
+           'usuario' => $usuario
+        ]);
+    }
+
+    public function editarUsuario(Request $request, User $usuario) {
+        $form = $this->createForm(RegisterType::class, $usuario);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($usuario);
+            $manager->flush();
+        }
+
+        return $this->render('usuario/editar.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
 }
