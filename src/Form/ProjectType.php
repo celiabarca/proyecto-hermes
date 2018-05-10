@@ -26,7 +26,7 @@ class ProjectType extends AbstractType
                     ])
             ->add('contenido', TextareaType::class)
             ->add('meta', NumberType::class)
-         // ->add('img', TextType::class)
+            ->add('Valoraciones', NumberType::class)
          //->add('etiquetas', TextType::class)
             ->add('Enviar', SubmitType::class)
         ;

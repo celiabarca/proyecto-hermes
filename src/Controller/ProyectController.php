@@ -60,7 +60,8 @@ class ProyectController extends Controller {
         return $proyectos;
     }
 
-    public function proyecto(Project $proyecto) {
+    public function proyecto(Project $proyecto) 
+    {
         return $this->render('project/index.html.twig', [
             'proyecto' => $proyecto
         ]);
