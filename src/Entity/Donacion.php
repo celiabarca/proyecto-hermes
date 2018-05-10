@@ -18,6 +18,7 @@ class Donacion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="donaciones")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $usuario;
 
@@ -28,6 +29,7 @@ class Donacion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="donaciones")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $proyecto;
 

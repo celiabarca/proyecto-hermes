@@ -23,11 +23,13 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="comentarios")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $proyecto;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comentarios")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $autor;
 
