@@ -18,11 +18,13 @@ class Valoracion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valoracion")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="valoraciones")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $proyecto;
 

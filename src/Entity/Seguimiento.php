@@ -18,6 +18,7 @@ class Seguimiento
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="seguimientos")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $proyecto;
 
@@ -28,6 +29,7 @@ class Seguimiento
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="seguimientos")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $usuario;
 
