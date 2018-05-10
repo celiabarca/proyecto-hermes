@@ -39,6 +39,7 @@ class Project
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proyectos")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $autor;
 
