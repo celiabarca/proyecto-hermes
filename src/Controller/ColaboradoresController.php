@@ -2,16 +2,19 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Project;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ColaboradoresController extends Controller
 {
    /**
      * Preparado para AJAX
      * Elimina un colaborador de un proyecto
-     * @param Project $proyect
+     * @param Project $proyecto
      * @param User $user
+     * @return JsonResponse
      */
     public function eliminarColaborador(Project $proyecto, User $user) {
         try {

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Project;
+use App\Entity\Seguimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SeguimientosController extends Controller
 {
@@ -27,6 +29,8 @@ class SeguimientosController extends Controller
      * Preparado para AJAX
      * elimina un seguimiento de un proyecto
      * @param Seguimiento $seguimiento
+     * @param Project $project
+     * @return JsonResponse
      */
     public function eliminarSeguimiento(Project $project, Seguimiento $seguimiento) {
         try {
