@@ -27,8 +27,6 @@ listaProyectos:
 proyecto:
     path: /proyecto/{id}
     controller: App\Controller\ProyectController::proyecto
-    defaults:
-        id: null
 
 #api
 
@@ -40,10 +38,6 @@ valorar_proyecto:
 eliminar_proyecto:
     path: /proyecto/{id}/eliminar
     controller: App\Controller\ProyectController::eliminarProyecto
-
-usuario_perfil:
-    path: /usuario/{id}
-    controller: App\Controller\UserController::perfilUsuario
 
 CommentarPro:
     path: /proyecto/{id}/comentar

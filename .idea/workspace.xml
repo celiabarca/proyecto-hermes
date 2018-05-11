@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc493a33-3bb5-4a96-88dd-5174bf3d7786" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.phpintel/9d9fecc7715fbfc64e11fa738e56a96c" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/DonacionesController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Form/CommentType.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/donaciones/index.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/proyect/index.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/proyect/proyecto.html.twig" />
-      <change beforePath="$PROJECT_DIR$/.phpintel/index" afterPath="$PROJECT_DIR$/.phpintel/index" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProyectController.php" afterPath="$PROJECT_DIR$/src/Controller/ProyectController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProjectType.php" afterPath="$PROJECT_DIR$/src/Form/ProjectType.php" />
-      <change beforePath="$PROJECT_DIR$/templates/inicio/index.html.twig" afterPath="$PROJECT_DIR$/templates/inicio/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/project/index.html.twig" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/templates/project/nuevo.html.twig" afterPath="$PROJECT_DIR$/templates/proyect/nuevo.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="247">
+              <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -70,10 +56,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProyectController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProyectController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2291">
+            <state relative-caret-position="-1859">
               <caret line="36" column="57" lean-forward="false" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
               <folding>
                 <element signature="e#34#61#0#PHP" expanded="true" />
@@ -151,8 +137,8 @@
         <option value="$PROJECT_DIR$/templates/inicio/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/Valoracion.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/ProyectController.php" />
+        <option value="$PROJECT_DIR$/config/routes.yaml" />
       </list>
     </option>
   </component>
@@ -380,12 +366,12 @@
       <workItem from="1525784931556" duration="16241000" />
       <workItem from="1525871337441" duration="15227000" />
       <workItem from="1525957626403" duration="14024000" />
-      <workItem from="1526044382718" duration="7382000" />
+      <workItem from="1526044382718" duration="7483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61617000" />
+    <option name="totallyTimeSpent" value="61718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="616" y="79" width="1920" height="988" extended-state="6" />
@@ -810,21 +796,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2291">
+        <state relative-caret-position="-1859">
           <caret line="36" column="57" lean-forward="false" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
           <folding>
             <element signature="e#34#61#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
