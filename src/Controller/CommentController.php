@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use App\Controller\CommentController;
 use App\Entity\Project;
 use App\Entity\Comment;
-use App\Form\ProjectType;
 use App\Form\CommentType;
 
 class CommentController extends Controller {
@@ -25,10 +23,8 @@ class CommentController extends Controller {
             $comentario->setAutor($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comentario);
-            $entityManager->flush();
-            
+            $entityManager->flush();      
             return $this->redirectToRoute("proyecto",['id'=>$id]);
-            
         }
         return $this->redirectToRoute("index");
     }
