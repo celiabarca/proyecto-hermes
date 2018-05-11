@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block  contenido %}
+{% for projecto in projectos %}
+		{{proyecto.titulo}}
+		{{projecto.fechaCreacion}}
+		{{projecto.descripcion}}
+		{% for comentario in projecto.comentarios %}
+			{{comentario.autor.nombre}}
+			{{comentario.contenido}}
+		{% endfor %}
+{% endfor %}
+{% endblock %}
+
+

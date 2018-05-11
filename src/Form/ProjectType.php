@@ -25,8 +25,7 @@ class ProjectType extends AbstractType
                         'label' => 'Descripcion'
                     ])
             ->add('contenido', TextareaType::class)
-            ->add('meta', NumberType::class)
-            ->add('Valoraciones', NumberType::class)
+//            ->add('meta', NumberType::class)
          //->add('etiquetas', TextType::class)
             ->add('Enviar', SubmitType::class)
         ;

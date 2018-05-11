@@ -36,6 +36,7 @@ class ProyectController extends Controller {
             {
                 $projecto->setImg("");
             }
+            $projecto->setAutor($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
             $entityManager->flush();
@@ -60,10 +61,10 @@ class ProyectController extends Controller {
         return $proyectos;
     }
 
-    public function proyecto(Project $proyecto) 
+    public function proyecto($id) 
     {
-        return $this->render('project/index.html.twig', [
-            'proyecto' => $proyecto
-        ]);
+        $proyecto = $this->getDoctrine()->getRepository(Project::class)->find($id);
+        $formComment = $this->createForm(\App\Form\CommentType::class);
+        return $this->render('proyect/proyecto.html.twig',['proyecto'=>$proyecto,'FormComentario'=>$formComment->createView()]);
     }
 }
