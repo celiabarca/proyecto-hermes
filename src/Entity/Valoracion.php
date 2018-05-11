@@ -18,13 +18,13 @@ class Valoracion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valoracion")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="valoraciones")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $proyecto;
 
