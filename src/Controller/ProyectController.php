@@ -25,7 +25,7 @@ class ProyectController extends Controller {
             'proyectos' => $proyectos,
         ]);
     }
-    
+
     public function altaProyecto(Request $peticion)
     {
         $projecto = new Project();
@@ -91,7 +91,40 @@ class ProyectController extends Controller {
      */
     public function anyadirSeguimiento(Project $proyecto) {
         $seguimiento = new Seguimiento();
-        // TODO mirar que no tenga mas de tres fases y añadir el seguimiento
+
+        // TODO implementar en formulario
+        $seguimiento->setProyecto($proyecto);
+        $seguimiento->setUsuario($this->getUser());
+        $seguimiento->setFecha(new \DateTime());
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($seguimiento);
+        $manager->flush();
+    }
+
+    /**
+     * Preparado para AJAX
+     * elimina un seguimiento de un proyecto
+     * @param Seguimiento $seguimiento
+     */
+    public function eliminarSeguimiento(Project $project, Seguimiento $seguimiento) {
+        try {
+            $eliminado = false;
+
+            if($project->getSeguimientos()->contains($seguimiento)) {
+                $manager = $this->getDoctrine()->getManager();
+                $manager->remove($seguimiento);
+                $manager->flush();
+                $eliminado = true;
+            }
+
+            return new JsonResponse([
+               'eliminado' => $eliminado
+            ]);
+        } catch(\Exception $e) {
+            return new JsonResponse([
+                'error' => $e->getMessage()
+            ], 405);
+        }
     }
 
     /**
@@ -167,8 +200,9 @@ class ProyectController extends Controller {
     /**
      * Preparado para AJAX
      * Elimina un colaborador de un proyecto
-     * @param Project $proyect
+     * @param Project $proyecto
      * @param User $user
+     * @return JsonResponse
      */
     public function eliminarColaborador(Project $proyecto, User $user) {
         try {
