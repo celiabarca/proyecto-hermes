@@ -96,7 +96,7 @@ class Comment
      */
     public function getFechacreacion()
     {
-        return $this->fechacreacion;
+        return $this->fechacreacion->format("d/m/y");
     }
 
     /**

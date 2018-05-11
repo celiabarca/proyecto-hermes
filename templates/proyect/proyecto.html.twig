@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block  contenido %}
+	{{proyecto.titulo}}
+	{{proyecto.fechaCreacion|date('d/m/Y')}}
+	{{proyecto.descripcion}}
+        {% if app.user %}
+            {{form_start(FormComentario,{'action':path('CommentarPro',{'id':proyecto.id})})}}
+            {{form_widget(FormComentario)}}
+            {{form_end(FormComentario)}}
+        {% endif %}
+	{% for comentario in proyecto.comentarios %}
+		{{comentario.autor.nombre}}
+		{{comentario.contenido}}
+	{% endfor %}
+{% endblock %}
+

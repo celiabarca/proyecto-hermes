@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc493a33-3bb5-4a96-88dd-5174bf3d7786" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.phpintel/9d9fecc7715fbfc64e11fa738e56a96c" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/CommentController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/DonacionesController.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Form/CommentType.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/templates/donaciones/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/templates/proyect/index.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/templates/proyect/proyecto.html.twig" />
+      <change beforePath="$PROJECT_DIR$/.phpintel/index" afterPath="$PROJECT_DIR$/.phpintel/index" />
       <change beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ProyectController.php" afterPath="$PROJECT_DIR$/src/Controller/ProyectController.php" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" />
       <change beforePath="$PROJECT_DIR$/src/Form/ProjectType.php" afterPath="$PROJECT_DIR$/src/Form/ProjectType.php" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180511150816.php" afterPath="$PROJECT_DIR$/src/Migrations/Version20180511150816.php" />
+      <change beforePath="$PROJECT_DIR$/templates/inicio/index.html.twig" afterPath="$PROJECT_DIR$/templates/inicio/index.html.twig" />
+      <change beforePath="$PROJECT_DIR$/templates/project/index.html.twig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/templates/project/nuevo.html.twig" afterPath="$PROJECT_DIR$/templates/proyect/nuevo.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,25 +33,15 @@
       <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="37" column="65" lean-forward="false" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+            <state relative-caret-position="193">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectType.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProjectType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Form/ProjectType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nuevo.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/project/nuevo.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProyectController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProyectController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-851">
-              <caret line="119" column="46" lean-forward="false" selection-start-line="119" selection-start-column="46" selection-end-line="119" selection-end-column="46" />
+            <state relative-caret-position="-2291">
+              <caret line="36" column="57" lean-forward="false" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
               <folding>
                 <element signature="e#34#61#0#PHP" expanded="true" />
               </folding>
@@ -105,8 +105,8 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/inicio/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="151" column="105" lean-forward="false" selection-start-line="151" selection-start-column="105" selection-end-line="151" selection-end-column="105" />
+            <state relative-caret-position="468">
+              <caret line="152" column="105" lean-forward="false" selection-start-line="152" selection-start-column="105" selection-end-line="152" selection-end-column="105" />
               <folding />
             </state>
           </provider>
@@ -149,10 +149,10 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Project.php" />
         <option value="$PROJECT_DIR$/templates/inicio/index.html.twig" />
-        <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Entity/Valoracion.php" />
-        <option value="$PROJECT_DIR$/src/Controller/ProyectController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/config/routes.yaml" />
+        <option value="$PROJECT_DIR$/src/Controller/ProyectController.php" />
       </list>
     </option>
   </component>
@@ -380,12 +380,12 @@
       <workItem from="1525784931556" duration="16241000" />
       <workItem from="1525871337441" duration="15227000" />
       <workItem from="1525957626403" duration="14024000" />
-      <workItem from="1526044382718" duration="7261000" />
+      <workItem from="1526044382718" duration="7382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61496000" />
+    <option name="totallyTimeSpent" value="61617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="616" y="79" width="1920" height="988" extended-state="6" />
@@ -490,8 +490,8 @@
         <state relative-caret-position="306">
           <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
           <folding>
-            <element signature="e#6#88#0#PHP" expanded="true" />
-            <element signature="e#117#143#0#PHP" expanded="true" />
+            <element signature="e#6#88#0#PHP" expanded="false" />
+            <element signature="e#117#143#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -724,8 +724,8 @@
         <state relative-caret-position="198">
           <caret line="17" column="56" lean-forward="false" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
           <folding>
-            <element signature="e#6#88#0#PHP" expanded="true" />
-            <element signature="e#117#143#0#PHP" expanded="true" />
+            <element signature="e#6#88#0#PHP" expanded="false" />
+            <element signature="e#117#143#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -764,8 +764,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/inicio/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="151" column="105" lean-forward="false" selection-start-line="151" selection-start-column="105" selection-end-line="151" selection-end-column="105" />
+        <state relative-caret-position="468">
+          <caret line="152" column="105" lean-forward="false" selection-start-line="152" selection-start-column="105" selection-end-line="152" selection-end-column="105" />
           <folding />
         </state>
       </provider>
@@ -794,28 +794,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-851">
-          <caret line="119" column="46" lean-forward="false" selection-start-line="119" selection-start-column="46" selection-end-line="119" selection-end-column="46" />
-          <folding>
-            <element signature="e#34#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="37" column="65" lean-forward="false" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
           <folding />
         </state>
       </provider>
@@ -825,6 +807,24 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2291">
+          <caret line="36" column="57" lean-forward="false" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
+          <folding>
+            <element signature="e#34#61#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
