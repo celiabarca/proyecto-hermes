@@ -93,7 +93,7 @@ class Project
     private $meta;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $img;
 
@@ -109,6 +109,31 @@ class Project
         $this->etiquetas = new ArrayCollection();
         $this->colaboradores = new ArrayCollection();
         $this->actividades = new ArrayCollection();
+        $this->patrocinadores = new ArrayCollection();
+    }
+
+    public function addColaboradores(User ...$users) {
+        foreach($users as $user) {
+            if(!$this->colaboradores->contains($user)) {
+                $this->colaboradores->add($user);
+            }
+        }
+    }
+
+    public function removeColaborador(User $user) {
+        $this->colaboradores->removeElement($user);
+    }
+
+    public function addPatrocinadores(User ...$users) {
+        foreach($users as $user) {
+            if(!$this->patrocinadores->contains($user)) {
+                $this->patrocinadores->add($user);
+            }
+        }
+    }
+
+    public function removePatrocinador(User $user) {
+        $this->patrocinadores->removeElement($user);
     }
 
     public function getId()

@@ -29,9 +29,9 @@ class Valoracion
     private $proyecto;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="boolean")
      */
-    private $puntuacion;
+    private $megusta;
 
     public function getId()
     {
@@ -73,17 +73,17 @@ class Valoracion
     /**
      * @return mixed
      */
-    public function getPuntuacion()
+    public function getMegusta()
     {
-        return $this->puntuacion;
+        return $this->megusta;
     }
 
     /**
-     * @param mixed $puntuacion
+     * @param mixed $megusta
      */
-    public function setPuntuacion($puntuacion): void
+    public function setMegusta($megusta): void
     {
-        $this->puntuacion = $puntuacion;
+        $this->megusta = $megusta;
     }
 
 }

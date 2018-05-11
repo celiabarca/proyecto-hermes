@@ -144,7 +144,12 @@
                                         <div><!-- contenedor del proyecto -->
                                             <div><!-- envoltorio de la imagen -->
                                                 <div><!-- contenedor de la imagen -->
-                                                    <img src="{{proyecyo.img}}" alt="">
+                                                    <img src="{{proyecto.img}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div><!-- envoltorio del titulo -->
+                                                <div><!-- contenedor del titulo -->
+                                                    <h1><a href="{{ path('proyecto', { 'id': proyecto.id }) }}">{{ proyecto.titulo }}</a></h1>
                                                 </div>
                                             </div>
                                             <div><!-- envoltorio del resumen -->
