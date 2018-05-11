@@ -60,11 +60,14 @@ class ProyectController extends Controller {
         return $proyectos;
     }
 
-    public function proyecto($id) 
+    public function proyecto(Project $proyecto)
     {
-        $proyecto = $this->getDoctrine()->getRepository(Project::class)->find($id);
         $formComment = $this->createForm(\App\Form\CommentType::class);
-        return $this->render('proyect/proyecto.html.twig',['proyecto'=>$proyecto,'FormComentario'=>$formComment->createView()]);
+
+        return $this->render('proyect/proyecto.html.twig', [
+            'proyecto' => $proyecto,
+            'FormComentario' => $formComment->createView()
+        ]);
     }
     
     public function getProyectos(User $user)
