@@ -28,12 +28,10 @@ proyecto:
     path: /proyecto/{id}
     controller: App\Controller\ProyectController::proyecto
 
-#api
-
-
+#Ajax (JsonResponse)
 valorar_proyecto:
     path: /proyecto/{id}/valorar
-    controller: App\Controller\ProyectController::valorarProyecto
+    controller: App\Controller\ValoracionesController::valorarProyecto
 
 eliminar_proyecto:
     path: /proyecto/{id}/eliminar

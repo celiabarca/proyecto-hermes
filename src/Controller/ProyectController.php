@@ -69,6 +69,25 @@ class ProyectController extends Controller {
             'FormComentario' => $formComment->createView()
         ]);
     }
+    
+    public function getProyectos(User $user)
+    {
+        $proyetos = $this->getDoctrine()->getRepository(Project::class)->findBy(["autor"=>$this->getUser()]);
+        return $this->render("Usuario/Proyecto/todos.html.twig",['Proyectos'=>$proyetos]);
+    }
+    
+    public function getProyectosByUser(User $user)
+    {
+        $proyetos = $this->getDoctrine()->getRepository(Project::class)->findBy(["autor"=>$this->getUser()]);
+        return $this->render("Usuario/Proyecto/todos.html.twig",['Proyectos'=>$proyetos]);
+    }
+    
+    public function getProyectosColaborados()
+    {
+        $user = $this->getUser();
+        $proyectos = $user->getColaboraciones();
+        return $this->render("Usuario/Proyecto/todos.html.twig",['Proyectos'=>$proyectos]);
+    }
 
     public function editarProyecto(Request $request, Project $proyecto) {
         $form = $this->createForm(ProjectType::class, $proyecto);
@@ -83,48 +102,6 @@ class ProyectController extends Controller {
         return $this->render('project/editar.html.twig', [
            'form' => $form->createView()
         ]);
-    }
-
-    /**
-     * Añade una fase del seguimiento del proyecto
-     * @param Project $proyecto
-     */
-    public function anyadirSeguimiento(Project $proyecto) {
-        $seguimiento = new Seguimiento();
-
-        // TODO implementar en formulario
-        $seguimiento->setProyecto($proyecto);
-        $seguimiento->setUsuario($this->getUser());
-        $seguimiento->setFecha(new \DateTime());
-        $manager = $this->getDoctrine()->getManager();
-        $manager->persist($seguimiento);
-        $manager->flush();
-    }
-
-    /**
-     * Preparado para AJAX
-     * elimina un seguimiento de un proyecto
-     * @param Seguimiento $seguimiento
-     */
-    public function eliminarSeguimiento(Project $project, Seguimiento $seguimiento) {
-        try {
-            $eliminado = false;
-
-            if($project->getSeguimientos()->contains($seguimiento)) {
-                $manager = $this->getDoctrine()->getManager();
-                $manager->remove($seguimiento);
-                $manager->flush();
-                $eliminado = true;
-            }
-
-            return new JsonResponse([
-               'eliminado' => $eliminado
-            ]);
-        } catch(\Exception $e) {
-            return new JsonResponse([
-                'error' => $e->getMessage()
-            ], 405);
-        }
     }
 
     /**
@@ -195,39 +172,6 @@ class ProyectController extends Controller {
                 'error' => $e->getMessage()
             ], 500);
         }
-    }
-
-    /**
-     * Preparado para AJAX
-     * Elimina un colaborador de un proyecto
-     * @param Project $proyecto
-     * @param User $user
-     * @return JsonResponse
-     */
-    public function eliminarColaborador(Project $proyecto, User $user) {
-        try {
-            $eliminado = false;
-
-            if($proyecto->getColaboradores()->contains($user)) {
-                $proyecto->removeColaborador($user);
-                $manager = $this->getDoctrine()->getManager();
-                $manager->persist($proyecto);
-                $manager->flush();
-                $eliminado = true;
-            }
-
-            return new JsonResponse([
-                'eliminado' => $eliminado
-            ]);
-        } catch(\Exception $e) {
-            return new JsonResponse([
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-
-    public function anyadirColaboradores(Project $proyecto) {
-
     }
 
 }
