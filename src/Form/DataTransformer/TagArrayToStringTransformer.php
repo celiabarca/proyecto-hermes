@@ -8,6 +8,7 @@
 
 namespace App\Form\DataTransformer;
 
+use App\Entity\Tag;
 use App\Repository\TagRepository;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
@@ -90,7 +91,7 @@ class TagArrayToStringTransformer implements DataTransformerInterface {
 
         foreach($newnames as $newname) {
             $tag = new Tag();
-            $tag->setName($newname);
+            $tag->setNombre($newname);
             $tags[] = $tag;
         }
 
