@@ -50,3 +50,7 @@ CommentarPro:
 Colaborar:
     path: /proyecto/{id}/colaborar
     controller: App\Controller\ColaboradoresController::anadirColaboradores
+
+Quitar_Colaboracion:
+    path: /proyecto/{id}/quitar_colaboracion
+    controller: App\Controller\ColaboradoresController::eliminarColaboracion

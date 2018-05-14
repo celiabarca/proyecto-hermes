@@ -51,7 +51,7 @@ class Project
     private $patrocinadores;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Colaboracion", mappedBy="proyecto")
+     * @ORM\OneToMany(targetEntity="App\Entity\Colaboracion", mappedBy="proyecto", cascade={"remove", "persist"})
      */
     private $colaboradores;
 
@@ -111,16 +111,12 @@ class Project
         $this->patrocinadores = new ArrayCollection();
     }
 
-    public function addColaboradores(User ...$users) {
-        foreach($users as $user) {
-            if(!$this->colaboradores->contains($user)) {
-                $this->colaboradores->add($user);
-            }
-        }
+    public function addColaboracion(Colaboracion $colaboracion) {
+        $this->colaboradores[] = $colaboracion;
     }
 
-    public function removeColaborador(User $user) {
-        $this->colaboradores->removeElement($user);
+    public function removeColaboracion(Colaboracion $colaboracion) {
+        $this->colaboradores->removeElement($colaboracion);
     }
 
     public function addPatrocinadores(User ...$users) {
@@ -246,7 +242,11 @@ class Project
      */
     public function setColaboradores($colaboradores): void
     {
-        $this->colaboradores = $colaboradores;
+        foreach($colaboradores as $colaborador) {
+            if(!$this->colaboradores->contains($colaborador)) {
+                $this->colaboradores->add($colaborador);
+            }
+        }
     }
 
     /**

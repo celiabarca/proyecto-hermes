@@ -432,7 +432,7 @@ class User implements UserInterface
     {
         $this->seguimientos = $seguimientos;
     }
-    
+
     /**
      * Returns the roles granted to the user.
      *
