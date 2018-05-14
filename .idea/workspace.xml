@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc493a33-3bb5-4a96-88dd-5174bf3d7786" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Form/DataTransformer/TagArrayToStringTransformer.php" afterPath="$PROJECT_DIR$/src/Form/DataTransformer/TagArrayToStringTransformer.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProyectController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProyectController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1922">
-              <caret line="180" column="9" lean-forward="true" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+            <state relative-caret-position="-778">
+              <caret line="105" column="5" lean-forward="false" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -61,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TagArrayToStringTransformer.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TagArrayToStringTransformer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Form/DataTransformer/TagArrayToStringTransformer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
-              <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+              <caret line="87" column="11" lean-forward="true" selection-start-line="87" selection-start-column="11" selection-end-line="87" selection-end-column="11" />
               <folding>
                 <element signature="e#128#147#0#PHP" expanded="true" />
               </folding>
@@ -343,12 +342,12 @@
       <workItem from="1525957626403" duration="14024000" />
       <workItem from="1526044382718" duration="17404000" />
       <workItem from="1526113986324" duration="17000" />
-      <workItem from="1526303453462" duration="2805000" />
+      <workItem from="1526303453462" duration="3084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75038000" />
+    <option name="totallyTimeSpent" value="75317000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="616" y="79" width="1920" height="988" extended-state="6" />
@@ -571,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Tag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="25" column="79" lean-forward="false" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1818">
@@ -736,21 +728,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/DataTransformer/TagArrayToStringTransformer.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
-          <folding>
-            <element signature="e#128#147#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="-778">
+          <caret line="105" column="5" lean-forward="false" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProyectController.php">
+    <entry file="file://$PROJECT_DIR$/src/Entity/Tag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1922">
-          <caret line="180" column="9" lean-forward="true" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+        <state relative-caret-position="432">
+          <caret line="25" column="79" lean-forward="false" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/DataTransformer/TagArrayToStringTransformer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="87" column="11" lean-forward="true" selection-start-line="87" selection-start-column="11" selection-end-line="87" selection-end-column="11" />
+          <folding>
+            <element signature="e#128#147#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

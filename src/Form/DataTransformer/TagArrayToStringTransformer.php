@@ -84,7 +84,7 @@ class TagArrayToStringTransformer implements DataTransformerInterface {
         $names = array_filter(array_unique(array_map('trim', explode(',', $string))));
 
         $tags = $this->tags->findBy([
-            'name' => $names
+            'nombre' => $names
         ]);
 
         $newnames = array_diff($names, $tags);
