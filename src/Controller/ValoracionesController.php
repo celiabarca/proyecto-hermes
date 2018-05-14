@@ -23,7 +23,6 @@ class ValoracionesController extends Controller
             if(!isset($usuario)) {
                 throw new \Exception('Debes iniciar sesion!');
             }
-
             $valoracion = $this->getDoctrine()
                                 ->getRepository(Valoracion::class)
                                 ->findOneBy([
