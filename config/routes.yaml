@@ -49,4 +49,4 @@ CommentarPro:
 #Colaboraciones
 Colaborar:
     path: /proyecto/{id}/colaborar
-    controller: App\Controller\ColaboradoresController::anadirColaborador
+    controller: App\Controller\ColaboradoresController::anadirColaboradores

@@ -4,6 +4,7 @@
 	{{proyecto.titulo}}
 	{{proyecto.fechaCreacion|date('d/m/Y')}}
 	{{proyecto.descripcion}}
+        <a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a>
         {% if app.user %}
             {{form_start(FormComentario,{'action':path('CommentarPro',{'id':proyecto.id})})}}
             {{form_widget(FormComentario)}}
