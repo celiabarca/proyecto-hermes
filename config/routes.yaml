@@ -45,3 +45,8 @@ eliminar_proyecto:
 CommentarPro:
     path: /proyecto/{id}/comentar
     controller: App\Controller\CommentController::Comentar
+
+#Colaboraciones
+Colaborar:
+    path: /proyecto/{id}/colaborar
+    controller: App\Controller\ColaboradoresController::anadirColaborador
