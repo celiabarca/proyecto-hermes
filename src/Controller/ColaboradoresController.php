@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Project;
 use App\Entity\User;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -39,7 +40,25 @@ class ColaboradoresController extends Controller
         }
     }
 
-    public function anyadirColaboradores(Project $proyecto) {
-
+    public function anadirColaboradores(Project $proyecto) {
+        if($proyecto)
+        {
+            $colaboracion = $this->getDoctrine()->getRepository(Colaboradores::class)->findOneBy(["proyeto"=>$proyecto,"usuario"=>$this->getUser()]);
+            if(!$colaboracion)
+            {
+                $colaborador = new Colaboradores();
+                $colaborador->setProyecto($proyecto);
+                $colaborados->setUsuario($this->getUser());
+                $colaborador->setEstado("Pendiente");
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($colaborador);
+                $em->flush();
+                
+            }
+            
+            
+            return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
+        }
+        return $this->redirectToRoute("index");
     }
 }
