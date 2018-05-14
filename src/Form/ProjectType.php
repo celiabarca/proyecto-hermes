@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Project;
+use App\Type\TagInputType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,19 +17,23 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titulo', TextType::class,
-                    [
-                        'label' => 'Titulo'
-                    ])
-            ->add('descripcion', TextareaType::class,
-                    [
-                        'label' => 'Descripcion'
-                    ])
-            ->add('contenido', TextareaType::class)
-//            ->add('meta', NumberType::class)
-         //->add('etiquetas', TextType::class)
-            ->add('Enviar', SubmitType::class)
-        ;
+            ->add('titulo', TextType::class, [
+                'label' => 'Titulo'
+            ])
+            ->add('descripcion', TextareaType::class, [
+                'label' => 'Descripcion'
+            ])
+            ->add('contenido', TextareaType::class, [
+                'label' => 'Sobre el proyecto'
+            ])
+            ->add('meta', NumberType::class, [
+                'label' => 'Meta',
+                'required' => false
+            ])
+            ->add('etiquetas', TagInputType::class, [
+                'label' => 'Etiquetas'
+            ])
+            ->add('Enviar', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
