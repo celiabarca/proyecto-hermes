@@ -28,6 +28,11 @@ proyecto:
     path: /proyecto/{id}
     controller: App\Controller\ProyectController::proyecto
 
+editarProyecto:
+    path: /proyecto/{id}/editar
+    controller: App\Controller\ProyectController::editarProyecto
+
+
 #Ajax (JsonResponse)
 valorar_proyecto:
     path: /proyecto/{id}/valorar

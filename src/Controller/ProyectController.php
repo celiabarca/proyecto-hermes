@@ -97,9 +97,10 @@ class ProyectController extends Controller {
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($proyecto);
             $manager->flush();
+            return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
         }
 
-        return $this->render('project/editar.html.twig', [
+        return $this->render('proyect/editar.html.twig', [
            'form' => $form->createView()
         ]);
     }
