@@ -11,18 +11,13 @@ class Valoracion
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valoracion")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $usuario;
 
     /**
+     * @ORM\Id()
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="valoraciones")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
@@ -32,12 +27,7 @@ class Valoracion
      * @ORM\Column(type="boolean")
      */
     private $megusta;
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
+    
     /**
      * @return mixed
      */
