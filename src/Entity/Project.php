@@ -51,8 +51,7 @@ class Project
     private $patrocinadores;
 
     /**
-     * @ORM\JoinTable(name="proyectos_colaboradores")
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="colaboraciones")
+     * @ORM\OneToMany(targetEntity="App\Entity\Colaboracion", mappedBy="proyecto")
      */
     private $colaboradores;
 

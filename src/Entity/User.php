@@ -99,7 +99,7 @@ class User implements UserInterface
     private $patrocinios;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="colaboradores")
+     * @ORM\OneToMany(targetEntity="App\Entity\Colaboracion", mappedBy="usuario")
      */
     private $colaboraciones;
 
