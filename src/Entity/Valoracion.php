@@ -11,7 +11,7 @@ class Valoracion
 {
     /**
      * @ORM\Id()
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="valoracion")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="proyectosvalorados")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $usuario;
@@ -27,7 +27,7 @@ class Valoracion
      * @ORM\Column(type="boolean")
      */
     private $megusta;
-    
+
     /**
      * @return mixed
      */

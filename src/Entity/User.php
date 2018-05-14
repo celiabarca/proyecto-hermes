@@ -49,6 +49,11 @@ class User implements UserInterface
     private $sector;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Valoracion", mappedBy="usuario")
+     */
+    private $proyectosvalorados;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Valoracionusuario", mappedBy="usuario")
      */
     private $valorados;
@@ -103,6 +108,11 @@ class User implements UserInterface
      */
     private $colaboraciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="usuario")
+     */
+    private $seguimientos;
+
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -111,6 +121,8 @@ class User implements UserInterface
         $this->actividades = new ArrayCollection();
         $this->patrocinios = new ArrayCollection();
         $this->colaboraciones = new ArrayCollection();
+        $this->proyectosvalorados = new ArrayCollection();
+        $this->seguimientos = new ArrayCollection();
     }
 
     public function getId() {
@@ -389,6 +401,38 @@ class User implements UserInterface
         $this->colaboraciones = $colaboraciones;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getProyectosvalorados()
+    {
+        return $this->proyectosvalorados;
+    }
+
+    /**
+     * @param mixed $proyectosvalorados
+     */
+    public function setProyectosvalorados($proyectosvalorados): void
+    {
+        $this->proyectosvalorados = $proyectosvalorados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeguimientos()
+    {
+        return $this->seguimientos;
+    }
+
+    /**
+     * @param mixed $seguimientos
+     */
+    public function setSeguimientos($seguimientos): void
+    {
+        $this->seguimientos = $seguimientos;
+    }
+    
     /**
      * Returns the roles granted to the user.
      *
