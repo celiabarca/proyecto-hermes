@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block  contenido %}
-{% for projecto in projectos %}
+{% for proyecto in proyectos %}
 		{{proyecto.titulo}}
-		{{projecto.fechaCreacion}}
-		{{projecto.descripcion}}
-		{% for comentario in projecto.comentarios %}
+		{{proyecto.fechaCreacion|date("d-m-Y")}}
+		{{proyecto.descripcion}}
+		{% for comentario in proyecto.comentarios %}
 			{{comentario.autor.nombre}}
 			{{comentario.contenido}}
 		{% endfor %}

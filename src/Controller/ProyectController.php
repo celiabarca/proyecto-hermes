@@ -42,7 +42,7 @@ class ProyectController extends Controller {
             
             return $this->redirectToRoute("index");
         }
-        return $this->render('project/nuevo.html.twig', [
+        return $this->render('proyect/nuevo.html.twig', [
             'FormularioProyecto' => $formularioProyecto->createView()
         ]);
     }

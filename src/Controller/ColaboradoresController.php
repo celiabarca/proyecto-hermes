@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Entity\Project;
+use App\Entity\User;
 
 class ColaboradoresController extends Controller
 {
