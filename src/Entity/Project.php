@@ -63,7 +63,7 @@ class Project
     private $etiquetas;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto")
+     * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto", cascade={"remove"})
      */
     private $seguimientos;
 
