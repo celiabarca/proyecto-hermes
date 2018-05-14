@@ -155,9 +155,15 @@ class ProyectController extends Controller {
      */
     public function eliminarProyecto(Project $proyecto) {
         try {
+            $usuario = $this->getUser();
+
+            if(!isset($usuario)) {
+                throw new \Exception('Debes iniciar sesion!');
+            }
+
             $eliminado = false;
 
-            if($proyecto->getAutor() == $this->getUser()) {
+            if($proyecto->getAutor() == $usuario) {
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($proyecto);
                 $manager->flush();
