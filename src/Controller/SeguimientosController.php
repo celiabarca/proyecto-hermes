@@ -112,5 +112,5 @@ class SeguimientosController extends Controller
             'form' => $form->createView()
         ]);
     }
-    
+
 }
