@@ -59,6 +59,7 @@ class ValoracionesController extends Controller
     }
 
     /**
+     * Preparado para AJAX
      * Valora un proyecto con un no me gusta
      * @param Project $proyecto
      * @return JsonResponse
@@ -107,6 +108,7 @@ class ValoracionesController extends Controller
     }
 
     /**
+     * Preparado para AJAX
      * Quita la valoracion de un proyecto
      * @param Project $proyecto
      * @return JsonResponse
