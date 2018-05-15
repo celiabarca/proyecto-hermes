@@ -1,93 +1,100 @@
 {% block html %}
-<!DOCTYPE html>
-<html>
-<head>
-    {% block head %}
-            {% block meta %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            {% block head %}
+                {% block meta %}
                     <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            {% endblock %}
-            <title></title>
-            {% block css %}
-                    <link rel="stylesheet" href="">
-            {% endblock %}
-    {% endblock %}
-</head>
-<body>
-    {% block body %}
-        <div><!-- envoltorio general del body -->
-            <div><!-- contenedor general del body -->
-                {% block contenedor %} <!-- bloque general de todo el body -->
-                    <header id="header" class=""><!-- Envoltorio del header -->
-                        <div class=""><!-- Header -->
-                            {% block header %}<!-- bloque del header contenedor de los hijos -->
-                                <div><!-- hijo situado en la izquierda -->
-                                    {% block header_izquierda %}
-
-                                    {% endblock %}	
-                                </div>
-                                <div><!-- hijo situado a la derecha -->
-                                    {% block header_derecha %}
-                                        <nav>
-                                            <ul>
-                                                {% block nav %}<!-- items de la barra de navegacion -->
-                                                    <li><a href="" title=""></a></li>
-                                                    <li><a href="#" title="">Conenedor</a>
-                                                        <ul>
-                                                            <li><a href="#" title="">Submenu</a></li>
-                                                            {% if app.user %}<!-- items que se muestran si esta logado -->
-                                                                    <li><a href="" title=""></a></li>
-                                                            {% endif %}
-                                                        </ul>
-                                                    </li>	
-                                                {% endblock %}<!-- fin bloque "nav"-->
-                                            </ul>
-                                        </nav>
-                                    {% endblock %}	<!-- fin bloque "header_derecha"-->
-                                </div><!-- fin bloque contenedor del header -->
-                            {% endblock %} <!-- fin del bloque "header"-->
-                        </div>
-                    </header><!-- fin envoltorio header -->
-                    <div>
-                        <div>
-                            {% block contenido %}<!-- bloque que heredarán en el que aparecerá el contenido de cada página -->
-                            {# Silence is golden... #}
-                            {% endblock %}
-                        </div>
-                    </div>
-                    <footer id="footer"> <!-- envoltorio del footer -->
-                        <div><!-- contenedor de hijos del footer -->
-                            {% block footer %}
-                                <div><!-- hijo situado a la izquierda -->
-                                    {% block footer_izquierda %}
-
-                                    {% endblock %}	
-                                </div>
-                                <div><!-- hijo situado a la centro -->
-                                    {% block footer_central %}
-
-                                    {% endblock %}
-                                </div>
-                                <div><!-- hijo situado en el derecha -->
-                                    {% block footer_derecha %}
-
-                                    {% endblock %}
-                                </div>
-                            {% endblock %} <!-- fin bloque "footer"-->
-                        </div><!-- fin contenedor hijos footer -->
-                    </footer><!-- fin envoltorio footer -->
                 {% endblock %}
-            </div>
-        </div>
-        {% block js %}<!-- bloque de archivos javascript -->
-            {% block js_comun %}<!-- js comun en todas las páginas -->
-
+                <title></title>
+                {% block css %}
+                    {% block stylesheets %}
+                        <link href="{{ asset('/assets/style/index.css') }}" type="text/css" rel="stylesheet" />
+                    {% endblock %}
+                {% endblock %}
             {% endblock %}
-            {% block js_especifico %}<!-- js especifico necesario en una página concreta para optimizar la carga -->
+        </head>
+        <body>
+            {% block body %}
+                <div><!-- envoltorio general del body -->
+                    <div><!-- contenedor general del body -->
+                        {% block contenedor %} <!-- bloque general de todo el body -->
+                            <header id="header" class=""><!-- Envoltorio del header -->
+                                <div class=""><!-- Header -->
+                                    {% block header %}<!-- bloque del header contenedor de los hijos -->
+                                        <div><!-- hijo situado en la izquierda -->
+                                            {% block header_izquierda %}
 
-            {% endblock %}
-        {% endblock %}
-    {% endblock %}<!-- fin bloque "body" -->
-</body>
-</html>
+                                            {% endblock %}	
+                                        </div>
+                                        <div><!-- hijo situado a la derecha -->
+                                            {% block header_derecha %}
+                                                <nav>
+                                                    <ul>
+                                                        {% block nav %}<!-- items de la barra de navegacion -->
+                                                            <li><a href="" title=""></a>Inicio</li>
+                                                            <li><a href="#" title="">Crear Cuenta</a></li>
+                                                            <li><a href="#" title="">Iniciar Sesion</a></li>
+                                                            <li><a href="#" title="">Perfil</a></li>
+                                                        {% endblock %}<!-- fin bloque "nav"-->
+                                                    </ul>
+                                                </nav>
+                                            {% endblock %}	<!-- fin bloque "header_derecha"-->
+                                        </div><!-- fin bloque contenedor del header -->
+                                    {% endblock %} <!-- fin del bloque "header"-->
+                                </div>
+                            </header><!-- fin envoltorio header -->
+                            <div>
+                                <div>
+                                    {% block contenido %}<!-- bloque que heredarán en el que aparecerá el contenido de cada página -->
+                                        {# Silence is golden... #}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                            <footer id="footer"> <!-- envoltorio del footer -->
+                                <div><!-- contenedor de hijos del footer -->
+                                    {% block footer %}
+                                        <div><!-- hijo situado a la izquierda -->
+                                            {% block footer_izquierda %}
+
+                                            {% endblock %}	
+                                        </div>
+                                        <div><!-- hijo situado a la centro -->
+                                            {% block footer_central %}
+                                                <ul>
+                                                    <li>Copyright 2016</li>
+                                                    <li><a href="">Avís Legal</a></li>
+                                                    <li><a href="">Cookies</a></li>
+                                                    <li><a href="">Privacitat</a></li>
+                                                </ul>
+                                            {% endblock %}
+                                        </div>
+                                        <div><!-- hijo situado en el derecha -->
+                                            {% block footer_derecha %}
+                                                <ul>
+                                                    <li>Copyright 2016</li>
+                                                    <li><a href="">Avís Legal</a></li>
+                                                    <li><a href="">Cookies</a></li>
+                                                    <li><a href="">Privacitat</a></li>
+                                                </ul>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %} <!-- fin bloque "footer"-->
+                                </div><!-- fin contenedor hijos footer -->
+                            </footer><!-- fin envoltorio footer -->
+                        {% endblock %}
+                    </div>
+                </div>
+                {% block js %}<!-- bloque de archivos javascript -->
+                    {% block js_comun %}<!-- js comun en todas las páginas -->
+
+                    {% endblock %}
+                    {% block js_especifico %}<!-- js especifico necesario en una página concreta para optimizar la carga -->
+
+                    {% endblock %}
+                {% endblock %}
+            {% endblock %}<!-- fin bloque "body" -->
+        </body>
+    </html>
 {% endblock %}
