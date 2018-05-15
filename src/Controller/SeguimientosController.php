@@ -89,19 +89,28 @@ class SeguimientosController extends Controller
         }
     }
 
-    // TODO acabar de repantear lo de actualizar el seguimiento
-    public function actualizarSeguimiento(Request $request, Seguimiento $seguimiento) {
-        $form = $this->createForm(SeguimientoType::class, $seguimiento);
+    public function actualizarSeguimiento(Request $request, Project $project, Seguimiento $seguimiento) {
+        $form = $this->createForm(SeguimientoType::class, $seguimiento, [
+            'action' => '/proyecto/'.$project->getId().'/seguimiento/'.$seguimiento->getId().'/actualizar'
+        ]);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($seguimiento);
-            $manager->flush();
+            if($project->getSeguimientos()->contains($seguimiento)) {
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($seguimiento);
+                $manager->flush();
+
+                return $this->redirectToRoute('seguimientos', [
+                    'id' => $project->getId()
+                ]);
+            }
         }
 
-        return $this->render('seguimiento-form.html.twig', [
+        return $this->render('seguimientos/editar-form.html.twig', [
             'form' => $form->createView()
         ]);
     }
+    
 }

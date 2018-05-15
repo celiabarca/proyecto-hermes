@@ -59,7 +59,7 @@ Colaborar:
     controller: App\Controller\ColaboradoresController::anadirColaboradores
 
 #Seguimiento
-Seguimientos:
+seguimientos:
     path: /proyecto/{id}/seguimiento
     controller: App\Controller\SeguimientosController::seguimientos
 
@@ -70,4 +70,9 @@ anyadir_seguimiento:
 eliminar_seguimiento:
     path: /proyecto/{project}/seguimiento/eliminar/{seguimiento}
     controller: App\Controller\SeguimientosController::eliminarSeguimiento
+
+actualizar_seguimiento:
+    path: /proyecto/{project}/seguimiento/{seguimiento}/actualizar
+    controller: App\Controller\SeguimientosController::actualizarSeguimiento
+
 
