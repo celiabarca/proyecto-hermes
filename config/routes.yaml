@@ -49,7 +49,25 @@ CommentarPro:
     path: /proyecto/{id}/comentar
     controller: App\Controller\CommentController::Comentar
 
+Quitar_Colaboracion:
+    path: /proyecto/{id}/quitar_colaboracion
+    controller: App\Controller\ColaboradoresController::eliminarColaboracion
+
 #Colaboraciones
 Colaborar:
     path: /proyecto/{id}/colaborar
     controller: App\Controller\ColaboradoresController::anadirColaboradores
+
+#Seguimiento
+Seguimientos:
+    path: /proyecto/{id}/seguimiento
+    controller: App\Controller\SeguimientosController::seguimientos
+
+anyadir_seguimiento:
+    path: /proyecto/{id}/seguimiento/nuevo
+    controller: App\Controller\SeguimientosController::anyadirSeguimiento
+
+eliminar_seguimiento:
+    path: /proyecto/{project}/seguimiento/eliminar/{seguimiento}
+    controller: App\Controller\SeguimientosController::eliminarSeguimiento
+
