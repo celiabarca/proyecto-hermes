@@ -14,6 +14,9 @@ registrarse:
 usuario_perfil:
     path: /usuario/{id}
     controller: App\Controller\UserController::perfilUsuario
+topDonation:
+    path: /usuario/donaciones/top
+    controller: App\Controller\UserController::getTopUsers
     
 #Proyecto
 nuevoProyecto:

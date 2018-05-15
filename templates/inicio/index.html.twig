@@ -111,6 +111,7 @@
                 <div><!-- contenedor comentarios mas valorados -->
                     {% block top_usuarios %}
                         {% for usuario in usuarios %}
+                            {{usuario.nombre}}{{usuario.total}}
                             <div><!-- envoltorio del usuario -->
                                 <div><!-- contenedor del usuario -->
                                     <div><!-- envoltorio de la imagen -->

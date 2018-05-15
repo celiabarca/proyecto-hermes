@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use \Doctrine\ORM\QueryBuilder;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,19 +23,20 @@ class UserRepository extends ServiceEntityRepository
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
-    /*
-    public function findByExampleField($value)
+    
+    public function TopDonationUsers()
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        
+        $qb = $this->createQueryBuilder('u')
+        ->select('u.nombre', 'sum(d.cantidad) as total')
+        ->from('App\Entity\User', 'us')
+        ->innerJoin('App\Entity\Donacion','d', 'us.id = d.usuario_id')
+        ->groupBy('u.nombre')
+        ->getQuery();
+        
+        return $qb->execute();
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?User

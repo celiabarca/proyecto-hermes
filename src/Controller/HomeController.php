@@ -14,9 +14,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller {
 
     private $pc;
+    private $user;
 
-    public function __construct(ProyectController $pc) {
+    public function __construct(ProyectController $pc, UserController $user) {
         $this->pc = $pc;
+        $this->user = $user;
     }
 
     public function index() {
@@ -25,9 +27,9 @@ class HomeController extends Controller {
         $form = $this->createForm(RegisterType::class, null, [
             'action' => '/registrarse'
         ]);
-
+        $user = $this->user->getTopUsers();
         return $this->render('inicio/index.html.twig', [
-            'usuarios' => [],
+            'usuarios' => $user,
             'proyectos' => $proyectos,
             'error' => null,
             'form' => $form->createView()

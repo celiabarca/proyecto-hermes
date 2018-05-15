@@ -67,5 +67,12 @@ class UserController extends Controller {
             'form' => $form->createView()
         ]);
     }
+    
+    public function getTopUsers()
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->TopDonationUsers();
+
+        return $users;
+    }
 
 }
