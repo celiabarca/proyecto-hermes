@@ -34,8 +34,8 @@
                                                     <ul>
                                                         {% block nav %}<!-- items de la barra de navegacion -->
                                                             <li><a href="" title=""></a>Inicio</li>
-                                                            <li><a href="#" title="">Crear Cuenta</a></li>
-                                                            <li><a href="#" title="">Iniciar Sesion</a></li>
+                                                            <li><a href="{{ path('registrarse') }}" title="">Crear Cuenta</a></li>
+                                                            <li><a href="{{ path('login') }}" title="">Iniciar Sesion</a></li>
                                                             <li><a href="#" title="">Perfil</a></li>
                                                         {% endblock %}<!-- fin bloque "nav"-->
                                                     </ul>
