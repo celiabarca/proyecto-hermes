@@ -113,6 +113,11 @@ class User implements UserInterface
      */
     private $seguimientos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="autor")
+     */
+    private $respuestas;
+
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -123,6 +128,7 @@ class User implements UserInterface
         $this->colaboraciones = new ArrayCollection();
         $this->proyectosvalorados = new ArrayCollection();
         $this->seguimientos = new ArrayCollection();
+        $this->respuestas = new ArrayCollection();
     }
 
     public function getId() {
@@ -423,6 +429,22 @@ class User implements UserInterface
     public function getSeguimientos()
     {
         return $this->seguimientos;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRespuestas()
+    {
+        return $this->respuestas;
+    }
+
+    /**
+     * @param mixed $respuestas
+     */
+    public function setRespuestas($respuestas): void
+    {
+        $this->respuestas = $respuestas;
     }
 
     /**

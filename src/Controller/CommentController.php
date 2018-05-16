@@ -45,6 +45,12 @@ class CommentController extends Controller {
         ]);
     }
 
+    /**
+     * Responde un comentario
+     * @param Request $request
+     * @param Comment $comment
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function responder(Request $request, Comment $comment) {
         $respuesta = new Respuesta();
 
@@ -57,7 +63,6 @@ class CommentController extends Controller {
         if($form->isSubmitted() && $form->isValid()) {
             $respuesta->setFechacreacion(new \DateTime());
             $respuesta->setAutor($this->getUser());
-            $respuesta->setProyecto($comment->getProyecto());
             $respuesta->setComentario($comment);
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($respuesta);

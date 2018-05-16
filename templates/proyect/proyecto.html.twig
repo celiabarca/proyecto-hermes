@@ -49,6 +49,18 @@
                             <div>
                                 {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id })) }}
                             </div>
+                            <div>
+                                {% for respuesta in comentario.respuestas %}
+                                    <div>
+                                        <div>
+                                            {{respuesta.autor.nombre}}
+                                        </div>
+                                        <div>
+                                            <p> {{respuesta.contenido}}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                     <hr>

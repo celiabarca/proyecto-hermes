@@ -8,19 +8,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
-class Comment
-{
+class Comment implements CommentInterface {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $contenido;
+    private $contenido;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="comentarios")
@@ -32,12 +31,12 @@ class Comment
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comentarios")
      * @ORM\JoinColumn(nullable=false)
      */
-    protected $autor;
+    private $autor;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $fechacreacion;
+    private $fechacreacion;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="comentario")
