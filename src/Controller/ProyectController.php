@@ -22,7 +22,7 @@ class ProyectController extends Controller {
     	$proyectos = $this->getDoctrine()
                         ->getRepository(Project::class)
                         ->findBy([], [
-                            'fechaCreacion' => 'desc'
+                            'fechacreacion' => 'desc'
                         ]);
 
         return $this->render('proyect/index.html.twig', [

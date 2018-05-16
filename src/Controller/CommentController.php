@@ -69,7 +69,8 @@ class CommentController extends Controller {
             $manager->flush();
 
             return $this->redirectToRoute("proyecto",[
-                'id' => $comment->getProyecto()->getId()
+                'id' => $comment->getProyecto()->getId(),
+                '_fragment' => 'comentario-'.$comment->getId()
             ]);
         }
 
