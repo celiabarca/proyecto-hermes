@@ -31,7 +31,10 @@ class TagController extends Controller {
         $tagnames = [];
 
         foreach($tags as $tag) {
-            $tagnames[] = $tag->getNombre();
+            $tagnames[] = [
+                'nombre' => $tag->getNombre(),
+                'numProyectos' => $tag->getProyectos()->count()
+            ];
         }
 
         return new JsonResponse([
