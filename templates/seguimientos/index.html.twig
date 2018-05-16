@@ -10,6 +10,7 @@
     {% for seguimiento in proyecto.seguimientos %}
         <div class="seguimiento">
             {{ seguimiento.situacion }}
+            {{ render(controller('App\\Controller\\SeguimientosController::actualizarSeguimiento', { 'project': proyecto.id, 'seguimiento': seguimiento.id })) }}
         </div>
     {% endfor %}
 </div>
