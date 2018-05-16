@@ -15,7 +15,7 @@ h1{
     font-family: title;
 }
 
-footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project {
+#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -26,7 +26,7 @@ footer{
     display: flex;
 
 }
-#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -377,18 +377,19 @@ nav> ul > li {
     display: flex;
     margin: 10px 201px;
 }
-#allcomentarios>hr{
+#allcomentarios>div:nth-child(1)>hr{
     color: #2D9CDB;
     padding: 1px;
     width: 44%;
     background-color: #2D9CDB;
     border: none;
+    margin-left: 268px;
 }
 .comm{
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     display: flex;
-    margin-right: 344px;
+    margin-left: 268px;
 }
 .comm>div:nth-child(1){
     width: 142px;
@@ -402,3 +403,40 @@ nav> ul > li {
     display: flex;
 }
 
+/************************loging*********************************/
+#loging >div:nth-child(1)>div:nth-child(1){
+    background-color: rgba(45, 156, 219, 0.68);
+    width: 50%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 50px;
+}
+#loging >div:nth-child(1)>div:nth-child(1)>section>form{
+    display: flex;
+    flex-direction: column;
+
+}
+#loging{
+    margin-bottom: 50px;
+}
+#loging >div:nth-child(1){
+    display: flex;
+    justify-content: center;
+}
+#loging >div:nth-child(1)>div:nth-child(1)>section>form>input:last-child{
+    margin-top: 30px;
+    margin-top: 30px;
+    border-radius: 0px 0px;
+    border: none;
+    height: 27px;
+    width: 50%;
+    background-color: #f2f2f2;
+}
+.email{
+    background-image: url("../images/black-envelope.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+}
