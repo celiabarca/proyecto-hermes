@@ -41,6 +41,14 @@ valorar_proyecto:
     path: /proyecto/{id}/valorar
     controller: App\Controller\ValoracionesController::valorarProyecto
 
+desvalorar_proyecto:
+    path: /proyecto/{id}/desvalorar
+    controller: App\Controller\ValoracionesController::desvalorarProyecto
+
+quitar_valoracion:
+    path: /proyecto/{id}/quitar_valoracion
+    controller: App\Controller\ValoracionesController::quitarValoracion
+
 eliminar_proyecto:
     path: /proyecto/{id}/eliminar
     controller: App\Controller\ProyectController::eliminarProyecto
@@ -49,9 +57,14 @@ CommentarPro:
     path: /proyecto/{id}/comentar
     controller: App\Controller\CommentController::Comentar
 
-Quitar_Colaboracion:
+quitar_Colaboracion:
     path: /proyecto/{id}/quitar_colaboracion
     controller: App\Controller\ColaboradoresController::eliminarColaboracion
+
+buscar_tags:
+    path: /tags/{nombre}
+    controller: App\Controller\TagController::getTags
+
 
 #Colaboraciones
 Colaborar:
@@ -59,7 +72,7 @@ Colaborar:
     controller: App\Controller\ColaboradoresController::anadirColaboradores
 
 #Seguimiento
-Seguimientos:
+seguimientos:
     path: /proyecto/{id}/seguimiento
     controller: App\Controller\SeguimientosController::seguimientos
 
@@ -70,4 +83,9 @@ anyadir_seguimiento:
 eliminar_seguimiento:
     path: /proyecto/{project}/seguimiento/eliminar/{seguimiento}
     controller: App\Controller\SeguimientosController::eliminarSeguimiento
+
+actualizar_seguimiento:
+    path: /proyecto/{project}/seguimiento/{seguimiento}/actualizar
+    controller: App\Controller\SeguimientosController::actualizarSeguimiento
+
 

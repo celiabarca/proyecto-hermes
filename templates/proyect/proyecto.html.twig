@@ -1,18 +1,58 @@
 {% extends 'base.html.twig' %}
 
 {% block  contenido %}
-	{{proyecto.titulo}}
-	{{proyecto.fechaCreacion|date('d/m/Y')}}
-	{{proyecto.descripcion}}
-        <a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a>
-        {% if app.user %}
-            {{form_start(FormComentario,{'action':path('CommentarPro',{'id':proyecto.id})})}}
-            {{form_widget(FormComentario)}}
-            {{form_end(FormComentario)}}
-        {% endif %}
-	{% for comentario in proyecto.comentarios %}
-		{{comentario.autor.nombre}}
-		{{comentario.contenido}}
-	{% endfor %}
+
+    <div id ="project">
+        <div>
+            <div>
+                <img <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+            </div>
+            <div>
+                <div>
+                    <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
+                    <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                </div>
+                <div>
+                    <div>comentarios</div>
+                    <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                    <div>000,00$</div>
+                </div>
+            </div>
+            <div>
+                {{proyecto.fechaCreacion|date('d/m/Y')}}
+            </div>
+            <div>
+                <h1>{{proyecto.titulo}}</h1>
+            </div>
+            <div>
+                {{proyecto.descripcion}}
+            </div>
+            <div>
+                {% if app.user %}
+                    {{form_start(FormComentario,{'action':path('CommentarPro',{'id':proyecto.id})})}}
+                    {{form_widget(FormComentario)}}
+                    {{form_end(FormComentario)}}
+                {% endif %}
+            </div>
+            <div id ="allcomentarios">
+                {% for comentario in proyecto.comentarios %}
+                    <div class="comm">
+                        <div>
+                            <img <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                        </div>
+                        <div>
+                            <div>
+                                {{comentario.autor.nombre}}
+                            </div>
+                            <div>
+                                {{comentario.contenido}}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

@@ -362,7 +362,13 @@ class Project
      */
     public function setMeta($meta): void
     {
-        $this->meta = $meta;
+        $limite = 99999999;
+
+        if($meta <= $limite) {
+            $this->meta = $meta;
+        } else {
+            $this->meta = $limite;
+        }
     }
 
     /**
