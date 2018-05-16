@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,12 +15,12 @@ class Comment
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $contenido;
+    protected $contenido;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="comentarios")
@@ -31,12 +32,21 @@ class Comment
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comentarios")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $autor;
+    protected $autor;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $fechacreacion;
+    protected $fechacreacion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="comentario")
+     */
+    private $respuestas;
+
+    public function __construct() {
+        $this->respuestas = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -105,6 +115,22 @@ class Comment
     public function setFechacreacion($fechacreacion): void
     {
         $this->fechacreacion = $fechacreacion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRespuestas()
+    {
+        return $this->respuestas;
+    }
+
+    /**
+     * @param mixed $respuestas
+     */
+    public function setRespuestas($respuestas): void
+    {
+        $this->respuestas = $respuestas;
     }
 
 }
