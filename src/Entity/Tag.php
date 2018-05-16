@@ -27,6 +27,10 @@ class Tag
      */
     private $proyectos;
 
+    public function __construct() {
+        $this->proyectos = new ArrayCollection();
+    }
+
     public function getId()
     {
         return $this->id;
