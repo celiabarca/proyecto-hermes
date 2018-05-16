@@ -34,7 +34,7 @@ class CommentController extends Controller {
             ]);
         }
 
-        return $this->redirectToRoute('comentario/index.html.twig', [
+        return $this->render('comentario/index.html.twig', [
             'form' => $FormularioComentar->createView()
         ]);
     }
@@ -45,12 +45,13 @@ class CommentController extends Controller {
         $form = $this->createForm(CommentType::class, $respuesta, [
             'action' => '/comentario/'.$comment->getId().'/responder'
         ]);
-        
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $respuesta->setFechacreacion(new \DateTime());
             $respuesta->setAutor($this->getUser());
+            $respuesta->setProyecto($comment->getProyecto());
             $respuesta->setComentario($comment);
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($respuesta);

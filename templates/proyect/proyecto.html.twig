@@ -29,9 +29,7 @@
             </div>
             <div>
                 {% if app.user %}
-                    {{form_start(FormComentario,{'action':path('CommentarPro',{'id':proyecto.id})})}}
-                    {{form_widget(FormComentario)}}
-                    {{form_end(FormComentario)}}
+                    {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                 {% endif %}
             </div>
             <div id ="allcomentarios">
@@ -46,6 +44,9 @@
                             </div>
                             <div>
                                 {{comentario.contenido}}
+                            </div>
+                            <div>
+                                {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id })) }}
                             </div>
                         </div>
                     </div>
