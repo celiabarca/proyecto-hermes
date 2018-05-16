@@ -89,19 +89,17 @@ class SeguimientosController extends Controller
         }
     }
 
-
-    // TODO acabar de repantear lo de actualizar el seguimiento
     /**
-     * 
+     * Actualiza un seguimiento de un proyecto
      * @param Request $request
+     * @param Project $project
      * @param Seguimiento $seguimiento
-     * @return pagina de edicion de situacion
+     * @return mixed pagina de edicion de situacion
      */
 
+
     public function actualizarSeguimiento(Request $request, Project $project, Seguimiento $seguimiento) {
-        $form = $this->createForm(SeguimientoType::class, $seguimiento, [
-            'action' => '/proyecto/'.$project->getId().'/seguimiento/'.$seguimiento->getId().'/actualizar'
-        ]);
+        $form = $this->createForm(SeguimientoType::class, $seguimiento);
 
         $form->handleRequest($request);
 
@@ -116,8 +114,6 @@ class SeguimientosController extends Controller
                 ]);
             }
         }
-
-
         return $this->render('seguimientos/editar-form.html.twig', [
             'form' => $form->createView()
         ]);

@@ -88,9 +88,14 @@
                 </div>
                 {% block js %}<!-- bloque de archivos javascript -->
                     {% block js_comun %}<!-- js comun en todas las páginas -->
+<<<<<<< HEAD
 
                         
 
+=======
+                        <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+                        <script src="{{ asset('assets/js/script.js') }}"></script>
+>>>>>>> 68be0c848a32062f3c17ad55f5cd7fd189f5e9a6
                     {% endblock %}
                     {% block js_especifico %}<!-- js especifico necesario en una página concreta para optimizar la carga -->
                         <script src="{{ asset('/assets/js/script.js') }}"></script>

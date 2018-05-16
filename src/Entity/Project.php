@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Yaml\Tests\A;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -29,7 +28,7 @@ class Project
     private $descripcion;
 
     /**
-     * @ORM\Column(type="string", length=2048)
+     * @ORM\Column(type="text")
      */
     private $contenido;
 

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
-class Comment
-{
+class Comment implements CommentInterface {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -37,6 +37,15 @@ class Comment
      * @ORM\Column(type="datetime")
      */
     private $fechacreacion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="comentario")
+     */
+    private $respuestas;
+
+    public function __construct() {
+        $this->respuestas = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -105,6 +114,22 @@ class Comment
     public function setFechacreacion($fechacreacion): void
     {
         $this->fechacreacion = $fechacreacion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRespuestas()
+    {
+        return $this->respuestas;
+    }
+
+    /**
+     * @param mixed $respuestas
+     */
+    public function setRespuestas($respuestas): void
+    {
+        $this->respuestas = $respuestas;
     }
 
 }
