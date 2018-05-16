@@ -20,10 +20,12 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
-    
+
+    /**
+     * 
+     * @return array de usuarios con el total de donaciones realizadas
+     *
+     */
     public function TopDonationUsers()
     {
         

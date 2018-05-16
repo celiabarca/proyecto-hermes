@@ -10,7 +10,13 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 
 class CommentController extends Controller {
-    
+
+    /**
+     * Publica un comentario en un proyecto
+     * @param Project $proyecto
+     * @param Request $peticion
+     * @return mixed
+     */
     public function Comentar(Project $proyecto, Request $peticion)
     {
         $comentario = new Comment();

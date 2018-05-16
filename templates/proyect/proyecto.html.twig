@@ -33,6 +33,7 @@
                 {% endif %}
             </div>
             <div id ="allcomentarios">
+                <div>
                 {% for comentario in proyecto.comentarios %}
                     <div class="comm">
                         <div>
@@ -43,7 +44,7 @@
                                 {{comentario.autor.nombre}}
                             </div>
                             <div>
-                                {{comentario.contenido}}
+                                <p> {{comentario.contenido}}</p>
                             </div>
                             <div>
                                 {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id })) }}
@@ -52,6 +53,7 @@
                     </div>
                     <hr>
                 {% endfor %}
+                </div>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ class ColaboradoresController extends Controller
 {
     /**
      * Preparado para AJAX
-     * Elimina un colaborador de un proyecto
+     * Elimina a un colaborador de un proyecto
      * @param Project $proyecto
      * @param User $user
      * @return JsonResponse
@@ -50,7 +50,11 @@ class ColaboradoresController extends Controller
             ], 405);
         }
     }
-
+    /**
+     * Añade un colaborador a un proyecto
+     * @param Project $proyecto
+     * @return type
+     */
     public function anadirColaboradores(Project $proyecto)
     {
         if ($proyecto) {
@@ -71,7 +75,7 @@ class ColaboradoresController extends Controller
 
     /**
      * Preparado para ajax
-     * El usuario quita su colaboarion en un proyecto
+     * El usuario deja de colaborar en un proyecto
      * @param Project $project
      * @return JsonResponse
      */
