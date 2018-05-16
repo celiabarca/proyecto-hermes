@@ -28,7 +28,7 @@ class Project
     private $descripcion;
 
     /**
-     * @ORM\Column(type="string", length=2048)
+     * @ORM\Column(type="text")
      */
     private $contenido;
 
