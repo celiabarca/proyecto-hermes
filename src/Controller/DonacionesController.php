@@ -8,7 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DonacionesController extends Controller
 {
     /**
-     * @Route("/donaciones", name="donaciones")
+     * Por implementar
+     * @return type
      */
     public function index()
     {

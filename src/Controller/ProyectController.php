@@ -13,6 +13,10 @@ use App\Entity\User;
 
 class ProyectController extends Controller {
 
+    /**
+     * Renderiza los proyectos ordenado por fecha de creación
+     * @return type
+     */
     public function indice()
     {
     	$proyectos = $this->getDoctrine()
@@ -26,6 +30,11 @@ class ProyectController extends Controller {
         ]);
     }
 
+    /**
+     * Crea un proyecto nuevo
+     * @param Request $peticion
+     * @return type
+     */
     public function altaProyecto(Request $peticion)
     {
         $projecto = new Project();
@@ -46,7 +55,11 @@ class ProyectController extends Controller {
             'FormularioProyecto' => $formularioProyecto->createView()
         ]);
     }
-    
+    /**
+     * Devuelve el numero de proyectos que se solicitan
+     * @param type $total
+     * @return App\Entity\Proyectos
+     */
     public function dameProyectos($total = null)
     {
         if (isset($total) && $total > 0) {
@@ -59,7 +72,11 @@ class ProyectController extends Controller {
         
         return $proyectos;
     }
-
+    /**
+     * 
+     * @param Project $proyecto
+     * @return Pagina de proyecto simple renderizada, formulario para ddejar comentarios
+     */
     public function proyecto(Project $proyecto)
     {
         $formComment = $this->createForm(\App\Form\CommentType::class);
@@ -69,12 +86,11 @@ class ProyectController extends Controller {
             'FormComentario' => $formComment->createView()
         ]);
     }
-    
-    public function getProyectos(User $user)
-    {
-        $proyetos = $this->getDoctrine()->getRepository(Project::class)->findBy(["autor"=>$this->getUser()]);
-        return $this->render("Usuario/Proyecto/todos.html.twig",['Proyectos'=>$proyetos]);
-    }
+    /**
+     * 
+     * @param User $user
+     * @return render de los proyectos de un usuario
+     */
     
     public function getProyectosByUser(User $user)
     {
@@ -82,6 +98,10 @@ class ProyectController extends Controller {
         return $this->render("Usuario/Proyecto/todos.html.twig",['Proyectos'=>$proyetos]);
     }
     
+    /**
+     * 
+     * @return proyectos en los que colaboro
+     */
     public function getProyectosColaborados()
     {
         $user = $this->getUser();
@@ -89,6 +109,12 @@ class ProyectController extends Controller {
         return $this->render("Usuario/Proyecto/todos.html.twig",['Proyectos'=>$proyectos]);
     }
 
+    /**
+     * 
+     * @param Request $request
+     * @param Project $proyecto
+     * @return página de edicion de usuario renderizada.
+     */
     public function editarProyecto(Request $request, Project $proyecto) {
         $form = $this->createForm(ProjectType::class, $proyecto);
         $form->handleRequest($request);
