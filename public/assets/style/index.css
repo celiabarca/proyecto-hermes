@@ -15,7 +15,7 @@ h1{
     font-family: title;
 }
 
-#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging {
+#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -24,9 +24,8 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
-
 }
-#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#blog>div:nth-child(1),#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -70,11 +69,10 @@ footer> div:nth-child(1)>div:nth-child(3){
 }
 header{
     border-bottom: 1px solid #2D9CDB;
-    margin-bottom: 50px
 }
 nav> ul {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     list-style: none;
     height: 33px;
 }
@@ -330,7 +328,7 @@ nav> ul > li {
 #project>div:nth-child(1)>div:nth-child(3){
     width: 1200px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 50px;
 }
 #project>div:nth-child(1)>div:nth-child(4){
@@ -402,11 +400,10 @@ nav> ul > li {
     justify-content: center;
     display: flex;
 }
-
 /************************loging*********************************/
 #loging >div:nth-child(1)>div:nth-child(1){
-    background-color: rgba(45, 156, 219, 0.68);
-    width: 50%;
+    background-color: rgba(7, 61, 92, 0.7);
+    width: 29%;
     justify-content: center;
     display: flex;
     padding-bottom: 50px;
@@ -416,22 +413,22 @@ nav> ul > li {
     flex-direction: column;
 
 }
-#loging{
-    margin-bottom: 50px;
+#loging {
+    padding-bottom: 122px;
+    padding-top: 50px;
 }
 #loging >div:nth-child(1){
     display: flex;
     justify-content: center;
 }
 #loging >div:nth-child(1)>div:nth-child(1)>section>form>input:last-child{
-    margin-top: 30px;
-    margin-top: 30px;
     border-radius: 0px 0px;
     border: none;
     height: 27px;
     width: 50%;
     background-color: #f2f2f2;
 }
+
 .email{
     background-image: url("../images/black-envelope.png");
     background-repeat: no-repeat;
@@ -439,4 +436,68 @@ nav> ul > li {
     height: 29px;
     background-position: 5px;
     padding-left: 31px;
+    margin-bottom: 15px;
+}
+.passwd{
+    background-image: url("../images/key.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+#loging{
+    background-image: url("../images/Captura.PNG")
+}
+#loging >div:nth-child(1)>div:nth-child(1)>section>form>h1{
+    justify-content: center;
+    display: flex;
+    color: #f2f2f2;
+}
+#loging >div:nth-child(1)>div:nth-child(1)>section>form>label{
+    display: none;
+}
+/****************************blog***************************/
+
+.proj{
+    border:solid 3px #026f97;
+    width: 60%;
+    margin-bottom: 20px;
+}
+.proj>div:nth-child(1){
+    display: flex;
+    padding: 10px;
+}
+.proj>div:nth-child(1)>div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 50%;
+}
+#blog{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.proj>div:nth-child(1)>div:nth-child(1){
+    width: 50%;
+    height: 337px;
+    overflow: hidden;
+}
+.proj>div:nth-child(1)>div:nth-child(2)>div:last-child{
+    display: flex;
+    justify-content: flex-end;
+}
+#blog>div:nth-child(1){
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.proj>div:nth-child(1)>div:nth-child(2)>div:first-child{
+    justify-content: flex-end;
+    display: flex;
+}
+.proj>div:nth-child(1)>div:nth-child(2)>div:first-child>img:first-child{
+    margin-right: 10px;
 }

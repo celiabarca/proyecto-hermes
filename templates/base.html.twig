@@ -89,9 +89,11 @@
                 {% block js %}<!-- bloque de archivos javascript -->
                     {% block js_comun %}<!-- js comun en todas las páginas -->
 
+                        
+
                     {% endblock %}
                     {% block js_especifico %}<!-- js especifico necesario en una página concreta para optimizar la carga -->
-
+                        <script src="{{ asset('/assets/js/script.js') }}"></script>
                     {% endblock %}
                 {% endblock %}
             {% endblock %}<!-- fin bloque "body" -->
