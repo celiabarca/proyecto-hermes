@@ -23,7 +23,7 @@ class SeguimientosController extends Controller
     }
 
     /**
-     * Añade una fase del seguimiento del proyecto
+     * Añade una situación del seguimiento del proyecto
      * @param Request $request
      * @param Project $proyecto
      * @return mixed
@@ -57,7 +57,7 @@ class SeguimientosController extends Controller
 
     /**
      * Preparado para AJAX
-     * elimina un seguimiento de un proyecto
+     * elimina una situacion de un proyecto
      * @param Seguimiento $seguimiento
      * @param Project $project
      * @return JsonResponse
@@ -90,6 +90,12 @@ class SeguimientosController extends Controller
     }
 
     // TODO acabar de repantear lo de actualizar el seguimiento
+    /**
+     * 
+     * @param Request $request
+     * @param Seguimiento $seguimiento
+     * @return pagina de edicion de situacion
+     */
     public function actualizarSeguimiento(Request $request, Seguimiento $seguimiento) {
         $form = $this->createForm(SeguimientoType::class, $seguimiento);
         $form->handleRequest($request);
@@ -100,7 +106,7 @@ class SeguimientosController extends Controller
             $manager->flush();
         }
 
-        return $this->render('seguimiento-form.html.twig', [
+        return $this->render('seguimiento/seguimiento-form.html.twig', [
             'form' => $form->createView()
         ]);
     }

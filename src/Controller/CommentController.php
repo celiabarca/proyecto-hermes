@@ -10,6 +10,12 @@ use App\Form\CommentType;
 
 class CommentController extends Controller {
     
+    /**
+     * Publica un comentario en un proyecto
+     * @param type $id
+     * @param Request $peticion
+     * @return type
+     */
     public function Comentar($id, Request $peticion)
     {
         $comentario = new Comment();

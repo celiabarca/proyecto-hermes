@@ -12,7 +12,7 @@ class ValoracionesController extends Controller
 {
     /**
      * Preparado para AJAX
-     * añade un "me gusta" a un proyecto con el usuario actual
+     * añade una valoracion a un proyecto con el usuario actual
      * @param Project $proyecto
      * @return JsonResponse
      */

@@ -16,14 +16,23 @@ class HomeController extends Controller {
     private $pc;
     private $user;
 
+    /**
+     * Injecta dependencias necesarias para visualizar la página de inicio
+     * @param \App\Controller\ProyectController $pc
+     * @param \App\Controller\UserController $user
+     */
     public function __construct(ProyectController $pc, UserController $user) {
         $this->pc = $pc;
         $this->user = $user;
     }
 
+    /**
+     * Renderiza la página principal
+     * @return type
+     */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
-
+     
         $form = $this->createForm(RegisterType::class, null, [
             'action' => '/registrarse'
         ]);
