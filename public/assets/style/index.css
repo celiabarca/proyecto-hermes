@@ -1,10 +1,21 @@
+@font-face {
+    font-family: "text";
+    src: url(../fonts/PT_Sans/PT_Sans-Web-Regular.ttf);
+}
+@font-face {
+    font-family: "title";
+    src: url(../fonts/PT_Serif/PT_Serif-Web-Bold.ttf);
+}
 body{
     background-color: #F2F2F2;
     margin: 0px 0px;
-
+    font-family: text;
+}
+h1{
+    font-family: title;
 }
 
-footer, header, #info, #reguistro, #comentarios, #userstop, #projectop {
+footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -15,7 +26,7 @@ footer{
     display: flex;
 
 }
-#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -23,7 +34,6 @@ footer> div:nth-child(1){
     display: flex;
     color: #BDBDBD;
     display: flex;
-    width: auto;
     align-items: center;
 
 }
@@ -53,9 +63,14 @@ footer> div:nth-child(1)>div>ul>li>a{
     color: #BDBDBD;
     text-decoration:none; 
 }
+footer> div:nth-child(1)>div:nth-child(3){
+    justify-content: end;
+    width: 45%;
+    display: flex;
+}
 header{
     border-bottom: 1px solid #2D9CDB;
-    margin-bottom: 100px
+    margin-bottom: 50px
 }
 nav> ul {
     display: flex;
@@ -77,9 +92,13 @@ nav> ul > li {
 #info{
     margin-bottom: 100px;
 }
+#info >div:nth-child(1)>div{
+    width: 272px;
+}
 #info >div:nth-child(1){
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 #info >div:nth-child(1)> div:nth-child(1), #info >div:nth-child(1)> div:nth-child(2), #info >div:nth-child(1)> div:nth-child(1){
     display: flex;
@@ -267,3 +286,119 @@ nav> ul > li {
 #projectop > div:nth-child(1) > div:nth-child(1){
     color:#ffffff;
 }
+/*******PROJECTO********/
+#project>div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+}
+#project>div:nth-child(1)>div:nth-child(1){
+    width: 1200px;
+    overflow: hidden;
+    height: 473px;
+}
+#project>div:nth-child(1)>div:nth-child(1)>img{
+    width: 1200px;
+}
+#project>div:nth-child(1)>div:nth-child(2){
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+}
+#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
+    display: flex;
+
+}
+#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div{
+    border: 2px solid #2D9CDB;
+    width: 126px;
+    padding: 0px 2px;
+    background-repeat: no-repeat;
+    background-position: 96px;
+}
+#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+    background-image: url("../images/chat.png")
+}
+#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
+    background-image: url("../images/icon.png");
+    margin-left: 26px;
+    margin-right: 26px;
+}
+#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>a{
+    text-decoration: none;
+    color: #000000;
+}
+#project>div:nth-child(1)>div:nth-child(3){
+    width: 1200px;
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
+}
+#project>div:nth-child(1)>div:nth-child(4){
+    display: flex;
+    justify-content: center;
+    order:-1;
+}
+#project>div:nth-child(1)>div:nth-child(4){
+    text-transform:uppercase;
+}
+#project>div:nth-child(1)>div:nth-child(6){
+    margin-top: 50px;
+}
+#comment>div:nth-child(1){
+    display: flex;
+    justify-content: center;
+}
+#comment{
+    width: 1200px;
+}
+#comment>div:nth-child(1)>label{
+    display: none;
+}
+#comment>div:nth-child(1)>input::before{
+    content: "Deja tu comentario";
+}
+#comment>div:nth-child(1)>textarea{
+    background-color: #ECE2E2;
+    border: transparent;
+    height: 100px;
+    box-shadow: 7px 9px 16px -2px rgba(143,143,143,1);
+    width: 54%;
+    padding: 28px;
+}
+#comment>div:nth-child(2)>button{
+    background: transparent;
+    border: 2px solid #2D9CDB;
+    width: 104px;
+    width: 125px;
+    height: 38px;
+}
+#comment>div:nth-child(2){
+    justify-content: end;
+    display: flex;
+    margin: 10px 201px;
+}
+#allcomentarios>hr{
+    color: #2D9CDB;
+    padding: 1px;
+    width: 44%;
+    background-color: #2D9CDB;
+    border: none;
+}
+.comm{
+    display: flex;
+    justify-content: center;
+    display: flex;
+    margin-right: 344px;
+}
+.comm>div:nth-child(1){
+    width: 142px;
+}
+.comm>div:nth-child(1)>img{
+    width: 103px;
+}
+.comm>div:nth-child(2){
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
