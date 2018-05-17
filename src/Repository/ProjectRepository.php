@@ -22,7 +22,11 @@ class ProjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Project::class);
     }
 
-
+    /**
+     * Devuelve los proyectos mas valorados o menos valorados
+     * @param string $orden
+     * @return mixed
+     */
     public function findByValoracion(string $orden) {
         return $this->createQueryBuilder('project')
                     ->select('project')
@@ -34,6 +38,11 @@ class ProjectRepository extends ServiceEntityRepository
                     ->getResult();
     }
 
+    /**
+     * Devuelve los proyectos mas donados o menos donados
+     * @param string $orden
+     * @return mixed
+     */
     public function findByDonaciones(string $orden) {
         return $this->createQueryBuilder('project')
                     ->select('project')
