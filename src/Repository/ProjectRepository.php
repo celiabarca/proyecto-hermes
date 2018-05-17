@@ -2,8 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Donacion;
 use App\Entity\Project;
+use App\Entity\Valoracion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -17,6 +20,28 @@ class ProjectRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Project::class);
+    }
+
+
+    public function findByValoracion(string $orden) {
+        return $this->createQueryBuilder('project')
+                    ->select('project')
+                    ->innerJoin(Valoracion::class, 'valoracion')
+                    ->where('valoracion.megusta = true')
+                    ->groupBy('project')
+                    ->orderBy('COUNT(valoracion.megusta)', strtoupper($orden))
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    public function findByDonaciones(string $orden) {
+        return $this->createQueryBuilder('project')
+                    ->select('project')
+                    ->innerJoin(Donacion::class, 'donacion')
+                    ->groupBy('project')
+                    ->orderBy('SUM(donacion.cantidad)', strtoupper($orden))
+                    ->getQuery()
+                    ->getResult();
     }
 
 //    /**

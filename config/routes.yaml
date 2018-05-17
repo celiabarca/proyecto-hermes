@@ -35,6 +35,9 @@ editarProyecto:
     path: /proyecto/{id}/editar
     controller: App\Controller\ProyectController::editarProyecto
 
+filtraProyectos:
+    path: /proyectos/{filtro}/{orden}
+    controller: App\Controller\ProyectController::getProyectorByFiltro
 
 #Ajax (JsonResponse)
 valorar_proyecto:
