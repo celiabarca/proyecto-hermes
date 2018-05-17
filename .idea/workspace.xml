@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc493a33-3bb5-4a96-88dd-5174bf3d7786" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ProjectRepository.php" afterPath="$PROJECT_DIR$/src/Repository/ProjectRepository.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,7 +63,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="558">
               <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="39" />
-              <folding />
+              <folding>
+                <marker date="1526566808521" expanded="true" signature="499:717" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,11 +73,9 @@
       <file leaf-file-name="ProjectRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Repository/ProjectRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="41" column="57" lean-forward="false" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-              <folding>
-                <element signature="e#34#58#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="126">
+              <caret line="7" column="70" lean-forward="false" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -441,12 +440,12 @@
       <workItem from="1526389661161" duration="13995000" />
       <workItem from="1526476123535" duration="2695000" />
       <workItem from="1526478893102" duration="14631000" />
-      <workItem from="1526562436081" duration="4343000" />
+      <workItem from="1526562436081" duration="4451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125163000" />
+    <option name="totallyTimeSpent" value="125271000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="616" y="79" width="1920" height="988" extended-state="6" />
@@ -802,7 +801,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="37" column="39" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="39" />
-          <folding />
+          <folding>
+            <marker date="1526566808521" expanded="true" signature="499:717" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -850,11 +851,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/ProjectRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="41" column="57" lean-forward="false" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="126">
+          <caret line="7" column="70" lean-forward="false" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>

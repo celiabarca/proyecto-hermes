@@ -6,7 +6,6 @@ use App\Entity\Donacion;
 use App\Entity\Project;
 use App\Entity\Valoracion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
