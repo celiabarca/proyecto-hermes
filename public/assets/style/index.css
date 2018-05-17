@@ -302,26 +302,26 @@ nav> ul > li {
     margin-top: 50px;
     justify-content: space-between;
 }
-#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
+.options{
     display: flex;
 
 }
-#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div{
+.options>div{
     border: 2px solid #2D9CDB;
     width: 126px;
     padding: 0px 2px;
     background-repeat: no-repeat;
     background-position: 96px;
 }
-#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+.options>div:nth-child(1){
     background-image: url("../images/chat.png")
 }
-#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(2){
+.options>div:nth-child(2){
     background-image: url("../images/icon.png");
     margin-left: 26px;
     margin-right: 26px;
 }
-#project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>a{
+.options>div:nth-child(2)>a{
     text-decoration: none;
     color: #000000;
 }
@@ -438,6 +438,15 @@ nav> ul > li {
     padding-left: 31px;
     margin-bottom: 15px;
 }
+.email2{
+    background-image: url("../images/message.png ");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
 .passwd{
     background-image: url("../images/key.png");
     background-repeat: no-repeat;
@@ -462,7 +471,7 @@ nav> ul > li {
 
 .proj{
     border:solid 3px #026f97;
-    width: 60%;
+    width: 80%;
     margin-bottom: 20px;
 }
 .proj>div:nth-child(1){
@@ -480,9 +489,11 @@ nav> ul > li {
     margin-bottom: 20px;
 }
 .proj>div:nth-child(1)>div:nth-child(1){
-    width: 50%;
-    height: 337px;
+    width: 40%;
+    height: auto;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 .proj>div:nth-child(1)>div:nth-child(2)>div:last-child{
     display: flex;

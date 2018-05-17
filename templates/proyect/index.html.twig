@@ -33,8 +33,20 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class ="options">
+                                <div>comentarios</div>
+                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                                <div>000,00$</div>
+                            </div>
                             <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
                         </div>
+
+                    </div>
+                    <div>
+                        <div>
+                            {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
+                        </div>
+
 
                     </div>
                     {#<div>
