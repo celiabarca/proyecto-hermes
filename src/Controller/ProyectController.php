@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Valoracion;
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,12 @@ use App\Form\ProjectType;
 use App\Entity\User;
 
 class ProyectController extends Controller {
+
+    private $projectRepository;
+
+    public function __construct(ProjectRepository $repository) {
+        $this->projectRepository = $repository;
+    }
 
     /**
      * Renderiza los proyectos ordenado por fecha de creación
@@ -206,4 +213,32 @@ class ProyectController extends Controller {
         }
     }
 
+    /**
+     * Filtra proyectos por campo y orden
+     * @param string $filtro
+     * @param string $orden
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getProyectorByFiltro(string $filtro, string $orden) {
+
+        switch($filtro) {
+            case 'valoracion':
+                $proyectos = $this->projectRepository->findByValoracion($orden);
+                break;
+            case 'donaciones':
+                $proyectos = $this->projectRepository->findByDonaciones($orden);
+                break;
+            default:
+                $proyectos = $this->getDoctrine()
+                    ->getRepository(Project::class)
+                    ->findBy([], [
+                        $filtro => $orden
+                    ]);
+                break;
+        }
+
+        return $this->render('proyect/index.html.twig', [
+            'proyectos' => $proyectos,
+        ]);
+    }
 }
