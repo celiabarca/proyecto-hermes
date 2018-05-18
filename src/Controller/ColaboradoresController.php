@@ -52,31 +52,33 @@ class ColaboradoresController extends Controller
     }
 
     /**
-     * Añade un colaborador a un proyecto
+     * Colabora en un proyecto
      * @param Project $proyecto
      * @return mixed
      */
-    public function anadirColaboradores(Project $proyecto)
+    public function colaborar(Project $proyecto)
     {
-        $colaboracion = $this->getDoctrine()
-            ->getRepository(Colaboracion::class)
-            ->findOneBy([
-                "proyecto" => $proyecto,
-                "usuario" => $this->getUser()
-            ]);
+        if($proyecto->getAutor() != $this->getUser()) {
+            $colaboracion = $this->getDoctrine()
+                ->getRepository(Colaboracion::class)
+                ->findOneBy([
+                    "proyecto" => $proyecto,
+                    "usuario" => $this->getUser()
+                ]);
 
-        if (!isset($colaboracion)) {
-            $colaborador = new Colaboracion();
-            $colaborador->setProyecto($proyecto);
-            $colaborador->setUsuario($this->getUser());
-            $colaborador->setEstado("Pendiente");
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($colaborador);
-            $em->flush();
+            if (!isset($colaboracion)) {
+                $colaborador = new Colaboracion();
+                $colaborador->setProyecto($proyecto);
+                $colaborador->setUsuario($this->getUser());
+                $colaborador->setEstado("Pendiente");
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($colaborador);
+                $em->flush();
 
-            return $this->redirectToRoute("proyecto", [
-                "id" => $proyecto->getId()
-            ]);
+                return $this->redirectToRoute("proyecto", [
+                    "id" => $proyecto->getId()
+                ]);
+            }
         }
 
         return $this->redirectToRoute("index");

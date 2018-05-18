@@ -73,7 +73,7 @@ buscar_tags:
 #Colaboraciones
 Colaborar:
     path: /proyecto/{id}/colaborar
-    controller: App\Controller\ColaboradoresController::anadirColaboradores
+    controller: App\Controller\ColaboradoresController::colaborar
 
 #Stripe
 premium_payment:
