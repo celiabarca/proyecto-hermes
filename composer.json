@@ -18,12 +18,8 @@
         "symfony/security-bundle": "^4.0",
         "symfony/twig-bundle": "^4.0",
         "symfony/validator": "^4.0",
-<<<<<<< HEAD
-        "symfony/yaml": "^4.0"
-=======
         "symfony/yaml": "^4.0",
         "vich/uploader-bundle": "^1.8"
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
     },
     "require-dev": {
         "symfony/dotenv": "^4.0",

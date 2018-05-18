@@ -32,14 +32,9 @@ class HomeController extends Controller {
      */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
-<<<<<<< HEAD
-        $form = $this->createForm(RegisterType::class, null, [
-            'action' => '/registrarse'
-        ]);
-=======
+
      
         $form = $this->createForm(RegisterType::class);
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
         $user = $this->user->getTopUsers();
         return $this->render('inicio/index.html.twig', [
             'usuarios' => $user,

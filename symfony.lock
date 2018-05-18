@@ -230,12 +230,9 @@
     "symfony/stopwatch": {
         "version": "v4.0.9"
     },
-<<<<<<< HEAD
-=======
     "symfony/templating": {
         "version": "v4.0.9"
     },
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
     "symfony/translation": {
         "version": "3.3",
         "recipe": {

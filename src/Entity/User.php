@@ -5,11 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-<<<<<<< HEAD
+
 use App\Entity\Traits\HasPremium;
-=======
+
 use Symfony\Component\Validator\Constraints as Assert;
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -134,13 +133,11 @@ class User implements UserInterface
   protected $phoneNumber;
 
 
-    
-=======
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="autor")
      */
     private $respuestas;
 
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -151,11 +148,9 @@ class User implements UserInterface
         $this->colaboraciones = new ArrayCollection();
         $this->proyectosvalorados = new ArrayCollection();
         $this->seguimientos = new ArrayCollection();
-<<<<<<< HEAD
         $this->phoneNumber = new PhoneNumber();
-=======
+
         $this->respuestas = new ArrayCollection();
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
     }
 
     public function getId() {
@@ -535,7 +530,6 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
-<<<<<<< HEAD
     public function setChargeId($chargeId)
     {
       $this->chargeId = $chargeId;
@@ -549,7 +543,7 @@ class User implements UserInterface
     {
       return $this->chargeId;
     }
-=======
 
->>>>>>> bc1bbd6a2bbcff3881bb48c27b60198e6393bff5
+
+ 
 }
