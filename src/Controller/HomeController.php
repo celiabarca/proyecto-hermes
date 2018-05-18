@@ -28,7 +28,7 @@ class HomeController extends Controller {
 
     /**
      * Renderiza la página principal
-     * @return type
+     * @return mixed
      */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
