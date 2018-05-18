@@ -9,7 +9,7 @@ class DonacionesController extends Controller
 {
     /**
      * Por implementar
-     * @return type
+     * @return mixed
      */
     public function index()
     {
