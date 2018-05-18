@@ -9,19 +9,28 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\EditarUsuarioType;
 use App\Form\RegisterType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller {
 
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository) {
+        $this->userRepository = $userRepository;
+    }
+
     /**
-     * 
+     * Inicia sesion con un usuario
      * @param Request $request
      * @param AuthenticationUtils $authenticationUtils
-     * @return resultado de el login del usuario
+     * @return mixed
      */
     public function login(Request $request, AuthenticationUtils $authenticationUtils) {
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -32,13 +41,13 @@ class UserController extends Controller {
             'lastemail' => $nombreUsuarioAnterior
         ]);
     }
-/**
- * 
- * @param Request $request
- * @param UserPasswordEncoderInterface $passwordEncoder
- * @return redireccion a la home si se realiza el registro correctamente o renderiza la
- * pagina de registro si no se ha enviado el formulario aun
- */
+
+    /**
+     * Registra un usuario
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function registrarUsuario(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
         $usuario = new User();
         $form = $this->createForm(RegisterType::class, $usuario);
@@ -58,30 +67,59 @@ class UserController extends Controller {
             'form' => $form->createView()
         ]);
     }
+
     /**
-     * 
+     * Renderiza el perfil de un usuario
      * @param User $usuario
-     * @return Muestra la página de perfil del usuario
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function perfilUsuario(User $usuario) {
         return $this->render('usuario/perfil.html.twig', [
            'usuario' => $usuario
         ]);
     }
+
     /**
-     * 
+     * Edita un usuario
      * @param Request $request
      * @param User $usuario
-     * @return renderiza la pagina de perfil del usuario
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editarUsuario(Request $request, User $usuario) {
-        $form = $this->createForm(RegisterType::class, $usuario);
+    public function editarUsuario(Request $request, User $usuario, UserPasswordEncoderInterface $passwordEncoder) {
+        if($usuario !== $this->getUser()) {
+            return $this->redirectToRoute('index');
+        }
+
+        $oldpassword = $usuario->getPassword();
+        $form = $this->createForm(EditarUsuarioType::class, $usuario);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            if($form->getData()->getPassword()) {
+                $password = $passwordEncoder->encodePassword($usuario, $usuario->getPassword());
+                $usuario->setPassword($password);
+            } else {
+                $usuario->setPassword($oldpassword);
+            }
+
+            if($usuario->getImg()) {
+                $file = $usuario->getImg();
+
+                if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
+                    $filename = md5(uniqid()).'.'.$file->guessExtension();
+                    $file->move($this->getParameter('pictures_directory'), $filename);
+                    $usuario->setImg($filename);
+                }
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($usuario);
             $manager->flush();
+
+            return $this->redirectToRoute('usuario_perfil', [
+                'id' => $usuario->getId()
+            ]);
         }
 
         return $this->render('usuario/editar.html.twig', [
@@ -90,13 +128,12 @@ class UserController extends Controller {
     }
     
     /**
-     * 
-     * @return array de usuario la aportation total que han hecho a los proyectos
+     * Devuelve array de usuario la aportation total que han hecho a los proyectos
+     * @return array
      */
     public function getTopUsers()
     {
-        $users = $this->getDoctrine()->getRepository(User::class)->TopDonationUsers();
-
+        $users = $this->userRepository->TopDonationUsers();
         return $users;
     }
 

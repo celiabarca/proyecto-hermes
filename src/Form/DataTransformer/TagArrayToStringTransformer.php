@@ -87,7 +87,16 @@ class TagArrayToStringTransformer implements DataTransformerInterface {
             'nombre' => $names
         ]);
 
-        $newnames = array_diff($names, $tags);
+        // Fix rapido al error en que array_diff cual esperaba que el array $tags tenia que ser de strings
+        // Declaramos un array
+        $tagnames = [];
+        // recorremos el array de tags
+        foreach($tags as $tag) {
+            // y guardamos los nombres de los tags en el array nuevo
+            $tagnames[] = $tag->getNombre();
+        }
+        // Volvemos a ejecutar array_diff pero con el nuevo array con los nombres de los tags
+        $newnames = array_diff($names, $tagnames);
 
         foreach($newnames as $newname) {
             $tag = new Tag();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: magonxesp
@@ -22,39 +23,60 @@ class RegisterType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('nombre', TextType::class, [
-                'label' => 'Nombre de usuario',
-                'required' => true
-            ])
-            ->add('email', EmailType::class, [
-                'label' => 'Correo Electronico',
-                'required' => true
-            ])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'required' => true,
-                'first_options' => [
-                    'label' => 'Contraseña'
-                ],
-                'second_options' => [
-                    'label' => 'Repetir contraseña'
-                ]
-            ])
-            ->add('telefono', TextType::class, [
-                'label' => 'Telefono',
-                'required' => false
-            ])
-            ->add('empresa', TextType::class, [
-                'label' => 'Empresa',
-                'required' => false
-            ])
-            ->add('sector', TextType::class, [
-                'label' => 'Sector',
-                'required' => false
-            ])
-            ->add('registrarse', SubmitType::class, [
-                'label' => 'Registrarme'
-            ]);
+                ->add('nombre', TextType::class, [
+                    'label' => 'Nombre de usuario',
+                    'required' => true,
+                    'attr' => [
+                        'class' => 'username'
+                    ]
+                ])
+                ->add('email', EmailType::class, [
+                    'label' => 'Correo Electronico',
+                    'required' => true,
+                    'attr' => [
+                        'class' => 'email'
+                    ]
+                ])
+                ->add('password', RepeatedType::class, [
+                    'type' => PasswordType::class,
+                    'required' => true,
+                    'first_options' => [
+                        'label' => 'Contraseña'
+                    ],
+                    'second_options' => [
+                        'label' => 'Repetir contraseña',
+                        'attr' => [
+                            'class' => 'passwd'
+                        ]
+                    ],
+                    'attr' => [
+                        'class' => 'passwd'
+                    ]
+                ])
+                ->add('telefono', TextType::class, [
+                    'label' => 'Telefono',
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'phone'
+                    ]
+                ])
+                ->add('empresa', TextType::class, [
+                    'label' => 'Empresa',
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'company'
+                    ]
+                ])
+                ->add('sector', TextType::class, [
+                    'label' => 'Sector',
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'sector'
+                    ]
+                ])
+                ->add('registrarse', SubmitType::class, [
+                    'label' => 'Registrarme'
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver) {

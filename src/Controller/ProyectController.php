@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Seguimiento;
 use App\Entity\Valoracion;
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,9 +13,15 @@ use App\Entity\User;
 
 class ProyectController extends Controller {
 
+    private $projectRepository;
+
+    public function __construct(ProjectRepository $repository) {
+        $this->projectRepository = $repository;
+    }
+
     /**
      * Renderiza los proyectos ordenado por fecha de creación
-     * @return type
+     * @return mixed
      */
     public function indice()
     {
@@ -33,7 +39,7 @@ class ProyectController extends Controller {
     /**
      * Crea un proyecto nuevo
      * @param Request $peticion
-     * @return type
+     * @return mixed
      */
     public function altaProyecto(Request $peticion)
     {
@@ -57,8 +63,8 @@ class ProyectController extends Controller {
     }
     /**
      * Devuelve el numero de proyectos que se solicitan
-     * @param type $total
-     * @return App\Entity\Proyectos
+     * @param int $total
+     * @return Project[]
      */
     public function dameProyectos($total = null)
     {
@@ -73,9 +79,9 @@ class ProyectController extends Controller {
         return $proyectos;
     }
     /**
-     * 
+     * Renderiza la pagina del proyecto
      * @param Project $proyecto
-     * @return Pagina de proyecto simple renderizada, formulario para ddejar comentarios
+     * @return mixed
      */
     public function proyecto(Project $proyecto)
     {
@@ -87,9 +93,9 @@ class ProyectController extends Controller {
         ]);
     }
     /**
-     * 
+     * Render de los proyectos de un usuario
      * @param User $user
-     * @return render de los proyectos de un usuario
+     * @return mixed
      */
     
     public function getProyectosByUser(User $user)
@@ -99,8 +105,8 @@ class ProyectController extends Controller {
     }
     
     /**
-     * 
-     * @return proyectos en los que colaboro
+     * Proyectos en los que colaboro
+     * @return mixed
      */
     public function getProyectosColaborados()
     {
@@ -110,10 +116,10 @@ class ProyectController extends Controller {
     }
 
     /**
-     * 
+     * Página de edicion de usuario renderizada.
      * @param Request $request
      * @param Project $proyecto
-     * @return página de edicion de usuario renderizada.
+     * @return mixed
      */
     public function editarProyecto(Request $request, Project $proyecto) {
         $form = $this->createForm(ProjectType::class, $proyecto);
@@ -164,4 +170,31 @@ class ProyectController extends Controller {
         }
     }
 
+    /**
+     * Filtra proyectos por campo y orden
+     * @param string $filtro
+     * @param string $orden
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getProyectorByFiltro(string $filtro, string $orden) {
+        switch($filtro) {
+            case 'valoracion':
+                $proyectos = $this->projectRepository->findByValoracion($orden);
+                break;
+            case 'donaciones':
+                $proyectos = $this->projectRepository->findByDonaciones($orden);
+                break;
+            default:
+                $proyectos = $this->getDoctrine()
+                    ->getRepository(Project::class)
+                    ->findBy([], [
+                        $filtro => $orden
+                    ]);
+                break;
+        }
+
+        return $this->render('proyect/index.html.twig', [
+            'proyectos' => $proyectos,
+        ]);
+    }
 }

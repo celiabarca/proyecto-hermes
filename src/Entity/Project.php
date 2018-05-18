@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Yaml\Tests\A;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -29,7 +28,7 @@ class Project
     private $descripcion;
 
     /**
-     * @ORM\Column(type="string", length=2048)
+     * @ORM\Column(type="text")
      */
     private $contenido;
 
@@ -57,7 +56,7 @@ class Project
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="proyectos", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinTable(name="projects_tags")
      */
     private $etiquetas;
 
@@ -434,6 +433,30 @@ class Project
     public function setActividades($actividades): void
     {
         $this->actividades = $actividades;
+    }
+
+    public function getMegusta() {
+        $megusta = 0;
+
+        foreach ($this->valoraciones as $valoracion)  {
+            if($valoracion->getMegusta()) {
+                $megusta++;
+            }
+        }
+
+        return $megusta;
+    }
+
+    public function getNoMegusta() {
+        $noMeGusta = 0;
+
+        foreach ($this->valoraciones as $valoracion)  {
+            if(!$valoracion->getMegusta()) {
+                $noMeGusta++;
+            }
+        }
+
+        return $noMeGusta;
     }
 
 }

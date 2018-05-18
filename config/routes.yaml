@@ -14,9 +14,14 @@ registrarse:
 usuario_perfil:
     path: /usuario/{id}
     controller: App\Controller\UserController::perfilUsuario
+
 topDonation:
     path: /usuario/donaciones/top
     controller: App\Controller\UserController::getTopUsers
+
+editar_usuario:
+    path: /usuario/{id}/editar
+    controller: App\Controller\UserController::editarUsuario
     
 #Proyecto
 nuevoProyecto:
@@ -35,6 +40,9 @@ editarProyecto:
     path: /proyecto/{id}/editar
     controller: App\Controller\ProyectController::editarProyecto
 
+filtraProyectos:
+    path: /proyectos/{filtro}/{orden}
+    controller: App\Controller\ProyectController::getProyectorByFiltro
 
 #Ajax (JsonResponse)
 valorar_proyecto:
@@ -52,10 +60,6 @@ quitar_valoracion:
 eliminar_proyecto:
     path: /proyecto/{id}/eliminar
     controller: App\Controller\ProyectController::eliminarProyecto
-
-CommentarPro:
-    path: /proyecto/{id}/comentar
-    controller: App\Controller\CommentController::Comentar
 
 quitar_Colaboracion:
     path: /proyecto/{id}/quitar_colaboracion
@@ -104,4 +108,13 @@ actualizar_seguimiento:
     path: /proyecto/{project}/seguimiento/{seguimiento}/actualizar
     controller: App\Controller\SeguimientosController::actualizarSeguimiento
 
+
+#Comentarios
+commentar:
+    path: /proyecto/{id}/comentar
+    controller: App\Controller\CommentController::Comentar
+
+responder:
+    path: /comentario/{id}/responder
+    controller: App\Controller\CommentController::responder
 

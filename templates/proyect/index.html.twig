@@ -1,16 +1,101 @@
 {% extends 'base.html.twig' %}
 
 {% block  contenido %}
-{% for proyecto in proyectos %}
-                {{proyecto.id}}
-		{{proyecto.titulo}}
-		{{proyecto.fechaCreacion|date("d-m-Y")}}
-		{{proyecto.descripcion}}
-		{% for comentario in proyecto.comentarios %}
-			{{comentario.autor.nombre}}
-			{{comentario.contenido}}
-		{% endfor %}
-{% endfor %}
+    <div id ="blog">
+        <div>
+            <div></div>
+            {% for proyecto in proyectos %}
+                <div class="proj">
+                    {#                  primera parte            #}
+                    <div>
+                        <div>
+                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                        </div>
+                        <div>
+                            <div>
+                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
+                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                            </div>
+                            {% for tag in proyecto.etiquetas %}
+                                <p>{{tag.nombre}}</p>
+                            {% endfor %}
+                            <h1>{{proyecto.titulo}}</h1>
+                            <p>{{proyecto.descripcion}}</p>
+
+                            <div>
+                                <h2>{{proyecto.autor.nombre}}</h2>
+                                <div>
+                                    <ul>
+                                        {% for colaborador in proyecto.colaboradores %}
+                                            <li>{{colaborador.usuario.nombre}}</li>
+                                            {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class ="options">
+                                <div >comentarios</div>
+                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                                <div>000,00$</div>
+                            </div>
+                            <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                        </div>
+                    </div>
+                    {#       comentarios                 #}
+                    <div class="test">
+                        <div>
+                            {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
+                        </div>
+                           {% for comentario in proyecto.comentarios %}
+                               
+                                <div id="comentario-{{ comentario.id }}" class="comm">
+
+                                    <div>
+                                        <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                    </div>
+                                    <div>
+                                        <div>
+                                            {{comentario.autor.nombre}}
+                                        </div>
+                                        <div>
+                                            <p> {{comentario.contenido}}</p>
+                                        </div>
+                                    </div> 
+
+                                </div>
+                                <div>
+                                    <div class="responder">Responder</div>
+                                    <div class ="respuesta">
+                                        {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                                    </div>
+                                </div>
+                                {% for respuesta in comentario.respuestas %}
+                                    <div class="comm">
+                                        <div>
+                                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                        </div>
+                                        <div>
+                                            <div>
+                                                {{respuesta.autor.nombre}}
+                                            </div>
+                                            <div>
+                                                <p> {{respuesta.contenido}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            
+                        {% endfor %}
+
+                        <div>
+                            <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
+                        </div>
+                    </div>
+
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 
 

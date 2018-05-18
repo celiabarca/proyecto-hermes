@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Donacion;
 use App\Entity\Project;
+use App\Entity\Valoracion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,6 +19,37 @@ class ProjectRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Project::class);
+    }
+
+    /**
+     * Devuelve los proyectos mas valorados o menos valorados
+     * @param string $orden
+     * @return mixed
+     */
+    public function findByValoracion(string $orden) {
+        return $this->createQueryBuilder('project')
+                    ->select('project')
+                    ->innerJoin(Valoracion::class, 'valoracion')
+                    ->where('valoracion.megusta = true')
+                    ->groupBy('project')
+                    ->orderBy('COUNT(valoracion.megusta)', strtoupper($orden))
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    /**
+     * Devuelve los proyectos mas donados o menos donados
+     * @param string $orden
+     * @return mixed
+     */
+    public function findByDonaciones(string $orden) {
+        return $this->createQueryBuilder('project')
+                    ->select('project')
+                    ->innerJoin(Donacion::class, 'donacion')
+                    ->groupBy('project')
+                    ->orderBy('SUM(donacion.cantidad)', strtoupper($orden))
+                    ->getQuery()
+                    ->getResult();
     }
 
 //    /**
