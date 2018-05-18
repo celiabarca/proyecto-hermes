@@ -56,7 +56,7 @@ class Project
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="proyectos", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinTable(name="projects_tags")
      */
     private $etiquetas;
 

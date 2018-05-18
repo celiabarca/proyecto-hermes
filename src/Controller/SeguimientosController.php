@@ -96,8 +96,6 @@ class SeguimientosController extends Controller
      * @param Seguimiento $seguimiento
      * @return mixed pagina de edicion de situacion
      */
-
-
     public function actualizarSeguimiento(Request $request, Project $project, Seguimiento $seguimiento) {
         $form = $this->createForm(SeguimientoType::class, $seguimiento);
 

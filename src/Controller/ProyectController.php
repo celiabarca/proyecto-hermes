@@ -220,7 +220,6 @@ class ProyectController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getProyectorByFiltro(string $filtro, string $orden) {
-
         switch($filtro) {
             case 'valoracion':
                 $proyectos = $this->projectRepository->findByValoracion($orden);
