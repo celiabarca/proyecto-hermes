@@ -1,7 +1,8 @@
 {% extends "base.html.twig" %}
 {% block contenido %}
     <h2>hola </h2>
-    {{form_start(form)}}
-    {{form_widget(form)}}
-    {{form_end(form)}}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
 {% endblock %}
