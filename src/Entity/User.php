@@ -5,12 +5,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\Traits\HasPremium;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
+    use HasPremium;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -113,6 +115,20 @@ class User implements UserInterface
      */
     private $seguimientos;
 
+    /**
+    * @ORM\Column(name="charge_id", type="string", length=255, nullable=true)
+    */
+    protected $chargeId;
+    
+      /**
+   * @var PhoneNumber
+   *
+   * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
+   */
+  protected $phoneNumber;
+
+
+    
     public function __construct() {
         $this->proyectos = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -123,6 +139,7 @@ class User implements UserInterface
         $this->colaboraciones = new ArrayCollection();
         $this->proyectosvalorados = new ArrayCollection();
         $this->seguimientos = new ArrayCollection();
+        $this->phoneNumber = new PhoneNumber();
     }
 
     public function getId() {
@@ -485,5 +502,18 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+    public function setChargeId($chargeId)
+    {
+      $this->chargeId = $chargeId;
+
+      return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getChargeId()
+    {
+      return $this->chargeId;
     }
 }

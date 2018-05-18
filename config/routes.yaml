@@ -71,7 +71,23 @@ Colaborar:
     path: /proyecto/{id}/colaborar
     controller: App\Controller\ColaboradoresController::anadirColaboradores
 
-#Seguimiento
+#Stripe
+premium_payment:
+    path: /premium/payment
+    controller: App\Controller\PagoController::paymentAction
+
+premium_verify:
+    path: /premium/verify/{id}
+    controller: App\Controller\PagoController::verifyAction
+    options:
+        expose: true
+
+stripe_webhook:
+    path: /stripe/wh
+    controller: App\Controller\StripeController::webhookAction
+
+
+
 seguimientos:
     path: /proyecto/{id}/seguimiento
     controller: App\Controller\SeguimientosController::seguimientos

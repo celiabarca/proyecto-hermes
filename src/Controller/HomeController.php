@@ -32,7 +32,6 @@ class HomeController extends Controller {
      */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
-     
         $form = $this->createForm(RegisterType::class, null, [
             'action' => '/registrarse'
         ]);
