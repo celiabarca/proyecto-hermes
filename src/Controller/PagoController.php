@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use App\Entity\Project;
 
 /**
  * @Route("/premium")
@@ -66,21 +67,21 @@ class PagoController extends Controller
     if ($request->isMethod('POST')) {
       $form->handleRequest($request);
 
-      if ($form->isValid()) {
+      if ($form->isSubmitted() && $form->isValid()) 
+          {
         $phoneNumber->setVerificationCode();
         $this->getUser()->setPhoneNumber($phoneNumber);
         $this->getDoctrine()->getManager()->flush();
 
-        $this->get('twilio.client')->calls->create(
-          $phoneNumber->getNumber(),
-          $twilioNumber,
-          ['url' => $this->generateUrl('twilio_voice_verify', [], UrlGeneratorInterface::ABSOLUTE_URL)]
-        );
-
+        $this->get('twilio.client')->calls->create
+            (
+                $phoneNumber->getNumber(),
+                $twilioNumber,
+                ['url' => $this->generateUrl('twilio_voice_verify', [], UrlGeneratorInterface::ABSOLUTE_URL)]
+            );
         return $this->redirectToRoute('premium_verify');
-      }
+        }
     }
-
     return $this->render('pago/verificar.html.twig', [
       'form' => $form->createView(),
     ]);
@@ -118,10 +119,26 @@ class PagoController extends Controller
           return $this->redirectToRoute("index");
       }
     }
-
     return $this->render('pago/pago.html.twig', [
       'form' => $form->createView(),
       'stripe_public_key' => $this->getParameter('stripe_public_key'),
     ]);
+  }
+  
+  public function DonarProyecto(Project $proyecto, Request $req)
+  {
+    if ($request->isMethod('POST')) {
+    $form->handleRequest($request);
+        if ($form->isValid()) 
+        {
+            $precio = $form["precio"];
+            $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData(),$form['precio'],$form['proyect']);
+            $redirect = $this->get('session')->get('premium_redirect');
+            $redirect = $this->generateUrl('premium_payment');
+            return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
+        }
+    }
+      
+      return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
   }
 }
