@@ -42,10 +42,19 @@ $(document).ready(function(){
     });
 
     $('#no-megusta-btn').on('click', function(){
-        var proyecto =
+        var proyecto = $(this).data('proyectoid');
 
        $.ajax({
-           url: '/proyecto/{id}/desvalorar'
+           url: '/proyecto/' + proyecto + '/desvalorar',
+           type: 'GET',
+           dataType: 'JSON',
+           success: function() {
+
+           }
+           ,
+           error: function() {
+
+           }
        });
     });
 });
