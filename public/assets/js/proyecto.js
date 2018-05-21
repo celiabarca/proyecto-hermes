@@ -32,11 +32,20 @@ $(document).ready(function(){
             type: 'GET',
             dataType: 'JSON',
             success: function(data) {
+                // TODO poner en un ul los tags
                 console.log(data);
             },
             error: function(data) {
                 console.log(data.responseJSON);
             }
         });
+    });
+
+    $('#no-megusta-btn').on('click', function(){
+        var proyecto =
+
+       $.ajax({
+           url: '/proyecto/{id}/desvalorar'
+       });
     });
 });

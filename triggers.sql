@@ -1,6 +1,13 @@
 DELIMITER //
 
 -- Triggers sobre project
+DROP TRIGGER IF EXISTS crear_proyecto //
+CREATE TRIGGER crear_proyecto AFTER INSERT ON project
+FOR EACH ROW
+BEGIN
+	INSERT INTO actividad (usuario_id, proyecto_id, tipo, actividad, fecha)
+	VALUES (NEW.autor_id, NEW.id, 'Añadir', 'ha creado el proyecto', NOW());
+END//
 
 DROP TRIGGER IF EXISTS actualizar_proyecto //
 CREATE TRIGGER actualizar_proyecto AFTER UPDATE ON project

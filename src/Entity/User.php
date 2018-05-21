@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Asset\UrlPackage;
-use Symfony\Component\Asset\Package;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -176,22 +174,6 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-
-    /**
-     * @param mixed $telefono
-     */
-    public function setTelefono($telefono): void
-    {
-        $this->telefono = $telefono;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
@@ -352,22 +334,6 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getPhoneNumber()
-    {
-        return $this->phoneNumber;
-    }
-
-    /**
-     * @param mixed $phoneNumber
-     */
-    public function setPhoneNumber($phoneNumber): void
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getImg()
     {
         return $this->img;
@@ -493,22 +459,6 @@ class User implements UserInterface
         $this->seguimientos = $seguimientos;
     }
 
-    /**
-     * @return bool
-     */
-    public function isPremium(): bool
-    {
-        return $this->premium;
-    }
-
-    /**
-     * @param bool $premium
-     */
-    public function setPremium(bool $premium): void
-    {
-        $this->premium = $premium;
-    }
-    
     /**
      * Returns the roles granted to the user.
      *
