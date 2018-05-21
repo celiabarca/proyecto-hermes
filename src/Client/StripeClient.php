@@ -29,11 +29,10 @@ class StripeClient
    * @param $token
    * @throws Base
    */
-  public function createPremiumCharge(User $user, $token)
+  public function CrearCargo(User $user, $token, $precio = 2000, Project $proyecto = null)
   {
-  
       $charge = Charge::create([
-        'amount' => 2000,
+        'amount' => $data,
         'currency' => 'EUR',
         'source' => $token,
         'receipt_email' => $user->getEmail(),
