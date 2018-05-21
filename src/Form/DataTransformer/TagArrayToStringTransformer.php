@@ -49,7 +49,17 @@ class TagArrayToStringTransformer implements DataTransformerInterface {
      * @throws TransformationFailedException when the transformation fails
      */
     public function transform($tags): string {
-        return implode(',', $tags);
+        // fix rapido: Por algun motivo implode(',', $tags) no devolvia un string
+        // creamos un string vacio
+        $tags_string = "";
+        // recorremos el array de tags concatenando su nombre con la ','
+        foreach($tags as $tag) {
+            $tags_string .= $tag->getNombre().',';
+        }
+        // quita la ',' del final
+        $tags_string = substr($tags_string, 0, strlen($tags_string) - 1);
+        // devolvemos el string
+        return $tags_string;
     }
 
     /**

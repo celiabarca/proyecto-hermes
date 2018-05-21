@@ -6,6 +6,7 @@ $(document).ready(function(){
 
         $.ajax({
             url: _url,
+            type: 'GET',
             dataType: 'JSON',
             success: function(data) {
                 if(data.peticion_envidada) {
@@ -22,6 +23,7 @@ $(document).ready(function(){
 
         return false;
     });
+<<<<<<< HEAD
     
     $("#borrar-proyecto").on("click",function()
     {   
@@ -41,5 +43,40 @@ $(document).ready(function(){
 
            }) 
            
+=======
+
+    $('#project_etiquetas').on('keydown', function(){
+        var nombreTag = $(this).val();
+
+        $.ajax({
+            url: '/tags/' + nombreTag ,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                // TODO poner en un ul los tags
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        });
+    });
+
+    $('#no-megusta-btn').on('click', function(){
+        var proyecto = $(this).data('proyectoid');
+
+       $.ajax({
+           url: '/proyecto/' + proyecto + '/desvalorar',
+           type: 'GET',
+           dataType: 'JSON',
+           success: function() {
+
+           }
+           ,
+           error: function() {
+
+           }
+       });
+>>>>>>> e52575a634a68d652f841f4c42caa027c2377b15
     });
 });

@@ -97,7 +97,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\File(mimeTypes={"image/gif", "image/png", "image/jpeg", "image/bmp", "image/webp"})
      */
-    private $img;
+    private $img = "assets/images/profile-default.jpg";
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="usuario")
@@ -120,23 +120,21 @@ class User implements UserInterface
     private $seguimientos;
 
     /**
-<<<<<<< HEAD
     * @ORM\Column(name="charge_id", type="string", length=255, nullable=true)
     */
     protected $chargeId;
-    
-      /**
-   * @var PhoneNumber
-   *
-   * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
-   */
-  protected $phoneNumber;
 
+    /**
+     * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
+     */
+    protected $phoneNumber;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="autor")
      */
     private $respuestas;
+
+
 
     public function __construct() {
         $this->proyectos = new ArrayCollection();
@@ -171,22 +169,6 @@ class User implements UserInterface
     public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-
-    /**
-     * @param mixed $telefono
-     */
-    public function setTelefono($telefono): void
-    {
-        $this->telefono = $telefono;
     }
 
     /**

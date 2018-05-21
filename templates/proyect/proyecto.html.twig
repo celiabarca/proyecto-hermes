@@ -5,12 +5,12 @@
     <div id ="project">
         <div>
             <div>
-                <img <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
             </div>
             <div>
                 <div>
-                    <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
-                    <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                    <img id="no-megusta-btn" data-proyectoid="{{ proyecto.id }}" src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
+                    <img id="megusta-btn" data-proyectoid="{{ proyecto.id }}" src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
                 </div>
                 <div class ="options">
                     <div>comentarios</div>
