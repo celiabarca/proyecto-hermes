@@ -6,6 +6,7 @@ $(document).ready(function(){
 
         $.ajax({
             url: _url,
+            type: 'GET',
             dataType: 'JSON',
             success: function(data) {
                 if(data.peticion_envidada) {
@@ -21,5 +22,21 @@ $(document).ready(function(){
         });
 
         return false;
+    });
+
+    $('#project_etiquetas').on('keydown', function(){
+        var nombreTag = $(this).val();
+
+        $.ajax({
+            url: '/tags/' + nombreTag ,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(data.responseJSON);
+            }
+        });
     });
 });

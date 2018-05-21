@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Asset\UrlPackage;
+use Symfony\Component\Asset\Package;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -97,7 +99,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\File(mimeTypes={"image/gif", "image/png", "image/jpeg", "image/bmp", "image/webp"})
      */
-    private $img;
+    private $img = "assets/images/profile-default.jpg";
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="usuario")
@@ -120,23 +122,21 @@ class User implements UserInterface
     private $seguimientos;
 
     /**
-<<<<<<< HEAD
     * @ORM\Column(name="charge_id", type="string", length=255, nullable=true)
     */
     protected $chargeId;
-    
-      /**
-   * @var PhoneNumber
-   *
-   * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
-   */
-  protected $phoneNumber;
 
+    /**
+     * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
+     */
+    protected $phoneNumber;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="autor")
      */
     private $respuestas;
+
+
 
     public function __construct() {
         $this->proyectos = new ArrayCollection();
@@ -352,6 +352,22 @@ class User implements UserInterface
     /**
      * @return mixed
      */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param mixed $phoneNumber
+     */
+    public function setPhoneNumber($phoneNumber): void
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getImg()
     {
         return $this->img;
@@ -477,6 +493,22 @@ class User implements UserInterface
         $this->seguimientos = $seguimientos;
     }
 
+    /**
+     * @return bool
+     */
+    public function isPremium(): bool
+    {
+        return $this->premium;
+    }
+
+    /**
+     * @param bool $premium
+     */
+    public function setPremium(bool $premium): void
+    {
+        $this->premium = $premium;
+    }
+    
     /**
      * Returns the roles granted to the user.
      *
