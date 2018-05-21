@@ -14,7 +14,7 @@
                 </div>
                 <div class ="options">
                     <div>comentarios</div>
-                    <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                    <div><a id="colaborar-btn" href="#" data-proyectoid="{{ proyecto.id }}">Colaborar</a></div>
                     <div>000,00$</div>
                 </div>
             </div>
@@ -78,3 +78,6 @@
     </div>
 {% endblock %}
 
+{% block js_especifico %}
+    <script src="{{ asset('assets/js/proyecto.js') }}"></script>
+{% endblock %}

@@ -52,21 +52,17 @@ class ColaboradoresController extends Controller
     }
 
     /**
+     * Preparado para ajax
      * Colabora en un proyecto
      * @param Project $proyecto
      * @return mixed
      */
     public function colaborar(Project $proyecto)
     {
-        if($proyecto->getAutor() != $this->getUser()) {
-            $colaboracion = $this->getDoctrine()
-                ->getRepository(Colaboracion::class)
-                ->findOneBy([
-                    "proyecto" => $proyecto,
-                    "usuario" => $this->getUser()
-                ]);
+        try {
+            $peticionEnvidada = false;
 
-            if (!isset($colaboracion)) {
+            if($proyecto->getAutor() != $this->getUser()) {
                 $colaborador = new Colaboracion();
                 $colaborador->setProyecto($proyecto);
                 $colaborador->setUsuario($this->getUser());
@@ -74,14 +70,20 @@ class ColaboradoresController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($colaborador);
                 $em->flush();
-
-                return $this->redirectToRoute("proyecto", [
-                    "id" => $proyecto->getId()
-                ]);
+                $peticionEnvidada = true;
+            } else {
+                throw new \Exception("El autor no puede colaborar en su proyecto");
             }
+
+            return new JsonResponse([
+                'peticion_envidada' => $peticionEnvidada
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'error' => $e->getMessage()
+            ], 405);
         }
 
-        return $this->redirectToRoute("index");
     }
 
     /**

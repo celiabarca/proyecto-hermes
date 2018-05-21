@@ -11,7 +11,7 @@ class DonacionesController extends Controller
 {
     /**
      * Por implementar
-     * @return type
+     * @return mixed
      */
     public function Donar(Project $proyecto, Request $req)
   {
