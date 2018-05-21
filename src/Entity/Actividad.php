@@ -18,13 +18,13 @@ class Actividad
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="actividades")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="actividades")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $proyecto;
 

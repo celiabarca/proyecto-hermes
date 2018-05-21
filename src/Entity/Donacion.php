@@ -18,7 +18,7 @@ class Donacion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="donaciones")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $usuario;
 
@@ -29,7 +29,7 @@ class Donacion
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="donaciones")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $proyecto;
 

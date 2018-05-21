@@ -22,4 +22,24 @@ $(document).ready(function(){
 
         return false;
     });
+    
+    $("#borrar-proyecto").on("click",function()
+    {   
+        var name = $(this).attr("name");
+        
+        var BorrarUrl = '/proyecto/' + name + '/eliminar';
+        
+        console.log(BorrarUrl);
+            
+            $.ajax({
+                url: BorrarUrl,
+                datatype: 'JSON',
+                success: function(response)
+                {
+                    console.log(response);                
+                }
+
+           }) 
+           
+    });
 });

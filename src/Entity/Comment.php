@@ -23,13 +23,13 @@ class Comment implements CommentInterface {
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="comentarios")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $proyecto;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comentarios")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $autor;
 
