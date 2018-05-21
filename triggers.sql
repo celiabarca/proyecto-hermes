@@ -17,14 +17,6 @@ BEGIN
 	VALUES (NEW.autor_id, NEW.id, 'Editar', 'ha editado el proyecto', NOW());
 END//
 
-DROP TRIGGER IF EXISTS eliminar_proyecto //
-CREATE TRIGGER eliminar_proyecto AFTER DELETE ON project
-FOR EACH ROW
-BEGIN
-	INSERT INTO actividad (usuario_id, proyecto_id, tipo, actividad, fecha)
-	VALUES (OLD.autor_id, OLD.id, 'Eliminar', 'ha eliminado el proyecto', NOW());
-END//
-
 -- Triggers sobre seguimiento
 
 DROP TRIGGER IF EXISTS nuevo_seguimiento //
@@ -41,14 +33,6 @@ FOR EACH ROW
 BEGIN
 	INSERT INTO actividad (usuario_id, proyecto_id, tipo, actividad, fecha)
 	VALUES (NEW.usuario_id, NEW.proyecto_id, 'Editar', 'ha editado el seguimiento', NOW()); 
-END//
-
-DROP TRIGGER IF EXISTS eliminar_seguimiento //
-CREATE TRIGGER eliminar_seguimiento AFTER DELETE ON seguimiento
-FOR EACH ROW
-BEGIN
-	INSERT INTO actividad (usuario_id, proyecto_id, tipo, actividad, fecha)
-	VALUES (OLD.usuario_id, OLD.proyecto_id, 'Elminar', 'ha eliminado un seguimiento en', NOW()); 
 END//
 
 -- Triggers sobre colaboracion
