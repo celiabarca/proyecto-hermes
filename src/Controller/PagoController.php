@@ -31,7 +31,7 @@ class PagoController extends Controller
   {
     /** @var User $user */
     $user= $this->getUser();
-    $phoneNumber = $request->query->get('reset') ? new PhoneNumber() : $user->getPhoneNumber();
+    $phoneNumber = $request->query->get('reset') ? new PhoneNumber() : $user->getTelefono();
     $twilioNumber = $this->getParameter('twilio_number');
 
     if ($request->isXmlHttpRequest()) {

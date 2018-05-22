@@ -23,6 +23,27 @@ $(document).ready(function(){
 
         return false;
     });
+<<<<<<< HEAD
+    
+    $("#borrar-proyecto").on("click",function()
+    {   
+        var name = $(this).attr("name");
+        
+        var BorrarUrl = '/proyecto/' + name + '/eliminar';
+        
+        console.log(BorrarUrl);
+            
+            $.ajax({
+                url: BorrarUrl,
+                datatype: 'JSON',
+                success: function(response)
+                {
+                    console.log(response);                
+                }
+
+           }) 
+           
+=======
 
     $('#project_etiquetas').on('keydown', function(){
         var nombreTag = $(this).val();
@@ -56,5 +77,6 @@ $(document).ready(function(){
 
            }
        });
+>>>>>>> e52575a634a68d652f841f4c42caa027c2377b15
     });
 });

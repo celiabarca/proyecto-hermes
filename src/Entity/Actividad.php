@@ -18,13 +18,21 @@ class Actividad
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="actividades")
+<<<<<<< HEAD
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+=======
      * @ORM\JoinColumn(nullable=false, onDelete="cascade")
+>>>>>>> e52575a634a68d652f841f4c42caa027c2377b15
      */
     private $usuario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="actividades")
+<<<<<<< HEAD
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+=======
      * @ORM\JoinColumn(nullable=false, onDelete="cascade")
+>>>>>>> e52575a634a68d652f841f4c42caa027c2377b15
      */
     private $proyecto;
 

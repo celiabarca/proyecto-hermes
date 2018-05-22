@@ -19,6 +19,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $titulo;
 
@@ -97,6 +98,7 @@ class Project
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="proyecto")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $actividades;
 

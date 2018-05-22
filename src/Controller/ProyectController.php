@@ -133,7 +133,8 @@ class ProyectController extends Controller {
         }
 
         return $this->render('proyect/editar.html.twig', [
-           'form' => $form->createView()
+           'form' => $form->createView(),
+            'proyecto' => $proyecto
         ]);
     }
 
