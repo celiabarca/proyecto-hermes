@@ -28,10 +28,11 @@ class HomeController extends Controller {
 
     /**
      * Renderiza la página principal
-     * @return type
+     * @return mixed
      */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
+
      
         $form = $this->createForm(RegisterType::class);
         $user = $this->user->getTopUsers();

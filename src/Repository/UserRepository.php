@@ -39,6 +39,20 @@ class UserRepository extends ServiceEntityRepository
         return $qb->execute();
     }
     
+    public function findPremiumByChargeId($chargeId)
+    {
+      return $this
+        ->createQueryBuilder('u')
+        ->andWhere('u.premium = :premium')
+        ->andWhere('u.chargeId = :chargeId')
+        ->setParameters([
+          'premium' => true,
+          'chargeId' => $chargeId,
+        ])
+        ->getQuery()
+        ->getOneOrNullResult();
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?User

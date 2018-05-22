@@ -5,6 +5,9 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+
+use App\Entity\Traits\HasPremium;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -12,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
+    use HasPremium;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -93,7 +97,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\File(mimeTypes={"image/gif", "image/png", "image/jpeg", "image/bmp", "image/webp"})
      */
-    private $img;
+    private $img = "assets/images/profile-default.jpg";
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="usuario")
@@ -116,9 +120,21 @@ class User implements UserInterface
     private $seguimientos;
 
     /**
+    * @ORM\Column(name="charge_id", type="string", length=255, nullable=true)
+    */
+    protected $chargeId;
+
+    /**
+     * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
+     */
+    protected $phoneNumber;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="autor")
      */
     private $respuestas;
+
+
 
     public function __construct() {
         $this->proyectos = new ArrayCollection();
@@ -130,6 +146,8 @@ class User implements UserInterface
         $this->colaboraciones = new ArrayCollection();
         $this->proyectosvalorados = new ArrayCollection();
         $this->seguimientos = new ArrayCollection();
+        $this->phoneNumber = new PhoneNumber();
+
         $this->respuestas = new ArrayCollection();
     }
 
@@ -151,22 +169,6 @@ class User implements UserInterface
     public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-
-    /**
-     * @param mixed $telefono
-     */
-    public function setTelefono($telefono): void
-    {
-        $this->telefono = $telefono;
     }
 
     /**
@@ -510,5 +512,20 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+    public function setChargeId($chargeId)
+    {
+      $this->chargeId = $chargeId;
 
+      return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getChargeId()
+    {
+      return $this->chargeId;
+    }
+
+
+ 
 }

@@ -1,9 +1,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    stripe_public_key: pk_test_X4HbdHzpT5lB9gyIYQ3nP5NR
+    stripe_secret_key: sk_test_pJsBYbYTFiNvttLVDuo2oD1f
+    payment:
+        currency: EUR
+        decimal: true
+    locale: 'es'
     pictures_directory: '%kernel.project_dir%/public/uploads/pictures'
-    locale: es
-
+    
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -26,6 +31,8 @@ services:
         tags: ['controller.service_arguments']
         calls:
           - [setContainer, ["@service_container"]]
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+          
+    App\Client\Stripe:
+        class: App\Client\StripeClient
+        arguments: ['%stripe_secret_key%', '%payment%', '@doctrine.orm.entity_manager', '@logger']
+        public: true

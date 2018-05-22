@@ -30,7 +30,7 @@ class ColaboradoresController extends Controller
                     'usuario' => $user
                 ]);
 
-            if(!isset($colaboracion)) {
+            if (!isset($colaboracion)) {
                 throw new \Exception('No has colaborado en este proyecto!');
             }
 
@@ -50,16 +50,19 @@ class ColaboradoresController extends Controller
             ], 405);
         }
     }
+
     /**
-     * Añade un colaborador a un proyecto
+     * Preparado para ajax
+     * Colabora en un proyecto
      * @param Project $proyecto
-     * @return type
+     * @return mixed
      */
-    public function anadirColaboradores(Project $proyecto)
+    public function colaborar(Project $proyecto)
     {
-        if ($proyecto) {
-            $colaboracion = $this->getDoctrine()->getRepository(Colaboracion::class)->findOneBy(["proyecto" => $proyecto, "usuario" => $this->getUser()]);
-            if (!$colaboracion) {
+        try {
+            $peticionEnvidada = false;
+
+            if($proyecto->getAutor() != $this->getUser()) {
                 $colaborador = new Colaboracion();
                 $colaborador->setProyecto($proyecto);
                 $colaborador->setUsuario($this->getUser());
@@ -67,10 +70,20 @@ class ColaboradoresController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($colaborador);
                 $em->flush();
+                $peticionEnvidada = true;
+            } else {
+                throw new \Exception("El autor no puede colaborar en su proyecto");
             }
-            return $this->redirectToRoute("proyecto", ["id" => $proyecto->getId()]);
+
+            return new JsonResponse([
+                'peticion_envidada' => $peticionEnvidada
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'error' => $e->getMessage()
+            ], 405);
         }
-        return $this->redirectToRoute("index");
+
     }
 
     /**
@@ -85,13 +98,13 @@ class ColaboradoresController extends Controller
             $colaboracionEiminada = false;
 
             $colaboracion = $this->getDoctrine()
-                            ->getRepository(Colaboracion::class)
-                            ->findOneBy([
-                                'proyecto' => $project,
-                                'usuario' => $this->getUser()
-                            ]);
+                ->getRepository(Colaboracion::class)
+                ->findOneBy([
+                    'proyecto' => $project,
+                    'usuario' => $this->getUser()
+                ]);
 
-            if(!isset($colaboracion)) {
+            if (!isset($colaboracion)) {
                 throw new \Exception('No has colaborado en este proyecto!');
             }
 
