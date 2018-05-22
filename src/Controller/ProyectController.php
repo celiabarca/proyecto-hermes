@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Valoracion;
+use App\Repository\ValoracionRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,9 +14,11 @@ use App\Entity\User;
 class ProyectController extends Controller {
 
     private $projectRepository;
+    private $valoracionRepository;
 
-    public function __construct(ProjectRepository $repository) {
+    public function __construct(ProjectRepository $repository, ValoracionRepository $valoracionRepository) {
         $this->projectRepository = $repository;
+        $this->valoracionRepository = $valoracionRepository;
     }
 
     /**
@@ -86,9 +88,15 @@ class ProyectController extends Controller {
     public function proyecto(Project $proyecto)
     {
         $formComment = $this->createForm(\App\Form\CommentType::class);
+        if($this->getUser()) {
+            $valoracion = $this->valoracionRepository->getValoracionDelUsuario($this->getUser(), $proyecto);
+        } else {
+            $valoracion = null;
+        }
 
         return $this->render('proyect/proyecto.html.twig', [
             'proyecto' => $proyecto,
+            'valoracion' => $valoracion,
             'FormComentario' => $formComment->createView()
         ]);
     }

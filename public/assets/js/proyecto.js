@@ -1,4 +1,55 @@
+/**
+ * muestra la valoracion que le habia dado
+ * el usuario de la sesion al haberle dado a megusta o no me gusta
+ * si no hay sesion iniciada esto no va a hacer nada
+ */
+function renderValoracion() {
+    var $megustabtn = $('#no-megusta-btn');
+    var $nomegustabtn = $('#megusta-btn');
+    var $valoracionbtns = $('.valoracion-btn');
+    var megusta = $megustabtn.data('valoracion');
+    var nomegusta = $nomegustabtn.data('valoracion');
+
+    if(typeof megusta !== 'undefined' && typeof nomegusta !== 'undefined') {
+        $valoracionbtns.removeClass('valoracion-active');
+
+        if(megusta === 1 && nomegusta === 0) {
+            $megustabtn.addClass('valoracion-active');
+        } else if(megusta === 0 && nomegusta === 1) {
+            $nomegustabtn.addClass('valoracion-active');
+        }
+    }
+}
+
+/**
+ * Quita la valoracion del proyecto
+ * @param proyecto
+ */
+function quitarValoracion(proyecto) {
+    var $valoracionbtns = $('.valoracion-btn');
+
+    $.ajax({
+       url: '/proyecto/' + proyecto + '/quitar_valoracion',
+       type: 'GET',
+       dataType: 'JSON',
+       success: function(data) {
+           $('.valoracion-btn').removeClass('valoracion-active');
+           $valoracionbtns.data('valoracion', 0);
+           console.log('Valoracion quitada');
+       },
+       error: function(data) {
+           var response = JSON.parse(data.responseText);
+           console.log(response.error);
+       }
+    });
+}
+
 $(document).ready(function(){
+    var $megustabtn = $('#megusta-btn');
+    var $nomegustabtn = $('#no-megusta-btn');
+
+    renderValoracion();
+
     $('#colaborar-btn').on('click', function() {
         var proyectoId = this.dataset.proyectoid;
         var _url = '/proyecto/' + proyectoId + '/colaborar';
@@ -23,27 +74,23 @@ $(document).ready(function(){
 
         return false;
     });
-<<<<<<< HEAD
-    
-    $("#borrar-proyecto").on("click",function()
-    {   
-        var name = $(this).attr("name");
-        
-        var BorrarUrl = '/proyecto/' + name + '/eliminar';
-        
-        console.log(BorrarUrl);
-            
-            $.ajax({
-                url: BorrarUrl,
-                datatype: 'JSON',
-                success: function(response)
-                {
-                    console.log(response);                
-                }
 
-           }) 
-           
-=======
+    $("#borrar-proyecto").on("click",function(){
+        var name = $(this).attr("name");
+
+        var BorrarUrl = '/proyecto/' + name + '/eliminar';
+
+        console.log(BorrarUrl);
+
+        $.ajax({
+            url: BorrarUrl,
+            dataType: 'JSON',
+            success: function (response) {
+                console.log(response);
+            }
+
+        });
+    });
 
     $('#project_etiquetas').on('keydown', function(){
         var nombreTag = $(this).val();
@@ -57,26 +104,69 @@ $(document).ready(function(){
                 console.log(data);
             },
             error: function(data) {
-                console.log(data.responseJSON);
+                console.log(data.responseJSON.error);
             }
         });
     });
 
     $('#no-megusta-btn').on('click', function(){
-        var proyecto = $(this).data('proyectoid');
+        var $this = $(this);
+        var proyecto = $this.data('proyectoid');
+        var nomegusta = $this.data('valoracion');
 
-       $.ajax({
+        if(nomegusta === 1) {
+            quitarValoracion(proyecto);
+            return false;
+        }
+
+        $.ajax({
            url: '/proyecto/' + proyecto + '/desvalorar',
            type: 'GET',
            dataType: 'JSON',
-           success: function() {
-
+           success: function(data) {
+                console.log(data);
+                if(data.valorado) {
+                    $megustabtn.data('valoracion', 0);
+                    $nomegustabtn.data('valoracion', 1);
+                    renderValoracion();
+                } else {
+                    quitarValoracion(proyecto);
+                }
            }
            ,
-           error: function() {
-
+           error: function(data) {
+               console.log(data.responseJSON.error);
            }
        });
->>>>>>> e52575a634a68d652f841f4c42caa027c2377b15
+    });
+
+    $('#megusta-btn').on('click', function(){
+        var $this = $(this);
+        var proyecto = $this.data('proyectoid');
+        var megusta = $this.data('valoracion');
+
+        if(megusta === 1) {
+            quitarValoracion(proyecto);
+            return false;
+        }
+
+        $.ajax({
+           url: '/proyecto/' + proyecto + '/valorar',
+           type: 'GET',
+           dataType: 'JSON',
+           success: function(data) {
+                console.log(data);
+                if(data.valorado) {
+                    $megustabtn.data('valoracion', 1);
+                    $nomegustabtn.data('valoracion', 0);
+                    renderValoracion();
+                } else {
+                    quitarValoracion(proyecto);
+                }
+           },
+           error: function(data) {
+               console.log(data.responseJSON.error);
+           }
+        });
     });
 });

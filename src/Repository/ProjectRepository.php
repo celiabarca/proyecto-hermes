@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Donacion;
 use App\Entity\Project;
 use App\Entity\Valoracion;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -51,7 +52,6 @@ class ProjectRepository extends ServiceEntityRepository
                     ->getQuery()
                     ->getResult();
     }
-
 //    /**
 //     * @return Project[] Returns an array of Project objects
 //     */
