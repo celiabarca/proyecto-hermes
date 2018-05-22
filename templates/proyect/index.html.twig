@@ -45,45 +45,47 @@
                         <div>
                             {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                         </div>
-                           {% for comentario in proyecto.comentarios %}
-                               
-                                <div id="comentario-{{ comentario.id }}" class="comm">
+                        {% for comentario in proyecto.comentarios %}
 
+                            <div id="comentario-{{ comentario.id }}" class="comm">
+
+                                <div>
+                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                </div>
+                                <div>
+                                    <div>
+                                        {{comentario.autor.nombre}}
+                                    </div>
+                                    <div>
+                                        <p> {{comentario.contenido}}</p>
+                                    </div>
+                                </div> 
+
+                            </div>
+                            <div>
+                                <div class="responder">Responder</div>
+                                <div class ="respuesta">
+                                    {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                                </div>
+                            </div>
+                            {% for respuesta in comentario.respuestas %}
+                                <div id="triangulo">
+                                </div>
+                                <div class="comm res">
                                     <div>
                                         <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <div>
-                                            {{comentario.autor.nombre}}
+                                            {{respuesta.autor.nombre}}
                                         </div>
                                         <div>
-                                            <p> {{comentario.contenido}}</p>
+                                            <p> {{respuesta.contenido}}</p>
                                         </div>
-                                    </div> 
+                                    </div>
+                                </div>
+                            {% endfor %}
 
-                                </div>
-                                <div>
-                                    <div class="responder">Responder</div>
-                                    <div class ="respuesta">
-                                        {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
-                                    </div>
-                                </div>
-                                {% for respuesta in comentario.respuestas %}
-                                    <div class="comm">
-                                        <div>
-                                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                        </div>
-                                        <div>
-                                            <div>
-                                                {{respuesta.autor.nombre}}
-                                            </div>
-                                            <div>
-                                                <p> {{respuesta.contenido}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            
                         {% endfor %}
 
                         <div>

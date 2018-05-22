@@ -1,8 +1,13 @@
 $( document ).ready(function() {
+    alert($(window).width());
     //change images de imput email
     img = "/images/black-envelope.png";
-    $(".email").click(function(){
+    $(".email").focus(function(){
         $(".email").removeClass("email").addClass("email2");
+    });
+     $(".email2").focusout(function(){
+         alert("sdkjljdsl");
+        //$(".email2").removeClass("email2").addClass("email");
     });
     
     //ocultar o mostrar formulario de respuesta de un formulario
@@ -17,7 +22,7 @@ $( document ).ready(function() {
     });
     $(".closecomment").click(function(){
         //alert("vdjclxkvcxdlkcdsakkmcdlmñczdñkzcd");
-        $(this).parent().parent().parent().parent().find(".test").css("display", "none"); 
-        console.log($(this).parent().parent().parent().parent().parent().find(".test"));
+        $(this).parent().parent().css("display", "none"); 
+        console.log($(this).parent().parent());
     });
 });
