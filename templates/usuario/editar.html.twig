@@ -1,3 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/styles/jquery.Jcrop.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block contenido %}
 <div>
     <div>
         {{ form_start(form) }}
@@ -6,3 +14,10 @@
         {{ form_end(form) }}
     </div>
 </div>
+{% endblock %}
+
+{% block js_especifico %}
+    <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.Jcrop.min.js') }}"></script>
+    <script src="{{ asset('assets/js/crop.js') }}"></script>
+{% endblock %}

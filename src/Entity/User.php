@@ -460,6 +460,22 @@ class User implements UserInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * @param mixed $telefono
+     */
+    public function setTelefono($telefono): void
+    {
+        $this->telefono = $telefono;
+    }
+        
+    /**
      * Returns the roles granted to the user.
      *
      * <code>
