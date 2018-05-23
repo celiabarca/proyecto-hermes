@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends Controller {
 
@@ -40,6 +41,15 @@ class UserController extends Controller {
             'error' => $error,
             'lastemail' => $nombreUsuarioAnterior
         ]);
+    }
+   /**
+     * Cargar home
+     *
+     * @Route("/test/", name="test")
+     * 
+     */
+    public function test(){
+        return $this->render('error.html.twig');
     }
 
     /**

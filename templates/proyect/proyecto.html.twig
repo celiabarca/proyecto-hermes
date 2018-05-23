@@ -44,7 +44,7 @@
             <div id ="allcomentarios">
                 <div>
                     {% for comentario in proyecto.comentarios %}
-                        <div id="comentario-{{ comentario.id }}" class="comm">
+                        <div id="comentario-{{ comentario.id }}">
                             <div>
                                 <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
                             </div>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div>
                                     {% for respuesta in comentario.respuestas %}
-                                        <div class="comm">
+                                        <div >
                                             <div>
                                                 <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
                                             </div>
