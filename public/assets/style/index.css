@@ -10,6 +10,10 @@
     font-family: "cuatro";
     src: url(../fonts/Marcellus_SC/MarcellusSC-Regular.ttf);
 }
+html {
+    min-height: 100%;
+    position: relative;
+}
 body{
     background-color: #F2F2F2;
     margin: 0px 0px;
@@ -20,7 +24,7 @@ h1{
     font-family: title;
 }
 
-#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging, #error {
+#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging, #error, #nuevoProjecto {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -29,8 +33,10 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
+    position: absolute;
+    bottom: 0;
 }
-#error:nth-child(1),#blog>div:nth-child(1),#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -53,6 +59,7 @@ footer> div:nth-child(1)>div>ul{
     display: flex;
     text-decoration: none;
     list-style-type: none;
+    padding-left: 5px;
 }
 footer> div:nth-child(2)>div:nth-child(1){
     justify-content: center;
@@ -597,6 +604,39 @@ h2{
     display: flex;
     align-items: center;
 }
+/******************nuevo porjecto***********************/
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 94px;
+    background-color: #82B4E0;
+    padding-bottom: 136px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1)>div:nth-child(2)>div{
+    display: flex;
+    margin-bottom: 10px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1)>div:nth-child(2)>div>p{
+    margin: 0px 3px 0px auto;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(2), #nuevoProjecto>div:nth-child(1)>form>div:nth-child(3), #nuevoProjecto>div:nth-child(1)>form>div:nth-child(4), #nuevoProjecto>div:nth-child(1)>form>div:nth-child(5),  #nuevoProjecto>div:nth-child(1)>form>div:nth-child(6){
+    display: none;
+}
+#nuevoProjecto>div:nth-child(1)>div>input{
+    background-image: url("../images/play-button.png");
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    background-color: #f2f2f2;
+    border: none;
+}
+#nuevoProjecto>div:nth-child(1)>div{
+    display: flex;
+    justify-content: flex-end;
+}
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 
@@ -742,7 +782,7 @@ h2{
         width:40%;
     }
 }
-@media screen and(max-width: 400px){
+@media screen and(max-width:400px) and (min-width: 280px){
     #reguistro > div:nth-child(1) > div:nth-child(1) {
         width: 277px;
     }
@@ -763,7 +803,7 @@ h2{
         width: 41%;
         height: auto;
     }
-    proj {
+    .proj {
         width: 25%;
     }
     .res {
