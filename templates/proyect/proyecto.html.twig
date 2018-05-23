@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block  contenido %}
-
-    <div id ="project">
+    <div id="project">
         <div>
             <div>
                 <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
@@ -10,12 +9,22 @@
             
             <div>
                 <div>
-                    <img id="no-megusta-btn" data-proyectoid="{{ proyecto.id }}" src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
-                    <img id="megusta-btn" data-proyectoid="{{ proyecto.id }}" src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                    <button id="no-megusta-btn" class="valoracion-btn" data-proyectoid="{{ proyecto.id }}" data-valoracion="{{ (valoracion and valoracion.megusta == false) ? 1 : 0 }}">
+                        <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
+                    </button>
+                    <button id="megusta-btn" class="valoracion-btn" data-proyectoid="{{ proyecto.id }}" data-valoracion="{{ (valoracion and valoracion.megusta == true) ? 1 : 0 }}">
+                        <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                    </button>
                 </div>
                 <div class ="options">
-                    <div>comentarios</div>
-                    <div><a id="colaborar-btn" href="#" data-proyectoid="{{ proyecto.id }}">Colaborar</a></div>
+                    <!--
+                    <div>
+                        <button>comentarios</button>
+                    </div>
+                    -->
+                    <div>
+                        <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
+                    </div>
                     <div>000,00$</div>
                 </div>
             </div>

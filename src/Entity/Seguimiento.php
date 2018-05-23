@@ -38,6 +38,16 @@ class Seguimiento
      */
     private $situacion;
 
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $descripcion;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $proyectoFinalizado;
+
     public function getId()
     {
         return $this->id;
@@ -105,6 +115,38 @@ class Seguimiento
     public function setSituacion($situacion): void
     {
         $this->situacion = $situacion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param mixed $descripcion
+     */
+    public function setDescripcion($descripcion): void
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProyectoFinalizado()
+    {
+        return $this->proyectoFinalizado;
+    }
+
+    /**
+     * @param mixed $proyectoFinalizado
+     */
+    public function setProyectoFinalizado($proyectoFinalizado): void
+    {
+        $this->proyectoFinalizado = $proyectoFinalizado;
     }
 
 }

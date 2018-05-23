@@ -25,4 +25,7 @@ $( document ).ready(function() {
         $(this).parent().parent().css("display", "none"); 
         console.log($(this).parent().parent());
     });
+    function sliderReguistro(){
+         
+    }
 });
