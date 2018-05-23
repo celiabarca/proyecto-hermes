@@ -19,25 +19,27 @@
                     <div>000,00$</div>
                 </div>
             </div>
-            <div class="steps ">
-                <div class="step faseactiva">
-                    Situacion X
-                </div>
-                <div class="step">
-                        Situacion X
-                </div>
-                <div class="step">
-                        Situacion X
-                </div>
-                <div class="step">
-                        Situacion X
-                </div>
-            </div>
+            
             <div>
                 {{proyecto.fechaCreacion|date('d/m/Y')}}
             </div>
             <div>
                 <h1>{{proyecto.titulo}}</h1>
+            </div>
+            <div class="steps ">
+                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                <div class="step faseactiva">
+                    Situacion X
+                </div>
+                <div class="step">
+                    Situacion X
+                </div>
+                <div class="step">
+                    Situacion X
+                </div>
+                <div class="step">
+                    Situacion X
+                </div>
             </div>
             <div>
                 {{proyecto.descripcion}}
@@ -95,12 +97,13 @@
 
 {% block js_especifico %}
     <script src="{{ asset('assets/js/proyecto.js') }}"></script>
-    <script src="{{ asset('assets/js/emojionearea.min.js') }}"></script>
+    <script src="{{ asset('assets/js/emojionearea.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-          $("#comment_contenido").emojioneArea({
-            template: "<filters/><tabs/><editor/>"
-          });
-        });
+            $(document).ready(function() {
+              $(".emojis").emojioneArea({
+                
+              });
+            });
+</script>
   </script>
 {% endblock %}
