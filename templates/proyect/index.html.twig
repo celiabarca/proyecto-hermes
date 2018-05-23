@@ -16,21 +16,11 @@
                                 <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
                                 <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
                             </div>
-                            {% for tag in proyecto.etiquetas %}
-                                <p>{{tag.nombre}}</p>
-                            {% endfor %}
                             <h1>{{proyecto.titulo}}</h1>
                             <p>{{proyecto.descripcion}}</p>
-
-                            <div>
+                            <div class ="autor">
                                 <h2>{{proyecto.autor.nombre}}</h2>
-                                <div>
-                                    <ul>
-                                        {% for colaborador in proyecto.colaboradores %}
-                                            <li>{{colaborador.usuario.nombre}}</li>
-                                            {% endfor %}
-                                    </ul>
-                                </div>
+                                
                             </div>
                             <div class ="options">
                                 <div >comentarios</div>
