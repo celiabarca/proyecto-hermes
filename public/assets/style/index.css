@@ -345,6 +345,7 @@ nav> ul > li {
 #comment>div:nth-child(1){
     display: flex;
     /*justify-content: center;*/
+    width: 85%;
 }
 #comment{
     width: 941px;
@@ -360,9 +361,9 @@ nav> ul > li {
     border: transparent;
     height: 100px;
     box-shadow: 7px 9px 16px -2px rgba(143,143,143,1);
-    width: 54%;
+    width: 100%;
     padding: 28px;
-    border-radius: 20px;
+    border-radius: 4px 41px 41px 41px;
 
 }
 #comment>div:nth-child(2)>button, .comm>div:nth-child(2)>div:nth-child(3){
@@ -377,12 +378,11 @@ nav> ul > li {
     margin-bottom: 10px;
 }
 #comment>div:nth-child(2){
-    /*    justify-content: end;*/
     display: flex;
-    margin: 10px 201px;
     justify-content: flex-end;
     display: flex;
-    width: 34%;
+    width: 85%;
+    margin: 26px 0px 0px 26px;
 }
 hr{
     color: #2D9CDB;
@@ -439,7 +439,7 @@ hr{
 }
 
 .email{
-    background-image: url("../images/black-envelope.png");
+    background-image: url("../images/envelope.png");
     background-repeat: no-repeat;
     border: none;
     height: 29px;
@@ -521,10 +521,10 @@ hr{
 .proj>div:nth-child(1)>div:nth-child(2)>div:first-child>img:first-child{
     margin-right: 10px;
 }
-.respuesta{
+.respuesta {
     display: none;
 }
-.proj>div:nth-child(2){
+.proj>div:nth-child(2) {
     margin: 10px 20px;
     display: none;
 }
@@ -532,4 +532,38 @@ hr{
 /* Resalta la valoracion definida por el usuario en un proyecto cuando ese usuario ha iniciado sesion */
 .valoracion-active {
     box-shadow: 0px 0px 5px red;
+}
+        
+.res, .comm {    
+    padding: 10px;
+    width: 220px;
+    border-radius: 10px;  background-color: #cddde3;
+    width: auto;
+    margin-top: 15px;
+}
+
+.res{
+    margin-left: 105px;
+
+}
+.res:before , .comm:before{
+    content:"";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-right: 30px solid #cddde3;
+    border-bottom: 20px solid transparent;
+    margin: 10px 0px 0px -32px;
+}
+
+.responder{
+    border: 2px solid #2d9cdb;
+    width: 107px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 33px;
+    margin-bottom: 10px;
+    margin-top: 11px;
 }

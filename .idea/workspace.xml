@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc493a33-3bb5-4a96-88dd-5174bf3d7786" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/envelope.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/style/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/proyect/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/proyect/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,20 +39,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proyecto.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="proyecto.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/js/proyecto.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="140" column="7" lean-forward="true" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
+            <state relative-caret-position="678">
+              <caret line="171" column="3" lean-forward="true" selection-start-line="171" selection-start-column="3" selection-end-line="171" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/assets/style/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10146">
-              <caret line="534" column="1" selection-start-line="534" selection-start-column="1" selection-end-line="534" selection-end-column="1" />
+            <state relative-caret-position="455">
+              <caret line="535" column="8" lean-forward="true" selection-start-line="535" selection-start-column="8" selection-end-line="535" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -182,10 +187,10 @@
         <option value="$PROJECT_DIR$/src/Entity/Project.php" />
         <option value="$PROJECT_DIR$/src/Repository/ProjectRepository.php" />
         <option value="$PROJECT_DIR$/src/Controller/ProyectController.php" />
-        <option value="$PROJECT_DIR$/public/assets/style/index.css" />
         <option value="$PROJECT_DIR$/src/Repository/ValoracionRepository.php" />
         <option value="$PROJECT_DIR$/templates/proyect/proyecto.html.twig" />
         <option value="$PROJECT_DIR$/public/assets/js/proyecto.js" />
+        <option value="$PROJECT_DIR$/public/assets/style/index.css" />
       </list>
     </option>
   </component>
@@ -528,12 +533,12 @@
       <workItem from="1526994312700" duration="6601000" />
       <workItem from="1527001757081" duration="364000" />
       <workItem from="1527002477404" duration="9334000" />
-      <workItem from="1527081115695" duration="515000" />
+      <workItem from="1527081115695" duration="671000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177859000" />
+    <option name="totallyTimeSpent" value="178015000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="988" extended-state="6" />
@@ -866,13 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/style/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10146">
-          <caret line="534" column="1" selection-start-line="534" selection-start-column="1" selection-end-line="534" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/proyect/proyecto.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -882,8 +880,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/proyecto.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="140" column="7" lean-forward="true" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
+        <state relative-caret-position="678">
+          <caret line="171" column="3" lean-forward="true" selection-start-line="171" selection-start-column="3" selection-end-line="171" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="535" column="8" lean-forward="true" selection-start-line="535" selection-start-column="8" selection-end-line="535" selection-end-column="8" />
         </state>
       </provider>
     </entry>
