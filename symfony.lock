@@ -65,6 +65,9 @@
     "jms/metadata": {
         "version": "1.6.0"
     },
+    "mervick/emojionearea": {
+        "version": "v3.4.1"
+    },
     "nikic/php-parser": {
         "version": "v4.0.1"
     },
@@ -187,6 +190,9 @@
     },
     "symfony/orm-pack": {
         "version": "v1.0.5"
+    },
+    "symfony/polyfill-ctype": {
+        "version": "v1.8.0"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.8.0"

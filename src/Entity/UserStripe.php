@@ -13,12 +13,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
 class UserStripe extends User
 {
   use HasPremium;
-  /**
-   * @var PhoneNumber
-   *
-   * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
-   */
-  protected $phoneNumber;
+
 
   /**
    * @var string
@@ -78,25 +73,6 @@ class UserStripe extends User
   public function getLastName()
   {
     return $this->lastName;
-  }
-
-  /**
-   * @param PhoneNumber $phoneNumber
-   * @return $this
-   */
-  public function setPhoneNumber(PhoneNumber $phoneNumber = null)
-  {
-    $this->phoneNumber = $phoneNumber;
-
-    return $this;
-  }
-
-  /**
-   * @return PhoneNumber
-   */
-  public function getPhoneNumber()
-  {
-    return $this->phoneNumber;
   }
 
   /**

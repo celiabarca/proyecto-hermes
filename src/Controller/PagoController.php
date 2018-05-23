@@ -31,28 +31,22 @@ class PagoController extends Controller
   {
     /** @var User $user */
     $user= $this->getUser();
-    $phoneNumber = $request->query->get('reset') ? new PhoneNumber() : $user->getTelefono();
+    $phoneNumber = $request->query->get('reset') ? ' ' : $user->getTelefono();
     $twilioNumber = $this->getParameter('twilio_number');
 
     if ($request->isXmlHttpRequest()) {
       return new JsonResponse([
-        'verified' => $phoneNumber->isVerified(),
+        'verified' => true,
       ]);
     }
 
-    if ($user->isPremium()) {
+    if ($user->getDestacado()) {
       return $this->redirectToRoute('index');
     }
 
-    if ($phoneNumber->getVerificationCode()) {
-      return $this->render('pago/verificar.html.twig', [
-        'verification_code' => $phoneNumber->getVerificationCode(),
-        'redirect' => $this->get('session')->get('premium_redirect'),
-        'twilio_number' => $twilioNumber,
-      ]);
-    }
+    
 
-    $form = $this->createFormBuilder($phoneNumber)
+    $form = $this->createFormBuilder()
       ->add('number', TextType::class, [
         'label' => 'Phone Number',
       ])
@@ -69,13 +63,12 @@ class PagoController extends Controller
 
       if ($form->isSubmitted() && $form->isValid()) 
           {
-        $phoneNumber->setVerificationCode();
         $this->getUser()->setPhoneNumber($phoneNumber);
         $this->getDoctrine()->getManager()->flush();
 
         $this->get('twilio.client')->calls->create
             (
-                $phoneNumber->getNumber(),
+                $user->getTelefono(),
                 $twilioNumber,
                 ['url' => $this->generateUrl('twilio_voice_verify', [], UrlGeneratorInterface::ABSOLUTE_URL)]
             );
@@ -96,7 +89,7 @@ class PagoController extends Controller
     /** @var User $user */
     $user = $this->getUser();
 
-    if ($user->isPremium()) {
+    if ($user->getDestacado()) {
       return $this->redirectToRoute('index');
     }
 
@@ -113,9 +106,8 @@ class PagoController extends Controller
 
       if ($form->isValid()) {
 
-          $this->get('App\Client\Stripe')->createPremiumCharge($this->getUser(), $form->get('token')->getData());
-          $redirect = $this->get('session')->get('premium_redirect');
-          $redirect = $this->generateUrl('premium_payment');
+          $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData());
+
           return $this->redirectToRoute("index");
       }
     }
@@ -133,8 +125,6 @@ class PagoController extends Controller
         {
             $precio = $form["precio"];
             $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData(),$form['precio'],$form['proyect']);
-            $redirect = $this->get('session')->get('premium_redirect');
-            $redirect = $this->generateUrl('premium_payment');
             return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
         }
     }

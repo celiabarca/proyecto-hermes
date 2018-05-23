@@ -268,8 +268,6 @@ nav> ul > li {
     display: flex;
     align-items: center;
     font-weight: bold;
-
-
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(3)>a, .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>a{
     text-decoration:none; 
@@ -297,6 +295,8 @@ nav> ul > li {
 /*******PROJECTO********/
 #project>div:nth-child(1){
     display: flex;
+    max-width: 1200px;
+    width: 100%;
     flex-direction: column;
 }
 #project>div:nth-child(1)>div:nth-child(1){
@@ -336,7 +336,8 @@ nav> ul > li {
     color: #000000;
 }
 #project>div:nth-child(1)>div:nth-child(3){
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-top: 50px;
@@ -548,7 +549,8 @@ h2{
 .res, .comm {    
     padding: 10px;
     width: 220px;
-    border-radius: 10px;  background-color: #cddde3;
+    border-radius: 10px;  
+    background-color: #cddde3;
     width: auto;
     margin-top: 15px;
 }
@@ -568,7 +570,8 @@ h2{
     margin: 10px 0px 0px -32px;
 }
 
-.responder{
+.responder
+{
     border: 2px solid #2d9cdb;
     width: 107px;
     display: flex;
@@ -597,6 +600,34 @@ h2{
     display: flex;
     align-items: center;
 }
+
+/* Situaciones */
+
+.steps{
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between !important;
+}
+.step
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 250px;
+    height: 50px;
+    -webkit-clip-path: polygon(0 0, 90% 0, 98% 50%, 90% 100%, 0 100%, 8% 50%);
+    clip-path: polygon(0 0, 90% 0, 98% 50%, 90% 100%, 0 100%, 8% 50%);
+    border: 2px solid #2D9CDB;
+    background-clip: padding-box;
+    background: lightblue;
+}
+.faseactiva{
+    background-color: #2D9CDB;
+}
+
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 

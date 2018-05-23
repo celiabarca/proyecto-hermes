@@ -23,7 +23,7 @@ $(document).ready(function(){
 
         return false;
     });
-<<<<<<< HEAD
+
     
     $("#borrar-proyecto").on("click",function()
     {   
@@ -42,8 +42,8 @@ $(document).ready(function(){
                 }
 
            }) 
-           
-=======
+       });   
+
 
     $('#project_etiquetas').on('keydown', function(){
         var nombreTag = $(this).val();
@@ -62,7 +62,8 @@ $(document).ready(function(){
         });
     });
 
-    $('#no-megusta-btn').on('click', function(){
+    $('#no-megusta-btn').on('click', function()
+    {
         var proyecto = $(this).data('proyectoid');
 
        $.ajax({
@@ -75,8 +76,7 @@ $(document).ready(function(){
            ,
            error: function() {
 
-           }
-       });
->>>>>>> e52575a634a68d652f841f4c42caa027c2377b15
+            }
+        });
     });
 });
