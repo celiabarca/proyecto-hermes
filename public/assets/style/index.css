@@ -148,6 +148,13 @@ nav> ul > li {
     flex-direction: column;
     margin-top: 15px;
 }
+#register>button{
+    width: 40%;
+    background: #2888dd;
+    border: solid 2px #009ade;
+    color: #fcfcfc;
+    height: 39px;
+}
 #reguistro{
     margin-bottom: 100px;
 }
@@ -482,6 +489,42 @@ hr{
     padding-left: 31px;
     margin-bottom: 15px;
 }
+.sector{
+    background-image: url("../images/connection.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+.telefono{
+    background-image: url("../images/old-typical-phone.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+.username{
+    background-image: url("../images/man-user.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+.company{
+    background-image: url("../images/factory.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
 #loging{
     background-image: url("../images/Captura.PNG")
 }
@@ -630,12 +673,13 @@ h2{
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
-    background-color: #f2f2f2;
     border: none;
+    background-color: #82b4e0;
 }
 #nuevoProjecto>div:nth-child(1)>div{
     display: flex;
     justify-content: flex-end;
+    background-color: #82b4e0;
 }
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
