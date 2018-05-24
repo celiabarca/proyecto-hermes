@@ -58,24 +58,28 @@
                                     {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
                                 </div>
                             </div>
-                            {% for respuesta in comentario.respuestas %}
-                                <div id="triangulo">
-                                </div>
-                                <div class="comm res">
-                                    <div>
-                                        <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                    </div>
-                                    <div>
-                                        <div>
-                                            {{respuesta.autor.nombre}}
+                            <div class="respuestas collapsible" data-limit="3">
+                                {% for respuesta in comentario.respuestas %}
+                                    <div class="collapsible-element">
+                                        <div id="triangulo">
                                         </div>
-                                        <div>
-                                            <p> {{respuesta.contenido}}</p>
+                                        <div class="comm res">
+                                            <div>
+                                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    {{respuesta.autor.nombre}}
+                                                </div>
+                                                <div>
+                                                    <p> {{respuesta.contenido}}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
-
+                                {% endfor %}
+                                <button class="vermas-btn">Ver más</button>
+                            </div>
                         {% endfor %}
 
                         <div>

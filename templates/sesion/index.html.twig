@@ -3,11 +3,13 @@
 {% block contenido %}
     <div id="loging">
         <div>
-            <div>
+            <div id="login-form-container">
             <section>
                 <form action="{{path('login')}}" method="post" accept-charset="utf-8">
                     <h1>inicia sesion</h1>
-                    <p>{{ error }}</p>
+                    {% if error %}
+                        <p id="errorLogin">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                    {% endif %}
                     <label id="email-label">E-mail</label>
                     <input type="text" name="_username" class="email"placeholder="Email" aria-labelledby="email-label">
                     <label id="password-label">Contraseña</label>
