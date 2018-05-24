@@ -28,4 +28,10 @@ $( document ).ready(function() {
     function sliderReguistro(){
          
     }
+
+    var errorLogin = document.getElementById('errorLogin');
+
+    if(typeof errorLogin !== 'undefined' && errorLogin != null) {
+        $('#login-form-container').addClass('animated shake');
+    }
 });
