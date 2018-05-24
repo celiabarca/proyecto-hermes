@@ -6,6 +6,7 @@
             <div>
                 <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
             </div>
+            
             <div>
                 <div>
                     <button id="no-megusta-btn" class="valoracion-btn" data-proyectoid="{{ proyecto.id }}" data-valoracion="{{ (valoracion and valoracion.megusta == false) ? 1 : 0 }}">
@@ -27,11 +28,27 @@
                     <div>000,00$</div>
                 </div>
             </div>
+            
             <div>
                 {{proyecto.fechaCreacion|date('d/m/Y')}}
             </div>
             <div>
                 <h1>{{proyecto.titulo}}</h1>
+            </div>
+            <div class="steps ">
+                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                <div class="step faseactiva">
+                    Situacion X
+                </div>
+                <div class="step">
+                    Situacion X
+                </div>
+                <div class="step">
+                    Situacion X
+                </div>
+                <div class="step">
+                    Situacion X
+                </div>
             </div>
             <div>
                 {{proyecto.descripcion}}
@@ -89,4 +106,13 @@
 
 {% block js_especifico %}
     <script src="{{ asset('assets/js/proyecto.js') }}"></script>
+    <script src="{{ asset('assets/js/emojionearea.js') }}"></script>
+    <script type="text/javascript">
+            $(document).ready(function() {
+              $(".emojis").emojioneArea({
+                
+              });
+            });
+</script>
+  </script>
 {% endblock %}

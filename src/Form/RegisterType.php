@@ -43,21 +43,22 @@ class RegisterType extends AbstractType {
                     'first_options' => [
                         'label' => 'Contraseña'
                     ],
+                    'attr' => [
+                            'class' => 'passwd'
+                        ],
+                    
                     'second_options' => [
                         'label' => 'Repetir contraseña',
                         'attr' => [
                             'class' => 'passwd'
                         ]
-                    ],
-                    'attr' => [
-                        'class' => 'passwd'
                     ]
                 ])
                 ->add('telefono', TextType::class, [
                     'label' => 'Telefono',
                     'required' => false,
                     'attr' => [
-                        'class' => 'phone'
+                        'class' => 'telefono'
                     ]
                 ])
                 ->add('empresa', TextType::class, [

@@ -1,9 +1,82 @@
 {% extends "base.html.twig"%}
 {% block contenido %}
-    
-    {{form_start(FormularioProyecto)}}
-    {{form_widget(FormularioProyecto)}}
-    {{form_end(FormularioProyecto)}}
+    <div id ="nuevoProjecto">
+        <div class="newProyect">
+            {{form_start(FormularioProyecto)}}
+            <div>
+                <div>
+                    <p>Felicidades estas a punto de empezar un nuevo proyecto que puede</p>
+                    <p>Muchísimas gracias por elegirnos para poder sacar adelante tu idea</p>
+                    <p>¿Empezamos?</p>
+                </div>
+                <div>
+                    <div>
+                        <p>¿Que titulo quieres ponerle a tu proyecto?</p>
+                        {{form_widget(FormularioProyecto.titulo)}}
+                    </div>
+                    <div>
+                        <p>Describe tu idea con palabras cortas para poder buscarlo</p>
+                        {{form_widget(FormularioProyecto.etiquetas)}}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>Ahora que ya has pensado bien de que ira tu proyecto, ¿nos lo explicas?</p>
+                    <p>Esto será lo primero que lean los inversores así que piénsalo bien</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Descripción completa del proyecto</p>
+                        {{form_widget(FormularioProyecto.contenido)}}
+                    </div>
+                    <div>
+                        <p>Facilitanos un pequeño resumen para poder ponerlo en el blog</p>
+                        {{form_widget(FormularioProyecto.descripcion)}}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>Esto está casi hecho, que te parece si eliges una foto para publicitar tu proyecto</p>
+                    <p>Cuanta más calidad tenga la imagen mejor quedara en tu blog</p>
+                </div>
+                <div>
+                    <div>
+                        {{form_widget(FormularioProyecto.img)}}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>¿ Has pensado empezar este nuevo proyecto con alguien ?</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Nombre de usuario del colaborador:</p>
+                        {{form_widget(FormularioProyecto.img)}}
+                    </div>
+                    <input type="button" value="¿ Alguien más?" />
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>¿ Donde quieres que te agregamos los donativos de nuestros queridos patrocinadores ?</p>
+                </div>
+                <div>
+                    <div>
+                        <p>puedes poner una aproximación de a que cantidad quieres llegar</p>
+                        {{form_widget(FormularioProyecto.meta)}}
+                    </div>
+                </div>
+            </div>
+            {{form_end(FormularioProyecto)}}
+            <div>
+                <input type="button" id="cursor" value="" name="0" />
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}
 

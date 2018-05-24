@@ -3,12 +3,20 @@
     src: url(../fonts/PT_Sans/PT_Sans-Web-Regular.ttf);
 }
 @font-face {
-    font-family: "title";
+    font-family: "title_old";
     src: url(../fonts/PT_Serif/PT_Serif-Web-Bold.ttf);
 }
 @font-face {
     font-family: "cuatro";
-    src: url(../fonts/Marcellus_SC/MarcellusSC-Regular.ttf);
+    src: url(../fonts/Marcellus_SC/PlayfairDisplay-Regular.ttf);
+}
+@font-face {
+    font-family: "title";
+    src: url(../fonts/Playfair_Display/MarcellusSC-Regular.ttf);
+}
+html {
+    min-height: 100%;
+    position: relative;
 }
 body{
     background-color: #F2F2F2;
@@ -20,7 +28,7 @@ h1{
     font-family: title;
 }
 
-#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging, #error {
+#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging, #error, #nuevoProjecto {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -29,8 +37,10 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
+    position: absolute;
+    bottom: 0;
 }
-#error:nth-child(1),#blog>div:nth-child(1),#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -53,6 +63,7 @@ footer> div:nth-child(1)>div>ul{
     display: flex;
     text-decoration: none;
     list-style-type: none;
+    padding-left: 5px;
 }
 footer> div:nth-child(2)>div:nth-child(1){
     justify-content: center;
@@ -141,6 +152,16 @@ nav> ul > li {
     flex-direction: column;
     margin-top: 15px;
 }
+#register>div>button{
+    width: 40%;
+    background: #2888dd;
+    border: solid 2px #009ade;
+    color: #fcfcfc;
+    height: 39px;
+}
+#register>div:nth-child(8){
+    align-items: flex-end;
+}
 #reguistro{
     margin-bottom: 100px;
 }
@@ -190,6 +211,7 @@ nav> ul > li {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    z-index: 1;
 
 }
 #userstop> div:nth-child(1)>div:nth-child(2){
@@ -224,6 +246,20 @@ nav> ul > li {
     justify-content: center;
     display: flex;
 }
+#projectop:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 331px;
+    margin-top: -279px;
+    transform: skew(0deg -51deg);
+    transform: skew(0deg, -3deg);
+    transition: width 1.2s ease-in-out;
+    background: #f2f2f2;
+    position: absolute;
+    left: 0px;
+
+}
 #projectop>div:nth-child(1){
     display: flex;
     justify-content: center;
@@ -232,6 +268,8 @@ nav> ul > li {
 }
 #projectop{
     background-color: #012545;
+    margin-bottom: 64px;
+    height: 780px;
 }
 #projectop>div:nth-child(1)>div:nth-child(2){
     display: flex;
@@ -268,8 +306,6 @@ nav> ul > li {
     display: flex;
     align-items: center;
     font-weight: bold;
-
-
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(3)>a, .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>a{
     text-decoration:none; 
@@ -297,6 +333,8 @@ nav> ul > li {
 /*******PROJECTO********/
 #project>div:nth-child(1){
     display: flex;
+    max-width: 1200px;
+    width: 100%;
     flex-direction: column;
 }
 #project>div:nth-child(1)>div:nth-child(1){
@@ -336,7 +374,8 @@ nav> ul > li {
     color: #000000;
 }
 #project>div:nth-child(1)>div:nth-child(3){
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-top: 50px;
@@ -475,6 +514,42 @@ hr{
     padding-left: 31px;
     margin-bottom: 15px;
 }
+.sector{
+    background-image: url("../images/connection.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+.telefono{
+    background-image: url("../images/old-typical-phone.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+.username{
+    background-image: url("../images/man-user.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
+.company{
+    background-image: url("../images/factory.png");
+    background-repeat: no-repeat;
+    border: none;
+    height: 29px;
+    background-position: 5px;
+    padding-left: 31px;
+    margin-bottom: 15px;
+}
 #loging{
     background-image: url("../images/Captura.PNG")
 }
@@ -554,7 +629,8 @@ h2{
 .res, .comm {    
     padding: 10px;
     width: 220px;
-    border-radius: 10px;  background-color: #cddde3;
+    border-radius: 10px;  
+    background-color: #cddde3;
     width: auto;
     margin-top: 15px;
 }
@@ -574,7 +650,8 @@ h2{
     margin: 10px 0px 0px -32px;
 }
 
-.responder{
+.responder
+{
     border: 2px solid #2d9cdb;
     width: 107px;
     display: flex;
@@ -604,6 +681,7 @@ h2{
     align-items: center;
 }
 
+
 /* div para hacer el crop de una imagen */
 /*
 #cropbox {
@@ -619,6 +697,69 @@ h2{
     width: 100%;
 }
 */
+
+/* Situaciones */
+
+.steps{
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between !important;
+}
+.step
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 250px;
+    height: 50px;
+    -webkit-clip-path: polygon(0 0, 90% 0, 98% 50%, 90% 100%, 0 100%, 8% 50%);
+    clip-path: polygon(0 0, 90% 0, 98% 50%, 90% 100%, 0 100%, 8% 50%);
+    border: 2px solid #2D9CDB;
+    background-clip: padding-box;
+    background: lightblue;
+}
+.faseactiva{
+    background-color: #2D9CDB;
+}
+
+/******************nuevo porjecto***********************/
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 94px;
+    background-color: #82B4E0;
+    padding-bottom: 136px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1)>div:nth-child(2)>div{
+    display: flex;
+    margin-bottom: 10px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1)>div:nth-child(2)>div>p{
+    margin: 0px 3px 0px auto;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(2), #nuevoProjecto>div:nth-child(1)>form>div:nth-child(3), #nuevoProjecto>div:nth-child(1)>form>div:nth-child(4), #nuevoProjecto>div:nth-child(1)>form>div:nth-child(5),  #nuevoProjecto>div:nth-child(1)>form>div:nth-child(6){
+    display: none;
+}
+#nuevoProjecto>div:nth-child(1)>div>input{
+    background-image: url("../images/play-button.png");
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #82b4e0;
+}
+#nuevoProjecto>div:nth-child(1)>div{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #82b4e0;
+}
+
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 
@@ -764,7 +905,7 @@ h2{
         width:40%;
     }
 }
-@media screen and(max-width: 400px){
+@media screen and(max-width:400px) and (min-width: 280px){
     #reguistro > div:nth-child(1) > div:nth-child(1) {
         width: 277px;
     }
@@ -785,7 +926,7 @@ h2{
         width: 41%;
         height: auto;
     }
-    proj {
+    .proj {
         width: 25%;
     }
     .res {

@@ -6,6 +6,9 @@ index:
 login:
     path: /login
     controller: App\Controller\UserController::login
+logout:
+    path: /logout
+    controller: App\Controller\UserController::logout
 
 registrarse:
     path: /registrarse
@@ -77,7 +80,7 @@ Colaborar:
 
 #Stripe
 premium_payment:
-    path: /premium/payment
+    path: /proyecto/{id}/aportar
     controller: App\Controller\PagoController::paymentAction
 
 premium_verify:

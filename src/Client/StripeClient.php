@@ -32,14 +32,14 @@ class StripeClient
   public function CrearCargo(User $user, $token, $precio = 2000, Project $proyecto = null)
   {
       $charge = Charge::create([
-        'amount' => $data,
+        'amount' => $precio,
         'currency' => 'EUR',
         'source' => $token,
         'receipt_email' => $user->getEmail(),
       ]);
  ;
     $user->setChargeId($charge->id);
-    $user->setPremium($charge->paid);
+    $user->setDestacado($charge->paid);
     $this->em->persist($user);
     $this->em->flush();
   }
