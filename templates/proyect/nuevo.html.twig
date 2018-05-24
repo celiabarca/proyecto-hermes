@@ -1,7 +1,7 @@
 {% extends "base.html.twig"%}
 {% block contenido %}
     <div id ="nuevoProjecto">
-        <div>
+        <div class="newProyect">
             {{form_start(FormularioProyecto)}}
             <div>
                 <div>
@@ -72,7 +72,7 @@
             </div>
             {{form_end(FormularioProyecto)}}
             <div>
-                <input type="button" >
+                <input type="button" id="cursor" value="" name="0" />
             </div>
 
         </div>

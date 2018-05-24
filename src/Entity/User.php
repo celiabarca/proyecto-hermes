@@ -147,13 +147,8 @@ class User implements UserInterface
         $this->respuestas = new ArrayCollection();
     }
 
-    public function getTelefono() {
-        return $this->telefono;
-    }
 
-    public function setTelefono($telefono) {
-        $this->telefono = $telefono;
-    }
+    
 
         public function getId() {
         return $this->id;

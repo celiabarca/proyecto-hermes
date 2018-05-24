@@ -80,7 +80,7 @@ Colaborar:
 
 #Stripe
 premium_payment:
-    path: /premium/payment
+    path: /proyecto/{id}/aportar
     controller: App\Controller\PagoController::paymentAction
 
 premium_verify:
