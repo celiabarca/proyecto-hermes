@@ -175,16 +175,12 @@ function renderValoracion() {
     });
     
     $("#cursor").on("click",function()
-    {
-        
+    {     
         if(cont < $(".newProyect > form:nth-child(1) > div").length)
         {
-           
-            $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").hide();
+            $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").hide("slow");
             cont++;
-            $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").show();
+            $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").show("slow");
         }
-        
-
     })
 });

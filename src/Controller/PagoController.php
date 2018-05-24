@@ -119,16 +119,25 @@ class PagoController extends Controller
   
   public function DonarProyecto(Project $proyecto, Request $req)
   {
-    if ($request->isMethod('POST')) {
-    $form->handleRequest($request);
+    $form = $this->get('form.factory')
+        ->createNamedBuilder('payment-form')
+        ->add('token', HiddenType::class, [
+          'constraints' => [new NotBlank()],
+        ])
+        ->add("cantidad", \Symfony\Component\Form\Extension\Core\Type\NumberType::class)
+        ->add('submit', SubmitType::class)
+        ->getForm();
+
+    if ($request->isMethod('POST')) 
+        {
+        $form->handleRequest($request);
         if ($form->isValid()) 
         {
             $precio = $form["precio"];
             $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData(),$form['precio'],$form['proyect']);
             return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
         }
-    }
-      
-      return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
+    }  
+    return $this->render("/proyecto/donar.html.twig",["Proyecto"=>$proyecto], "form"=>$form);
   }
 }
