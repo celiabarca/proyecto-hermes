@@ -115,7 +115,6 @@ class UserController extends Controller {
 
             if($usuario->getImg()) {
                 $file = $usuario->getImg();
-
                 if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
                     $filename = md5(uniqid()).'.'.$file->guessExtension();
                     $file->move($this->getParameter('pictures_directory'), $filename);
