@@ -1,3 +1,33 @@
+/**
+ * Oculta el resto de elemetos y solo deja visible
+ * la cantidad de elementos puesta en el atributo data-limit=""
+ * de la clase .collapsible
+ */
+function ocultarApartirDeLimite() {
+    $('.collapsible').each(function(){
+        var $this = $(this);
+        var limit = parseInt($this.data('limit'));
+        var visibleElements = 0;
+        $this.find('.collapsible-element').each(function(){
+            var $this = $(this);
+            if(visibleElements >= limit) {
+                $this.hide();
+            }
+            visibleElements++;
+        });
+    });
+}
+
+/**
+ * Muestra los elementos ocultos en un collapsible
+ */
+function verMas() {
+    var $this = $(this);
+    var collapsibles = $this.parent().find('.collapsible-element');
+    $(collapsibles).show();
+    $this.hide(); // oculta el boton de ver mas
+}
+
 $( document ).ready(function() {
     //alert($(window).width());
     //change images de imput email
@@ -34,4 +64,7 @@ $( document ).ready(function() {
     if(typeof errorLogin !== 'undefined' && errorLogin != null) {
         $('#login-form-container').addClass('animated shake');
     }
+
+    ocultarApartirDeLimite();
+    $('.vermas-btn').on('click', verMas);
 });
