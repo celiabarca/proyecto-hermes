@@ -148,8 +148,6 @@ class User implements UserInterface
     }
 
 
-    
-
         public function getId() {
         return $this->id;
     }
@@ -473,7 +471,7 @@ class User implements UserInterface
     {
         $this->telefono = $telefono;
     }
-        
+
     /**
      * Returns the roles granted to the user.
      *

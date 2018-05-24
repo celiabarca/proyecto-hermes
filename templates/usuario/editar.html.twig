@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('assets/styles/jquery.Jcrop.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/style/jquery.Jcrop.min.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block contenido %}
@@ -13,6 +13,11 @@
         {{ form_rest(form) }}
         {{ form_end(form) }}
     </div>
+</div>
+<div id="cropbox">
+    <img id="crop-image" src="#" alt="crop-img">
+    <button id="aceptar-crop-btn">Recortar</button>
+    <button id="cancelar-crop-btn">Cancelar</button>
 </div>
 {% endblock %}
 
