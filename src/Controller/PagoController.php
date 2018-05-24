@@ -138,6 +138,6 @@ class PagoController extends Controller
             return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
         }
     }  
-    return $this->render("/proyecto/donar.html.twig",["Proyecto"=>$proyecto], "form"=>$form);
+    //return $this->render("/proyecto/donar.html.twig",["Proyecto"=>$proyecto], "form"=>$form);
   }
 }
