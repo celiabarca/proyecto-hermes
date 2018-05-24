@@ -474,7 +474,7 @@ class User implements UserInterface
     {
         $this->telefono = $telefono;
     }
-        
+
     /**
      * Returns the roles granted to the user.
      *
