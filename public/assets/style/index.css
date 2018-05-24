@@ -3,12 +3,16 @@
     src: url(../fonts/PT_Sans/PT_Sans-Web-Regular.ttf);
 }
 @font-face {
-    font-family: "title";
+    font-family: "title_old";
     src: url(../fonts/PT_Serif/PT_Serif-Web-Bold.ttf);
 }
 @font-face {
     font-family: "cuatro";
-    src: url(../fonts/Marcellus_SC/MarcellusSC-Regular.ttf);
+    src: url(../fonts/Marcellus_SC/PlayfairDisplay-Regular.ttf);
+}
+@font-face {
+    font-family: "title";
+    src: url(../fonts/Playfair_Display/MarcellusSC-Regular.ttf);
 }
 html {
     min-height: 100%;
@@ -148,12 +152,15 @@ nav> ul > li {
     flex-direction: column;
     margin-top: 15px;
 }
-#register>button{
+#register>div>button{
     width: 40%;
     background: #2888dd;
     border: solid 2px #009ade;
     color: #fcfcfc;
     height: 39px;
+}
+#register>div:nth-child(8){
+    align-items: flex-end;
 }
 #reguistro{
     margin-bottom: 100px;
@@ -204,6 +211,7 @@ nav> ul > li {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    z-index: 1;
 
 }
 #userstop> div:nth-child(1)>div:nth-child(2){
@@ -238,6 +246,20 @@ nav> ul > li {
     justify-content: center;
     display: flex;
 }
+#projectop:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 331px;
+    margin-top: -279px;
+    transform: skew(0deg -51deg);
+    transform: skew(0deg, -3deg);
+    transition: width 1.2s ease-in-out;
+    background: #f2f2f2;
+    position: absolute;
+    left: 0px;
+
+}
 #projectop>div:nth-child(1){
     display: flex;
     justify-content: center;
@@ -246,6 +268,8 @@ nav> ul > li {
 }
 #projectop{
     background-color: #012545;
+    margin-bottom: 64px;
+    height: 780px;
 }
 #projectop>div:nth-child(1)>div:nth-child(2){
     display: flex;
