@@ -1,4 +1,38 @@
-/**
+
+
+$(document).ready(function(){
+    var $megustabtn = $('#megusta-btn');
+    var $nomegustabtn = $('#no-megusta-btn');
+    var cont = 1;
+    renderValoracion();
+
+    $('#colaborar-btn').on('click', function() {
+        var proyectoId = this.dataset.proyectoid;
+        var _url = '/proyecto/' + proyectoId + '/colaborar';
+        var $this = $(this);
+        
+
+        $.ajax({
+            url: _url,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                if(data.peticion_envidada) {
+                    $this.css('color', 'yellow');
+                } else {
+                    $this.css('color', 'red');
+                }
+            },
+            error: function(data) {
+                console.log(data.responseJSON.error);
+                $this.css('color', 'red');
+            }
+        });
+
+        return false;
+    });
+    
+    /**
  * muestra la valoracion que le habia dado
  * el usuario de la sesion al haberle dado a megusta o no me gusta
  * si no hay sesion iniciada esto no va a hacer nada
@@ -21,59 +55,29 @@ function renderValoracion() {
     }
 }
 
-/**
- * Quita la valoracion del proyecto
- * @param proyecto
- */
-function quitarValoracion(proyecto) {
-    var $valoracionbtns = $('.valoracion-btn');
-
-    $.ajax({
-       url: '/proyecto/' + proyecto + '/quitar_valoracion',
-       type: 'GET',
-       dataType: 'JSON',
-       success: function(data) {
-           $('.valoracion-btn').removeClass('valoracion-active');
-           $valoracionbtns.data('valoracion', 0);
-           console.log('Valoracion quitada');
-       },
-       error: function(data) {
-           var response = JSON.parse(data.responseText);
-           console.log(response.error);
-       }
-    });
-}
-
-$(document).ready(function(){
-    var $megustabtn = $('#megusta-btn');
-    var $nomegustabtn = $('#no-megusta-btn');
-
-    renderValoracion();
-
-    $('#colaborar-btn').on('click', function() {
-        var proyectoId = this.dataset.proyectoid;
-        var _url = '/proyecto/' + proyectoId + '/colaborar';
-        var $this = $(this);
+    /**
+     * Quita la valoracion del proyecto
+     * @param proyecto
+     */
+    function quitarValoracion(proyecto) {
+        var $valoracionbtns = $('.valoracion-btn');
 
         $.ajax({
-            url: _url,
-            type: 'GET',
-            dataType: 'JSON',
-            success: function(data) {
-                if(data.peticion_envidada) {
-                    $this.css('color', 'yellow');
-                } else {
-                    $this.css('color', 'red');
-                }
-            },
-            error: function(data) {
-                console.log(data.responseJSON.error);
-                $this.css('color', 'red');
-            }
+           url: '/proyecto/' + proyecto + '/quitar_valoracion',
+           type: 'GET',
+           dataType: 'JSON',
+           success: function(data) {
+               $('.valoracion-btn').removeClass('valoracion-active');
+               $valoracionbtns.data('valoracion', 0);
+               console.log('Valoracion quitada');
+           },
+           error: function(data) {
+               var response = JSON.parse(data.responseText);
+               console.log(response.error);
+           }
         });
+    }
 
-        return false;
-    });
 
     $("#borrar-proyecto").on("click",function(){
         var name = $(this).attr("name");
@@ -169,4 +173,18 @@ $(document).ready(function(){
            }
         });
     });
+    
+    $("#cursor").on("click",function()
+    {
+        
+        if(cont < $(".newProyect > form:nth-child(1) > div").length)
+        {
+           
+            $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").hide();
+            cont++;
+            $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").show();
+        }
+        
+
+    })
 });

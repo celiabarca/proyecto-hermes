@@ -6,12 +6,13 @@
                 {% block meta %}
                     <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
                 {% endblock %}
                 <title></title>
                 {% block css %}
                     {% block stylesheets %}
                         <link href="{{ asset('/assets/style/index.css') }}" type="text/css" rel="stylesheet" />
-                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <link href="{{ asset('/assets/style/emojionearea.css') }}" type="text/css" rel="stylesheet" />
                     {% endblock %}
                 {% endblock %}
             {% endblock %}
@@ -34,10 +35,18 @@
                                                 <nav>
                                                     <ul>
                                                         {% block nav %}<!-- items de la barra de navegacion -->
-                                                            <li><a href="" title=""></a>Inicio</li>
+                                                            <li><a href="{{path('index')}}" title="">Inicio</a></li>
+                                                            <li><a href="{{path('listaProyectos')}}" title="">Proyectos</a></li>
+                                                            {% if app.user is null %}
                                                             <li><a href="{{ path('registrarse') }}" title="">Crear Cuenta</a></li>
-                                                            <li><a href="{{ path('login') }}" title="">Iniciar Sesion</a></li>
-                                                            <li><a href="#" title="">Perfil</a></li>
+                                                            {% endif %}
+                                                            {%if app.user %}
+                                                                <li><a href="{{ path('usuario_perfil',{'id':app.user.id})}}" title="">Perfil</a></li>
+                                                                <li><a href="{{ path('logout') }}" title="">Cerrar Sesion</a></li>
+                                                            {% else %}
+                                                                <li><a href="{{ path('login') }}" title="">Iniciar Sesion</a></li>
+                                                            {% endif %}
+                                                                
                                                         {% endblock %}<!-- fin bloque "nav"-->
                                                     </ul>
                                                 </nav>

@@ -1,12 +1,12 @@
 $( document ).ready(function() {
-    alert($(window).width());
+    //alert($(window).width());
     //change images de imput email
     img = "/images/black-envelope.png";
     $(".email").focus(function(){
         $(".email").removeClass("email").addClass("email2");
     });
      $(".email2").focusout(function(){
-         alert("sdkjljdsl");
+         //alert("sdkjljdsl");
         //$(".email2").removeClass("email2").addClass("email");
     });
     

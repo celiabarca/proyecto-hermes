@@ -124,10 +124,6 @@ class User implements UserInterface
     */
     protected $chargeId;
 
-    /**
-     * @ORM\Embedded(class="App\Entity\PhoneNumber", columnPrefix="phone_")
-     */
-    protected $phoneNumber;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Respuesta", mappedBy="autor")
@@ -151,7 +147,15 @@ class User implements UserInterface
         $this->respuestas = new ArrayCollection();
     }
 
-    public function getId() {
+    public function getTelefono() {
+        return $this->telefono;
+    }
+
+    public function setTelefono($telefono) {
+        $this->telefono = $telefono;
+    }
+
+        public function getId() {
         return $this->id;
     }
 
