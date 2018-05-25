@@ -84,6 +84,7 @@ class UserController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function perfilUsuario(User $usuario) {
+        
         return $this->render('usuario/perfil.html.twig', [
            'usuario' => $usuario
         ]);
