@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc493a33-3bb5-4a96-88dd-5174bf3d7786" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Project.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
-              <caret line="119" column="86" lean-forward="true" selection-start-line="119" selection-start-column="86" selection-end-line="119" selection-end-column="86" />
+              <caret line="120" column="86" lean-forward="true" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
               <folding>
                 <element signature="e#117#137#0#PHP" expanded="true" />
               </folding>
@@ -81,8 +80,8 @@
       <file leaf-file-name="Project.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Entity/Project.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="471" column="5" lean-forward="true" selection-start-line="471" selection-start-column="5" selection-end-line="471" selection-end-column="5" />
+            <state relative-caret-position="380">
+              <caret line="467" column="47" selection-start-line="467" selection-start-column="47" selection-end-line="467" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -90,7 +89,9 @@
       <file leaf-file-name="Donacion.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Donacion.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-171" />
+            <state relative-caret-position="19">
+              <caret line="64" column="31" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="31" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -544,12 +545,12 @@
       <workItem from="1527081115695" duration="2021000" />
       <workItem from="1527083329417" duration="13506000" />
       <workItem from="1527167124533" duration="11376000" />
-      <workItem from="1527255265879" duration="4289000" />
+      <workItem from="1527255265879" duration="4856000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208536000" />
+    <option name="totallyTimeSpent" value="209103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="988" extended-state="6" />
@@ -878,7 +879,7 @@
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
-          <caret line="119" column="86" lean-forward="true" selection-start-line="119" selection-start-column="86" selection-end-line="119" selection-end-column="86" />
+          <caret line="120" column="86" lean-forward="true" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
           <folding>
             <element signature="e#117#137#0#PHP" expanded="true" />
           </folding>
@@ -902,13 +903,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Donacion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171" />
+        <state relative-caret-position="19">
+          <caret line="64" column="31" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="31" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Project.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="471" column="5" lean-forward="true" selection-start-line="471" selection-start-column="5" selection-end-line="471" selection-end-column="5" />
+        <state relative-caret-position="380">
+          <caret line="467" column="47" selection-start-line="467" selection-start-column="47" selection-end-line="467" selection-end-column="47" />
         </state>
       </provider>
     </entry>

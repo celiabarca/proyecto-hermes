@@ -465,7 +465,7 @@ class Project
         $cantidad = 0;
 
         foreach($this->donaciones as $donacion) {
-            $cantidad += $donacion->cantidad;
+            $cantidad += $donacion->getCantidad();
         }
 
         return $cantidad;
