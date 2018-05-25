@@ -36,7 +36,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=60, unique=true)
      */
-    private $email;
+    public $email;
 
     /**
      * @ORM\Column(type="string", length=60)
@@ -171,7 +171,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail() :string
     {
         return $this->email;
     }

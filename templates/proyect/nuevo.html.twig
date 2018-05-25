@@ -2,7 +2,7 @@
 {% block contenido %}
     <div id ="nuevoProjecto">
         <div class="newProyect">
-            {{form_start(FormularioProyecto)}}
+            {{form_start(FormularioProyecto,{'action':path("nuevoProyecto")})}}
             <div>
                 <div>
                     <p>Felicidades estas a punto de empezar un nuevo proyecto que puede</p>
@@ -56,7 +56,7 @@
                         <p>Nombre de usuario del colaborador:</p>
                         {{form_widget(FormularioProyecto.img)}}
                     </div>
-                    <input type="button" value="¿ Alguien más?" />
+                    <input type="button" value="¿Alguien más?" />
                 </div>
             </div>
             <div>
