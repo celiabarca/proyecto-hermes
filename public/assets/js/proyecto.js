@@ -83,9 +83,6 @@ function renderValoracion() {
         var name = $(this).attr("name");
 
         var BorrarUrl = '/proyecto/' + name + '/eliminar';
-
-        console.log(BorrarUrl);
-
         $.ajax({
             url: BorrarUrl,
             dataType: 'JSON',
@@ -191,5 +188,12 @@ function renderValoracion() {
             cont--;
             $(".newProyect > form:nth-child(1) > div:nth-child("+cont+")").show("slow");
         }
+    })
+    
+    /* Validacion formulario creacion Proyecto */
+    
+    $("#project_meta").on("blur",function()
+    {
+       aler($(this))
     })
 });

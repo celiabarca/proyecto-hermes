@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Form\RegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Entity\User;
 
 class HomeController extends Controller {
 
@@ -32,10 +33,10 @@ class HomeController extends Controller {
      */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
-
      
         $form = $this->createForm(RegisterType::class);
-        $user = $this->user->getTopUsers();
+        $user = $this->getDoctrine()->getRepository(User::class)->TopDonationUsers();
+        dump($user);
         return $this->render('inicio/index.html.twig', [
             'usuarios' => $user,
             'proyectos' => $proyectos,

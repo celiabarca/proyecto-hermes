@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use App\Entity\Donacion;
 use App\Entity\Project;
 
 /**
@@ -133,15 +134,16 @@ class PagoController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) 
         {
-            $precio = $form["cantidad"];
-            $this->get('App\Client\Stripe')->DonarProyecto($this->getUser(), $form->get('token')->getData(),$precio);
+            $data = $form->getData();
+            $this->get('App\Client\Stripe')->DonarProyecto($this->getUser(), $form->get('token')->getData(),$data['cantidad']);
             $donacion = new Donacion();
             $donacion->setUsuario($this->getUser());
             $donacion->setProyecto($proyecto);
+            $donacion->setCantidad($data["cantidad"]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($donacion);
             $em->flush();
-            return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
+            return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
         }
     }  
     return $this->render("/proyect/donar.html.twig",["proyecto"=>$proyecto, "form"=>$form->createView(), 'stripe_public_key' => $this->getParameter('stripe_public_key')]);

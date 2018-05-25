@@ -17,6 +17,7 @@ class StripeClient
   private $config;
   private $em;
   private $logger;
+  private $price;
   
 
   
@@ -38,13 +39,12 @@ class StripeClient
   {
       
       $charge = Charge::create([
-        'amount' => PRICE,
+        'amount' => $this->price,
         'currency' => 'EUR',
         'source' => $token,
         'receipt_email' => $user->getEmail()
       ]);
-      dump($charge);
-      die;
+      
     
   }
   public function DescacarUsuario(User $user, $token)

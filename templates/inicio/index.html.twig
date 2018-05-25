@@ -70,6 +70,7 @@
             <article id ="comentarios">
                 <div>
                     {% block top_comentarios %}
+                        
                         <div><!-- envoltorio del comentario -->
                             <div>
                                 <div><!-- envoltorio de la imagen -->
@@ -84,6 +85,7 @@
                             </div>
 
                         </div>
+                        
                         <div><!-- envoltorio del comentario -->
                             <div>
                                 <div><!-- envoltorio de la imagen -->
@@ -110,14 +112,15 @@
                             <h1>Patrocinadores mas generosos</h1>
                         </div>
                         <div>
-                            {#                        {% for usuario in usuarios %}#}
+                            {% for usuario in usuarios %}
                             <div class="container_user"><!-- envoltorio del usuario -->
                                 {#                            <div><!-- contenedor del usuario -->#}
                                 {#                                    <div><!-- envoltorio de la imagen -->#}
+                                {{ asset('uploads/'~usuario.img) }}
                                 <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                    <img src="{{ asset('uploads/'~usuario.img) }}" alt="">
                                 </div>
-                                {#                                    </div>#}
+                               
                                 <div><!-- envoltorio del resumen -->
                                     <div><!-- contenedor del resumen -->
                                         <h2>I+D</h2>
@@ -127,6 +130,7 @@
                                 </div>
                                 {#                            </div>#}
                             </div>
+                            {% endfor %}
 
                             <div class="container_user"><!-- envoltorio del usuario -->
                                 {#                            <div><!-- contenedor del usuario -->#}

@@ -30,13 +30,14 @@ class UserRepository extends ServiceEntityRepository
     {
         
         $qb = $this->createQueryBuilder('u')
-        ->select('u.nombre', 'sum(d.cantidad) as total')
+        ->select('us.nombre', 'sum(d.cantidad) as total', 'us.img', 'us.sector', 'us.destacado')
         ->from('App\Entity\User', 'us')
         ->innerJoin('App\Entity\Donacion','d', 'us.id = d.usuario_id')
-        ->groupBy('u.nombre')
+        ->groupBy('us.nombre','us.img', 'us.sector', 'us.destacado')
+        ->orderBy('us.destacado')
         ->getQuery();
         
-        return $qb->execute();
+        return $qb->getResult();
     }
     
     public function findPremiumByChargeId($chargeId)
