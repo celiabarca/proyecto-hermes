@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use App\Entity\Donacion;
 use App\Entity\Project;
 
 /**
@@ -106,7 +107,7 @@ class PagoController extends Controller
 
       if ($form->isValid()) {
 
-          $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData());
+          $this->get('App\Client\Stripe')->DescacarUsuario($this->getUser(), $form->get('token')->getData());
 
           return $this->redirectToRoute("index");
       }
@@ -117,7 +118,7 @@ class PagoController extends Controller
     ]);
   }
   
-  public function DonarProyecto(Project $proyecto, Request $req)
+  public function DonarProyecto(Project $proyecto, Request $request)
   {
     $form = $this->get('form.factory')
         ->createNamedBuilder('payment-form')
@@ -133,11 +134,18 @@ class PagoController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) 
         {
-            $precio = $form["precio"];
-            $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData(),$form['precio'],$form['proyect']);
-            return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
+            $data = $form->getData();
+            $this->get('App\Client\Stripe')->DonarProyecto($this->getUser(), $form->get('token')->getData(),$data['cantidad']);
+            $donacion = new Donacion();
+            $donacion->setUsuario($this->getUser());
+            $donacion->setProyecto($proyecto);
+            $donacion->setCantidad($data["cantidad"]);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($donacion);
+            $em->flush();
+            return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
         }
     }  
-    //return $this->render("/proyecto/donar.html.twig",["Proyecto"=>$proyecto], "form"=>$form);
+    return $this->render("/proyect/donar.html.twig",["proyecto"=>$proyecto, "form"=>$form->createView(), 'stripe_public_key' => $this->getParameter('stripe_public_key')]);
   }
 }

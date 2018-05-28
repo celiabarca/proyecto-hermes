@@ -2,7 +2,7 @@
 {% block contenido %}
     <div id ="nuevoProjecto">
         <div class="newProyect">
-            {{form_start(FormularioProyecto)}}
+            {{form_start(FormularioProyecto,{'action':path("nuevoProyecto")})}}
             <div>
                 <div>
                     <p>Felicidades estas a punto de empezar un nuevo proyecto que puede</p>
@@ -47,6 +47,7 @@
                     </div>
                 </div>
             </div>
+            <div>
             <div>
                 <div>
                     <p>¿ Donde quieres que te agregamos los donativos de nuestros queridos patrocinadores ?</p>

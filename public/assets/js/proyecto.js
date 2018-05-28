@@ -83,9 +83,6 @@ $(document).ready(function () {
         var name = $(this).attr("name");
 
         var BorrarUrl = '/proyecto/' + name + '/eliminar';
-
-        console.log(BorrarUrl);
-
         $.ajax({
             url: BorrarUrl,
             dataType: 'JSON',
@@ -194,7 +191,6 @@ $(document).ready(function () {
             $(".newProyect > form:nth-child(1) > div:nth-child(" + cont + ")").css("display", "flex");
 
         }
-
     });  
     $('#previous').css("display", "none");
     $('#nuevoProjecto>div:nth-child(1)>div>input').click(function(){
@@ -212,5 +208,13 @@ $(document).ready(function () {
         }
     });
     
+    
+    
+    /* Validacion formulario creacion Proyecto */
+    
+    $("#project_meta").on("blur",function()
+    {
+       //aler($(this))
+    })
 
 });

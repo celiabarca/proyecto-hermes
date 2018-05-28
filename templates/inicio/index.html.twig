@@ -70,6 +70,7 @@
             <article id ="comentarios">
                 <div>
                     {% block top_comentarios %}
+                        
                         <div><!-- envoltorio del comentario -->
                             <div>
                                 <div><!-- envoltorio de la imagen -->
@@ -84,6 +85,7 @@
                             </div>
 
                         </div>
+                        
                         <div><!-- envoltorio del comentario -->
                             <div>
                                 <div><!-- envoltorio de la imagen -->
@@ -110,90 +112,26 @@
                             <h1>Patrocinadores mas generosos</h1>
                         </div>
                         <div>
-                            {#                        {% for usuario in usuarios %}#}
+                            {% for usuario in usuarios %}
                             <div class="container_user"><!-- envoltorio del usuario -->
                                 {#                            <div><!-- contenedor del usuario -->#}
                                 {#                                    <div><!-- envoltorio de la imagen -->#}
+                                
                                 <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                    <img src="{{ asset(usuario.img) }}" alt="">
                                 </div>
-                                {#                                    </div>#}
+                               
                                 <div><!-- envoltorio del resumen -->
                                     <div><!-- contenedor del resumen -->
-                                        <h2>I+D</h2>
-                                        <h1>Elon Musk</h1>
+                                        <h2>{{usuario.sector}}</h2>
+                                        <h1>{{usuario.nombre}}</h1>
+                                        <span>{{usuario.total}}€</span>
 
                                     </div>
                                 </div>
                                 {#                            </div>#}
                             </div>
-
-                            <div class="container_user"><!-- envoltorio del usuario -->
-                                {#                            <div><!-- contenedor del usuario -->#}
-                                {#                                    <div><!-- envoltorio de la imagen -->#}
-                                <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                {#                                    </div>#}
-                                <div><!-- envoltorio del resumen -->
-                                    <div><!-- contenedor del resumen -->
-                                        <h2>I+D</h2>
-                                        <h1>Elon Musk</h1>
-
-                                    </div>
-                                </div>
-                                {#                            </div>#}
-                            </div>
-
-                            <div class="container_user"><!-- envoltorio del usuario -->
-                                {#                            <div><!-- contenedor del usuario -->#}
-                                {#                                    <div><!-- envoltorio de la imagen -->#}
-                                <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                {#                                    </div>#}
-                                <div><!-- envoltorio del resumen -->
-                                    <div><!-- contenedor del resumen -->
-                                        <h2>I+D</h2>
-                                        <h1>Elon Musk</h1>
-
-                                    </div>
-                                </div>
-                                {#                            </div>#}
-                            </div>
-
-                            <div class="container_user"><!-- envoltorio del usuario -->
-                                {#                            <div><!-- contenedor del usuario -->#}
-                                {#                                    <div><!-- envoltorio de la imagen -->#}
-                                <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                {#                                    </div>#}
-                                <div><!-- envoltorio del resumen -->
-                                    <div><!-- contenedor del resumen -->
-                                        <h2>I+D</h2>
-                                        <h1>Elon Musk</h1>
-
-                                    </div>
-                                </div>
-                                {#                            </div>#}
-                            </div>
-                            <div class="container_user"><!-- envoltorio del usuario -->
-                                {#                            <div><!-- contenedor del usuario -->#}
-                                {#                                    <div><!-- envoltorio de la imagen -->#}
-                                <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                {#                                    </div>#}
-                                <div><!-- envoltorio del resumen -->
-                                    <div><!-- contenedor del resumen -->
-                                        <h2>I+D</h2>
-                                        <h1>Elon Musk</h1>
-
-                                    </div>
-                                </div>
-                                {#                            </div>#}
-                            </div>
+                            {% endfor %}
                             {#                        {% endfor %}#}
                         {% endblock %}
                     </div>
@@ -208,43 +146,43 @@
                         </div>
                         <!-- envoltorio proyectos mas valorados -->
                         <div><!-- contenedor proyectos mas valorados -->
-                            {#                            {% for proyecto in proyectos %}#}
-                            <div class = "continer_project"><!-- envoltorio del proyecto -->
-                                <div><!-- contenedor del proyecto -->
-                                    <div {#style="background-image:url('{{ asset('assets/images/tesla.jpg') }}')"#}><!-- contenedor de la imagen -->
-                                        <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                            {% for proyecto in proyectos %}
+                                {% if proyecto.img %}
+                                    <div class = "continer_project"><!-- envoltorio del proyecto -->
+                                        <div><!-- contenedor del proyecto -->
+                                            <div {#style="background-image:url('{{ asset('assets/images/tesla.jpg') }}')"#}><!-- contenedor de la imagen -->
+                                                <img src="{{ asset(proyecto.img) }}" alt="">
+                                            </div>
+                                            <div>
+                                                <div><!-- contenedor del titulo -->
+                                                    <h1>{{proyecto.titulo}}</h1>
+                                                </div>
+                                                <div><!-- contenedor del resumen -->
+                                                    <p>{{proyecto.descripcion}}</p>
+                                                </div>
+                                                <div><!-- contenedor del titulo -->
+                                                    <a href="{{path('proyecto',{'id':proyecto.id})}}">Ver Projecto</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div><!-- contenedor del titulo -->
-                                            <h1>Lorem Ipsum</h1>
-                                        </div>
-                                        <div><!-- contenedor del resumen -->
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                        </div>
-                                        <div><!-- contenedor del titulo -->
-                                            <a href="#">Ver Projecto</a>
+                                {% else %}
+                            {#SIN FOTO#}
+                                    <div class = "continer_projectn"><!-- envoltorio del proyecto -->
+                                        <div>
+                                            <div><!-- contenedor del titulo -->
+                                                <h1>{{proyecto.titulo}}</h1>
+                                            </div>
+                                            <div><!-- contenedor del resumen -->
+                                                <p>proyecto.descripcion</p>
+                                            </div>
+                                            <div><!-- contenedor del titulo -->
+                                                <a href="{{path('proyecto',{'id':proyecto.id})}}">Ver Projecto</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            {#                                    SIN FOTO#}
-                            <div class = "continer_projectn"><!-- envoltorio del proyecto -->
-                                <div><!-- contenedor del proyecto -->
-{#                                    <div>#}
-                                        <div><!-- contenedor del titulo -->
-                                            <h1>Lorem Ipsum</h1>
-                                        </div>
-                                        <div><!-- contenedor del resumen -->
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                        </div>
-                                        <div><!-- contenedor del titulo -->
-                                            <a href="#">Ver Projecto</a>
-                                        </div>
-{#                                    </div>#}
-                                </div>
-                            </div>
-                            {#                            {% endfor %}#}
+                                {% endif %}
+                            {% endfor %}
                         </div>
 
                     {% endblock %}

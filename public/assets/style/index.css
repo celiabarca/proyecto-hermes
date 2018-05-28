@@ -14,6 +14,10 @@
     font-family: "title";
     src: url(../fonts/Playfair_Display/MarcellusSC-Regular.ttf);
 }
+*
+{
+    transition: 0.5s;
+}
 html {
     min-height: 100%;
     position: relative;
@@ -162,6 +166,11 @@ nav> ul > li {
 }
 #reguistro{
     margin-bottom: 100px;
+}
+
+#reguistro > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(1) input:focus
+{
+    border: solid 2px lightblue;
 }
 #comentarios>div:nth-child(1){
     display: flex;
@@ -725,9 +734,8 @@ h2{
 .faseactiva{
     background-color: #2D9CDB;
 }
-
-/******************nuevo porjecto***********************/
-#nuevoProjecto>div:nth-child(1)>form>div{
+/******************nuevo proyecto***********************/
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
     justify-content: center;
     display: flex;
     flex-direction: column;

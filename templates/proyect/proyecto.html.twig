@@ -25,7 +25,7 @@
                     <div>
                         <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
                     </div>
-                    <div>000,00$</div>
+                    <div>{{proyecto.getRecaudado()}}€</div>
                 </div>
             </div>
             
@@ -86,7 +86,7 @@
                                                     {{respuesta.autor.nombre}}
                                                 </div>
                                                 <div>
-                                                    <p> {{respuesta.contenido}}</p>
+                                                    <p>{{respuesta.contenido}}</p>
                                                 </div>
                                             </div>
                                             <hr>

@@ -10,20 +10,21 @@ namespace App\Controller;
 
 use App\Form\RegisterType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Repository\UserRepository;
 
 class HomeController extends Controller {
 
     private $pc;
-    private $user;
+    private $userRepository;
 
     /**
      * Injecta dependencias necesarias para visualizar la página de inicio
      * @param \App\Controller\ProyectController $pc
-     * @param \App\Controller\UserController $user
+     * @param \App\Repository\UserRepository $userRepository
      */
-    public function __construct(ProyectController $pc, UserController $user) {
+    public function __construct(ProyectController $pc, UserRepository $userRepository) {
         $this->pc = $pc;
-        $this->user = $user;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -32,10 +33,10 @@ class HomeController extends Controller {
      */
     public function index() {
         $proyectos = $this->pc->dameProyectos();
-
      
         $form = $this->createForm(RegisterType::class);
-        $user = $this->user->getTopUsers();
+        $user = $this->userRepository->TopDonationUsers();
+
         return $this->render('inicio/index.html.twig', [
             'usuarios' => $user,
             'proyectos' => $proyectos,

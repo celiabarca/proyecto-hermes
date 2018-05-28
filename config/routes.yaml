@@ -80,7 +80,7 @@ Colaborar:
 
 #Stripe
 premium_payment:
-    path: /proyecto/{id}/aportar
+    path: /usuario/destacar/
     controller: App\Controller\PagoController::paymentAction
 
 premium_verify:
@@ -88,6 +88,10 @@ premium_verify:
     controller: App\Controller\PagoController::verifyAction
     options:
         expose: true
+        
+donar_proyecto:
+    path: /proyecto/{id}/donar
+    controller: App\Controller\PagoController::DonarProyecto
 
 stripe_webhook:
     path: /stripe/wh

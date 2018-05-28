@@ -461,4 +461,14 @@ class Project
         return $noMeGusta;
     }
 
+    public function getRecaudado() {
+        $cantidad = 0;
+
+        foreach($this->donaciones as $donacion) {
+            $cantidad += $donacion->getCantidad();
+        }
+
+        return $cantidad;
+    }
+
 }
