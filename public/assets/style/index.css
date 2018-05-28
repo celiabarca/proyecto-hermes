@@ -73,7 +73,7 @@ footer> div:nth-child(2)>div:nth-child(1){
     justify-content: center;
 }
 footer> div:nth-child(2)>div:nth-child(1)>ul{
-    justify-content: end;
+    justify-content: flex-end;
 }
 footer> div:nth-child(1)>div>ul>li{
     margin-left: 5px;
@@ -83,7 +83,7 @@ footer> div:nth-child(1)>div>ul>li>a{
     text-decoration:none; 
 }
 footer> div:nth-child(1)>div:nth-child(3){
-    justify-content: end;
+    justify-content: flex-end;
     width: 45%;
     display: flex;
 }
@@ -905,7 +905,7 @@ h2{
 }
 .proj-perfil>div:nth-child(1)>div:nth-child(2)>div{
     position: absolute;
-    bottom: 11px;
+    bottom: 0px;
 
 }
 #perfil>div:nth-child(1)>div:nth-child(3)>button{
@@ -972,7 +972,17 @@ h2{
         justify-content: center;
         align-items: center;
     }
-
+    .proj-perfil {
+        width: 95%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(1){
+        width: 95%;
+    }
+    #perfil > div:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 
 }
@@ -1015,11 +1025,7 @@ h2{
     .proj-perfil{
         width: 84%;
     }
-    #perfil > div:nth-child(1){
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
     #perfil > div:nth-child(1) > div:nth-child(1) {
         width: 84%;
     }
@@ -1086,6 +1092,13 @@ h2{
     #reg > div:nth-child(1) > div:nth-child(1) {
         width: 80%;
     }
+    .proj-perfil {
+        width: 55%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(1) {
+        width: 55%;
+    }
+
 
 }
 @media screen and (max-width: 500px){
@@ -1133,6 +1146,20 @@ h2{
         flex-direction: column;
         align-items: center;
         margin-left: 0px;
+    }
+    .proj-perfil > div:nth-child(1){
+        flex-direction: column;
+    }
+    .proj-perfil {
+        width: 40%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1){
+        width: 62%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
 }
