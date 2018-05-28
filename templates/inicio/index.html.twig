@@ -113,6 +113,7 @@
                         </div>
                         <div>
                             {% for usuario in usuarios %}
+                                {% if usuario.sumDonations() > 0 %}
                             <div class="container_user"><!-- envoltorio del usuario -->
                                 {#                            <div><!-- contenedor del usuario -->#}
                                 {#                                    <div><!-- envoltorio de la imagen -->#}
@@ -125,12 +126,13 @@
                                     <div><!-- contenedor del resumen -->
                                         <h2>{{usuario.sector}}</h2>
                                         <h1>{{usuario.nombre}}</h1>
-                                        <span>{{usuario.total}}€</span>
+                                        <span>{{usuario.sumDonations()}}€</span>
 
                                     </div>
                                 </div>
                                 {#                            </div>#}
                             </div>
+                            {% endif %}
                             {% endfor %}
                             {#                        {% endfor %}#}
                         {% endblock %}

@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProjectType extends AbstractType
 {
@@ -23,7 +24,7 @@ class ProjectType extends AbstractType
             ->add('descripcion', TextareaType::class, [
                 'label' => 'Descripcion'
             ])
-            ->add('img', TextType::class, [
+            ->add('img', FileType::class, [
                 'label' => 'Imagen'
             ])
             ->add('contenido', TextareaType::class, [

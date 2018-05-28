@@ -170,6 +170,7 @@ $(document).ready(function () {
             }
         });
     });
+    
     //$("#next").css("display", "none");
     $("#next").on("click", function ()
     {
@@ -209,7 +210,6 @@ $(document).ready(function () {
             $('#previous').css("display", "block");
         }
     });
-    
 
 
     
@@ -218,7 +218,8 @@ $(document).ready(function () {
     
     $("#project_meta").on("blur",function()
     {
-       aler($(this))
+       //aler($(this))
     })
+
 
 });
