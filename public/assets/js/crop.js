@@ -69,19 +69,59 @@ function cancelarCrop() {
     $('#cropbox').hide();
 }
 
+// funcion sacada de stackoverflow
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
 $(document).ready(function(){
+    var data_url;
+    var filename;
+
     $('#cropbox').hide();
 
     $('#editar_usuario_img').on('change', function(event){
-        var img = event.target.files[0];
         var c = new crop();
+        var img = event.target.files[0];
+
+        filename = img.name;
         c.initCrop(img);
+
         $('#cropbox').show();
+
         $('#aceptar-crop-btn').on('click', function(){
-            c.aplicarCrop();
+            data_url = c.aplicarCrop();
         });
+
         $('#cancelar-crop-btn').on('click', function(){
             c.cancelarCrop();
         });
     });
+
+    $("form[name='editar_usuario']").on('submit', function(event){
+        event.preventDefault();
+
+        var form = new FormData(document.getElementsByName("editar_usuario")[0]);
+        var blob = dataURItoBlob(data_url);
+
+        form.set("img", blob, filename);
+        form.submit();
+    });
+
 });
