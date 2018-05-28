@@ -171,7 +171,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail() :string
+    public function getEmail() 
     {
         return $this->email;
     }
@@ -539,6 +539,14 @@ class User implements UserInterface
       return $this->chargeId;
     }
 
-
+    public function sumDonations()
+    {
+        $total = 0;
+        foreach ($this->donaciones as $donacion)
+        {
+            $total += $donacion->getCantidad();
+        }
+        return $total;
+    }
  
 }

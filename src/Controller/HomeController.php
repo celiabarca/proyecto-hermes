@@ -35,8 +35,7 @@ class HomeController extends Controller {
         $proyectos = $this->pc->dameProyectos();
      
         $form = $this->createForm(RegisterType::class);
-        $user = $this->userRepository->TopDonationUsers();
-
+        $user = $this->userRepository->findAll();
         return $this->render('inicio/index.html.twig', [
             'usuarios' => $user,
             'proyectos' => $proyectos,
