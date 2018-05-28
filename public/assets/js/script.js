@@ -28,8 +28,6 @@ function verMas() {
     $(collapsibles).show();
     $this.hide(); // oculta el boton de ver mas
 }
-
-
     //alert($(window).width());
     //change images de imput email
     img = "/images/black-envelope.png";
@@ -65,4 +63,4 @@ function verMas() {
 
     ocultarApartirDeLimite();
     $('.vermas-btn').on('click', verMas);
-});
+})
