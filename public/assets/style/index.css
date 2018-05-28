@@ -28,7 +28,7 @@ h1{
     font-family: title;
 }
 
-#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, #loging, #error, #nuevoProjecto, #perfil {
+#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -40,7 +40,7 @@ footer{
     position: absolute;
     bottom: 0;
 }
-#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),#loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -130,8 +130,6 @@ nav> ul > li {
     display: flex;
     margin-top: 43px;
     margin-bottom: 43px;
-
-
 }
 #reguistro > div:nth-child(1)>div:nth-child(1){
     display: flex;
@@ -153,7 +151,7 @@ nav> ul > li {
     margin-top: 15px;
 }
 #register>div>button{
-    width: 40%;
+    width: 120px;
     background: #2888dd;
     border: solid 2px #009ade;
     color: #fcfcfc;
@@ -458,28 +456,29 @@ hr{
     display: flex;
 }
 
+
 /************************loging*********************************/
-#loging >div:nth-child(1)>div:nth-child(1){
+.loging >div:nth-child(1)>div:nth-child(1){
     background-color: rgba(7, 61, 92, 0.7);
     width: 29%;
     justify-content: center;
     display: flex;
     padding-bottom: 50px;
 }
-#loging >div:nth-child(1)>div:nth-child(1)>section>form{
+.loging >div:nth-child(1)>div:nth-child(1)>section>form{
     display: flex;
     flex-direction: column;
 
 }
-#loging {
-    padding-bottom: 122px;
+.loging {
+    padding-bottom: 17%;
     padding-top: 50px;
 }
-#loging >div:nth-child(1){
+.loging >div:nth-child(1){
     display: flex;
     justify-content: center;
 }
-#loging >div:nth-child(1)>div:nth-child(1)>section>form>input:last-child{
+.loging >div:nth-child(1)>div:nth-child(1)>section>form>input:last-child{
     border-radius: 0px 0px;
     border: none;
     height: 27px;
@@ -550,23 +549,25 @@ hr{
     padding-left: 31px;
     margin-bottom: 15px;
 }
-#loging{
+.loging{
     background-image: url("../images/Captura.PNG")
 }
-#loging >div:nth-child(1)>div:nth-child(1)>section>form>h1{
+.loging >div:nth-child(1)>div:nth-child(1)>section>form>h1{
     justify-content: center;
     display: flex;
     color: #f2f2f2;
 }
-#loging >div:nth-child(1)>div:nth-child(1)>section>form>label{
+.loging >div:nth-child(1)>div:nth-child(1)>section>form>label{
     display: none;
 }
 /****************************blog***************************/
 
 .proj{
     border:solid 3px #026f97;
-    width: 80%;
     margin-bottom: 20px;
+}
+.tam{
+    width: 80%;
 }
 .proj>div:nth-child(1){
     display: flex;
@@ -726,15 +727,53 @@ h2{
 }
 
 /******************nuevo porjecto***********************/
-#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
+#nuevoProjecto>div:nth-child(1)>form>div{
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 94px;
-    background-color: #82B4E0;
-    padding-bottom: 136px;
+    padding-top: 4px;
+    /*background-color: #82B4E0;*/
+    /*padding-bottom: 136px;*/
+    height: 391px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
+    background-color: #79C0FF;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(2){
+    background-color: #2697FC;
+
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(2)>div:nth-child(2){
+    text-align: left;
+    display: flex;
+
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(2)>div:nth-child(2)>div:nth-child(1){
+    margin-right: 45px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(2)>div:nth-child(2)>div>textarea{
+    width: 430px;
+    height: 172px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(3){
+    background-color: #51ADFF;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(4){
+    background-color: #A5D4FF;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(5){
+    background-color: #4289DE;
+}
+#nuevoProjecto>div:nth-child(1)>form>div:nth-child(5)>div>button{
+    height: auto;
+    width: 391px;
+    border-radius: 100px;
+    background: #4289de;
+    border: 3px #fbfbfb solid;
+    font-size: 30px;
+    color: white;
 }
 #nuevoProjecto>div:nth-child(1)>form>div:nth-child(1)>div:nth-child(2)>div{
     display: flex;
@@ -749,15 +788,32 @@ h2{
 #nuevoProjecto>div:nth-child(1)>div>input{
     background-image: url("../images/play-button.png");
     background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
+    width: 34px;
+    height: 32px;
     border: none;
-    background-color: #82b4e0;
+    padding: 0px;
+    /*background-color: #82b4e0;*/
+}
+#nuevoProjecto>div:nth-child(1)>div>input:nth-child(1){
+    transform: rotate(182deg);
+    position: absolute;
 }
 #nuevoProjecto>div:nth-child(1)>div{
     display: flex;
-    justify-content: flex-end;
-    background-color: #82b4e0;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+
+}
+#nuevoProjecto>div:nth-child(1){
+    margin-bottom: 98px;
+    margin-top: 50px;
+    position: relative;
+}
+#nuevoProjecto>div:nth-child(1)>div>input:nth-child(2){
+    right: 1px;
+    position: absolute;
 }
 /*******************perfil**************/
 #perfil>div:nth-child(1)>div:nth-child(1)>div:nth-child(1){
@@ -799,8 +855,74 @@ h2{
     color:#2D9CDB;
     font-weight: 900;
 }
-#perfil>div:nth-child(1)>div:nth-child(2){
+#perfil>div:nth-child(1)>div:nth-child(2) {
     margin-top: 30px;
+}
+.vermas-btn {
+    background-color: #f2f2f2;
+    border: none;
+    font-size: 20px;
+    color: #2F80ED;
+    /*width: 80%;*/
+}
+#perfil>div:nth-child(1)>div:nth-child(2)>button, #perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button {
+    width: 80%;
+    margin-bottom: 50px;
+}#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button{
+    margin-bottom: 85px;
+}
+#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)  {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+}
+#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1) {
+    display: flex;
+
+}
+#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1){
+    display: flex;
+    justify-content: flex-end;
+}
+.proj-perfil{
+    position: relative;
+}
+.proj-perfil>div:nth-child(1)>div:nth-child(2)>div{
+    position: absolute;
+    bottom: 11px;
+
+}
+#perfil>div:nth-child(1)>div:nth-child(3)>button{
+
+}
+/*************************registro*********************/
+
+#reg > div:nth-child(1) > div:nth-child(1) {
+    background-color: rgba(7, 61, 92, 0.7);
+    width: 29%;
+    justify-content: center;
+    display: flex;
+    padding-bottom: 50px;
+    margin-bottom: 94px;
+}
+#reg{
+    padding-bottom: 0px;
+}
+#reg > div:nth-child(1) > div:nth-child(1) {
+    width: 50%;
+
+}
+#reg > div:nth-child(1) > div:nth-child(1)>section>form>div>div>input{
+    height: 41px;
+    width: 300px;
 }
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
@@ -822,13 +944,29 @@ h2{
     .continer_project, .continer_projectn {
         width: 743px;
     }
-    .proj {
+    .tam {
         width: 70%;
     }
     .options > div {
         width: 106px;
         background-position: 85px;
     }
+    #nuevoProjecto > div:nth-child(1) > form > div:nth-child(2) {
+        height: auto;
+    }
+    #nuevoProjecto > div:nth-child(1) > form > div:nth-child(2) > div:nth-child(2) {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
 }
 @media (max-width: 850px){
     #info > div:nth-child(1) > div {
@@ -854,7 +992,7 @@ h2{
     .continer_project, .continer_projectn {
         width: 625px;
     }
-    .proj {
+    .tam {
         width: 60%;
     }
     .options {
@@ -866,6 +1004,18 @@ h2{
     #comment > div:nth-child(1) > textarea {
         width: 50%;
     }
+    .proj-perfil{
+        width: 84%;
+    }
+    #perfil > div:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(1) {
+        width: 84%;
+    }
+
 }
 @media screen and (max-width: 750px){
     .continer_project, .continer_projectn {
@@ -904,7 +1054,7 @@ h2{
         width: 100%;
         height: auto;
     }
-    .proj > div:nth-child(1) {
+    .tam > div:nth-child(1) {
         flex-direction: column;
     }
     .proj > div:nth-child(1) > div:nth-child(2) {
@@ -922,9 +1072,13 @@ h2{
     #comment > div:nth-child(1) > textarea {
         width: auto;
     }
-    .proj{
+    .tam{
         width: 48%;
     }
+    #reg > div:nth-child(1) > div:nth-child(1) {
+        width: 80%;
+    }
+
 }
 @media screen and (max-width: 500px){
     .continer_project, .continer_projectn {
@@ -943,9 +1097,36 @@ h2{
     #comentarios > div:nth-child(1) > div:nth-child(1) > div:nth-child(1), #comentarios > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) {
         margin-left: 43px;
     }
-    .proj {
+    .tam {
         width:40%;
     }
+    #nuevoProjecto > div:nth-child(1) > form > div:nth-child(2) > div:nth-child(2) {
+        width: 208px;
+    }
+    #nuevoProjecto > div:nth-child(1) > form > div:nth-child(2) > div:nth-child(2) > div > textarea {
+        width: 220px;
+        height: 133px;
+    }
+    #nuevoProjecto > div:nth-child(1) > form > div:nth-child(5) > div > button {
+        width: 204px;
+        font-size: 17px;
+    }
+    #nuevoProjecto > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div {
+        display: flex;
+        margin-bottom: 10px;
+        flex-direction: column;
+        margin-top: 13px;
+    }
+    #reg > div:nth-child(1) > div:nth-child(1)>section>form>div>div>input{
+        height: 41px;
+        width: 150px;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(1) {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0px;
+    }
+
 }
 @media screen and(max-width:400px) and (min-width: 280px){
     #reguistro > div:nth-child(1) > div:nth-child(1) {
@@ -968,11 +1149,12 @@ h2{
         width: 41%;
         height: auto;
     }
-    .proj {
+    .tam {
         width: 25%;
     }
     .res {
         margin-left: 34px;
     }
+
 }
 

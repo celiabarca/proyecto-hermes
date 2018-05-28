@@ -29,7 +29,7 @@ function verMas() {
 }
 
 $( document ).ready(function() {
-    //alert($(window).width());
+    alert($(window).width());
     //change images de imput email
     img = "/images/black-envelope.png";
     $(".email").focus(function(){

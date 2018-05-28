@@ -19,91 +19,37 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="respuestas collapsible" data-limit="3" id="all-proj">
                 {% for proyecto in usuario.proyectos %}
-                    <div class="proj">
-                    {#                  primera parte            #}
-                    <div>
+                    <div class="proj collapsible-element proj-perfil " >
+                        {#                  primera parte            #}
+                        <div>
+                            <div>
+                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                            </div>
+                            <div>
+                                <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                                <p>{{proyecto.descripcion}}</p>
+                                <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <button class="vermas-btn">Ver más +</button>
+            </div>
+            <div>
+                <div class="respuestas collapsible" data-limit="3" >
+                    <div class = "collapsible-element">
                         <div>
                             <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
                         </div>
                         <div>
-                            <div>
-                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
-                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
-                            </div>
-                                <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
-                            <p>{{proyecto.descripcion}}</p>
-                            <div class ="autor">
-                                <h2>{{proyecto.autor.nombre}}</h2>
-                                
-                            </div>
-                            <div class ="options">
-                                <div >comentarios</div>
-                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
-                                <div>000,00$</div>
-                            </div>
-                            <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                            <div>{{ "22/22/22" }}</div>
+                            <div> Lorem Ipsum is simply dummy text of the printing  </div>
                         </div>
                     </div>
-                    {#       comentarios                 #}
-                    <div class="test">
-                        <div>
-                            {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
-                        </div>
-                        {% for comentario in proyecto.comentarios %}
-
-                            <div id="comentario-{{ comentario.id }}" class="comm">
-
-                                <div>
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                <div>
-                                    <div>
-                                        {{comentario.autor.nombre}}
-                                    </div>
-                                    <div>
-                                        <p> {{comentario.contenido}}</p>
-                                    </div>
-                                </div> 
-
-                            </div>
-                            <div>
-                                <div class="responder">Responder</div>
-                                <div class ="respuesta">
-                                    {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
-                                </div>
-                            </div>
-                            {% for respuesta in comentario.respuestas %}
-                                <div id="triangulo">
-                                </div>
-                                <div class="comm res">
-                                    <div>
-                                        <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                    </div>
-                                    <div>
-                                        <div>
-                                            {{respuesta.autor.nombre}}
-                                        </div>
-                                        <div>
-                                            <p> {{respuesta.contenido}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-
-                        {% endfor %}
-
-                        <div>
-                            <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
-                        </div>
-                    </div>
-
+                    <button class="vermas-btn">Ver más +</button>   
                 </div>
-                {% endfor %}
-            </div>
-            <div>
-                
             </div>
         </div>
     </div>
