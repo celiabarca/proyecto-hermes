@@ -170,6 +170,7 @@ $(document).ready(function () {
             }
         });
     });
+    
     //$("#next").css("display", "none");
     $("#next").on("click", function ()
     {
@@ -208,13 +209,6 @@ $(document).ready(function () {
         }
     });
     
-    
-    
-    /* Validacion formulario creacion Proyecto */
-    
-    $("#project_meta").on("blur",function()
-    {
-       //aler($(this))
-    })
+ 
 
 });
