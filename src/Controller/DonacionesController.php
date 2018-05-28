@@ -25,10 +25,10 @@ class DonacionesController extends Controller
             $this->get('App\Client\Stripe')->CrearCargo($this->getUser(), $form->get('token')->getData(),$data['precio']);
             $redirect = $this->get('session')->get('premium_redirect');
             $redirect = $this->generateUrl('premium_payment');
-            return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
+            return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
         }
     }
       
-      return $this->redirectToRoute("/proyecto/",["id"=>$proyecto->getId()]);
+      return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
   }
 }

@@ -30,11 +30,10 @@ class UserRepository extends ServiceEntityRepository
     {
         
         $qb = $this->createQueryBuilder('u')
-        ->select('us.nombre', 'sum(d.cantidad) as total', 'us.img', 'us.sector', 'us.destacado')
+        ->select('us.nombre', '(select sum(d1.cantidad) from App\Entity\Donacion d1 where us.id = d1.usuario) as total', 'us.img', 'us.sector', 'us.destacado')
         ->from('App\Entity\User', 'us')
-        ->innerJoin('App\Entity\Donacion','d', 'us.id = d.usuario_id')
-        ->groupBy('us.nombre','us.img', 'us.sector', 'us.destacado')
         ->orderBy('us.destacado')
+        ->distinct()
         ->getQuery();
         
         return $qb->getResult();

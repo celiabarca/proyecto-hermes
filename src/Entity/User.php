@@ -171,7 +171,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail() :string
+    public function getEmail() 
     {
         return $this->email;
     }

@@ -9,7 +9,7 @@
                     {#                  primera parte            #}
                     <div>
                         <div>
-                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                            <img src="{{ asset(proyecto.img) }}" alt="">
                         </div>
                         <div>
                             <div>
@@ -25,7 +25,7 @@
                             <div class ="options">
                                 <div >comentarios</div>
                                 <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
-                                <div>000,00$</div>
+                                <div>{{proyecto.getRecaudado()}}€</div>
                             </div>
                             <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
                         </div>
@@ -86,9 +86,7 @@
                             <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
                         </div>
                     </div>
-
                 </div>
-
             {% endfor %}
         </div>
     </div>
