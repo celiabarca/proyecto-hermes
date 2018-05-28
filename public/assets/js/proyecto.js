@@ -191,6 +191,8 @@ $(document).ready(function () {
             $(".newProyect > form:nth-child(1) > div:nth-child(" + cont + ")").css("display", "flex");
 
         }
+
+
     });  
     $('#previous').css("display", "none");
     $('#nuevoProjecto>div:nth-child(1)>div>input').click(function(){
@@ -208,13 +210,15 @@ $(document).ready(function () {
         }
     });
     
+
+
     
     
     /* Validacion formulario creacion Proyecto */
     
     $("#project_meta").on("blur",function()
     {
-       //aler($(this))
+       aler($(this))
     })
 
 });
