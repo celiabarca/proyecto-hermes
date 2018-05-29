@@ -26,7 +26,8 @@ class ProjectType extends AbstractType
             ])
             ->add('img', FileType::class, [
                 'required' => false,
-                'label' => 'Imagen'
+                'label' => 'Imagen',
+                'data' => null,
             ])
             ->add('contenido', TextareaType::class, [
                 'label' => 'Sobre el proyecto'
