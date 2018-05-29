@@ -3,10 +3,11 @@
 {% block  contenido %}
     <div id="project">
         <div>
-            <div>
-                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-            </div>
-
+            {% if proyecto.img %}
+                <div>
+                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                </div>
+            {%endif%}
             <div>
                 <div>
                     <button id="no-megusta-btn" class="valoracion-btn" data-proyectoid="{{ proyecto.id }}" data-valoracion="{{ (valoracion and valoracion.megusta == false) ? 1 : 0 }}">
@@ -16,15 +17,8 @@
                         <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
                     </button>
                 </div>
-                <div class ="options">
-                    <!--
-                    <div>
-                        <button>comentarios</button>
-                    </div>
-                    -->
-                    <div>
-                        <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
-                    </div>
+                <div class ="options2">
+                    <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
                     <div>{{proyecto.getRecaudado()}}€</div>
                 </div>
             </div>
@@ -52,6 +46,23 @@
             </div>
             <div>
                 {{proyecto.descripcion}}
+            </div>
+            <div>
+                <div>
+                    <h1>colaboradores</h1>
+                    {% for colaborador in proyecto.colaboradores%}
+                        <div class = "colaborador">
+                            <div>
+                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                            </div>
+                            <div>
+                                <h2>
+                                    {{ colaborador.usuario.nombre }}
+                                </h2>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
             <div class="test">
                 <div>

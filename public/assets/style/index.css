@@ -277,7 +277,7 @@ nav> ul > li {
 }
 #projectop{
     background-color: #012545;
-/*    margin-bottom: 64px;*/
+    /*    margin-bottom: 64px;*/
     height: auto;
 }
 #projectop>div:nth-child(1)>div:nth-child(2){
@@ -307,6 +307,10 @@ nav> ul > li {
     padding: 0px 16px 0px 41px;
     width: 301px;
 }
+.continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
+    height: 124px;
+    overflow: hidden;
+}
 .continer_projectn>div:nth-child(1)>div:nth-child(3) >a, .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(3){
     border: solid 1.5px #007098;
     height: 33px;
@@ -328,6 +332,8 @@ nav> ul > li {
 }
 .continer_projectn>div:nth-child(1){
     text-align: center;
+    width: 100%;
+
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(2){
     padding: 0px 20px;
@@ -340,6 +346,7 @@ nav> ul > li {
     color:#ffffff;
 }
 /*******PROJECTO********/
+
 #project>div:nth-child(1){
     display: flex;
     max-width: 1200px;
@@ -359,12 +366,19 @@ nav> ul > li {
     margin-top: 50px;
     justify-content: space-between;
 }
-.options{
+#project > div:nth-child(1) > div:nth-child(2)>div:nth-child(1)>button{
+    background-color: #f2f2f2;
+    border-radius: 100px;
+    border:none;
+}
+.options,.options2{
     display: flex;
     justify-content: space-around;
-
 }
-.options>div{
+.options2{
+    width: 300px;
+}
+.options>div, .options2>button, .options2>div{
     border: 2px solid #2D9CDB;
     width: 126px;
     padding: 0px 2px;
@@ -372,15 +386,52 @@ nav> ul > li {
     background-position: 96px;
 }
 .options>div:nth-child(1){
-    background-image: url("../images/chat.png")
+    background-image: url("../images/chat.png");
 }
-.options>div:nth-child(2){
+.options>div:nth-child(2), .options2>button{
     background-image: url("../images/icon.png");
 
 }
 .options>div:nth-child(2)>a{
     text-decoration: none;
     color: #000000;
+}
+#project > div:nth-child(1) > div:nth-child(7){
+    background-color: lightblue;
+    border: solid 2px #79bbf8;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+#project > div:nth-child(1) > div:nth-child(7)>div:nth-child(1)>h1{
+    justify-content: center;
+    display: flex;
+}
+#project > div:nth-child(1) > div:nth-child(7)>div:nth-child(1){
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+}
+.colaborador{
+    display: flex;
+}
+.colaborador>div:nth-child(2){
+    align-items: center;
+    display: flex;
+    margin: 10px;
+}
+.colaborador>div:nth-child(2)>h2{
+    color: #0e4a80;
+}
+.colaborador>div:nth-child(1){
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
 }
 #project>div:nth-child(1)>div:nth-child(3){
     max-width: 1200px;
@@ -436,10 +487,10 @@ nav> ul > li {
     margin-bottom: 10px;
 }
 #comment>div:nth-child(2){
-/*    display: flex;
-    justify-content: flex-end;
-    display: flex;
-    width: 85%;*/
+    /*    display: flex;
+        justify-content: flex-end;
+        display: flex;
+        width: 85%;*/
     margin: 26px 0px 0px 26px;
 }
 hr{
@@ -635,7 +686,7 @@ h2{
 
 /* Resalta la valoracion definida por el usuario en un proyecto cuando ese usuario ha iniciado sesion */
 .valoracion-active {
-    box-shadow: 0px 0px 5px red;
+    box-shadow: 0px 0px 16px #00dace;
 }
 
 /*.res,*/ .comm {    
@@ -880,7 +931,7 @@ h2{
     border: none;
     font-size: 20px;
     color: #2F80ED;
-    /*width: 80%;*/
+    width: 100%;
 }
 #perfil>div:nth-child(1)>div:nth-child(2)>button, #perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button {
     width: 100%;
