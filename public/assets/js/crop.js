@@ -113,15 +113,15 @@ $(document).ready(function(){
             c.cancelarCrop();
         });
     });
-
+    /*
     $("form[name='editar_usuario']").on('submit', function(event){
-       // event.preventDefault();
+        event.preventDefault();
 
         var form = new FormData(document.getElementsByName("editar_usuario")[0]);
         var blob = dataURItoBlob(data_url);
 
         form.set("img", blob, filename);
-        //form.submit();
+        form.submit();
     });
-
+    */
 });

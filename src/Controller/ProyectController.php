@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\ValoracionRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Project;
@@ -38,6 +39,17 @@ class ProyectController extends Controller {
         ]);
     }
 
+    private function subirImagen(UploadedFile $file) {
+        if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
+            $filename = md5(uniqid()).'.'.$file->guessExtension();
+            $path = $this->getParameter('pictures_directory');
+            $file->move($path, $filename);
+            return $path.'/'.$filename;
+        }
+
+        return null;
+    }
+
     /**
      * Crea un proyecto nuevo
      * @param Request $peticion
@@ -53,6 +65,12 @@ class ProyectController extends Controller {
         {
             $projecto->setFechaCreacion(new \Datetime());
             $projecto->setAutor($this->getUser());
+
+            if($projecto->getImg()) {
+                $filepath = $this->subirImagen($projecto->getImg());
+                $projecto->setImg($filepath);
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
             $entityManager->flush();
@@ -134,6 +152,11 @@ class ProyectController extends Controller {
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            if($proyecto->getImg()) {
+                $filepath = $this->subirImagen($proyecto->getImg());
+                $proyecto->setImg($filepath);
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($proyecto);
             $manager->flush();
