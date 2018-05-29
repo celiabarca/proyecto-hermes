@@ -390,7 +390,7 @@ class Project
     /**
      * @param mixed $img
      */
-    public function setImg(File $img = null): void
+    public function setImg($img): void
     {
         $this->img = $img;
     }

@@ -163,20 +163,20 @@ class ColaboradoresController extends Controller
      */
     public function rechazarColaboracion(Colaboracion $colaboracion) {
         try {
-            $aceptado = false;
+            $rechazado = false;
 
             if($colaboracion->getProyecto()->getAutor() == $this->getUser()) {
                 $colaboracion->setEstado('rechazado');
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($colaboracion);
                 $manager->flush();
-                $aceptado = true;
+                $rechazado = true;
             } else {
                 throw new \Exception('Solo pude rechazar la peticion el autor del proyecto!');
             }
 
             return new JsonResponse([
-                'aceptado' => $aceptado
+                'aceptado' => $rechazado
             ]);
         } catch(\Exception $e) {
             return new JsonResponse([
