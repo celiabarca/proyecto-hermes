@@ -133,12 +133,13 @@ class ProyectController extends Controller {
         $form = $this->createForm(ProjectType::class, $proyecto);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($proyecto);
-            $manager->flush();
-            return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
-        }
+        if($form->isSubmitted() && $form->isValid()) 
+            {
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($proyecto);
+                $manager->flush();
+                return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
+            }
 
         return $this->render('proyect/editar.html.twig', [
            'form' => $form->createView(),

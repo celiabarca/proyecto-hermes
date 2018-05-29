@@ -47,7 +47,6 @@
                     </div>
                 </div>
             </div>
-            {#            <div>#}
             <div>
                 <div>
                     <p>¿ Donde quieres que te agregamos los donativos de nuestros queridos patrocinadores ?</p>
@@ -61,7 +60,7 @@
             </div>
             <div>
                 <h1>¡FELICIDADES YA TIENES HAS CREADO TU PROYECTO!</h1>  
-                <p> Te queda lo más facil darle a enviar i ya puedes empezar a trabajar  </p>
+                <p> Te queda lo más facil, dale a enviar y espera que aparezcan aportaciones y colaboradores</p>
                 {{form_end(FormularioProyecto)}}
 
             </div>
@@ -70,13 +69,11 @@
                 <input type="button" id="next" value="" name="0" />
             </div>
 
-
-            {#            </div>#}
         </div>
     </div>      
 
 {% endblock %}
 
-{#{% block js_especifico %}
+{% block js_especifico %}
     <script src="{{ asset('assets/js/proyecto.js') }}"></script>
-{% endblock %}#}
+{% endblock %}

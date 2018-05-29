@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -387,7 +390,7 @@ class Project
     /**
      * @param mixed $img
      */
-    public function setImg($img): void
+    public function setImg(File $img = null): void
     {
         $this->img = $img;
     }

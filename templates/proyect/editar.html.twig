@@ -12,6 +12,7 @@
             <h1>Colaboradores</h1>
             <div></div>
         </div>
+        {% if app.user = proyecto.autor %}
         <div>
             <h1>Zona de Peligro</h1>
             <div>
@@ -21,6 +22,7 @@
                 <a href="#" id="borrar-proyecto" name="{{proyecto.id}}">Borrar el proyecto</a>
             </div>
         </div>
+            {% endif %}
         
     </div>
 {% endblock %}
