@@ -39,15 +39,17 @@
             </div>
             <div>
                 <div class="respuestas collapsible" data-limit="3" >
-                    <div class = "collapsible-element">
-                        <div>
-                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                    {% for actividad in usuario.actividades %}
+                        <div class = "collapsible-element">
+                            <div>
+                                <img src="{{ asset(usuario.img) }}" alt="">
+                            </div>
+                            <div>
+                                <div>{{ actividad.fecha|date('d/m/y') }}</div>
+                                <div>{{ actividad.actividad}}</div>
+                            </div>
                         </div>
-                        <div>
-                            <div>{{ "22/22/22" }}</div>
-                            <div> Lorem Ipsum is simply dummy text of the printing  </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <button class="vermas-btn">Ver más +</button>   
                 </div>
             </div>

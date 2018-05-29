@@ -162,7 +162,6 @@ class ProyectController extends Controller {
             $manager->flush();
             return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
         }
-
         return $this->render('proyect/editar.html.twig', [
            'form' => $form->createView(),
             'proyecto' => $proyecto
