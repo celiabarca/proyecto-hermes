@@ -72,6 +72,13 @@ buscar_tags:
     path: /tags/{nombre}
     controller: App\Controller\TagController::getTags
 
+aceptar_colaboracion:
+    path: /colaboracion/{proyecto}/{usuario}/aceptar
+    controller: App\Controller\ColaboradoresController::aceptarColaboracion
+
+rechazar_colaboracion:
+    path: /colaboracion/{proyecto}/{usuario}/rechazar
+    controller: App\Controller\ColaboradoresController::rechazarColaboracion
 
 #Colaboraciones
 Colaborar:
