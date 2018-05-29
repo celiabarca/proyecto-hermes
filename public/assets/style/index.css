@@ -717,7 +717,7 @@ h2{
     max-width: 1200px;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between !important;
+    justify-content: space-around !important;
 }
 .step
 {
@@ -773,6 +773,12 @@ h2{
 }
 .faseactiva{
     background-color: #2D9CDB;
+}
+
+.edit{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 /******************nuevo proyecto***********************/
 #nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){

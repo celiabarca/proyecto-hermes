@@ -4,9 +4,8 @@
     <div id="project">
         <div>
             <div>
-                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                <img src="{{proyecto.img}}" alt="">
             </div>
-
             <div>
                 <div>
                     <button id="no-megusta-btn" class="valoracion-btn" data-proyectoid="{{ proyecto.id }}" data-valoracion="{{ (valoracion and valoracion.megusta == false) ? 1 : 0 }}">
@@ -41,12 +40,13 @@
                 <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
                 <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
                 <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
             </div>
             <div>
                 {{proyecto.descripcion}}
             </div>
             <div class="test">
+                {% if app.user %}
+                <h1>Comenta que te parece el proyecto </h1>
                 <div>
                     {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                 </div>
@@ -96,6 +96,9 @@
                         <button class="vermas-btn">Ver más</button>
                     </div>
                 {% endfor %}
+                {% else %}
+                    <h3> Inicia sesion para comentar los proyectos</h3>
+                    {% endif %}
             </div>
         </div>
     </div>
