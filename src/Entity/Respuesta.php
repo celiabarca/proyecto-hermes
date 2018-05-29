@@ -18,13 +18,13 @@ class Respuesta implements CommentInterface {
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Comment", inversedBy="respuestas")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false onDelete="CASCADE")
      */
     private $comentario;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="respuestas")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false onDelete="CASCADE")
      */
     private $autor;
 
