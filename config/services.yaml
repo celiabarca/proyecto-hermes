@@ -31,7 +31,11 @@ services:
         tags: ['controller.service_arguments']
         calls:
           - [setContainer, ["@service_container"]]
-          
+
+    App\Service\FileUploader:
+        arguments:
+            $targetDirectory: '%pictures_directory%'
+
     App\Client\Stripe:
         class: App\Client\StripeClient
         arguments: ['%stripe_secret_key%', '%payment%', '@doctrine.orm.entity_manager', '@logger']

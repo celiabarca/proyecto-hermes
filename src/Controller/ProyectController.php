@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ValoracionRepository;
 use App\Repository\ProjectRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,10 +17,12 @@ class ProyectController extends Controller {
 
     private $projectRepository;
     private $valoracionRepository;
+    private $uploader;
 
-    public function __construct(ProjectRepository $repository, ValoracionRepository $valoracionRepository) {
+    public function __construct(ProjectRepository $repository, ValoracionRepository $valoracionRepository, FileUploader $uploader) {
         $this->projectRepository = $repository;
         $this->valoracionRepository = $valoracionRepository;
+        $this->uploader = $uploader;
     }
 
     /**
@@ -39,17 +42,6 @@ class ProyectController extends Controller {
         ]);
     }
 
-    private function subirImagen(UploadedFile $file) {
-        if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
-            $filename = md5(uniqid()).'.'.$file->guessExtension();
-            $path = $this->getParameter('pictures_directory');
-            $file->move($path, $filename);
-            return $path.'/'.$filename;
-        }
-
-        return null;
-    }
-
     /**
      * Crea un proyecto nuevo
      * @param Request $peticion
@@ -67,8 +59,9 @@ class ProyectController extends Controller {
             $projecto->setAutor($this->getUser());
 
             if($projecto->getImg()) {
-                $filepath = $this->subirImagen($projecto->getImg());
-                $projecto->setImg($filepath);
+                $filepath = $this->uploader->upload($projecto->getImg());
+                $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
+                $projecto->setImg($path);
             }
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -153,8 +146,9 @@ class ProyectController extends Controller {
 
         if($form->isSubmitted() && $form->isValid()) {
             if($proyecto->getImg()) {
-                $filepath = $this->subirImagen($proyecto->getImg());
-                $proyecto->setImg($filepath);
+                $filepath = $this->uploader->upload($proyecto->getImg());
+                $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
+                $proyecto->setImg($path);
             }
 
             $manager = $this->getDoctrine()->getManager();
