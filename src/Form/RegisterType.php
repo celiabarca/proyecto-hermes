@@ -41,12 +41,11 @@ class RegisterType extends AbstractType {
                     'type' => PasswordType::class,
                     'required' => true,
                     'first_options' => [
-                        'label' => 'Contraseña'
-                    ],
-                    'attr' => [
+                        'label' => 'Contraseña',
+                        'attr' => [
                             'class' => 'passwd'
                         ],
-                    
+                    ],
                     'second_options' => [
                         'label' => 'Repetir contraseña',
                         'attr' => [

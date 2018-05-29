@@ -5,7 +5,7 @@
         <div>
             {% if proyecto.img %}
                 <div>
-                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                    <img src="{{proyecto.img}}" alt="">
                 </div>
             {%endif%}
             <div>
@@ -31,18 +31,10 @@
             </div>
             <div class="steps ">
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                <div class="step faseactiva">
-                    Situacion X
-                </div>
-                <div class="step">
-                    Situacion X
-                </div>
-                <div class="step">
-                    Situacion X
-                </div>
-                <div class="step">
-                    Situacion X
-                </div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
             </div>
             <div>
                 {{proyecto.descripcion}}
@@ -65,55 +57,60 @@
                 </div>
             </div>
             <div class="test">
-                <div>
-                    {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
-                </div>
-                {% for comentario in proyecto.comentarios %}
-
-                    <div id="comentario-{{ comentario.id }}" class="comm">
-
-                        <div>
-                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                        </div>
-                        <div>
-                            <div>
-                                {{comentario.autor.nombre}}
-                            </div>
-                            <div>
-                                <p> {{comentario.contenido}}</p>
-                            </div>
-                        </div> 
-
-                    </div>
+                {% if app.user %}
+                    <h1>Comenta que te parece el proyecto </h1>
                     <div>
-                        <div class="responder">Responder</div>
-                        <div class ="respuesta">
-                            {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
-                        </div>
+                        {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                     </div>
-                    <div class="respuestas collapsible" data-limit="3">
-                        {% for respuesta in comentario.respuestas %}
-                            <div class="collapsible-element">
-                                <div id="triangulo">
-                                </div>
-                                <div class="comm res">
-                                    <div>
-                                        <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                    </div>
-                                    <div>
-                                        <div>
-                                            {{respuesta.autor.nombre}}
-                                        </div>
-                                        <div>
-                                            <p> {{respuesta.contenido}}</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    {% for comentario in proyecto.comentarios %}
+
+                        <div id="comentario-{{ comentario.id }}" class="comm">
+
+                            <div>
+                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
                             </div>
-                        {% endfor %}
-                        <button class="vermas-btn">Ver más</button>
-                    </div>
-                {% endfor %}
+                            <div>
+                                <div>
+                                    {{comentario.autor.nombre}}
+                                </div>
+                                <div>
+                                    <p> {{comentario.contenido}}</p>
+                                </div>
+                            </div> 
+
+                        </div>
+                        <div>
+                            <div class="responder">Responder</div>
+                            <div class ="respuesta">
+                                {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                            </div>
+                        </div>
+                        <div class="respuestas collapsible" data-limit="3">
+                            {% for respuesta in comentario.respuestas %}
+                                <div class="collapsible-element">
+                                    <div id="triangulo">
+                                    </div>
+                                    <div class="comm res">
+                                        <div>
+                                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                        </div>
+                                        <div>
+                                            <div>
+                                                {{respuesta.autor.nombre}}
+                                            </div>
+                                            <div>
+                                                <p> {{respuesta.contenido}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <button class="vermas-btn">Ver más</button>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h3> Inicia sesion para comentar los proyectos</h3>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -768,24 +768,68 @@ h2{
     max-width: 1200px;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between !important;
+    justify-content: space-around !important;
 }
 .step
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
     min-width: 250px;
     height: 50px;
+    color:#fff;
+    position: relative;
+    background-color: lightblue;
+    /*
     -webkit-clip-path: polygon(0 0, 90% 0, 98% 50%, 90% 100%, 0 100%, 8% 50%);
     clip-path: polygon(0 0, 90% 0, 98% 50%, 90% 100%, 0 100%, 8% 50%);
-    border: 2px solid #2D9CDB;
+    */
     background-clip: padding-box;
-    background: lightblue;
+    
+}
+
+.arrow {
+    border-style: dashed;
+    border-color: transparent;
+    border-width: 0.20em;
+    display: -moz-inline-box;
+    display: inline-block;
+    /* Use font-size to control the size of the arrow. */
+    font-size: 125px;
+    height: 0px;
+    line-height: 0;
+    position: absolute;
+    vertical-align: middle;
+    width: 0;
+    background-color:#f2f2f2; /* change background color acc to bg color */ 
+    border-left-width: 0.2em;
+    border-left-style: solid;
+    border-left-color: lightblue;
+    right: 0;
+}
+.arrowB 
+{
+    border-style: dashed;
+    border-color: transparent;
+    border-width: 0.20em;
+    display: -moz-inline-box;
+    display: inline-block;
+    /* Use font-size to control the size of the arrow. */
+    font-size: 125px;
+    height: 0px;
+    line-height: 0;
+    position: relative;
+    vertical-align: middle;
+    width: 0;
+    border-left-style: solid;
+    border-left-color: #f2f2f2;
+    left: 0;
 }
 .faseactiva{
     background-color: #2D9CDB;
+}
+
+.edit{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 /******************nuevo proyecto***********************/
 #nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
