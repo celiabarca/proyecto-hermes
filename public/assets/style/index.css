@@ -41,8 +41,8 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
-    position: absolute;
-    bottom: 0;
+    /*    position: sticky;
+        bottom: 0;*/
 }
 #perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
@@ -73,7 +73,7 @@ footer> div:nth-child(2)>div:nth-child(1){
     justify-content: center;
 }
 footer> div:nth-child(2)>div:nth-child(1)>ul{
-    justify-content: end;
+    justify-content: flex-end;
 }
 footer> div:nth-child(1)>div>ul>li{
     margin-left: 5px;
@@ -83,7 +83,7 @@ footer> div:nth-child(1)>div>ul>li>a{
     text-decoration:none; 
 }
 footer> div:nth-child(1)>div:nth-child(3){
-    justify-content: end;
+    justify-content: flex-end;
     width: 45%;
     display: flex;
 }
@@ -693,7 +693,7 @@ h2{
 
 
 /* div para hacer el crop de una imagen */
-/*
+
 #cropbox {
     width: 300px;
     height: 300px;
@@ -706,7 +706,7 @@ h2{
 #cropbox img {
     width: 100%;
 }
-*/
+
 
 /* Situaciones */
 
@@ -745,6 +745,13 @@ h2{
     /*background-color: #82B4E0;*/
     /*padding-bottom: 136px;*/
     height: 391px;
+}
+#nuevoProjecto>div:nth-child(1)>form>div{
+    flex-direction: column;
+    align-items: center;
+    height: 368px;
+    justify-content: center;
+
 }
 #nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
     background-color: #79C0FF;
@@ -874,7 +881,7 @@ h2{
     /*width: 80%;*/
 }
 #perfil>div:nth-child(1)>div:nth-child(2)>button, #perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button {
-    width: 80%;
+    width: 100%;
     margin-bottom: 50px;
 }#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button{
     margin-bottom: 85px;
@@ -905,8 +912,12 @@ h2{
 }
 .proj-perfil>div:nth-child(1)>div:nth-child(2)>div{
     position: absolute;
-    bottom: 11px;
+    bottom: 0px;
 
+}
+#perfil > div:nth-child(1) > div:nth-child(3){
+    display: flex;
+    flex-direction: column;
 }
 #perfil>div:nth-child(1)>div:nth-child(3)>button{
 
@@ -972,7 +983,17 @@ h2{
         justify-content: center;
         align-items: center;
     }
-
+    .proj-perfil {
+        width: 95%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(1){
+        width: 95%;
+    }
+    #perfil > div:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 
 }
@@ -1015,11 +1036,7 @@ h2{
     .proj-perfil{
         width: 84%;
     }
-    #perfil > div:nth-child(1){
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
     #perfil > div:nth-child(1) > div:nth-child(1) {
         width: 84%;
     }
@@ -1086,6 +1103,17 @@ h2{
     #reg > div:nth-child(1) > div:nth-child(1) {
         width: 80%;
     }
+    .proj-perfil {
+        width: 55%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(1) {
+        width: 55%;
+    }
+
+    #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) {
+        width: 100%;
+    }
+
 
 }
 @media screen and (max-width: 500px){
@@ -1133,6 +1161,38 @@ h2{
         flex-direction: column;
         align-items: center;
         margin-left: 0px;
+    }
+    .proj-perfil > div:nth-child(1){
+        flex-direction: column;
+    }
+    .proj-perfil {
+        width: 40%;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1){
+        width: 62%;
+    }
+    nav > ul > li {
+        padding-right: 8px;
+    }
+    footer > div:nth-child(1) {
+        flex-direction: column;
+    }
+    footer > div:nth-child(1) > div:nth-child(2) > ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    footer > div:nth-child(1) > div:nth-child(2) > ul > li {
+        margin-bottom: 2px;
+    }
+    footer > div:nth-child(1) > div:nth-child(3) {
+        justify-content: center;
+        width: 100%;
     }
 
 }
