@@ -32,7 +32,7 @@ class HomeController extends Controller {
      * @return mixed
      */
     public function index() {
-        $proyectos = $this->pc->dameProyectos();
+        $proyectos = $this->pc->dameProyectos(2);
      
         $form = $this->createForm(RegisterType::class);
         $user = $this->userRepository->findAll();
