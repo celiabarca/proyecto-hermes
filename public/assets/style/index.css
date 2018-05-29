@@ -175,6 +175,7 @@ nav> ul > li {
 #comentarios>div:nth-child(1){
     display: flex;
     justify-content: space-around;
+    z-index: 1;
 }
 #comentarios > div:nth-child(1)> div:nth-child(1)> div:nth-child(1)> div:nth-child(1) ,#comentarios > div:nth-child(1)> div:nth-child(2)> div:nth-child(1)> div:nth-child(1){
     background-image: url("../images/tesla.jpg");
@@ -207,7 +208,7 @@ nav> ul > li {
 #comentarios > div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p ,#comentarios > div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>p{
     font-style: oblique;
 }
-#comentarios > div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:after,#comentarios > div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>p:after{
+#comentario·s > div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:after,#comentarios > div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>p:after{
     content: "”";
 }
 #userstop{
@@ -272,11 +273,12 @@ nav> ul > li {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top: 87px;
 }
 #projectop{
     background-color: #012545;
-    margin-bottom: 64px;
-    height: 780px;
+/*    margin-bottom: 64px;*/
+    height: auto;
 }
 #projectop>div:nth-child(1)>div:nth-child(2){
     display: flex;
@@ -401,7 +403,7 @@ nav> ul > li {
 #comment>div:nth-child(1){
     display: flex;
     /*justify-content: center;*/
-    width: 85%;
+    width: 65%;
 }
 #comment{
     width: 941px;
@@ -412,7 +414,7 @@ nav> ul > li {
 #comment>div:nth-child(1)>input::before{
     content: "Deja tu comentario";
 }
-#comment>div:nth-child(1)>textarea{
+#comment>div:nth-child(1)>textarea, #comment>div:nth-child(1)>div {
     background-color: #cddde3;
     border: transparent;
     height: 100px;
@@ -434,10 +436,10 @@ nav> ul > li {
     margin-bottom: 10px;
 }
 #comment>div:nth-child(2){
-    display: flex;
+/*    display: flex;
     justify-content: flex-end;
     display: flex;
-    width: 85%;
+    width: 85%;*/
     margin: 26px 0px 0px 26px;
 }
 hr{
@@ -636,7 +638,7 @@ h2{
     box-shadow: 0px 0px 5px red;
 }
 
-.res, .comm {    
+/*.res,*/ .comm {    
     padding: 10px;
     width: 220px;
     border-radius: 10px;  
@@ -649,7 +651,7 @@ h2{
     margin-left: 105px;
 
 }
-.res:before , .comm:before{
+/*.res:before ,*/ .comm:before{
     content:"";
     position: absolute;
     width: 0;

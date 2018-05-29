@@ -55,10 +55,10 @@ class CommentController extends Controller {
         $respuesta = new Respuesta();
 
         $form = $this->createForm(CommentType::class, $respuesta, [
-            'action' => '/comentario/'.$comment->getId().'/responder',
-            'attr'=>[
-                'class'=>'res'
-            ]
+            'action' => '/comentario/'.$comment->getId().'/responder'//,
+//            'attr'=>[
+//                'class'=>'res'
+//            ]
             
         ]);
 
