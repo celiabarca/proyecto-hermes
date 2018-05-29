@@ -113,7 +113,7 @@ $(document).ready(function(){
             c.cancelarCrop();
         });
     });
-
+    /*
     $("form[name='editar_usuario']").on('submit', function(event){
         event.preventDefault();
 
@@ -123,5 +123,5 @@ $(document).ready(function(){
         form.set("img", blob, filename);
         form.submit();
     });
-
+    */
 });
