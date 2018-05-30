@@ -42,7 +42,7 @@ class ProyectController extends Controller {
     private function subirImagen(UploadedFile $file) {
         if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
             $filename = md5(uniqid()).'.'.$file->guessExtension();
-            $path = $this->getParameter('pictures_directory');
+            $path = $this->getParameter('public_img_directory');
             $file->move($path, $filename);
             return $path.'/'.$filename;
         }

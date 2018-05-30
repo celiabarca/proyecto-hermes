@@ -8,7 +8,7 @@ parameters:
         decimal: true
     locale: 'es'
     pictures_directory: '%kernel.project_dir%/public/uploads/pictures'
-    
+    public_img_directory: 'uploads/pictures'
 services:
     # default configuration for services in *this* file
     _defaults:
