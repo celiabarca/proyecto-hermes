@@ -123,11 +123,13 @@ $(document).ready(function(){
         event.preventDefault();
 
         var form = new FormData(document.getElementsByName("editar_usuario")[0]);
-        var blob = dataURItoBlob(data_url);
         var request = new XMLHttpRequest();
 
-        // cambia la imagen puesta en el input por la imagen recortada
-        form.set("editar_usuario[img]", blob, filename);
+        if(data_url != null) {
+            var blob = dataURItoBlob(data_url);
+            // cambia la imagen puesta en el input por la imagen recortada
+            form.set("editar_usuario[img]", blob, filename);
+        }
 
         request.onreadystatechange = function() {
             if(this.readyState === 4 && this.status === 200) {
