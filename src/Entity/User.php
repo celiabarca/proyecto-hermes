@@ -94,7 +94,7 @@ class User implements UserInterface
     private $rol = 'ROLE_USER';
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\File(mimeTypes={"image/gif", "image/png", "image/jpeg", "image/bmp", "image/webp"})
      */
     private $img = "assets/images/profile-default.jpg";
