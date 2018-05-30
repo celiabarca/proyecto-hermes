@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     {#       comentarios                 #}
-                    <div class="test">
+                    <div class="test collapsible" data-limit="1">
                         <div class = "comm">
                             <div>
                                 <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
@@ -40,7 +40,7 @@
                         </div>
                         {% for comentario in proyecto.comentarios %}
 
-                            <div id="comentario-{{ comentario.id }}" class="comm">
+                            <div id="comentario-{{ comentario.id }}" class="comm collapsible-element">
 
                                 <div>
                                     <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
@@ -84,7 +84,7 @@
                                 <button class="vermas-btn">Ver más</button>
                             </div>
                         {% endfor %}
-
+                        <button class="vermas-btn">Ver más</button>
                         <div>
                             <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
                         </div>
