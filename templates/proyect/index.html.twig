@@ -23,7 +23,9 @@
 
                             </div>
                             <div class ="options">
-                                <div >comentarios</div>
+                                <div>
+                                    <input type ="button" value="Ayudar">
+                                </div>
                                 <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
                             </div>
@@ -85,9 +87,9 @@
                             </div>
                         {% endfor %}
 
-                        <div>
+                        {#<div>
                             <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
-                        </div>
+                        </div>#}
                     </div>
                 </div>
             {% endfor %}

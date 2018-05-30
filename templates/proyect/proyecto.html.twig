@@ -62,9 +62,12 @@
             <div class="test">
                 {% if app.user %}
                     <h1>Comenta que te parece el proyecto </h1>
-                    <div>
-                        {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
-                    </div>
+                    <div class = "comm">
+                            <div>
+                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                            </div>
+                            {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
+                        </div>
                     {% for comentario in proyecto.comentarios %}
 
                         <div id="comentario-{{ comentario.id }}" class="comm">
