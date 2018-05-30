@@ -16,6 +16,12 @@ function ocultarApartirDeLimite() {
             }
             visibleElements++;
         });
+
+        var $childrenCollapsibles = $this.children('.collapsible');
+
+        if($childrenCollapsibles) {
+            $childrenCollapsibles.hide();
+        }
     });
 }
 
@@ -24,8 +30,15 @@ function ocultarApartirDeLimite() {
  */
 function verMas() {
     var $this = $(this);
-    var collapsibles = $this.parent().find('.collapsible-element');
+    var collapsibles = $this.parent().children('.collapsible-element');
     $(collapsibles).show();
+
+    var $childrenCollapsibles = $this.parent().children('.collapsible');
+
+    if($childrenCollapsibles) {
+        $childrenCollapsibles.show();
+    }
+
     $this.hide(); // oculta el boton de ver mas
 }
     //alert($(window).width());
