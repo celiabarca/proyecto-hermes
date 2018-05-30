@@ -15,6 +15,7 @@ function updateCoords(c) {
 function crop() {
     this.img = new Image();
     this.canvas = document.createElement('canvas');
+    this.canvas.style.display = 'none';
     this.initCrop = initCrop;
     this.mapValues = mapValues;
     this.aplicarCrop = aplicarCrop;
@@ -40,6 +41,9 @@ function initCrop(img) {
     reader.readAsDataURL(img);
 }
 
+// funcion para mapear valores
+// sacada de la documentacion de arduino
+// https://www.arduino.cc/reference/en/language/functions/math/map/
 function map(x, in_min, in_max, out_min, out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
@@ -66,7 +70,6 @@ function cancelarCrop() {
     var $inputimg = $('#editar_usuario_img');
     $inputimg.replaceWith($inputimg.clone(true));
     document.body.removeChild(this.canvas);
-    $('#cropbox').hide();
 }
 
 // funcion sacada de stackoverflow
@@ -107,21 +110,36 @@ $(document).ready(function(){
 
         $('#aceptar-crop-btn').on('click', function(){
             data_url = c.aplicarCrop();
+            $('#cropbox').hide();
         });
 
         $('#cancelar-crop-btn').on('click', function(){
             c.cancelarCrop();
+            $('#cropbox').hide();
         });
     });
-    /*
+
     $("form[name='editar_usuario']").on('submit', function(event){
         event.preventDefault();
 
         var form = new FormData(document.getElementsByName("editar_usuario")[0]);
-        var blob = dataURItoBlob(data_url);
+        var request = new XMLHttpRequest();
 
-        form.set("img", blob, filename);
-        form.submit();
+        if(data_url != null) {
+            var blob = dataURItoBlob(data_url);
+            // cambia la imagen puesta en el input por la imagen recortada
+            form.set("editar_usuario[img]", blob, filename);
+        }
+
+        request.onreadystatechange = function() {
+            if(this.readyState === 4 && this.status === 200) {
+                // arreglo para coger la redireccion de symfony con ajax
+                window.location.href = this.responseURL;
+            }
+        };
+
+        request.open("POST", window.location.href, false);
+        request.send(form);
     });
-    */
+
 });

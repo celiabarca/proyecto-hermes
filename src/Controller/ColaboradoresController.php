@@ -125,4 +125,64 @@ class ColaboradoresController extends Controller
         }
     }
 
+    /**
+     * Preparado para ajax
+     * Acepta una colaboracion en el proyecto
+     * @param Colaboracion $colaboracion
+     * @return JsonResponse
+     */
+    public function aceptarColaboracion(Colaboracion $colaboracion) {
+        try {
+            $aceptado = false;
+
+            if($colaboracion->getProyecto()->getAutor() == $this->getUser()) {
+                $colaboracion->setEstado('aceptado');
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($colaboracion);
+                $manager->flush();
+                $aceptado = true;
+            } else {
+                throw new \Exception('Solo pude aceptar la peticion el autor del proyecto!');
+            }
+
+            return new JsonResponse([
+                'aceptado' => $aceptado
+            ]);
+        } catch(\Exception $e) {
+            return new JsonResponse([
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Preparado para ajax
+     * Rechaza una colaboracion en el proyecto
+     * @param Colaboracion $colaboracion
+     * @return JsonResponse
+     */
+    public function rechazarColaboracion(Colaboracion $colaboracion) {
+        try {
+            $rechazado = false;
+
+            if($colaboracion->getProyecto()->getAutor() == $this->getUser()) {
+                $colaboracion->setEstado('rechazado');
+                $manager = $this->getDoctrine()->getManager();
+                $manager->persist($colaboracion);
+                $manager->flush();
+                $rechazado = true;
+            } else {
+                throw new \Exception('Solo pude rechazar la peticion el autor del proyecto!');
+            }
+
+            return new JsonResponse([
+                'aceptado' => $rechazado
+            ]);
+        } catch(\Exception $e) {
+            return new JsonResponse([
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
+
 }
