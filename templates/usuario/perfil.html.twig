@@ -6,11 +6,11 @@
                 <div>
                     {#                    {{ usuario.img }}#}
                     {#                    <img src ="{{ usuario.img }}" alt ="imagen de perfil de {{usuario.username}}">#}
-                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                    <img src="{{ asset(usuario.img) }}" alt="imagen de perfil de {{usuario.username}}">
                 </div>
                 <div>
                     <div>
-                        <h1>{{ usuario.username  }}</h1>
+                        <h1>{{ usuario.username }}</h1>
                         <input type="button">
                     </div>
                     <div>
