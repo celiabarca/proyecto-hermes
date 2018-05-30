@@ -3,10 +3,15 @@
 {% block  contenido %}
     <div id="project">
         <div>
+            <div>
+                <h1>{{proyecto.titulo}}</h1>
+            </div>
             {% if proyecto.img %}
-                <div>
+                <div class ="imgProjec">
                     <img src="{{proyecto.img}}" alt="">
                 </div>
+            {% else %}
+                <div></div>
             {%endif%}
             <div>
                 <div>
@@ -26,9 +31,7 @@
             <div>
                 {{proyecto.fechaCreacion|date('d/m/Y')}}
             </div>
-            <div>
-                <h1>{{proyecto.titulo}}</h1>
-            </div>
+            
             <div class="steps ">
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
                 <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>

@@ -43,10 +43,10 @@ function verMas() {
     $(".responder").click(function(){
        $(this).parent().find(".respuesta").css("display", "block"); 
     });
-    $(".options>div:nth-child(1)").click(function(){
-        $(this).parent().parent().parent().parent().find(".test").css("display", "block"); 
-        console.log($(this).parent().parent().parent().parent().find(".test"));
-    });
+//    $(".options>div:nth-child(1)").click(function(){
+//        $(this).parent().parent().parent().parent().find(".test").css("display", "block"); 
+//        console.log($(this).parent().parent().parent().parent().find(".test"));
+//    });
     $(".closecomment").click(function(){
         $(this).parent().parent().css("display", "none"); 
         console.log($(this).parent().parent());
