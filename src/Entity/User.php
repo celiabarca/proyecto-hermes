@@ -5,9 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 use App\Entity\Traits\HasPremium;
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -142,8 +140,6 @@ class User implements UserInterface
         $this->colaboraciones = new ArrayCollection();
         $this->proyectosvalorados = new ArrayCollection();
         $this->seguimientos = new ArrayCollection();
-        $this->phoneNumber = new PhoneNumber();
-
         $this->respuestas = new ArrayCollection();
     }
 

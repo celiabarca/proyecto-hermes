@@ -76,4 +76,17 @@ function verMas() {
 
     ocultarApartirDeLimite();
     $('.vermas-btn').on('click', verMas);
+
+    $('.campo-opcional').hide();
+    $('#mostrar-campos-opcionales').on('change', function() {
+        var active = $('#mostrar-campos-opcionales:checked').val();
+
+        if(active) {
+            console.log("active");
+            $('.campo-opcional').show();
+        } else {
+            $('.campo-opcional').hide();
+            $('.campo-opcional input').val(""); // quita los values al desactivar el checkbox
+        }
+    });
 })
