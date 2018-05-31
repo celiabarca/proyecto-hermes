@@ -106,6 +106,7 @@ class UserController extends Controller {
         }
 
         $oldpassword = $usuario->getPassword();
+        $oldimg = $usuario->getImg();
         $form = $this->createForm(EditarUsuarioType::class, $usuario);
         $form->handleRequest($request);
 
@@ -121,6 +122,8 @@ class UserController extends Controller {
                 $uploadedFilename = $this->uploader->upload($usuario->getImg());
                 $path = $this->uploader->getUploadsDirectory().'/'.$uploadedFilename;
                 $usuario->setImg($path);
+            } else {
+                $usuario->setImg($oldimg);
             }
 
             $manager = $this->getDoctrine()->getManager();

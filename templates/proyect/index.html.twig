@@ -16,14 +16,16 @@
                                 <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
                                 <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
                             </div>
-                                <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                            <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                             <p>{{proyecto.descripcion}}</p>
                             <div class ="autor">
                                 <h2>{{proyecto.autor.nombre}}</h2>
-                                
+
                             </div>
                             <div class ="options">
-                                <div >comentarios</div>
+                                <div>
+                                    <input type ="button" value="Ayudar">
+                                </div>
                                 <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
                             </div>
@@ -31,13 +33,16 @@
                         </div>
                     </div>
                     {#       comentarios                 #}
-                    <div class="test">
-                        <div>
+                    <div class="test collapsible" data-limit="1">
+                        <div class = "comm">
+                            <div>
+                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                            </div>
                             {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                         </div>
                         {% for comentario in proyecto.comentarios %}
 
-                            <div id="comentario-{{ comentario.id }}" class="comm">
+                            <div id="comentario-{{ comentario.id }}" class="comm collapsible-element">
 
                                 <div>
                                     <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
@@ -81,10 +86,15 @@
                                 <button class="vermas-btn">Ver más</button>
                             </div>
                         {% endfor %}
+<<<<<<< HEAD
 
+                        {#<div>
+=======
+                        <button class="vermas-btn">Ver más</button>
                         <div>
+>>>>>>> c7abd75921fd16c6c14a69d7ecdc4f653ff43379
                             <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
-                        </div>
+                        </div>#}
                     </div>
                 </div>
             {% endfor %}

@@ -16,6 +16,12 @@ function ocultarApartirDeLimite() {
             }
             visibleElements++;
         });
+
+        var $childrenCollapsibles = $this.children('.collapsible');
+
+        if($childrenCollapsibles) {
+            $childrenCollapsibles.hide();
+        }
     });
 }
 
@@ -24,8 +30,15 @@ function ocultarApartirDeLimite() {
  */
 function verMas() {
     var $this = $(this);
-    var collapsibles = $this.parent().find('.collapsible-element');
+    var collapsibles = $this.parent().children('.collapsible-element');
     $(collapsibles).show();
+
+    var $childrenCollapsibles = $this.parent().children('.collapsible');
+
+    if($childrenCollapsibles) {
+        $childrenCollapsibles.show();
+    }
+
     $this.hide(); // oculta el boton de ver mas
 }
     //alert($(window).width());
@@ -43,10 +56,10 @@ function verMas() {
     $(".responder").click(function(){
        $(this).parent().find(".respuesta").css("display", "block"); 
     });
-    $(".options>div:nth-child(1)").click(function(){
-        $(this).parent().parent().parent().parent().find(".test").css("display", "block"); 
-        console.log($(this).parent().parent().parent().parent().find(".test"));
-    });
+//    $(".options>div:nth-child(1)").click(function(){
+//        $(this).parent().parent().parent().parent().find(".test").css("display", "block"); 
+//        console.log($(this).parent().parent().parent().parent().find(".test"));
+//    });
     $(".closecomment").click(function(){
         $(this).parent().parent().css("display", "none"); 
         console.log($(this).parent().parent());

@@ -12,52 +12,40 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use App\Repository\TagRepository;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 
-class ProjectType extends AbstractType
-{
-    
-    private $tags;
-    
-    public function __construct(TagRepository $tags) {
-        $this->tags = $tags;
-    }
-    
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+class ProjectType extends AbstractType {
+
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('titulo', TextType::class, [
-                'label' => 'Titulo'
-            ])
-            ->add('descripcion', TextareaType::class, [
-                'label' => 'Descripcion'
-            ])
-            ->add('img', FileType::class, [
-                'required' => false,
-                'label' => 'Imagen',
-                'data' => null,
-            ])
-            ->add('contenido', TextareaType::class, [
-                'label' => 'Sobre el proyecto'
-            ])
-            ->add('meta', NumberType::class, [
-                'label' => 'Meta',
-                'required' => false
-            ])
-            ->add('etiquetas', TagInputType::class, [
-                'label' => 'Etiquetas',
-                'attr'=>
-                [
-                    'id'=>'tagsinput'
-                ]
-            ])
-            ->add('Enviar', SubmitType::class);
+                ->add('titulo', TextType::class, [
+                    'label' => 'Titulo'
+                ])
+                ->add('descripcion', TextareaType::class, [
+                    'label' => 'Descripcion'
+                ])
+                ->add('img', FileType::class, [
+                    'required' => false,
+                    'label' => 'Imagen',
+                    'data' => null,
+                ])
+                ->add('contenido', TextareaType::class, [
+                    'label' => 'Sobre el proyecto'
+                ])
+                ->add('meta', RangeType::class, [
+                    'label' => 'Meta',
+                    'required' => false,
+                ])
+                ->add('etiquetas', TagInputType::class, [
+                    'label' => 'Etiquetas'
+                ])
+                ->add('Enviar', SubmitType::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => Project::class,
         ]);
     }
+
 }

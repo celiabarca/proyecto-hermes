@@ -240,10 +240,17 @@ $(document).ready(function () {
     
     $("textarea").on("blur",function()
     {
-        var inapropiadas = ['inutil','no vale para nada','dedicate a otra cosa'];
+        var inapropiadas = ['inutil','capullo','gilipollas','mierda'];
         
         var comentario = $(this).val().split(" ");
-        if(comentario.contains())
+        
+        for(var a = 0;a!=comentario.lenght;a++)
+            if(inapropiadas.contains(comentario[a]))
+            {
+                comentario[a] = "@(%$=)(/&&$";
+            }
+            var join = comentario.joins(" ");
+            $(this).val(join);
     });
 
 
