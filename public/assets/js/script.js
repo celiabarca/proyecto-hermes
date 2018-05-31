@@ -4,25 +4,20 @@ $( document ).ready(function() {
  * la cantidad de elementos puesta en el atributo data-limit=""
  * de la clase .collapsible
  */
-function ocultarApartirDeLimite() {
-    $('.collapsible').each(function(){
-        var $this = $(this);
-        var limit = parseInt($this.data('limit'));
-        var visibleElements = 0;
-        $this.find('.collapsible-element').each(function(){
-            var $this = $(this);
+function ocultarApartirDeLimite(collapsible) {
+    var limit = parseInt(collapsible.dataset.limit);
+    var childElements = collapsible.children;
+    var visibleElements = 0;
+
+    for(var i = 0; i < childElements.length; i++) {
+        if(childElements[i].classList.contains('collapsible-element')) {
             if(visibleElements >= limit) {
-                $this.hide();
+                childElements[i].style.display = 'none';
+            } else {
+                visibleElements++;
             }
-            visibleElements++;
-        });
-
-        var $childrenCollapsibles = $this.children('.collapsible');
-
-        if($childrenCollapsibles) {
-            $childrenCollapsibles.hide();
         }
-    });
+    }
 }
 
 /**
@@ -32,15 +27,10 @@ function verMas() {
     var $this = $(this);
     var collapsibles = $this.parent().children('.collapsible-element');
     $(collapsibles).show();
-
-    var $childrenCollapsibles = $this.parent().children('.collapsible');
-
-    if($childrenCollapsibles) {
-        $childrenCollapsibles.show();
-    }
-
     $this.hide(); // oculta el boton de ver mas
 }
+
+
     //alert($(window).width());
     //change images de imput email
     img = "/images/black-envelope.png";
@@ -74,7 +64,12 @@ function verMas() {
         $('#login-form-container').addClass('animated shake');
     }
 
-    ocultarApartirDeLimite();
+    var collapsibles = document.getElementsByClassName('collapsible');
+
+    for(var i = 0; i < collapsibles.length; i++) {
+        ocultarApartirDeLimite(collapsibles[i]);
+    }
+
     $('.vermas-btn').on('click', verMas);
 
     $('.campo-opcional').hide();
