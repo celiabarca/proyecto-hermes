@@ -50,12 +50,17 @@
             <div>
                 <div>
                     <h1>¿ Donde quieres que te agregamos los donativos de nuestros queridos patrocinadores ?</h1>
-                    
+
                 </div>
                 <div>
                     <div>
                         <p>puedes poner una aproximación de a que cantidad quieres llegar</p>
                         {{form_widget(FormularioProyecto.meta)}}
+                        <output for="foo" onforminput="value = foo.valueAsNumber;"></output>
+                    </div>
+                    <div>
+                        <p>5€<p>     
+                        <p>10.000€</p>
                     </div>
                 </div>
             </div>
