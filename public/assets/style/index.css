@@ -1093,6 +1093,22 @@ input[type=range]::-ms-thumb {
     height: 41px;
     width: 300px;
 }
+
+.informacion-adicional-checkbox:hover .alerta-popup {
+    display: block;
+}
+
+.alerta-popup {
+    display: none;
+    position: absolute;
+    padding: 15px;
+    float: left;
+    margin-left: -360px;
+    margin-top: -50px;
+    width: 300px;
+    background-color: #2888dd;
+}
+
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 

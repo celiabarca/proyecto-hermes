@@ -59,7 +59,46 @@
                             <!-- contenedor formulario registro -->
                             <div>
                                 {{ form_start(form) }}
-                                {{ form_widget(form) }}
+                                <div id="register">
+                                    <div>
+                                        {{ form_label(form.nombre) }}
+                                        {{ form_widget(form.nombre) }}
+                                    </div>
+                                    <div>
+                                        {{ form_label(form.email) }}
+                                        {{ form_widget(form.email) }}
+                                    </div>
+                                    <div>
+                                        {{ form_label(form.password.first) }}
+                                        {{ form_widget(form.password.first) }}
+                                    </div>
+                                    <div>
+                                        {{ form_label(form.password.second) }}
+                                        {{ form_widget(form.password.second) }}
+                                    </div>
+                                    <div class="informacion-adicional-checkbox" style="flex-direction: row;">
+                                        <input id="mostrar-campos-opcionales" type="checkbox" value="1">
+                                        Añadir informacion adicional
+                                        <div class="alerta-popup">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dignissim, magna vel pellentesque accumsan, quam felis pulvinar arcu, non volutpat nisl diam ut felis. Nulla ultrices facilisis gravida.
+                                        </div>
+                                    </div>
+                                    <div class="campo-opcional">
+                                        {{ form_label(form.telefono) }}
+                                        {{ form_widget(form.telefono) }}
+                                    </div>
+                                    <div class="campo-opcional">
+                                        {{ form_label(form.empresa) }}
+                                        {{ form_widget(form.empresa) }}
+                                    </div>
+                                    <div class="campo-opcional">
+                                        {{ form_label(form.sector) }}
+                                        {{ form_widget(form.sector) }}
+                                    </div>
+                                    <div>
+                                        {{ form_widget(form.registrarse) }}
+                                    </div>
+                                </div>
                                 {{ form_end(form) }}
                             </div>
                         </div>
