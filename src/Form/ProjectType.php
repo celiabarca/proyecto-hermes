@@ -35,6 +35,11 @@ class ProjectType extends AbstractType {
                 ->add('meta', RangeType::class, [
                     'label' => 'Meta',
                     'required' => false,
+                    'attr' => array(
+                        'min' => 5,
+                        'max' => 10000,
+                        'step' => 10
+                    )
                 ])
                 ->add('etiquetas', TagInputType::class, [
                     'label' => 'Etiquetas'
