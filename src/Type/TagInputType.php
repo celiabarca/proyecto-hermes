@@ -13,7 +13,7 @@ use App\Repository\TagRepository;
 use App\Form\DataTransformer\TagArrayToStringTransformer;
 use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -36,7 +36,7 @@ class TagInputType extends AbstractType {
     }
 
     public function getParent() {
-        return TextType::class;
+        return \Symfony\Component\Form\Extension\Core\Type\TextareaType::class;
     }
 
 }

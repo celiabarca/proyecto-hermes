@@ -1,10 +1,10 @@
 
-
 $(document).ready(function () {
     var $megustabtn = $('#megusta-btn');
     var $nomegustabtn = $('#no-megusta-btn');
     var cont = 1;
     renderValoracion();
+    
 
     $('#colaborar-btn').on('click', function () {
         var proyectoId = this.dataset.proyectoid;
@@ -92,24 +92,51 @@ $(document).ready(function () {
 
         });
     });
+    
+    $('#project_etiquetas').editableSelect('show');
+    
 
     $('#project_etiquetas').on('keydown', function () {
         var nombreTag = $(this).val();
-
+        inputTags = nombreTag.split(","); 
+        
+        $('#project_etiquetas').keypress(function(event){
+            if(String.fromCharCode(event.which)==',')
+            {
+                var span = "<div class='tagok'>"+inputTags[inputTags.length-1]+"</div>";
+                console.log(span);
+            }
+          });
+          console.log(inputTags[inputTags.length-1]);
         $.ajax({
-            url: '/tags/' + nombreTag,
+            url: '/tags/' + inputTags[inputTags.length-1],
             type: 'GET',
             dataType: 'JSON',
-            success: function (data) {
+            success: function (data) 
+            {
                 // TODO poner en un ul los tags
-                console.log(data);
+                var i = 0;
+                var li = "";
+                    for(i = 0;i < data.tags.length;i++)
+                    {
+                        li += "<li class='es-visible'>"+data.tags[i].nombre+"</li>";
+                    }
+                    
+                    $(".es-list").html(li);
+                   
+                
             },
             error: function (data) {
                 console.log(data.responseJSON.error);
             }
         });
     });
-
+    
+    $("ul").on('click', "li",function()
+    {
+        console.log("hola");
+    })
+    
     $('#no-megusta-btn').on('click', function () {
         var $this = $(this);
         var proyecto = $this.data('proyectoid');
@@ -209,6 +236,21 @@ $(document).ready(function () {
             $("#next").css("display", "none");
             $('#previous').css("display", "block");
         }
+    });
+    
+    $("textarea").on("blur",function()
+    {
+        var inapropiadas = ['inutil','capullo','gilipollas','mierda'];
+        
+        var comentario = $(this).val().split(" ");
+        
+        for(var a = 0;a!=comentario.lenght;a++)
+            if(inapropiadas.contains(comentario[a]))
+            {
+                comentario[a] = "@(%$=)(/&&$";
+            }
+            var join = comentario.joins(" ");
+            $(this).val(join);
     });
 
 
