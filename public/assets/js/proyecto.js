@@ -1,10 +1,27 @@
 
-
 $(document).ready(function () {
     var $megustabtn = $('#megusta-btn');
     var $nomegustabtn = $('#no-megusta-btn');
     var cont = 1;
+    var tags = [];
     renderValoracion();
+    
+    function getTags()
+    {
+        return tags;
+    }
+    
+    function setTags(tag)
+    {
+        for(var z = tags.length;z!=0;z--)
+        {
+            tags.pop();
+        }
+        for(var z = 0; z!=tag.length;z++)
+        {
+            tags.push(tag[z].nombre); 
+        }        
+    }
 
     $('#colaborar-btn').on('click', function () {
         var proyectoId = this.dataset.proyectoid;
@@ -92,24 +109,84 @@ $(document).ready(function () {
 
         });
     });
+    
+    
+    $('#project_etiquetas').autocomplete({
+      source: getTags()
+    });
+    
+    //taags
+    
+        function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#project_etiquetas" )
+      // don't navigate away from the field on tab when selecting an item
+      .on( "keydown", function( event ) {
+        if ( event.keyCode === $.ui.keyCode.TAB &&
+            $( this ).autocomplete( "instance" ).menu.active ) {
+          event.preventDefault();
+        }
+      })
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          // delegate back to autocomplete, but extract the last term
+          response( $.ui.autocomplete.filter(
+            tags, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          // prevent value inserted on focus
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  
+    
+    //end tags
+    
 
     $('#project_etiquetas').on('keydown', function () {
         var nombreTag = $(this).val();
-
+        inputTags = nombreTag.split(",");
+        var search = inputTags[inputTags.length-1].trim();
+        console.log(search);
         $.ajax({
-            url: '/tags/' + nombreTag,
+            url: '/tags/' + search,
             type: 'GET',
             dataType: 'JSON',
-            success: function (data) {
-                // TODO poner en un ul los tags
-                console.log(data);
+            success: function (data) 
+            {
+                // TODO poner en un ul los tags     
+                        setTags(data.tags);
+    
             },
             error: function (data) {
                 console.log(data.responseJSON.error);
             }
         });
     });
-
+    
+    
+    $("ul").on('click', "li",function()
+    {
+        console.log("hola");
+    })
+    
     $('#no-megusta-btn').on('click', function () {
         var $this = $(this);
         var proyecto = $this.data('proyectoid');
@@ -209,6 +286,21 @@ $(document).ready(function () {
             $("#next").css("display", "none");
             $('#previous').css("display", "block");
         }
+    });
+    
+    $("textarea").on("blur",function()
+    {
+        var inapropiadas = ['inutil','capullo','gilipollas','mierda'];
+        
+        var comentario = $(this).val().split(" ");
+        
+        for(var a = 0;a!=comentario.lenght;a++)
+            if(inapropiadas.contains(comentario[a]))
+            {
+                comentario[a] = "@(%$=)(/&&$";
+            }
+            var join = comentario.joins(" ");
+            $(this).val(join);
     });
 
 

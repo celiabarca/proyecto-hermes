@@ -42,7 +42,11 @@ class ProjectType extends AbstractType {
                     )
                 ])
                 ->add('etiquetas', TagInputType::class, [
-                    'label' => 'Etiquetas'
+                    'label' => 'Etiquetas',
+                    'attr'=>
+                    [
+                        'autocomplete'=>'off'
+                    ]
                 ])
                 ->add('Enviar', SubmitType::class);
     }

@@ -843,6 +843,13 @@ h2{
     top: 0;
     right: 0;
 }
+
+.tagok
+{
+    padding: 2px;
+    border: 2px solid black;
+    background-color: red;
+}
 /******************nuevo proyecto***********************/
 
 /**Anular estilos del range**/
@@ -1208,6 +1215,22 @@ output:after {
     height: 41px;
     width: 300px;
 }
+
+.informacion-adicional-checkbox:hover .alerta-popup {
+    display: block;
+}
+
+.alerta-popup {
+    display: none;
+    position: absolute;
+    padding: 15px;
+    float: left;
+    margin-left: -360px;
+    margin-top: -50px;
+    width: 300px;
+    background-color: #2888dd;
+}
+
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 

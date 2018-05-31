@@ -21,7 +21,6 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=60)
-     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $titulo;
 

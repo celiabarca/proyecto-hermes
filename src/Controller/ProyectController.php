@@ -230,7 +230,7 @@ class ProyectController extends Controller {
         }
 
         return $this->render('proyect/index.html.twig', [
-            'proyectos' => $proyectos,
+            'proyectos' => $proyectos
         ]);
     }
 }
