@@ -84,4 +84,14 @@ function verMas() {
             $('.campo-opcional input').val(""); // quita los values al desactivar el checkbox
         }
     });
-})
+
+    var cookies_aceptadas = localStorage.getItem("cookies");
+
+    if(cookies_aceptadas == null) {
+        $('#cookies').css('display', 'flex');
+        $('#cookies button').on('click', function(){
+            $('#cookies').hide();
+           localStorage.setItem("cookies", "true");
+        });
+    }
+});
