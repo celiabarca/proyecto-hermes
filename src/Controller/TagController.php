@@ -39,7 +39,8 @@ class TagController extends Controller {
 
         return new JsonResponse([
             'tags' => $tagnames
-        ]);
+                ]
+        );
     }
 
 }

@@ -12,9 +12,17 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Repository\TagRepository;
 
 class ProjectType extends AbstractType
 {
+    
+    private $tags;
+    
+    public function __construct(TagRepository $tags) {
+        $this->tags = $tags;
+    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -37,7 +45,11 @@ class ProjectType extends AbstractType
                 'required' => false
             ])
             ->add('etiquetas', TagInputType::class, [
-                'label' => 'Etiquetas'
+                'label' => 'Etiquetas',
+                'attr'=>
+                [
+                    'id'=>'tagsinput'
+                ]
             ])
             ->add('Enviar', SubmitType::class);
     }

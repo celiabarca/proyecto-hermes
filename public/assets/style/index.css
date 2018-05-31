@@ -831,6 +831,13 @@ h2{
     top: 0;
     right: 0;
 }
+
+.tagok
+{
+    padding: 2px;
+    border: 2px solid black;
+    background-color: red;
+}
 /******************nuevo proyecto***********************/
 #nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
     justify-content: center;
