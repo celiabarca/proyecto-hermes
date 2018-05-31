@@ -3,7 +3,41 @@
 {% block  contenido %}
     <div id ="blog">
         <div>
-            <div></div>
+            <div>
+                <div>
+                    <button>Por fecha</button>
+                    <ul>
+                        <li>
+                            <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'asc'}) }}">De mas bajo a mas alto</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'desc'}) }}">De mas alto a mas bajo</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button>Por cantidad donada</button>
+                    <ul>
+                        <li>
+                            <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'asc'}) }}">De mas bajo a mas alto</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'desc'}) }}">De mas alto a mas bajo</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button>Por valoracion</button>
+                    <ul>
+                        <li>
+                            <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'asc'}) }}">Mejor valorado</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'desc'}) }}">Peor valorado</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             {% for proyecto in proyectos %}
                 <div class="proj tam">
                     {#                  primera parte            #}
