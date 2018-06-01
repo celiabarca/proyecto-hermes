@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Entity\User;
+use App\Entity\Seguimiento;
 
 class ProyectController extends Controller {
 
@@ -74,9 +75,16 @@ class ProyectController extends Controller {
                 $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
                 $projecto->setImg($path);
             }
-
+            $situacion = new Seguimiento();
+            $situacion->setSituacion("Proyecto Iniciado");
+            $situacion->setDescripcion("Situación añadida al crear el proyecto");
+            $situacion->setProyecto($projecto);
+            $situacion->setUsuario($this->getUser());
+            $date = new \DateTime();
+            $situacion->setFecha($date);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
+            $entityManager->persist($situacion);
             $entityManager->flush();
             
             return $this->redirectToRoute("index");
@@ -115,7 +123,7 @@ class ProyectController extends Controller {
         } else {
             $valoracion = null;
         }
-
+        dump($proyecto);
         return $this->render('proyect/proyecto.html.twig', [
             'proyecto' => $proyecto,
             'valoracion' => $valoracion,

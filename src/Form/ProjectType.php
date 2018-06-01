@@ -41,6 +41,11 @@ class ProjectType extends AbstractType {
                         'step' => 10
                     )
                 ])
+                ->add('iban', TextType::class,
+                        [
+                            'label'=>'Introduce tu número de cuenta para recibit las donaciones al proyecto'
+                        ]
+                    )
                 ->add('etiquetas', TagInputType::class, [
                     'label' => 'Etiquetas',
                     'attr'=>
