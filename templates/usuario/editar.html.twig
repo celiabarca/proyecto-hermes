@@ -14,11 +14,18 @@
         {{ form_end(form) }}
     </div>
 </div>
-<div id="cropbox">
-    <img id="crop-image" src="#" alt="crop-img">
-    <button id="aceptar-crop-btn">Recortar</button>
-    <button id="cancelar-crop-btn">Cancelar</button>
+<div class="flex-cropbox">
+    <div id="cropbox">
+        <div class="img-container">
+            <img id="crop-image" src="#" alt="crop-img">
+        </div>
+        <div class="crop-buttons">
+            <button id="aceptar-crop-btn">Recortar</button>
+            <button id="cancelar-crop-btn">Cancelar</button>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
 
 {% block js_especifico %}

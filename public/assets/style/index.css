@@ -758,20 +758,48 @@ h2{
 
 
 /* div para hacer el crop de una imagen */
+.flex-cropbox {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
 
 #cropbox {
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    z-index: 1;
-    margin: auto;
-    bottom: 0;
+    display: flex;
+    border: solid 3px #026f97;
+    background-color: #F2F2F2;
 }
+
 
 #cropbox img {
     width: 100%;
 }
 
+#cropbox .img-container {
+    width: 700px;
+}
+
+#cropbox .crop-buttons {
+    width: 100px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#cropbox .crop-buttons button {
+    padding: 15px;
+    width: 100px;
+    height: 100px;
+}
 
 /* Situaciones */
 
@@ -1244,12 +1272,12 @@ output:after {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    width: 97.6%;
+    width: 100%;
     z-index: 1;
 }
 
 .bottom-popup button {
-    align-self: flex-end;
+    align-self: center;
 }
 
 @media (max-width: 1075px) {
