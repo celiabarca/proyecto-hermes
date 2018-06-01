@@ -68,6 +68,14 @@ class ProyectController extends Controller {
         if($formularioProyecto->isSubmitted() && $formularioProyecto->isValid())
         {
             $entityManager = $this->getDoctrine()->getManager();
+            $situacion = new Seguimiento();
+            $situacion->setSituacion("Proyecto Iniciado");
+            $situacion->setDescripcion("Situación añadida al crear el proyecto");
+            $situacion->setUsuario($this->getUser());
+            $date = new \DateTime();
+            $situacion->setFecha($date);
+            $situacion->setProyecto($projecto);
+            $entityManager->persist($situacion);
             $projecto->setFechaCreacion(new \Datetime());
             $projecto->setAutor($this->getUser());
 
@@ -76,18 +84,9 @@ class ProyectController extends Controller {
                 $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
                 $projecto->setImg($path);
             }
-            $situacion = new Seguimiento();
-            $situacion->setSituacion("Proyecto Iniciado");
-            $situacion->setDescripcion("Situación añadida al crear el proyecto");
-            $situacion->setUsuario($this->getUser());
-            $date = new \DateTime();
-            $situacion->setFecha($date);
-            $situacion->setProyecto($projecto);
             
-            $projecto->setSeguimientos($situacion);
+            $projecto->addSeguimiento($situacion);
             $entityManager->persist($projecto);
-            $entityManager->flush();
-            $entityManager->persist($situacion);
             $entityManager->flush();
             
             return $this->redirectToRoute("index");
@@ -120,14 +119,12 @@ class ProyectController extends Controller {
      */
     public function proyecto(Project $proyecto)
     {
-        dump($proyecto);
         $formComment = $this->createForm(\App\Form\CommentType::class);
         if($this->getUser()) {
             $valoracion = $this->valoracionRepository->getValoracionDelUsuario($this->getUser(), $proyecto);
         } else {
             $valoracion = null;
         }
-        dump($proyecto);
         return $this->render('proyect/proyecto.html.twig', [
             'proyecto' => $proyecto,
             'valoracion' => $valoracion,
