@@ -68,7 +68,7 @@
                     <h1>Comenta que te parece el proyecto </h1>
                     <div class = "comm">
                             <div>
-                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                <img src="{{ asset(app.user.img) }}" alt="">
                             </div>
                             {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                         </div>
@@ -77,7 +77,7 @@
                         <div id="comentario-{{ comentario.id }}" class="comm">
 
                             <div>
-                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                <img src="{{ asset(comentario.autor.img) }}" alt="">
                             </div>
                             <div>
                                 <div>
@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="comm res">
                                         <div>
-                                            <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                            <img src="{{ asset(respuesta.autor.img) }}" alt="">
                                         </div>
                                         <div>
                                             <div>
@@ -115,7 +115,9 @@
                                     </div>
                                 </div>
                             {% endfor %}
-                            <button class="vermas-btn">Ver más</button>
+                            {% if comentario.respuestas|length > 3 %}
+                                <button class="vermas-btn">Ver más</button>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 {% else %}
@@ -137,5 +139,4 @@
             });
         });
     </script>
-</script>
 {% endblock %}
