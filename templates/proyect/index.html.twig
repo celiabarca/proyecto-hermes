@@ -70,65 +70,65 @@
                     <div class="test collapsible" data-limit="1">
                         <div class = "comm">
                             <div>
-                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                <img src="{{ asset(app.user.img) }}" alt="">
                             </div>
                             {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                         </div>
                         {% for comentario in proyecto.comentarios %}
-
-                            <div id="comentario-{{ comentario.id }}" class="comm collapsible-element">
-
-                                <div>
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                <div>
+                            <div class="collapsible-element">
+                                <div id="comentario-{{ comentario.id }}" class="comm">
                                     <div>
-                                        {{comentario.autor.nombre}}
+                                        <img src="{{ asset(comentario.autor.img) }}" alt="">
                                     </div>
                                     <div>
-                                        <p> {{comentario.contenido}}</p>
+                                        <div>
+                                            {{comentario.autor.nombre}}
+                                        </div>
+                                        <div>
+                                            <p> {{comentario.contenido}}</p>
+                                        </div>
                                     </div>
-                                </div> 
-
-                            </div>
-                            <div>
-                                <div class="responder">Responder</div>
-                                <div class ="respuesta">
-                                    {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
                                 </div>
-                            </div>
-                            <div class="respuestas collapsible" data-limit="3">
-                                {% for respuesta in comentario.respuestas %}
-                                    <div class="collapsible-element">
-                                        <div id="triangulo">
-                                        </div>
-                                        <div class="comm res">
-                                            <div>
-                                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    {{respuesta.autor.nombre}}
-                                                </div>
-                                                <div>
-                                                    <p> {{respuesta.contenido}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div>
+                                    <div class="responder">Responder</div>
+                                    <div class ="respuesta">
+                                        {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
                                     </div>
-                                {% endfor %}
-                                <button class="vermas-btn">Ver más</button>
+                                </div>
+                                <div class="respuestas collapsible" data-limit="1">
+                                    {% for respuesta in comentario.respuestas %}
+                                        <div class="collapsible-element">
+                                            <div id="triangulo">
+                                            </div>
+                                            <div class="comm res">
+                                                <div>
+                                                    <img src="{{ asset(respuesta.autor.img) }}" alt="">
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        {{respuesta.autor.nombre}}
+                                                    </div>
+                                                    <div>
+                                                        <p> {{respuesta.contenido}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% if comentario.respuestas|length > 1 %}
+                                        <button class="vermas-btn">Ver más</button>
+                                    {% endif %}
+                                </div>
                             </div>
                         {% endfor %}
-<<<<<<< HEAD
-
-                        {#<div>
-=======
-                        <button class="vermas-btn">Ver más</button>
+                        {#
                         <div>
->>>>>>> c7abd75921fd16c6c14a69d7ecdc4f653ff43379
                             <img src="{{ asset('assets/images/cancel.png') }}" class="closecomment" alt="cerrar comentarios">
-                        </div>#}
+                        </div>
+                        #}
+                        {% if proyecto.comentarios|length > 1 %}
+                            <button class="vermas-btn">Ver más comentarios</button>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
