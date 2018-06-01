@@ -1,27 +1,23 @@
 {% extends "base.html.twig" %}
 {% block contenido %}
-
-
-
-
-
-
     <div id="editarProjecto">
         <div>
             {{ form_start(form) }}
             <div>
                 {{form_widget(form.titulo)}}
             </div>
-            {% if proyecto.img %}
-                <div class ="imgProjec" id ="editImg">
-                    <img src="{{proyecto.img}}" alt="">
-                    {{form_widget(form.img)}}
-                </div>
-            {% else %}
-                <div>
-                    {{form_widget(form.img)}}
-                </div>
-            {%endif%}
+            <div>
+                {% if proyecto.img %}
+                    <div class ="imgProjec" id ="editImg">
+                        <img src="{{proyecto.img}}" alt="">
+                    </div>
+                {% else %}
+                    <div>
+                        {#                    {{form_widget(form.img)}}#}
+                    </div>
+                {%endif%}
+                {{form_widget(form.img)}}
+            </div>
             <div class="steps ">
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
                 <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
@@ -30,7 +26,9 @@
                 <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
             </div>
             <div>
+                <h1>Edita el resumen de tu proyecto</h1>
                 {{form_widget(form.descripcion)}}
+                <h1>Edita el contenido de tu proyecto</h1>
                 {{form_widget(form.contenido)}} 
             </div>
             <div>
@@ -38,19 +36,55 @@
                 <output id ="rangeEditar" for="foo" onforminput="value = foo.valueAsNumber;"></output>
             </div>
             <div>
+                <h2>Datos bamcarios</h2>
                 {{form_widget(form.iban)}}
             </div>
             <div>
+                <h2>Edita las etiquetas de tu post</h2>
                 {{form_widget(form.etiquetas)}}
             </div>
-
-
-
-            <div>
+            <div class ="allcolaboradores">
                 <div>
                     <h1>colaboradores</h1>
                     {% for colaborador in proyecto.colaboradores%}
-                        {% if colaborador.estado == 'aceptada' %}
+                        {% if colaborador.estado == "aceptado" %}
+                            <div class = "colaborador">
+                                <div>
+                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                </div>
+                                <div>
+                                    <h2>
+                                        {{ colaborador.usuario.nombre }}
+                                    </h2>
+                                </div>
+                                    <div>
+                                    <input type="button" value ="DELETE"/>
+                                </div>
+                            </div>
+                        {% elseif colaborador.estado == "Pendiente"%}   
+                            <div class = "colaborador colaboradorDenegado">
+                                <div>
+                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                </div>
+                                <div>
+                                    <h2>
+                                        {{ colaborador.usuario.nombre }}
+                                    </h2>
+                                </div>
+                                <div>
+                                    <input type="button" value =""/>
+                                    <input type="button" value =""/>
+                                </div>
+                            </div> 
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {#<div>
+                <div>
+                    <h1>colaboradores</h1>
+                    {% for colaborador in proyecto.colaboradores%}
+                        {% if colaborador.estado == 'aceptado' %}
                             <div class = "colaborador">
                                 <div>
                                     <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
@@ -71,11 +105,15 @@
                                         {{ colaborador.usuario.nombre }}
                                     </h2>
                                 </div>
+                                <div>
+                                    <input type="button" value =""/>
+                                    <input type="button" value =""/>
+                                </div>
                             </div> 
                         {% endif %}
                     {% endfor %}
                 </div>
-            </div>
+            </div>#}
             <div>
                 {{ form_end(form) }}
             </div>
