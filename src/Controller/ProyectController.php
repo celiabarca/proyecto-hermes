@@ -67,6 +67,7 @@ class ProyectController extends Controller {
         $formularioProyecto->handleRequest($peticion);
         if($formularioProyecto->isSubmitted() && $formularioProyecto->isValid())
         {
+            $entityManager = $this->getDoctrine()->getManager();
             $projecto->setFechaCreacion(new \Datetime());
             $projecto->setAutor($this->getUser());
 
@@ -78,12 +79,14 @@ class ProyectController extends Controller {
             $situacion = new Seguimiento();
             $situacion->setSituacion("Proyecto Iniciado");
             $situacion->setDescripcion("Situación añadida al crear el proyecto");
-            $situacion->setProyecto($projecto);
             $situacion->setUsuario($this->getUser());
             $date = new \DateTime();
             $situacion->setFecha($date);
-            $entityManager = $this->getDoctrine()->getManager();
+            $situacion->setProyecto($projecto);
+            
+            $projecto->setSeguimientos($situacion);
             $entityManager->persist($projecto);
+            $entityManager->flush();
             $entityManager->persist($situacion);
             $entityManager->flush();
             
@@ -117,6 +120,7 @@ class ProyectController extends Controller {
      */
     public function proyecto(Project $proyecto)
     {
+        dump($proyecto);
         $formComment = $this->createForm(\App\Form\CommentType::class);
         if($this->getUser()) {
             $valoracion = $this->valoracionRepository->getValoracionDelUsuario($this->getUser(), $proyecto);
@@ -169,7 +173,7 @@ class ProyectController extends Controller {
                 $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
                 $proyecto->setImg($path);
             }
-
+            $situacion = new Seguimiento();
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($proyecto);
             $manager->flush();
