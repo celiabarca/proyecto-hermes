@@ -1244,12 +1244,12 @@ output:after {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    width: 97.6%;
+    width: 100%;
     z-index: 1;
 }
 
 .bottom-popup button {
-    align-self: flex-end;
+    align-self: center;
 }
 
 @media (max-width: 1075px) {
