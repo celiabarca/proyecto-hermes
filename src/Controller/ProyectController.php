@@ -82,9 +82,9 @@ class ProyectController extends Controller {
             $situacion->setUsuario($this->getUser());
             $date = new \DateTime();
             $situacion->setFecha($date);
+            $projecto->addSeguimiento($situacion);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
-            $entityManager->persist($situacion);
             $entityManager->flush();
             
             return $this->redirectToRoute("index");

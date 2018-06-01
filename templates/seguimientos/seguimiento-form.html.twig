@@ -1,7 +1,11 @@
 <div>
     <div>
         {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_label(form.situacion) }}
+        {{ form_widget(form.situacion) }}
+        {{ form_label(form.descripcion) }}
+        {{ form_widget(form.descipcion) }}
+        {{ form_widget(form.enviar) }}
         {{ form_end(form) }}
     </div>
 </div>
