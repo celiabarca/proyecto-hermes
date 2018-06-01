@@ -34,7 +34,10 @@ class HomeController extends Controller {
     public function index() {
         $proyectos = $this->pc->dameProyectos(2);
      
-        $form = $this->createForm(RegisterType::class);
+        $form = $this->createForm(RegisterType::class, null, [
+            'action' => $this->generateUrl('registrarse')
+        ]);
+
         $user = $this->userRepository->findAll();
         return $this->render('inicio/index.html.twig', [
             'usuarios' => $user,
