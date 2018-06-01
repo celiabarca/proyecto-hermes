@@ -121,7 +121,10 @@ eliminar_seguimiento:
 actualizar_seguimiento:
     path: /proyecto/{project}/seguimiento/{seguimiento}/actualizar
     controller: App\Controller\SeguimientosController::actualizarSeguimiento
-
+addseguimiento:
+    path: /proyecto/{id}/nuevo/seguimiento
+    controller: App\Controller\SeguimientosController:anadirseguimientoproyecto
+    methods: [POST]
 
 #Comentarios
 commentar:

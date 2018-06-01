@@ -54,6 +54,23 @@ class SeguimientosController extends Controller
             'form' => $form->createView()
         ]);
     }
+    
+    public function anadirseguimientoproyecto(Request $req, Project $proyecto)
+    {
+        $newSituacion = $req->request->get("seguimiento");
+        $seguimiento = new Seguimiento();
+        $seguimiento->setSituacion($newSituacion);
+        $seguimiento->setProyecto($proyecto);
+        $seguimiento->setUsuario($this->getUser());
+        $seguimiento->setDescripcion("nueva situacion");
+        $fecha = new \DateTime();
+        $seguimiento->setFecha($fecha);
+        $em = $this->getDoctrine()->getManager();
+        
+        $em->persist($seguimiento);
+        $em->flush();
+        return $this->redirect($req->headers->get("referer"));
+    }
 
     /**
      * Preparado para AJAX

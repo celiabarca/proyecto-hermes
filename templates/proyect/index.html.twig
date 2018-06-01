@@ -68,12 +68,14 @@
                     </div>
                     {#       comentarios                 #}
                     <div class="test collapsible" data-limit="1">
-                        <div class = "comm">
-                            <div>
-                                <img src="{{ asset(app.user.img) }}" alt="">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class = "comm">
+                                <div>
+                                    <img src="{{ asset(app.user.img) }}" alt="">
+                                </div>
+                                {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                             </div>
-                            {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
-                        </div>
+                        {% endif %}
                         {% for comentario in proyecto.comentarios %}
                             <div class="collapsible-element">
                                 <div id="comentario-{{ comentario.id }}" class="comm">
@@ -90,10 +92,12 @@
                                     </div>
                                 </div>
                                 <div>
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                     <div class="responder">Responder</div>
                                     <div class ="respuesta">
                                         {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
                                     </div>
+                                    {% endif %}
                                 </div>
                                 <div class="respuestas collapsible" data-limit="1">
                                     {% for respuesta in comentario.respuestas %}

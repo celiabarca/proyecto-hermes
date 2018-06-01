@@ -2,6 +2,7 @@
 {% block contenido %}
     <div id ="nuevoProjecto">
         <div class="newProyect">
+            
             {{form_start(FormularioProyecto,{'action':path("nuevoProyecto")})}}
             <div>
                 <div>
@@ -81,4 +82,5 @@
 {% block js_especifico %}
     <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('/assets/js/proyecto.js') }}"></script>
+    
 {% endblock %}
