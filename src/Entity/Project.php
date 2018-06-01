@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Seguimiento;
 
 
 /**
@@ -63,7 +64,7 @@ class Project
     private $etiquetas;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto", cascade={"persist"})
      */
     private $seguimientos;
 
@@ -285,9 +286,13 @@ class Project
     /**
      * @param mixed $seguimientos
      */
-    public function setSeguimientos(Seguimiento $seguimientos): void
+    public function setSeguimientos($seguimientos): void
     {
         $this->seguimientos = $seguimientos;
+    }
+
+    public function addSeguimiento(Seguimiento $seguimiento) {
+        $this->seguimientos[] = $seguimiento;
     }
 
     /**

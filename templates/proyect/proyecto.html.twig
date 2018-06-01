@@ -34,11 +34,14 @@
             </div>
             
             <div class="steps ">
+                {% set index = 0 %}
+                {% for seguimiento in proyecto.seguimientos %}
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                    {% if index >= (proyecto.seguimientos|length - 4) or proyecto.seguimientos|length < 4 %}
+                        <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
+                    {% endif %}
+                    {% set index = index + 1 %}
+                {% endfor %}
             </div>
             <div>
                 {{proyecto.descripcion}}

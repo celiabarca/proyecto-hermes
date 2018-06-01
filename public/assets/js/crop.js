@@ -20,6 +20,7 @@ function crop() {
     this.mapValues = mapValues;
     this.aplicarCrop = aplicarCrop;
     this.cancelarCrop = cancelarCrop;
+    document.body.appendChild(this.canvas);
 }
 
 function initCrop(img) {
@@ -57,7 +58,6 @@ function mapValues() {
 }
 
 function aplicarCrop() {
-    document.body.appendChild(this.canvas);
     this.mapValues();
     this.canvas.width = imagecoords.w;
     this.canvas.height = imagecoords.h;
@@ -69,7 +69,6 @@ function aplicarCrop() {
 function cancelarCrop() {
     var $inputimg = $('#editar_usuario_img');
     $inputimg.replaceWith($inputimg.clone(true));
-    document.body.removeChild(this.canvas);
 }
 
 // funcion sacada de stackoverflow
@@ -97,7 +96,7 @@ $(document).ready(function(){
     var data_url;
     var filename;
 
-    $('#cropbox').hide();
+    $('.flex-cropbox').hide();
 
     $('#editar_usuario_img').on('change', function(event){
         var c = new crop();
@@ -106,16 +105,16 @@ $(document).ready(function(){
         filename = img.name;
         c.initCrop(img);
 
-        $('#cropbox').show();
+        $('.flex-cropbox').show();
 
         $('#aceptar-crop-btn').on('click', function(){
             data_url = c.aplicarCrop();
-            $('#cropbox').hide();
+            $('.flex-cropbox').hide();
         });
 
         $('#cancelar-crop-btn').on('click', function(){
             c.cancelarCrop();
-            $('#cropbox').hide();
+            $('.flex-cropbox').hide();
         });
     });
 

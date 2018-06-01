@@ -12,6 +12,7 @@ namespace App\Form;
 use App\Entity\Seguimiento;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +24,10 @@ class SeguimientoType extends AbstractType {
             ->add('situacion', TextType::class, [
                 'label' => 'Situacion del proyecto'
             ])
-            ->add('Enviar', SubmitType::class, [
+            ->add('descripcion', TextareaType::class, [
+                'label' => 'Descripcion de la situacion'
+            ])
+            ->add('enviar', SubmitType::class, [
                 'label' => 'Enviar nueva situacion'
             ]);
     }
