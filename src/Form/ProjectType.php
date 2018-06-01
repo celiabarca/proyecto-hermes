@@ -28,6 +28,11 @@ class ProjectType extends AbstractType {
                     'required' => false,
                     'label' => 'Imagen',
                     'data' => null,
+                    'attr'=>
+                    [
+                        'class'=>'dropzone'
+                    ]
+                   
                 ])
                 ->add('contenido', TextareaType::class, [
                     'label' => 'Sobre el proyecto'
