@@ -28,6 +28,7 @@ class ProjectType extends AbstractType {
                     'required' => false,
                     'label' => 'Imagen',
                     'data' => null,
+                   
                 ])
                 ->add('contenido', TextareaType::class, [
                     'label' => 'Sobre el proyecto'
