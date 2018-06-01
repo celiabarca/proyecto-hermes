@@ -176,7 +176,7 @@ $(document).ready(function () {
     
             },
             error: function (data) {
-                console.log(data.responseJSON.error);
+                console.log(data);
             }
         });
     });
@@ -213,7 +213,7 @@ $(document).ready(function () {
             }
             ,
             error: function (data) {
-                console.log(data.responseJSON.error);
+                console.log(data);
             }
         });
     });
@@ -243,7 +243,7 @@ $(document).ready(function () {
                 }
             },
             error: function (data) {
-                console.log(data.responseJSON.error);
+                console.log(data);
             }
         });
     });
@@ -257,7 +257,7 @@ $(document).ready(function () {
             $(".newProyect > form:nth-child(1) > div:nth-child(" + cont + ")").css("display", "none");
             cont++;
             $(".newProyect > form:nth-child(1) > div:nth-child(" + cont + ")").css("display", "flex");
-
+            showNextForm();
         }
     })
     $("#previous").on("click", function ()
@@ -311,7 +311,23 @@ $(document).ready(function () {
     $("#project_meta").on("blur",function()
     {
        //aler($(this))
-    })
+    });
 
+    var $progressBar = $('progress');
+    var value = 0;
+
+    /**
+     * Shows the next form.
+     * @param - Node - The current form.
+     * ======================================
+     */
+    function showNextForm() {
+        value = 33 * cont;
+        $progressBar.val(value);
+        // Update hidden progress descriptor (for a11y)
+        $('.js-form-progress-completion').html($progressBar.val() + '% complete');
+        $body.removeClass('freeze');
+        return false;
+    }
 
 });

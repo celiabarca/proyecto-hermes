@@ -878,6 +878,77 @@ h2{
     border: 2px solid black;
     background-color: red;
 }
+
+/* barra de progreso de la creacion del proyecto */
+.form-progress {
+    position: relative;
+    display: block;
+    margin: 3rem auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+progress {
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: green;
+    width: 100%;
+    height: 5px;
+    background: none;
+    transition: 1s;
+    will-change: contents;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #ddd;
+}
+
+progress::-webkit-progress-value {
+    background-color: green;
+    transition: all 0.5s ease-in-out;
+}
+
+.form-progress-indicator {
+    position: absolute;
+    top: -6px;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #ddd;
+    border-radius: 50%;
+    transition: all .2s ease-in-out;
+    transition-delay: .3s;
+    will-change: transform;
+}
+
+.active {
+    animation: bounce .5s forwards;
+    animation-delay: .5s;
+    border-color: green;
+}
+
+.one {
+    left: 0;
+}
+
+.two {
+    left: 33%;
+}
+
+.three {
+    left: 66%;
+}
+
+.four {
+    left: 100%;
+}
+
 /******************nuevo proyecto***********************/
 
 /**Anular estilos del range**/

@@ -51,17 +51,19 @@
             <div>
                 <div>
                     <h1>colaboradores</h1>
-                    {% for colaborador in proyecto.colaboradores%}
-                        <div class = "colaborador">
-                            <div>
-                                <img src="{{ asset(colaborador.usuario.img) }}" alt="">
+                    {% for colaborador in proyecto.colaboradores %}
+                       {% if colaborador.estado == "aceptado" %}
+                            <div class = "colaborador">
+                                <div>
+                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="">
+                                </div>
+                                <div>
+                                    <h2>
+                                        {{ colaborador.usuario.nombre }}
+                                    </h2>
+                                </div>
                             </div>
-                            <div>
-                                <h2>
-                                    {{ colaborador.usuario.nombre }}
-                                </h2>
-                            </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -91,7 +93,7 @@
                                 <div>
                                     <p> {{comentario.contenido}}</p>
                                 </div>
-                            </div> 
+                            </div>
 
                         </div>
                         <div>
