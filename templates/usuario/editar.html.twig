@@ -6,23 +6,23 @@
 {% endblock %}
 
 {% block contenido %}
-<div>
     <div>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_rest(form) }}
-        {{ form_end(form) }}
-    </div>
-</div>
-<div id="cropbox">
-    <img id="crop-image" src="#" alt="crop-img">
-    <button id="aceptar-crop-btn">Recortar</button>
-    <button id="cancelar-crop-btn">Cancelar</button>
-</div>
-{% endblock %}
+        <div>
 
-{% block js_especifico %}
-    <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.Jcrop.min.js') }}"></script>
-    <script src="{{ asset('assets/js/crop.js') }}"></script>
-{% endblock %}
+            {{ form_widget(form) }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+            <div id="cropbox">
+            <img id="crop-image" src="#" alt="crop-img">
+            <button id="aceptar-crop-btn">Recortar</button>
+            <button id="cancelar-crop-btn">Cancelar</button>
+        </div>
+    {% endblock %}
+
+    {% block js_especifico %}
+        <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.Jcrop.min.js') }}"></script>
+        <script src="{{ asset('assets/js/crop.js') }}"></script>
+    {% endblock %}

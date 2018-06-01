@@ -36,7 +36,7 @@ h1{
     font-family: title;
 }
 
-#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
+#editarProjecto,#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -48,7 +48,7 @@ footer{
     /*    position: sticky;
         bottom: 0;*/
 }
-#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -1251,6 +1251,102 @@ output:after {
 .bottom-popup button {
     align-self: center;
 }
+/*****************editarProjecto*************************************/
+
+#editarProjecto>div:nth-child(1)>form>div:nth-child(1){
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+#editarProjecto>div:nth-child(1)>form>div{
+    margin-bottom: 40px;
+}
+#rangeEditar{
+    bottom: 54%;
+    /*margin-left: 0%;*/
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input{
+    text-align: center;
+    background: #f2f2f2;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 51px;
+    font-size: 40px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 500px;
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(7):focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input:focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input:focus, #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:focus{
+    text-align: left;
+}
+
+#editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea{
+    width: 94%;
+    text-align: center;
+    background: #f2f2f2;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 51px;
+    font-size: 15px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 1030px;
+    padding-right: 50px;
+
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:nth-child(1){
+    margin-bottom: 27px;
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(4){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(6), #editarProjecto>div:nth-child(1)>form>div:nth-child(7){
+    display: flex;
+    justify-content: center;
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input, #editarProjecto>div:nth-child(1)>form>div:nth-child(7)>input{
+    text-align: center;
+    background: #f2f2f2;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 51px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 500px;
+    width: 357px;
+    font-size: 20px;
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(5){
+    position: relative;
+}
+#editarProjecto>div:nth-child(1)>form>div:nth-child(2)>input{
+    
+}
+#editImg>input{
+    color:transparent;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 250px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
