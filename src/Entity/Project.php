@@ -285,9 +285,13 @@ class Project
     /**
      * @param mixed $seguimientos
      */
-    public function setSeguimientos(Seguimiento $seguimientos): void
+    public function setSeguimientos($seguimientos): void
     {
         $this->seguimientos = $seguimientos;
+    }
+
+    public function addSeguimiento(Seguimiento $seguimiento) {
+        $this->seguimientos[] = $seguimiento;
     }
 
     /**
