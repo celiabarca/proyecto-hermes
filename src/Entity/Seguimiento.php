@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Project;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SeguimientoRepository")
@@ -17,7 +18,7 @@ class Seguimiento
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="seguimientos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="seguimientos", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $proyecto;
@@ -64,7 +65,7 @@ class Seguimiento
     /**
      * @param mixed $proyecto
      */
-    public function setProyecto($proyecto): void
+    public function setProyecto(Project $proyecto): void
     {
         $this->proyecto = $proyecto;
     }

@@ -67,14 +67,12 @@ class ProyectController extends Controller {
         $formularioProyecto->handleRequest($peticion);
         if($formularioProyecto->isSubmitted() && $formularioProyecto->isValid())
         {
-            $projecto->setFechaCreacion(new \Datetime());
-            $projecto->setAutor($this->getUser());
-
             if($projecto->getImg()) {
                 $filepath = $this->uploader->upload($projecto->getImg());
                 $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
                 $projecto->setImg($path);
             }
+
             $situacion = new Seguimiento();
             $situacion->setSituacion("Proyecto Iniciado");
             $situacion->setDescripcion("Situación añadida al crear el proyecto");
@@ -93,6 +91,7 @@ class ProyectController extends Controller {
             'FormularioProyecto' => $formularioProyecto->createView()
         ]);
     }
+
     /**
      * Devuelve el numero de proyectos que se solicitan
      * @param int $total
@@ -123,7 +122,6 @@ class ProyectController extends Controller {
         } else {
             $valoracion = null;
         }
-        dump($proyecto);
         return $this->render('proyect/proyecto.html.twig', [
             'proyecto' => $proyecto,
             'valoracion' => $valoracion,
@@ -169,7 +167,7 @@ class ProyectController extends Controller {
                 $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
                 $proyecto->setImg($path);
             }
-
+            $situacion = new Seguimiento();
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($proyecto);
             $manager->flush();
