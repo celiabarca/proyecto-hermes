@@ -104,6 +104,11 @@ class Project
      */
     private $actividades;
 
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    private $iban;
+    
     public function __construct() {
         $this->comentarios = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -112,6 +117,7 @@ class Project
         $this->colaboradores = new ArrayCollection();
         $this->actividades = new ArrayCollection();
         $this->patrocinadores = new ArrayCollection();
+        $this->seguimientos = new ArrayCollection();
     }
 
     public function addColaboracion(Colaboracion $colaboracion) {
@@ -279,7 +285,7 @@ class Project
     /**
      * @param mixed $seguimientos
      */
-    public function setSeguimientos($seguimientos): void
+    public function setSeguimientos(Seguimiento $seguimientos): void
     {
         $this->seguimientos = $seguimientos;
     }
@@ -438,7 +444,16 @@ class Project
     {
         $this->actividades = $actividades;
     }
+    
+    public function getIban() {
+        return $this->iban;
+    }
 
+    public function setIban($iban) {
+        $this->iban = $iban;
+    }
+
+    
     public function getMegusta() {
         $megusta = 0;
 
