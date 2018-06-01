@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Form\EditarUsuarioType;
 use App\Form\RegisterType;
 use App\Repository\UserRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -22,9 +23,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends Controller {
 
     private $userRepository;
+    private $uploader;
 
-    public function __construct(UserRepository $userRepository) {
+    public function __construct(UserRepository $userRepository, FileUploader $uploader) {
         $this->userRepository = $userRepository;
+        $this->uploader = $uploader;
     }
 
     /**
@@ -103,6 +106,7 @@ class UserController extends Controller {
         }
 
         $oldpassword = $usuario->getPassword();
+        $oldimg = $usuario->getImg();
         $form = $this->createForm(EditarUsuarioType::class, $usuario);
         $form->handleRequest($request);
 
@@ -115,12 +119,11 @@ class UserController extends Controller {
             }
 
             if($usuario->getImg()) {
-                $file = $usuario->getImg();
-                if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
-                    $filename = md5(uniqid()).'.'.$file->guessExtension();
-                    $file->move($this->getParameter('pictures_directory'), $filename);
-                    $usuario->setImg($filename);
-                }
+                $uploadedFilename = $this->uploader->upload($usuario->getImg());
+                $path = $this->uploader->getUploadsDirectory().'/'.$uploadedFilename;
+                $usuario->setImg($path);
+            } else {
+                $usuario->setImg($oldimg);
             }
 
             $manager = $this->getDoctrine()->getManager();

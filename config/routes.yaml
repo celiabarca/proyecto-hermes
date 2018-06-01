@@ -72,6 +72,13 @@ buscar_tags:
     path: /tags/{nombre}
     controller: App\Controller\TagController::getTags
 
+aceptar_colaboracion:
+    path: /colaboracion/{proyecto}/{usuario}/aceptar
+    controller: App\Controller\ColaboradoresController::aceptarColaboracion
+
+rechazar_colaboracion:
+    path: /colaboracion/{proyecto}/{usuario}/rechazar
+    controller: App\Controller\ColaboradoresController::rechazarColaboracion
 
 #Colaboraciones
 Colaborar:
@@ -80,7 +87,7 @@ Colaborar:
 
 #Stripe
 premium_payment:
-    path: /proyecto/{id}/aportar
+    path: /usuario/destacar/
     controller: App\Controller\PagoController::paymentAction
 
 premium_verify:
@@ -88,6 +95,10 @@ premium_verify:
     controller: App\Controller\PagoController::verifyAction
     options:
         expose: true
+        
+donar_proyecto:
+    path: /proyecto/{id}/donar
+    controller: App\Controller\PagoController::DonarProyecto
 
 stripe_webhook:
     path: /stripe/wh

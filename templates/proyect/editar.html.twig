@@ -12,6 +12,7 @@
             <h1>Colaboradores</h1>
             <div></div>
         </div>
+       
         <div>
             <h1>Zona de Peligro</h1>
             <div>
@@ -21,9 +22,11 @@
                 <a href="#" id="borrar-proyecto" name="{{proyecto.id}}">Borrar el proyecto</a>
             </div>
         </div>
+           
         
     </div>
 {% endblock %}
 {% block js_especifico %}
-    <script src="{{ asset('assets/js/proyecto.js') }}"></script>
+    <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/proyecto.js') }}"></script>    
 {% endblock %}

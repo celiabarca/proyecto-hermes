@@ -14,6 +14,7 @@
                         <link href="{{ asset('/assets/style/index.css') }}" type="text/css" rel="stylesheet" />
                         <link href="{{ asset('/assets/style/emojionearea.css') }}" type="text/css" rel="stylesheet" />
                         <link href="{{ asset('/assets/style/animate.css') }}" type="text/css" rel="stylesheet">
+                        <link href="{{ asset('/assets/style/jquery-ui.min.css') }}" type="text/css" rel="stylesheet">
                     {% endblock %}
                 {% endblock %}
             {% endblock %}
@@ -97,6 +98,11 @@
                         {% endblock %}
                     </div>
                 </div>
+                <div id="cookies" class="bottom-popup">
+                    <p>Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real
+                        Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.</p>
+                    <button>Aceptar cookies</button>
+                </div>
                 {% block js %}<!-- bloque de archivos javascript -->
                     {% block js_comun %}<!-- js comun en todas las páginas -->
                         <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
@@ -105,7 +111,6 @@
                         <script src="https://js.stripe.com/v3/"></script>
                     {% endblock %}
                     {% block js_especifico %}<!-- js especifico necesario en una página concreta para optimizar la carga -->
-                        <script src="{{ asset('/assets/js/script.js') }}"></script>
                     {% endblock %}
                 {% endblock %}
             {% endblock %}<!-- fin bloque "body" -->

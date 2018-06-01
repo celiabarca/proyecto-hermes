@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -19,7 +21,6 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=60)
-     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $titulo;
 
@@ -93,6 +94,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={"image/gif", "image/png", "image/jpeg", "image/bmp", "image/webp"})
      */
     private $img;
 
@@ -102,6 +104,11 @@ class Project
      */
     private $actividades;
 
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
+    private $iban;
+    
     public function __construct() {
         $this->comentarios = new ArrayCollection();
         $this->donaciones = new ArrayCollection();
@@ -110,6 +117,7 @@ class Project
         $this->colaboradores = new ArrayCollection();
         $this->actividades = new ArrayCollection();
         $this->patrocinadores = new ArrayCollection();
+        $this->seguimientos = new ArrayCollection();
     }
 
     public function addColaboracion(Colaboracion $colaboracion) {
@@ -277,7 +285,7 @@ class Project
     /**
      * @param mixed $seguimientos
      */
-    public function setSeguimientos($seguimientos): void
+    public function setSeguimientos(Seguimiento $seguimientos): void
     {
         $this->seguimientos = $seguimientos;
     }
@@ -436,7 +444,16 @@ class Project
     {
         $this->actividades = $actividades;
     }
+    
+    public function getIban() {
+        return $this->iban;
+    }
 
+    public function setIban($iban) {
+        $this->iban = $iban;
+    }
+
+    
     public function getMegusta() {
         $megusta = 0;
 
@@ -459,6 +476,16 @@ class Project
         }
 
         return $noMeGusta;
+    }
+
+    public function getRecaudado() {
+        $cantidad = 0;
+
+        foreach($this->donaciones as $donacion) {
+            $cantidad += $donacion->getCantidad();
+        }
+
+        return $cantidad;
     }
 
 }

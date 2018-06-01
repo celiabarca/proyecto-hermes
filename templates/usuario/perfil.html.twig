@@ -6,28 +6,35 @@
                 <div>
                     {#                    {{ usuario.img }}#}
                     {#                    <img src ="{{ usuario.img }}" alt ="imagen de perfil de {{usuario.username}}">#}
-                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                    <img src="{{ asset(usuario.img) }}" alt="imagen de perfil de {{usuario.username}}">
                 </div>
                 <div>
                     <div>
-                        <h1>{{ usuario.username  }}</h1>
+                        <h1>{{ usuario.username }}</h1>
                         <input type="button">
                     </div>
                     <div>
-                        <p>Empezar un nuevo proyecto</p>
-                        <input type="button">
+                        <a href="{{path("nuevoProyecto")}}">Empezar un nuevo proyecto
+                        <input type="button"></a>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="respuestas collapsible" data-limit="3" >
                 {% for proyecto in usuario.proyectos %}
                     <div class="proj collapsible-element">
+=======
+            <div class="respuestas collapsible" data-limit="3" id="all-proj">
+                {% for proyecto in usuario.proyectos %}
+                    <div class="proj collapsible-element proj-perfil " >
+>>>>>>> de62880560c2bed70c025c82bbccd97794781255
                         {#                  primera parte            #}
                         <div>
                             <div>
                                 <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
                             </div>
                             <div>
+<<<<<<< HEAD
                                 <div>
                                     <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
                                     <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
@@ -114,6 +121,31 @@
                             <div> Lorem Ipsum is simply dummy text of the printing  </div>
                         </div>
                     </div>
+=======
+                                <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                                <p>{{proyecto.descripcion}}</p>
+                                <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                            </div>
+                        </div>
+                            <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
+                    </div>
+                {% endfor %}
+                <button class="vermas-btn">Ver más +</button>
+            </div>
+            <div>
+                <div class="respuestas collapsible" data-limit="3" >
+                    {% for actividad in usuario.actividades %}
+                        <div class = "collapsible-element">
+                            <div>
+                                <img src="{{ asset(usuario.img) }}" alt="">
+                            </div>
+                            <div>
+                                <div>{{ actividad.fecha|date('d/m/y') }}</div>
+                                <div>{{ actividad.actividad}}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+>>>>>>> de62880560c2bed70c025c82bbccd97794781255
                     <button class="vermas-btn">Ver más +</button>   
                 </div>
             </div>

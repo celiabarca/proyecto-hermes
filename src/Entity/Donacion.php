@@ -38,6 +38,10 @@ class Donacion
      */
     private $fechaDonacion;
 
+    public function __construct() {
+        $this->fechaDonacion = new \DateTime();
+    }
+    
     public function getId()
     {
         return $this->id;

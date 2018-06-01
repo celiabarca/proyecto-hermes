@@ -5,9 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 use App\Entity\Traits\HasPremium;
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -36,7 +34,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=60, unique=true)
      */
-    private $email;
+    public $email;
 
     /**
      * @ORM\Column(type="string", length=60)
@@ -142,13 +140,11 @@ class User implements UserInterface
         $this->colaboraciones = new ArrayCollection();
         $this->proyectosvalorados = new ArrayCollection();
         $this->seguimientos = new ArrayCollection();
-        $this->phoneNumber = new PhoneNumber();
-
         $this->respuestas = new ArrayCollection();
     }
 
 
-        public function getId() {
+    public function getId() {
         return $this->id;
     }
 
@@ -171,7 +167,7 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail() 
     {
         return $this->email;
     }
@@ -539,6 +535,14 @@ class User implements UserInterface
       return $this->chargeId;
     }
 
-
+    public function sumDonations()
+    {
+        $total = 0;
+        foreach ($this->donaciones as $donacion)
+        {
+            $total += $donacion->getCantidad();
+        }
+        return $total;
+    }
  
 }

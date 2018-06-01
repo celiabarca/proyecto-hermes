@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use \Doctrine\ORM\QueryBuilder;
+use App\Entity\Donacion;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -29,15 +30,17 @@ class UserRepository extends ServiceEntityRepository
     public function TopDonationUsers()
     {
         
-        $qb = $this->createQueryBuilder('u')
-        ->select('u.nombre', 'sum(d.cantidad) as total')
-        ->from('App\Entity\User', 'us')
-        ->innerJoin('App\Entity\Donacion','d', 'us.id = d.usuario_id')
-        ->groupBy('u.nombre')
-        ->getQuery();
-        
-        return $qb->execute();
+        return $this->createQueryBuilder('User')
+                    ->select('User')
+                    ->innerJoin(Donacion::class, 'dn')
+                    ->groupBy('User')
+                    ->having('SUM(dn.cantidad)>0')
+                    ->orderBy('SUM(dn.cantidad)')
+                
+                    ->getQuery()
+                    ->getResult();
     }
+    
     
     public function findPremiumByChargeId($chargeId)
     {

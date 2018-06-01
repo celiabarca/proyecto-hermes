@@ -4,21 +4,26 @@ namespace App\Controller;
 
 use App\Repository\ValoracionRepository;
 use App\Repository\ProjectRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Entity\User;
+use App\Entity\Seguimiento;
 
 class ProyectController extends Controller {
 
     private $projectRepository;
     private $valoracionRepository;
+    private $uploader;
 
-    public function __construct(ProjectRepository $repository, ValoracionRepository $valoracionRepository) {
+    public function __construct(ProjectRepository $repository, ValoracionRepository $valoracionRepository, FileUploader $uploader) {
         $this->projectRepository = $repository;
         $this->valoracionRepository = $valoracionRepository;
+        $this->uploader = $uploader;
     }
 
     /**
@@ -38,6 +43,17 @@ class ProyectController extends Controller {
         ]);
     }
 
+    private function subirImagen(UploadedFile $file) {
+        if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
+            $filename = md5(uniqid()).'.'.$file->guessExtension();
+            $path = $this->getParameter('public_img_directory');
+            $file->move($path, $filename);
+            return $path.'/'.$filename;
+        }
+
+        return null;
+    }
+
     /**
      * Crea un proyecto nuevo
      * @param Request $peticion
@@ -53,8 +69,22 @@ class ProyectController extends Controller {
         {
             $projecto->setFechaCreacion(new \Datetime());
             $projecto->setAutor($this->getUser());
+
+            if($projecto->getImg()) {
+                $filepath = $this->uploader->upload($projecto->getImg());
+                $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
+                $projecto->setImg($path);
+            }
+            $situacion = new Seguimiento();
+            $situacion->setSituacion("Proyecto Iniciado");
+            $situacion->setDescripcion("Situación añadida al crear el proyecto");
+            $situacion->setProyecto($projecto);
+            $situacion->setUsuario($this->getUser());
+            $date = new \DateTime();
+            $situacion->setFecha($date);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
+            $entityManager->persist($situacion);
             $entityManager->flush();
             
             return $this->redirectToRoute("index");
@@ -93,7 +123,7 @@ class ProyectController extends Controller {
         } else {
             $valoracion = null;
         }
-
+        dump($proyecto);
         return $this->render('proyect/proyecto.html.twig', [
             'proyecto' => $proyecto,
             'valoracion' => $valoracion,
@@ -134,12 +164,17 @@ class ProyectController extends Controller {
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            if($proyecto->getImg()) {
+                $filepath = $this->uploader->upload($proyecto->getImg());
+                $path = $this->uploader->getUploadsDirectory().'/'.$filepath;
+                $proyecto->setImg($path);
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($proyecto);
             $manager->flush();
             return $this->redirectToRoute("proyecto",["id"=>$proyecto->getId()]);
         }
-
         return $this->render('proyect/editar.html.twig', [
            'form' => $form->createView(),
             'proyecto' => $proyecto
@@ -203,7 +238,7 @@ class ProyectController extends Controller {
         }
 
         return $this->render('proyect/index.html.twig', [
-            'proyectos' => $proyectos,
+            'proyectos' => $proyectos
         ]);
     }
 }
