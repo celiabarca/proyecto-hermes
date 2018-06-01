@@ -24,7 +24,9 @@
                     </button>
                 </div>
                 <div class ="options2">
-                    <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
+                    {% endif %}
                     <div>{{proyecto.getRecaudado()}}€</div>
                 </div>
             </div>
@@ -52,7 +54,7 @@
                     {% for colaborador in proyecto.colaboradores%}
                         <div class = "colaborador">
                             <div>
-                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                <img src="{{ asset(colaborador.usuario.img) }}" alt="">
                             </div>
                             <div>
                                 <h2>
@@ -64,7 +66,7 @@
                 </div>
             </div>
             <div class="test">
-                {% if app.user %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <h1>Comenta que te parece el proyecto </h1>
                     <div class = "comm">
                             <div>
@@ -72,6 +74,9 @@
                             </div>
                             {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                         </div>
+                {% else %}
+                    <h3> <a href="{{ path('login') }}">Inicia sesion</a> para comentar los proyectos</h3>
+                {% endif %}
                     {% for comentario in proyecto.comentarios %}
 
                         <div id="comentario-{{ comentario.id }}" class="comm">
@@ -90,10 +95,12 @@
 
                         </div>
                         <div>
-                            <div class="responder">Responder</div>
-                            <div class ="respuesta">
-                                {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
-                            </div>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <div class="responder">Responder</div>
+                                <div class ="respuesta">
+                                    {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="respuestas collapsible" data-limit="3">
                             {% for respuesta in comentario.respuestas %}
@@ -120,9 +127,6 @@
                             {% endif %}
                         </div>
                     {% endfor %}
-                {% else %}
-                    <h3> Inicia sesion para comentar los proyectos</h3>
-                {% endif %}
             </div>
         </div>
     </div>
