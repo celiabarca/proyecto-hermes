@@ -55,11 +55,11 @@ class EditarUsuarioType extends AbstractType {
                     'label' => 'Repetir contraseña',
                     'required' => false,
                     'attr' => [
-                        'class' => 'passwd'
+//                        'class' => 'passwd'
                     ]
                 ],
                 'attr' => [
-                    'class' => 'passwd'
+//                    'class' => 'passwd'
                 ]
             ])
             ->add('telefono', TextType::class, [
