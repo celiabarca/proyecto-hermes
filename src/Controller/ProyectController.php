@@ -73,14 +73,19 @@ class ProyectController extends Controller {
                 $projecto->setImg($path);
             }
 
+            $date = new \DateTime();
+            // asigna fecha de creacion y el autor
+            $projecto->setFechaCreacion($date);
+            $projecto->setAutor($this->getUser());
+            // crea un seguimineto inicial para el proyecto creado
             $situacion = new Seguimiento();
             $situacion->setSituacion("Proyecto Iniciado");
             $situacion->setDescripcion("Situación añadida al crear el proyecto");
             $situacion->setProyecto($projecto);
             $situacion->setUsuario($this->getUser());
-            $date = new \DateTime();
             $situacion->setFecha($date);
             $projecto->addSeguimiento($situacion);
+            // guardar en base de datos el objeto proyecto con su seguimiento
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
             $entityManager->flush();
