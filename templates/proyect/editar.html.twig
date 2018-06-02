@@ -99,7 +99,9 @@
                     </div>
                 </div>
             </div>
-            {{ form_end(form) }}
+            <div class = "btnEditar">
+                {{ form_end(form) }}
+            </div>
             <div class="steps ">
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
                 {% for seguimiento in proyecto.seguimientos %}
