@@ -1261,7 +1261,7 @@ output:after {
 }
 /*****************editarProjecto*************************************/
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(1){
+#editTitle{
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -1273,7 +1273,7 @@ output:after {
     bottom: 54%;
     /*margin-left: 0%;*/
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input{
+#editTitle>input{
     text-align: center;
     background: #f2f2f2;
     border-top: none;
@@ -1286,11 +1286,11 @@ output:after {
     background-repeat: no-repeat;
     background-position: 500px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(7)>input:focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input:focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input:focus, #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:focus{
+#editBanco>input:focus,#editTag>input:focus,#editTitle>input:focus{
     text-align: left;
 }
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea{
+#editDescripcion >textarea{
     width: 94%;
     text-align: center;
     background: #f2f2f2;
@@ -1306,6 +1306,7 @@ output:after {
     padding-right: 50px;
 
 }
+
 
 #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:nth-child(1){
     margin-bottom: 27px;
@@ -1336,13 +1337,13 @@ output:after {
     font-size: 20px;
 }
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(5){
+#editMeta{
     position: relative;
 }
 #output2{
     bottom: 60%;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(5)>div:nth-child(2){
+#editMeta>div:nth-child(2){
     display: flex;
     justify-content: space-between;
     font-weight: bold;
@@ -1457,6 +1458,26 @@ output:after {
     background-position: 201px;
     width: 227px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*******************editar perfil**************************/
 
 #editarUser>div:nth-child(1) input[type='text'], #editarUser>div:nth-child(1) input[type='email'] {
@@ -1521,7 +1542,9 @@ output:after {
 #editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div>input{
     width: 260px;
 }
-
+#editarUser>div:nth-child(1) > form >div:nth-child(2){
+    
+}
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 
