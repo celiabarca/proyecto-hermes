@@ -1,11 +1,6 @@
-{% extends 'base.html.twig' %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('assets/style/jquery.Jcrop.min.css') }}" rel="stylesheet">
-{% endblock %}
-
+{% extends "base.html.twig" %}
 {% block contenido %}
+
     <div id = "editarUser">
         <div>
             {{ form_start(form) }}
@@ -59,14 +54,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
     <div>
         <div>
 
@@ -85,6 +72,8 @@
                 <button id="cancelar-crop-btn">Cancelar</button>
             </div>
         </div>
+           
+        
     </div>
 
 {% endblock %}

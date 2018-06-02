@@ -80,3 +80,14 @@ FOR EACH ROW
 BEGIN
 	CALL megusta_actividad(NEW.megusta, NEW.usuario_id, NEW.proyecto_id);
 END//
+
+DELIMITER //
+
+-- Triggers sobre project
+DROP TRIGGER IF EXISTS donar_proyecto //
+CREATE TRIGGER donar_proyecto AFTER INSERT ON donacion
+FOR EACH ROW
+BEGIN
+	INSERT INTO actividad (usuario_id, proyecto_id, tipo, actividad, fecha)
+	VALUES (NEW.usuario_id, NEW.proyecto_id, 'Donar', 'ha donado al proyecto', NOW());
+END//

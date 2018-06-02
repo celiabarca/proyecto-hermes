@@ -93,9 +93,13 @@
                 <div>
                     <div>
                         <h4>¿Quieres dejar de destacar este proyecto ?</h4>
-                        <input type = "button" value="SI" />
+                        {% if proyecto.destacado %}
+                            <a href="{{ path('quitar_destacado', { id: proyecto.id }) }}">SI</a>
+                        {% else %}
+                            <a class="enlace-desactivado" href="#">SI</a>
+                        {% endif %}
                         <h4>¿Borrar este proyecto?</h4>
-                        <input type = "button" value="Borrar" />
+                        <a href="{{ path('eliminar_proyecto', { id: proyecto.id }) }}" >Borrar</a>
                     </div>
                 </div>
             </div>
@@ -114,6 +118,25 @@
                 </form>
             </div>
 
+<<<<<<< HEAD
+            <div>
+                <h1>Zona de Peligro</h1>
+                <div>
+                    <h4>¿Dejar de destacar este proyecto?</h4>
+                    <a href="">Deja de destacar el proyecto.</a>
+                    <h4>¿Borrar este proyecto?</h4>
+                    <a href="#" id="borrar-proyecto" name="{{proyecto.id}}">Borrar el proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block js_especifico %}
+        <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
+        <script src="{{ asset('/assets/js/proyecto.js') }}"></script>
+        
+    {% endblock %}
+=======
 
 
             {#    fin    #}
@@ -268,3 +291,4 @@
 
 {% endblock %}
 #}
+>>>>>>> 30cf592d9d99dc35eef4350919a4593b2db8c067
