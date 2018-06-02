@@ -47,6 +47,14 @@ filtraProyectos:
     path: /proyectos/{filtro}/{orden}
     controller: App\Controller\ProyectController::getProyectorByFiltro
 
+eliminar_proyecto:
+    path: /proyecto/{id}/eliminar
+    controller: App\Controller\ProyectController::eliminarProyecto
+
+quitar_destacado:
+    path: /proyecto/{id}/quitar_destacado
+    controller: App\Controller\ProyectController:quitarDestacado
+
 #Ajax (JsonResponse)
 valorar_proyecto:
     path: /proyecto/{id}/valorar
@@ -59,10 +67,6 @@ desvalorar_proyecto:
 quitar_valoracion:
     path: /proyecto/{id}/quitar_valoracion
     controller: App\Controller\ValoracionesController::quitarValoracion
-
-eliminar_proyecto:
-    path: /proyecto/{id}/eliminar
-    controller: App\Controller\ProyectController::eliminarProyecto
 
 quitar_Colaboracion:
     path: /proyecto/{id}/quitar_colaboracion

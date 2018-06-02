@@ -19,7 +19,7 @@ class Seguimiento
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="seguimientos", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $proyecto;
 
@@ -30,7 +30,7 @@ class Seguimiento
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="seguimientos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $usuario;
 
