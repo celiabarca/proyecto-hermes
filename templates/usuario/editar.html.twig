@@ -11,34 +11,44 @@
             {{ form_start(form) }}
             <div>
                 <div>
-                    <img src="{{ asset(usuario.img) }}" alt="imagen de perfil de {{usuario.username}}">
-                </div>
-                {{form_widget(form.img)}} 
-            </div>
-            <div>
-
-                <div>
-                    <h2>Nombre</h2>
-                    {{form_widget(form.nombre)}}
+                    <div>
+                        <img src="{{ asset(usuario.img) }}" alt="imagen de perfil de {{usuario.username}}">
+                    </div>
+                    {{form_widget(form.img)}} 
                 </div>
                 <div>
-                    <h2>Email</h2>
-                    {{form_widget(form.email)}}
-                </div>
-
-                <div>
-                    {{form_widget(form.password)}}
-                </div>
-                <div>
-                    {{form_widget(form.password)}}
-                </div>
-                <div>
-                    <h2>Telefono</h2>
-                    {{form_widget(form.telefono)}}
-                    <h2>Empresa</h2>
-                    {{form_widget(form.empresa)}}
-                    <h2>Sector</h2>
-                    {{form_widget(form.sector)}}
+                    <div>
+                        <div>
+                            <h2>Nombre</h2>
+                            {{form_widget(form.nombre)}}
+                        </div>
+                        <div>
+                            <h2>Email</h2>
+                            {{form_widget(form.email)}}
+                        </div>
+                    </div>
+                    <div> 
+                        <div>
+                            {{form_widget(form.password)}}
+                        </div>
+                        <div>
+                            {{form_widget(form.password)}}
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h2>Telefono</h2>
+                            {{form_widget(form.telefono)}}
+                        </div>
+                        <div>
+                            <h2>Empresa</h2>
+                            {{form_widget(form.empresa)}}
+                        </div>
+                        <div>
+                            <h2>Sector</h2>
+                            {{form_widget(form.sector)}}
+                        </div>
+                    </div>
                 </div>
             </div>
 

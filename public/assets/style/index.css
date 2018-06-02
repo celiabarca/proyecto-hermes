@@ -1459,7 +1459,7 @@ output:after {
 }
 /*******************editar perfil**************************/
 
-#editarUser>div:nth-child(1) input[type='text'], #editarUser>div:nth-child(1) input[type='email'] , #editarUser>div:nth-child(1) input[type='password'] {
+#editarUser>div:nth-child(1) input[type='text'], #editarUser>div:nth-child(1) input[type='email'] {
     border-top: none;
     border-right: none;
     border-left: none;
@@ -1470,23 +1470,58 @@ output:after {
     background-repeat: no-repeat;
     background-position: 201px;
     width: 227px;
-    background-color:  #a9e4fb;
+    background-color: #F2F2F2;
 }
-
-#editarUser>div:nth-child(1) > form > div:nth-child(2){
-    background-color: #a9e4fb;
-    border: 3px solid #0087ab;
+#editarUser>div:nth-child(1) > form > div:nth-child(2)>div:nth-child(3)>div>div{
+    display: flex;
+    flex-direction: column;   
 }
-#editarUser>div:nth-child(1) > form > div:nth-child(2)>div:nth-child(3)>div>div>label{
+#editar_usuario_password{
+    display: flex;
+}
+#editar_usuario_password>div>label{
     font-weight: 100;
     color: #026f97;
     font-size: 20px;
     font-weight: bold;
-}#editarUser>div:nth-child(1) > form > div:nth-child(2)>div:nth-child(3)>div>div{
+}
+#editar_usuario_password>div>input{
+    width: 260px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div{
+    display: flex;
+
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div>div{
     display: flex;
     flex-direction: column;
-    
+    margin-right: 50px;
 }
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1){
+    margin-right: 50px;
+}
+#editarUser>div:nth-child(1) input[type='password'] {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 25px;
+    font-size: 20px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 201px;
+    width: 260px;
+    background-color: #F2F2F2;
+}
+
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div:nth-child(2){
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div>input{
+    width: 260px;
+}
+
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 
