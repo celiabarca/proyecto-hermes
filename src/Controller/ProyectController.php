@@ -185,10 +185,9 @@ class ProyectController extends Controller {
     }
 
     /**
-     * Preparado para AJAX.
      * Elimina un proyecto
      * @param Project $proyecto
-     * @return JsonResponse
+     * @return mixed
      */
     public function eliminarProyecto(Project $proyecto) {
         try {
@@ -198,22 +197,20 @@ class ProyectController extends Controller {
                 throw new \Exception('Debes iniciar sesion!');
             }
 
-            $eliminado = false;
-
             if($proyecto->getAutor() == $usuario) {
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($proyecto);
                 $manager->flush();
-                $eliminado = true;
             }
 
-            return new JsonResponse([
-                'eliminado' => $eliminado
+            return $this->redirectToRoute('usuario_perfil', [
+               'id' => $usuario->getId()
             ]);
         } catch(\Exception $e) {
-            return new JsonResponse([
+            return $this->redirectToRoute('editarProyecto', [
+                'id' => $proyecto->getId(),
                 'error' => $e->getMessage()
-            ], 500);
+            ]);
         }
     }
 
@@ -242,6 +239,24 @@ class ProyectController extends Controller {
 
         return $this->render('proyect/index.html.twig', [
             'proyectos' => $proyectos
+        ]);
+    }
+
+    /**
+     * Quita a un proyecto el estar destacado
+     * @param Project $proyecto
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function quitarDestacado(Project $proyecto) {
+        if($proyecto->getAutor() == $this->getUser()) {
+            $proyecto->setDestacado(false);
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($proyecto);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('editarProyecto', [
+           'id' => $proyecto->getId()
         ]);
     }
 }
