@@ -35,6 +35,7 @@ class ProyectController extends Controller {
         if($req->get("proyecto"))
         {
            $proyectos = $this->getDoctrine()->getRepository(Project::class)->createQueryBuilder('o')
+                
                 ->where('o.titulo LIKE :nombre')
                 ->setParameter('nombre', "%".$req->get("proyecto")."%")
                 ->getQuery()
@@ -53,17 +54,6 @@ class ProyectController extends Controller {
         return $this->render('proyect/index.html.twig', [
             'proyectos' => $proyectos,
         ]);
-    }
-
-    private function subirImagen(UploadedFile $file) {
-        if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
-            $filename = md5(uniqid()).'.'.$file->guessExtension();
-            $path = $this->getParameter('public_img_directory');
-            $file->move($path, $filename);
-            return $path.'/'.$filename;
-        }
-
-        return null;
     }
 
     /**
@@ -126,6 +116,7 @@ class ProyectController extends Controller {
         
         return $proyectos;
     }
+
     /**
      * Renderiza la pagina del proyecto
      * @param Project $proyecto

@@ -99,7 +99,7 @@
                             <a class="enlace-desactivado" href="#">SI</a>
                         {% endif %}
                         <h4>¿Borrar este proyecto?</h4>
-                        <a href="{{ path('eliminar_proyecto', { id: proyecto.id }) }}" >Borrar</a>
+                        <a id="eliminar-proyecto-btn" href="{{ path('eliminar_proyecto', { id: proyecto.id }) }}" >Borrar</a>
                     </div>
                 </div>
             </div>
@@ -123,4 +123,16 @@
 {% block js_especifico %}
     <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('/assets/js/proyecto.js') }}"></script>
+    <script>
+        var eliminarButton = document.getElementById("eliminar-proyecto-btn");
+
+        eliminarButton.onclick = function(event) {
+            event.preventDefault();
+            var msg = "¿Estas seguro de eliminar el proyecto?";
+
+            if(confirm(msg)) {
+                window.location.href = this.href;
+            }
+        };
+    </script>
 {% endblock %}
