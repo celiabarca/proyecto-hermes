@@ -5,8 +5,8 @@
         <div>
             <div class ="filter">
                 <div>
-                    <form>
-                        <input type ="text" />
+                    <form id="buscar-form" action="/" method="GET">
+                        <input id="buscar-input" type ="text" name="proyecto" />
                         <input type="submit">
                     </form>
                 </div>
@@ -63,7 +63,7 @@
                             <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                             <p>{{proyecto.descripcion}}</p>
                             <div class ="autor">
-                                <h2>{{proyecto.autor.nombre}}</h2>
+                                <h2><a href="{{path('usuario_perfil',{'id':proyecto.autor.id})}}">{{proyecto.autor.nombre}}</a> </h2>
 
                             </div>
                             <div class ="options">
@@ -90,7 +90,7 @@
                             <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                             <p>{{proyecto.descripcion}}</p>
                             <div class ="autor">
-                                <h2>{{proyecto.autor.nombre}}</h2>
+                                <h2><a href="{{path('usuario_perfil',{'id':proyecto.autor.id})}}">{{proyecto.autor.nombre}}</a></h2>
 
                             </div>
                             <div class ="options">
@@ -178,4 +178,18 @@
     </div>
 {% endblock %}
 
+{% block js_especifico %}
+    <script>
+        var searchForm = document.getElementById("buscar-form");
+        var searchInput = document.getElementById("buscar-input");
 
+        searchInput.onkeyup = function() {
+            searchForm.action = '/proyectos/buscar/' + encodeURI(this.value);
+        };
+
+        searchForm.onsubmit = function(event) {
+            event.preventDefault();
+            window.location.href = this.action;
+        };
+    </script>
+{% endblock %}
