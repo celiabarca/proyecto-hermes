@@ -11,7 +11,7 @@
                 <div>
                     <div>
                         <h1>{{ usuario.username }}</h1>
-                        <a href="{{path('editar_usuario',{'id':usuario.id})}}">Editar</a>
+                        <a href="{{path('editar_usuario',{'id':usuario.id})}}"><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar Usuario"></a>
                     </div>
                     <div>
                         <a href="{{path("nuevoProyecto")}}">Empezar un nuevo proyecto
@@ -22,25 +22,49 @@
 
             <div class="respuestas collapsible" data-limit="3" id="all-proj">
                 {% for proyecto in usuario.proyectos %}
-                    <div class="proj collapsible-element proj-perfil " >
-                        {#                  primera parte            #}
-                        <div>
+                    {% if  proyecto.img%}
+                        <div class="proj collapsible-element proj-perfil " >
+                            {#                  primera parte            #}
+                            <div>
 
-                            <div>
-                                <img src="{{ asset(proyecto.img) }}" alt="imagen del proyecto {{proyecto.titulo}}">
-                            </div>
-                            <div>
                                 <div>
-                                    <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                    <img src="{{ asset(proyecto.img) }}" alt="imagen del proyecto {{proyecto.titulo}}">
                                 </div>
-                                <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
-                                <p>{{proyecto.descripcion}}</p>
-                                <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                                <div>
+                                    <div>
+                                        <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                    </div>
+                                    <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                                    <p>{{proyecto.descripcion}}</p>
+                                    <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                                </div>
                             </div>
+                            <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
                         </div>
-                        <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
-                    </div>
+                        <div class="proj collapsible-element proj-perfil proj-perfil-nofoto" >
+                            {#                  primera parte            #}
+                            <div>
+
+                                <div>
+                                    <img src="{{ asset(proyecto.img) }}" alt="imagen del proyecto {{proyecto.titulo}}">
+                                </div>
+                                <div>
+                                    <div>
+                                        <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                    </div>
+                                    <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                                    <p>{{proyecto.descripcion}}</p>
+                                    <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                                </div>
+                            </div>
+                                
+                            <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
+                        </div>
+                    {%else%}
+                    {%endif%} 
                 {% endfor %}
+
+
                 <button class="vermas-btn">Ver más +</button>
             </div>
             <div>
@@ -55,6 +79,7 @@
                                 <div>{{ actividad.actividad}} {{actividad.proyecto.titulo}}</div>
 
                             </div>
+                                
                         </div>
                     {% endfor %}
 
