@@ -52,17 +52,16 @@ class ProjectRepository extends ServiceEntityRepository
                     ->getQuery()
                     ->getResult();
     }
-    /*
+    
     public function findByName(string $name)
     {
-        return $this->createQueryBuilder('p')
+        return $this->createQueryBuilder('project')
                     ->select('project')
-                    ->where('titulo Like "%'.$name.'%"')
+                    ->where('project.titulo like("")')
                     ->getQuery()
                     ->getResult();
     }
-     * 
-     */
+   
 //    /**
 //     * @return Project[] Returns an array of Project objects
 //     */

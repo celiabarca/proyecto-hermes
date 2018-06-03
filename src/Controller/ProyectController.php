@@ -30,13 +30,25 @@ class ProyectController extends Controller {
      * Renderiza los proyectos ordenado por fecha de creación
      * @return mixed
      */
-    public function indice()
+    public function indice(Request $req = null)
     {
-    	$proyectos = $this->getDoctrine()
+        if($req->get("proyecto"))
+        {
+           $proyectos = $this->getDoctrine()->getRepository(Project::class)->createQueryBuilder('o')
+                ->where('o.titulo LIKE :nombre')
+                ->setParameter('nombre', "%".$req->get("proyecto")."%")
+                ->getQuery()
+                ->getResult();
+        }
+        else
+        {
+            $proyectos = $this->getDoctrine()
                         ->getRepository(Project::class)
                         ->findBy([], [
                             'fechaCreacion' => 'desc'
                         ]);
+        }
+    	
 
         return $this->render('proyect/index.html.twig', [
             'proyectos' => $proyectos,
