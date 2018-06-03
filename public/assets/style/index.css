@@ -1617,7 +1617,7 @@ output:after {
     display: flex;
 
 }
-#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(1){
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(1)>div:nth-child(1){
     height: 203px;
     width: 203px;
     overflow: hidden;
