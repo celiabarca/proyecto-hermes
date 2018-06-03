@@ -15,7 +15,7 @@
                     </div>
                     <div>
                         <a href="{{path("nuevoProyecto")}}">Empezar un nuevo proyecto
-                        <input type="button"></a>
+                            <input type="button"></a>
                     </div>
                 </div>
             </div>
@@ -25,16 +25,20 @@
                     <div class="proj collapsible-element proj-perfil " >
                         {#                  primera parte            #}
                         <div>
+
                             <div>
-                                <img src="{{ asset(proyecto.img) }}" alt="">
+                                <img src="{{ asset(proyecto.img) }}" alt="imagen del proyecto {{proyecto.titulo}}">
                             </div>
                             <div>
+                                <div>
+                                    <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                </div>
                                 <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                                 <p>{{proyecto.descripcion}}</p>
                                 <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
                             </div>
                         </div>
-                            <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
+                        <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
                     </div>
                 {% endfor %}
                 {% if usuario.proyectos|length > 3 %}
@@ -51,11 +55,11 @@
                             <div>
                                 <div>{{ actividad.fecha|date('d/m/y') }}</div>
                                 <div>{{ actividad.actividad}} {{actividad.proyecto.titulo}}</div>
-                                
+
                             </div>
                         </div>
                     {% endfor %}
-                    {% if usuario.proyectos|length > 3 %}
+                    {% if usuario.actividades|length > 3 %}
                         <button class="vermas-btn">Ver más +</button>
                     {% endif %}
                 </div>
