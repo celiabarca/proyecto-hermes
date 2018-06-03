@@ -666,7 +666,7 @@ hr{
     border: 2px solid #2D9CDB;
     height: 50px;
     width: 182px;
-    
+
 }
 .filter >div>div>ul>li{
     background-color: #DFECFF;
@@ -1284,10 +1284,13 @@ output:after {
 .proj-perfil{
     position: relative;
 }
-.proj-perfil>div:nth-child(1)>div:nth-child(2)>div{
+.proj-perfil>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
     position: absolute;
     bottom: 0px;
 
+}
+.proj-perfil>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>a{
+    cursor: pointer;
 }
 #perfil > div:nth-child(1) > div:nth-child(3){
     display: flex;
