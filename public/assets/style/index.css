@@ -36,7 +36,7 @@ h1{
     font-family: title;
 }
 
-#editarUser, #editarProjecto,#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
+.pago, #editarUser, #editarProjecto,#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -48,7 +48,7 @@ footer{
     /*    position: sticky;
         bottom: 0;*/
 }
-#editarUser>div:nth-child(1), #editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+.pago>div:nth-child(1), #editarUser>div:nth-child(1), #editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
 }
 footer> div:nth-child(1){
@@ -385,7 +385,7 @@ nav> ul > li {
 .options2{
     width: 300px;
 }
-.options>div, .options2>button, .options2>div{
+.options>div, .options2>button, .options2>div, .options2>div>a{
     border: 2px solid #2D9CDB;
     width: 126px;
     padding: 0px 2px;
@@ -393,7 +393,7 @@ nav> ul > li {
     background-position: 96px;
 }
 .options>div:nth-child(1){
-    background-image: url("../images/chat.png");
+    background-image: url("../images/money-bag-with-dollar-symbol.png");
 }
 .options>div:nth-child(2), .options2>button{
     background-image: url("../images/icon.png");
@@ -636,6 +636,62 @@ hr{
     display: none;
 }
 /****************************blog***************************/
+
+/***************************filtro************************/
+.filter{
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column
+}
+.filter>div>div{
+    margin-right: 23px;
+}
+.filter >div>div>ul{
+    list-style: none;
+    padding-left: 0px;
+    display: none;
+}
+.filter >div>div>ul>li>a{
+    text-decoration:none; 
+    color: black;
+}
+.filter >div>div>button{
+    border: 2px solid #2D9CDB;
+    height: 50px;
+    width: 182px;
+}
+.filter >div>div>ul>li{
+    background-color: #DFECFF;
+    height: 48px;
+    text-align: center;
+    width: 182px;
+}
+.filter >div>div>ul>li:nth-child(2){
+    margin-top: 9px;
+}
+.filter div>div:hover > ul {
+    display:block;
+    transition-property: color, background;
+    transition-duration: .5s, .75s;
+    transition-timing-function: ease-in-out;
+    transition-delay: .25s, 0;
+}
+.filter >div:nth-child(2){
+    display: flex;
+
+}
+.filter >div:nth-child(1){
+    margin-bottom: 30px;
+}
+.filter >div:nth-child(1) >input{
+    border: 2px solid #2D9CDB;
+    height: 35px;
+    width: 89%;
+    background-image: url("../images/musica-searcher.png");
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    background-position: 10px;
+}
 
 .proj{
     border:solid 3px #026f97;
@@ -1557,6 +1613,80 @@ output:after {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+/***************************pago**************************************/
+.promocion>div{
+    width: 333px;
+    height: 466px;
+    background-color: #71A9E4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.promocion>div:nth-child(2){
+    height: 525px;
+    margin-top: -27px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.promocion>div>div:nth-child(1){
+    display: flex;
+    justify-content: center;
+}
+.promocion>div>div:nth-child(2){
+    text-align: center;
+}
+
+.promocion
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.pago>div:nth-child(1)>div:nth-child(2){
+    width: 50%;
+    height: 188px;
+    border: 1px solid aqua;
+    border: solid 3px #026f97;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.pago>div:nth-child(1){
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.pago>div:nth-child(1)>div:nth-child(2)>form >div > button{
+    background: transparent;
+    border: 2px solid #2D9CDB;
+    width: 104px;
+    width: 125px;
+    height: 38px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.pago>div:nth-child(1)>div:nth-child(2)>form >div > button:hover{
+    background-color: #2D9CDB;
+    color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 
@@ -1618,6 +1748,19 @@ output:after {
 
     #editarUser > div:nth-child(1) {
         width: 831px;
+    }
+    /*************plataforma de pago*********************/
+    .pago > div:nth-child(1){
+        justify-content: center;
+        display: flex;
+    }
+    .pago>div:nth-child(1)>div:nth-child(1){
+        width: 50%;
+        height: 600px;
+        padding-top: 50%;
+    }
+    .pago>div:nth-child(1)>div:nth-child(1)>form{
+        padding-top: 205px;
     }
 
 }

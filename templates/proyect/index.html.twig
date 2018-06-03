@@ -3,41 +3,47 @@
 {% block  contenido %}
     <div id ="blog">
         <div>
-            <div>
+            <div class ="filter">
                 <div>
-                    <button>Por fecha</button>
-                    <ul>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'asc'}) }}">De mas bajo a mas alto</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'desc'}) }}">De mas alto a mas bajo</a>
-                        </li>
-                    </ul>
+                    <input type ="text" />
                 </div>
                 <div>
-                    <button>Por cantidad donada</button>
-                    <ul>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'asc'}) }}">De mas bajo a mas alto</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'desc'}) }}">De mas alto a mas bajo</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button>Por valoracion</button>
-                    <ul>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'asc'}) }}">Mejor valorado</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'desc'}) }}">Peor valorado</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <button>Por fecha</button>
+                        <ul>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'asc'}) }}">De mas bajo a mas alto</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'desc'}) }}">De mas alto a mas bajo</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button>Por cantidad donada</button>
+                        <ul>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'asc'}) }}">De mas bajo a mas alto</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'desc'}) }}">De mas alto a mas bajo</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button>Por valoracion</button>
+                        <ul>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'asc'}) }}">Mejor valorado</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'desc'}) }}">Peor valorado</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
             {% for proyecto in proyectos %}
                 <div class="proj tam">
                     {#                  primera parte            #}
@@ -58,7 +64,8 @@
                             </div>
                             <div class ="options">
                                 <div>
-                                    <input type ="button" value="Ayudar">
+                                    <a> Ayuda </a>
+                                    {#<input type ="button" value="Ayudar">#}
                                 </div>
                                 <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
@@ -93,10 +100,10 @@
                                 </div>
                                 <div>
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <div class="responder">Responder</div>
-                                    <div class ="respuesta">
-                                        {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
-                                    </div>
+                                        <div class="responder">Responder</div>
+                                        <div class ="respuesta">
+                                            {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                                        </div>
                                     {% endif %}
                                 </div>
                                 <div class="respuestas collapsible" data-limit="1">
