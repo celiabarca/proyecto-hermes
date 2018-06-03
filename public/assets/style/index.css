@@ -1617,6 +1617,13 @@ output:after {
     display: flex;
 
 }
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(1){
+    height: 203px;
+    width: 203px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
 #editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div>div{
     display: flex;
     flex-direction: column;
