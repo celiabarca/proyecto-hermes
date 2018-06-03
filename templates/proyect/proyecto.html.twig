@@ -24,6 +24,9 @@
                     </button>
                 </div>
                 <div class ="options2">
+                    <div>
+                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Donar</a>
+                                </div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
                     {% endif %}
@@ -36,15 +39,22 @@
             </div>
             
             <div class="steps ">
-                {% set i = 0 %}
-                {% set seguimiento = proyecto.seguimientos|length %}
+            {% set i = 0 %}
+                {% set seguimientos = proyecto.seguimientos|length %}
                 {% for i in 0..4 %}
-                    {% if seguimiento|length > i %}
+                    {% if seguimientos>i %}
                     {% set seguimiento = proyecto.seguimientos[i] %}
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
                 <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
                     {% endif %}
                 {% endfor %}
+                {# El for recorre el array que devuelve la funcion getLatestSeguimiento 
+                {% for seguimiento in proyecto.getLatestSeguimiento() %}
+                    <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                    <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
+ 
+                {% endfor %}
+                #}
             </div>
             <div>
                 {{proyecto.descripcion}}

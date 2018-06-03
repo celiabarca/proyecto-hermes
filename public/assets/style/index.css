@@ -289,12 +289,13 @@ nav> ul > li {
     justify-content:center;
     flex-direction: column;
 }
+#projectop>div:nth-child(1)>div:nth-child(2) h1{
+    margin: 0;
+}
 .continer_project, .continer_projectn{
     background-color: #F2F2F2;
     overflow: hidden;
-    height: 228px;
     width: 854px;
-    height: 235px;
     margin-bottom: 20px;
 }
 .continer_project>div:nth-child(1)>div:nth-child(1){
@@ -302,17 +303,17 @@ nav> ul > li {
     width: 50%;
     display: flex;
     justify-content: center;
+    height: 200px;
 }
 .continer_project>div:nth-child(1){
     display: flex;
     flex-direction: row;
 }
 .continer_project>div:nth-child(1)>div:nth-child(2){
-    padding: 0px 16px 0px 41px;
+    padding: 5px 25px;
     width: 301px;
 }
 .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
-    height: 124px;
     overflow: hidden;
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(3) >a, .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(3){
@@ -337,6 +338,7 @@ nav> ul > li {
 .continer_projectn>div:nth-child(1){
     text-align: center;
     width: 100%;
+    padding: 15px;
 
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(2){

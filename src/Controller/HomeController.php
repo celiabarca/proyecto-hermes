@@ -46,5 +46,10 @@ class HomeController extends Controller {
             'form' => $form->createView()
         ]);
     }
+    
+    public function privacidad()
+    {
+        return $this->render("inicio/privacidad.html.twig");
+    }
 
 }
