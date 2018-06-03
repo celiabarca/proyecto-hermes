@@ -11,7 +11,7 @@
                 <div>
                     <div>
                         <h1>{{ usuario.username }}</h1>
-                        <input type="button">
+                        <a href="{{path('editar_usuario',{'id':usuario.id})}}">Editar</a>
                     </div>
                     <div>
                         <a href="{{path("nuevoProyecto")}}">Empezar un nuevo proyecto
@@ -48,7 +48,8 @@
                             </div>
                             <div>
                                 <div>{{ actividad.fecha|date('d/m/y') }}</div>
-                                <div>{{ actividad.actividad}}</div>
+                                <div>{{ actividad.actividad}} {{actividad.proyecto.titulo}}</div>
+                                
                             </div>
                         </div>
                     {% endfor %}
