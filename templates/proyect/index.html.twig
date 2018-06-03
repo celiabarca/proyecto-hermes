@@ -58,7 +58,7 @@
                             </div>
                             <div class ="options">
                                 <div>
-                                    <input type ="button" value="Ayudar">
+                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Donar</a>
                                 </div>
                                 <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
