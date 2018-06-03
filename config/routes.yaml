@@ -138,4 +138,10 @@ commentar:
 responder:
     path: /comentario/{id}/responder
     controller: App\Controller\CommentController::responder
+    
+#Politicas
+
+privacidad:
+    path: /politica/privacidad
+    controller: App\Controller\HomeController::privacidad
 
