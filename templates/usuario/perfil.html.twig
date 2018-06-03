@@ -37,7 +37,9 @@
                             <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
                     </div>
                 {% endfor %}
-                <button class="vermas-btn">Ver más +</button>
+                {% if usuario.proyectos|length > 3 %}
+                    <button class="vermas-btn">Ver más +</button>
+                {% endif %}
             </div>
             <div>
                 <div class="respuestas collapsible" data-limit="3" >
@@ -53,8 +55,9 @@
                             </div>
                         </div>
                     {% endfor %}
- 
-                    <button class="vermas-btn">Ver más +</button>   
+                    {% if usuario.proyectos|length > 3 %}
+                        <button class="vermas-btn">Ver más +</button>
+                    {% endif %}
                 </div>
             </div>
         </div>

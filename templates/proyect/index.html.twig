@@ -70,7 +70,7 @@
                                 <div>
                                     <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayudar</a>
                                 </div>
-                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                                <div><a class="colaborar-btn" data-proyectoid="{{ proyecto.id }}" href="#">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
                             </div>
                             <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
@@ -97,7 +97,7 @@
                                 <div>
                                     <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayudar</a>
                                 </div>
-                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                                <div><a class="colaborar-btn" data-proyectoid="{{ proyecto.id }}" href="#">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
                             </div>
                             <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
@@ -191,5 +191,31 @@
             event.preventDefault();
             window.location.href = this.action;
         };
+
+        $('.colaborar-btn').on('click', function () {
+            var proyectoId = this.dataset.proyectoid;
+            var _url = '/proyecto/' + proyectoId + '/colaborar';
+            var $this = $(this);
+
+
+            $.ajax({
+                url: _url,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    if (data.peticion_envidada) {
+                        $this.css('color', 'yellow');
+                    } else {
+                        $this.css('color', 'red');
+                    }
+                },
+                error: function (data) {
+                    console.log(data.responseJSON.error);
+                    $this.css('color', 'red');
+                }
+            });
+
+            return false;
+        });
     </script>
 {% endblock %}
