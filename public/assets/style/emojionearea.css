@@ -110,8 +110,6 @@
 .emojionearea .emojionearea-editor {
   display: block;
   height: auto;
-  min-height: 8em;
-  max-height: 15em;
   overflow: auto;
   padding: 6px 24px 6px 12px;
   line-height: 1.42857143;
@@ -126,6 +124,11 @@
   border-radius: 0;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
+  position: absolute;
+top: 0;
+overflow: hidden;
+width: 100%;
+left: 0;
   box-shadow: none; }
   .emojionearea .emojionearea-editor:empty:before {
     content: attr(placeholder);
