@@ -5,8 +5,8 @@
         <div>
             <div class ="filter">
                 <div>
-                    <form action="{{path('listaProyectos')}}">
-                        <input type ="text" name="proyecto" />
+                    <form id="buscar-form" action="/" method="GET">
+                        <input id="buscar-input" type ="text" name="proyecto" />
                         <input type="submit">
                     </form>
                 </div>
@@ -178,4 +178,18 @@
     </div>
 {% endblock %}
 
+{% block js_especifico %}
+    <script>
+        var searchForm = document.getElementById("buscar-form");
+        var searchInput = document.getElementById("buscar-input");
 
+        searchInput.onkeyup = function() {
+            searchForm.action = '/proyectos/buscar/' + encodeURI(this.value);
+        };
+
+        searchForm.onsubmit = function(event) {
+            event.preventDefault();
+            window.location.href = this.action;
+        };
+    </script>
+{% endblock %}

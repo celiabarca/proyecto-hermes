@@ -58,7 +58,8 @@ class ProjectRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('project')
                     ->select('project')
-                    ->where('project.titulo like("")')
+                    ->where('project.titulo LIKE :name')
+                    ->setParameter('name', '%'.$name.'%')
                     ->getQuery()
                     ->getResult();
     }

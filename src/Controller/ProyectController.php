@@ -271,4 +271,12 @@ class ProyectController extends Controller {
            'id' => $proyecto->getId()
         ]);
     }
+
+    public function buscarProyectos(string $nombre) {
+        $proyectos = $this->projectRepository->findByName($nombre);
+
+        return $this->render('proyect/index.html.twig', [
+            'proyectos' => $proyectos
+        ]);
+    }
 }

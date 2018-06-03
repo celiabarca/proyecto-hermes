@@ -25,7 +25,7 @@ topDonation:
 editar_usuario:
     path: /usuario/{id}/editar
     controller: App\Controller\UserController::editarUsuario
-    
+
 #Proyecto
 nuevoProyecto:
     path: /nuevo/proyecto
@@ -44,7 +44,7 @@ editarProyecto:
     controller: App\Controller\ProyectController::editarProyecto
 
 filtraProyectos:
-    path: /proyectos/{filtro}/{orden}
+    path: /proyectos/filtrar/{filtro}/{orden}
     controller: App\Controller\ProyectController::getProyectorByFiltro
 
 eliminar_proyecto:
@@ -54,6 +54,10 @@ eliminar_proyecto:
 quitar_destacado:
     path: /proyecto/{id}/quitar_destacado
     controller: App\Controller\ProyectController:quitarDestacado
+
+buscar_por_nombre:
+    path: /proyectos/buscar/{nombre}
+    controller: App\Controller\ProyectController:buscarProyectos
 
 #Ajax (JsonResponse)
 valorar_proyecto:
