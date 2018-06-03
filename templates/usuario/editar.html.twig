@@ -55,7 +55,7 @@
                 <div>
                     <div>
                         <h4>¿Quieres abandonar la aplicacion ?</h4>
-                            <a href="">SI</a>
+                        <a id="eliminar-usuario-btn" href="{{ path('eliminar_usuario', { id: usuario.id }) }}">SI</a>
                     </div>
                 </div>
             </div>
@@ -89,4 +89,16 @@
     <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.Jcrop.min.js') }}"></script>
     <script src="{{ asset('assets/js/crop.js') }}"></script>
+    <script>
+        var eliminar = document.getElementById("eliminar-usuario-btn");
+
+        eliminar.onclick = function(event) {
+            event.preventDefault();
+            var msg = "¿Estas seguro de eliminar tu usuario?";
+
+            if(confirm(msg)) {
+                window.location.href = this.href;
+            }
+        };
+    </script>
 {% endblock %}
