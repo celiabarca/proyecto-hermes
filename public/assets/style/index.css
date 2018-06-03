@@ -45,7 +45,7 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
-    /*    position: sticky;
+    /*    position: absolute;
         bottom: 0;*/
 }
 .pago>div:nth-child(1), #editarUser>div:nth-child(1), #editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
@@ -685,7 +685,7 @@ hr{
 .filter >div:nth-child(1){
     margin-bottom: 30px;
 }
-.filter >div:nth-child(1) >input{
+.filter >div:nth-child(1) > form > input:nth-child(1){
     border: 2px solid #2D9CDB;
     height: 35px;
     width: 89%;
@@ -693,6 +693,17 @@ hr{
     background-repeat: no-repeat;
     padding-left: 40px;
     background-position: 10px;
+}
+.filter >div:nth-child(1) > form > input:nth-child(2){
+    background: transparent;
+    border: 2px solid #2D9CDB;
+    width: 104px;
+    width: 125px;
+    height: 38px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .proj{
@@ -1359,7 +1370,8 @@ output:after {
     font-size: 40px;
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
-    background-position: 500px;
+    background-position: 547px;
+    padding-right: 59px;
 }
 #editBanco>input:focus,#editTag>input:focus,#editTitle>input:focus{
     text-align: left;
@@ -1379,6 +1391,7 @@ output:after {
     background-repeat: no-repeat;
     background-position: 1030px;
     padding-right: 50px;
+    background-position: 1119px;
 
 }
 
@@ -1411,6 +1424,8 @@ output:after {
     background-position: 500px;
     width: 548px;
     font-size: 20px;
+    padding-right: 50px;
+    background-position: 571px;
 }
 
 #editMeta{
@@ -1470,6 +1485,7 @@ output:after {
     border: 3px solid red;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 .peligro>div:nth-child(1){
     width: 28%;
@@ -1480,14 +1496,15 @@ output:after {
     justify-content: center;
     margin-bottom: 36px;
 }
-.peligro>div:nth-child(1)>div:nth-child(1)>input{
+.peligro>div:nth-child(1)>div:nth-child(1)>a{
     background: #f00;
     border: 3px solid white;
     color: white;
     width: 100px;
     border-radius: 100px;
+    text-align: center;
 }
-.peligro>div:nth-child(1)>div:nth-child(1)>input:hover{
+.peligro>div:nth-child(1)>div:nth-child(1)>a:hover{
     background: white;
     border: 3px solid #f00;
     color: red;
@@ -1528,15 +1545,24 @@ output:after {
     border-left: none;
     border-bottom: 1px solid #a8a8a8;
     height: 25px;
-    font-size: 10px;
+    font-size: 16px;
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
-    background-position: 201px;
+    background-position: 240px;
     width: 227px;
+    padding-right: 50px;
 }
 
+.enlace-desactivado{
+    background: #785d5d !important;
+}
 
+.enlace-desactivado:hover{
+    border: 3px solid #785d5d !important;
+    background-color: white !important ;
+    color:#785d5d !important;
 
+}
 
 
 
@@ -1568,6 +1594,8 @@ output:after {
     background-position: 201px;
     width: 227px;
     background-color: #F2F2F2;
+    background-position: 283px;
+    padding-right: 50px;
 }
 #editarUser>div:nth-child(1) > form > div:nth-child(2)>div:nth-child(3)>div>div{
     display: flex;
@@ -1606,9 +1634,10 @@ output:after {
     font-size: 20px;
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
-    background-position: 201px;
+    padding-right: 50px;
     width: 260px;
     background-color: #F2F2F2;
+    background-position: 284px;
 }
 
 #editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div:nth-child(2){
@@ -1652,7 +1681,7 @@ output:after {
     margin-top: 40px;
     margin-bottom: 40px;
 }
-.pago>div:nth-child(1)>div:nth-child(2){
+.tarjeta{
     width: 50%;
     height: 188px;
     border: 1px solid aqua;
@@ -1662,6 +1691,7 @@ output:after {
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
+    padding: 10px;
 }
 .pago>div:nth-child(1){
     display: flex;
@@ -1684,7 +1714,20 @@ output:after {
     background-color: #2D9CDB;
     color:white;
 }
-
+.donar input {
+    background: #f2f2f2;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 51px;
+    width: 548px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.donativos > div:nth-child(1){
+    height: 592px;
+}
 
 
 
@@ -1770,6 +1813,12 @@ output:after {
     }
     .pago>div:nth-child(1)>div:nth-child(1)>form{
         padding-top: 205px;
+    }
+    .tarjeta {
+        width: 85%;
+    }
+    .donar input {
+        width: 448px;
     }
 
 }
@@ -1918,6 +1967,9 @@ output:after {
         margin-left: 0px;
         margin-right: 0px;
     }
+    .donativos > div:nth-child(1) {
+        height: 492px;
+    }
 
 }
 @media screen and (max-width: 500px){
@@ -2062,9 +2114,20 @@ output:after {
     .peligro > div:nth-child(1) {
         width: 99%;
     }
+    .tarjeta {
+        width: 83%;
+    }
+    .donar input {
+        width: 248px;
+    }
+    .donar form{
+        width: 100%;
 
-
-
+    }
+    .donar form>div:nth-child(2){
+        display: flex;
+        flex-direction: column;
+    }
 
 
 
