@@ -397,6 +397,10 @@ nav> ul > li {
 .options>div:nth-child(1){
     background-image: url("../images/money-bag-with-dollar-symbol.png");
 }
+.options>div:nth-child(1)>a{
+    text-decoration: none;
+    color: black;
+}
 .options>div:nth-child(2), .options2>button{
     background-image: url("../images/icon.png");
 
@@ -673,10 +677,6 @@ hr{
 }
 .filter div>div:hover > ul {
     display:block;
-    transition-property: color, background;
-    transition-duration: .5s, .75s;
-    transition-timing-function: ease-in-out;
-    transition-delay: .25s, 0;
 }
 .filter >div:nth-child(2){
     display: flex;
@@ -722,6 +722,13 @@ hr{
     overflow: hidden;
     display: flex;
     justify-content: center;
+}
+.sinFotto > div:nth-child(1) > div:nth-child(1){
+    width: 0% !important;
+    height: auto !important;
+}
+.sinFotto > div:nth-child(1) > div:nth-child(2) {
+    width: 100% !important;
 }
 .proj>div:nth-child(1)>div:nth-child(2)>div:last-child{
     display: flex;

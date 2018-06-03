@@ -5,12 +5,15 @@
         <div>
             <div class ="filter">
                 <div>
-                    <input type ="text" />
+                    <form>
+                        <input type ="text" />
+                        <input type="submit">
+                    </form>
                 </div>
                 <div>
                     <div>
                         <button>Por fecha</button>
-                        <ul>
+                        <ul class  = "zoomIn animated ">
                             <li>
                                 <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'asc'}) }}">De mas bajo a mas alto</a>
                             </li>
@@ -21,7 +24,7 @@
                     </div>
                     <div>
                         <button>Por cantidad donada</button>
-                        <ul>
+                        <ul class  = "zoomIn animated ">
                             <li>
                                 <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'asc'}) }}">De mas bajo a mas alto</a>
                             </li>
@@ -32,7 +35,7 @@
                     </div>
                     <div>
                         <button>Por valoracion</button>
-                        <ul>
+                        <ul class  = "zoomIn animated ">
                             <li>
                                 <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'asc'}) }}">Mejor valorado</a>
                             </li>
@@ -45,7 +48,8 @@
             </div>
 
             {% for proyecto in proyectos %}
-                <div class="proj tam">
+                {% if  proyecto.img%}
+                    <div class="proj tam">
                     {#                  primera parte            #}
                     <div>
                         <div>
@@ -64,7 +68,7 @@
                             </div>
                             <div class ="options">
                                 <div>
-                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayuda</a>
+                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayudar</a>
                                 </div>
                                 <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
@@ -72,6 +76,34 @@
                             <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
                         </div>
                     </div>
+                {% else %}
+                    <div class="proj tam sinFotto">
+                    {#                  primera parte            #}
+                    <div>
+                        <div>
+                        </div>
+                        <div>
+                            <div>
+                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
+                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                            </div>
+                            <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                            <p>{{proyecto.descripcion}}</p>
+                            <div class ="autor">
+                                <h2>{{proyecto.autor.nombre}}</h2>
+
+                            </div>
+                            <div class ="options">
+                                <div>
+                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayudar</a>
+                                </div>
+                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                                <div>{{proyecto.getRecaudado()}}€</div>
+                            </div>
+                            <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                        </div>
+                    </div>
+                {%endif%}
                     {#       comentarios                 #}
                     <div class="test collapsible" data-limit="1">
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
