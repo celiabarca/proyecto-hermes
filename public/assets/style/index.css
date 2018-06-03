@@ -1166,7 +1166,7 @@ output:after {
 }#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button{
     margin-bottom: 85px;
 }
-#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)  {
+.actividad>div:nth-child(1){
     height: 100px;
     width: 100px;
     overflow: hidden;
@@ -1174,10 +1174,20 @@ output:after {
     justify-content: center;
     border-radius: 100px;
 }
-#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1) {
+/*#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1) {
+    display: flex;
+
+}*/
+.actividad > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.actividad {
     display: flex;
 
 }
+
 #perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(2) {
     display: flex;
     flex-direction: column;
@@ -1261,7 +1271,7 @@ output:after {
 }
 /*****************editarProjecto*************************************/
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(1){
+#editTitle{
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -1273,7 +1283,7 @@ output:after {
     bottom: 54%;
     /*margin-left: 0%;*/
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input{
+#editTitle>input{
     text-align: center;
     background: #f2f2f2;
     border-top: none;
@@ -1286,11 +1296,11 @@ output:after {
     background-repeat: no-repeat;
     background-position: 500px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(7)>input:focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input:focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input:focus, #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:focus{
+#editBanco>input:focus,#editTag>input:focus,#editTitle>input:focus{
     text-align: left;
 }
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea{
+#editDescripcion >textarea{
     width: 94%;
     text-align: center;
     background: #f2f2f2;
@@ -1307,6 +1317,7 @@ output:after {
 
 }
 
+
 #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:nth-child(1){
     margin-bottom: 27px;
 }
@@ -1316,12 +1327,13 @@ output:after {
     justify-content: center;
     margin-top: 20px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(6), #editarProjecto>div:nth-child(1)>form>div:nth-child(7){
+#editBanco, #editTag{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input, #editarProjecto>div:nth-child(1)>form>div:nth-child(7)>input{
+#editBanco>input, #editTag>input{
     text-align: center;
     background: #f2f2f2;
     border-top: none;
@@ -1336,13 +1348,13 @@ output:after {
     font-size: 20px;
 }
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(5){
+#editMeta{
     position: relative;
 }
 #output2{
     bottom: 60%;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(5)>div:nth-child(2){
+#editMeta>div:nth-child(2){
     display: flex;
     justify-content: space-between;
     font-weight: bold;
@@ -1388,34 +1400,34 @@ output:after {
 .colaboradorDenegado>div:nth-child(1)>img:hover{
     filter: grayscale(0%);
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(9){
+.peligro{
     background-color: #fb5b5b;
     border: 3px solid red;
     display: flex;
     justify-content: center;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(9)>div:nth-child(1){
+.peligro>div:nth-child(1){
     width: 28%;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(9)>div:nth-child(1)>div:nth-child(1){
+.peligro>div:nth-child(1)>div:nth-child(1){
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-bottom: 36px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(9)>div:nth-child(1)>div:nth-child(1)>input{
+.peligro>div:nth-child(1)>div:nth-child(1)>input{
     background: #f00;
     border: 3px solid white;
     color: white;
     width: 100px;
     border-radius: 100px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(9)>div:nth-child(1)>div:nth-child(1)>input:hover{
+.peligro>div:nth-child(1)>div:nth-child(1)>input:hover{
     background: white;
     border: 3px solid #f00;
     color: red;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(10)>button{
+.btnEditar>div>button{
     width: 100%;
     height: 63px;
     border-radius: 100px;
@@ -1423,7 +1435,7 @@ output:after {
     font-size: 40px;
     border: 3px solid white;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(9)>button:hover,#editarProjecto>div:nth-child(1)>div>form>input:hover{
+.btnEditar>div>button:hover,#editarProjecto>div:nth-child(1)>div>form>input:hover{
     background-color: white ;
     border: 3px solid #87c6fc;
 }
@@ -1457,6 +1469,26 @@ output:after {
     background-position: 201px;
     width: 227px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*******************editar perfil**************************/
 
 #editarUser>div:nth-child(1) input[type='text'], #editarUser>div:nth-child(1) input[type='email'] {
@@ -1521,7 +1553,10 @@ output:after {
 #editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div>input{
     width: 260px;
 }
-
+#editarUser > div:nth-child(1) > form > div:nth-child(2) {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 @media (max-width: 1075px) {
     #reguistro > div:nth-child(1) {
 
@@ -1581,6 +1616,9 @@ output:after {
         justify-content: center;
     }
 
+    #editarUser > div:nth-child(1) {
+        width: 831px;
+    }
 
 }
 @media (max-width: 850px){
@@ -1625,6 +1663,20 @@ output:after {
 
     #perfil > div:nth-child(1) > div:nth-child(1) {
         width: 84%;
+    }
+    #editarUser > div:nth-child(1) {
+        width: 538px;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div {
+        flex-direction: column;
+    }
+    #editar_usuario_password {
+        display: flex;
+        flex-direction: column;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) {
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
 }
@@ -1699,7 +1751,21 @@ output:after {
     #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) {
         width: 100%;
     }
-
+    /*******************editar User********************/ 
+    #editarUser > div:nth-child(1) {
+        width: 344px;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div {
+        flex-direction: column;
+    }
+    #editar_usuario_password {
+        display: flex;
+        flex-direction: column;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 
 }
 @media screen and (max-width: 500px){
@@ -1811,10 +1877,10 @@ output:after {
 
     }
     /************editar proyecto******/
-    #editarProjecto > div:nth-child(1) > form > div:nth-child(10) > button {
-        width: 60%;
-    }
-    #editarProjecto > div:nth-child(1) > form > div:nth-child(6) > input, #editarProjecto > div:nth-child(1) > form > div:nth-child(7) > input {
+    /*    .btnEditar>div> button {
+            width: 60%;
+        }*/
+    #editBanco> input, #editTag > input {
         background-position: 280px;
         width: 310px;
 
@@ -1822,7 +1888,7 @@ output:after {
     #editarProjecto > div:nth-child(1){
         width: 341px;
     }
-    #editarProjecto > div:nth-child(1) > form > div:nth-child(4) > textare{
+    #editDescripcion > textare{
         width: 60%;
         margin-left: 40px;
         height: auto;
@@ -1838,15 +1904,12 @@ output:after {
     .step {
         margin-bottom: 20px;
     }
-    #editarProjecto > div:nth-child(1) > form > div:nth-child(4) > textarea {
+    #editDescripcion > textarea {
         background-position: 298px;
     }
-    #editarProjecto > div:nth-child(1) > form > div:nth-child(9) > div:nth-child(1) {
+    .peligro > div:nth-child(1) {
         width: 99%;
     }
-    /*******************editar User********************/ 
-
-
 
 
 

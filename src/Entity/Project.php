@@ -65,6 +65,7 @@ class Project
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Seguimiento", mappedBy="proyecto", cascade={"persist"})
+     * @ORM\OrderBy({"fecha"="ASC"})
      */
     private $seguimientos;
 
@@ -293,6 +294,16 @@ class Project
 
     public function addSeguimiento(Seguimiento $seguimiento) {
         $this->seguimientos[] = $seguimiento;
+    }
+
+    /**
+     * Devuelve un array con las 4 fases mas nuevas del proyecto
+     * @return array
+     */
+    public function getLatestSeguimiento() {
+        // NOTA: El array ya viene ordenado por fecha ascendentemente
+        // crea un array con las ultimas 4 posiciones de este
+        return $this->seguimientos->slice(count($this->seguimientos) - 4, 4);
     }
 
     /**
