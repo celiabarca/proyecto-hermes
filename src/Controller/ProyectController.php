@@ -55,17 +55,6 @@ class ProyectController extends Controller {
         ]);
     }
 
-    private function subirImagen(UploadedFile $file) {
-        if($file->getClientSize() <= UploadedFile::getMaxFilesize()) {
-            $filename = md5(uniqid()).'.'.$file->guessExtension();
-            $path = $this->getParameter('public_img_directory');
-            $file->move($path, $filename);
-            return $path.'/'.$filename;
-        }
-
-        return null;
-    }
-
     /**
      * Crea un proyecto nuevo
      * @param Request $peticion
@@ -126,6 +115,7 @@ class ProyectController extends Controller {
         
         return $proyectos;
     }
+
     /**
      * Renderiza la pagina del proyecto
      * @param Project $proyecto
