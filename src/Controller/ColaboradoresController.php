@@ -14,27 +14,15 @@ class ColaboradoresController extends Controller
     /**
      * Preparado para AJAX
      * Elimina a un colaborador de un proyecto
-     * @param Project $proyecto
-     * @param User $user
+     * @param Colaboracion $colaboracion
      * @return JsonResponse
      */
-    public function eliminarColaborador(Project $proyecto, User $user)
+    public function eliminarColaborador(Colaboracion $colaboracion)
     {
         try {
             $eliminado = false;
 
-            $colaboracion = $this->getDoctrine()
-                ->getRepository(Colaboracion::class)
-                ->findOneBy([
-                    'proyecto' => $proyecto,
-                    'usuario' => $user
-                ]);
-
-            if (!isset($colaboracion)) {
-                throw new \Exception('No has colaborado en este proyecto!');
-            }
-
-            if ($proyecto->getColaboradores()->contains($colaboracion)) {
+            if($colaboracion->getProyecto()->getAutor() == $this->getUser()) {
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($colaboracion);
                 $manager->flush();
@@ -176,7 +164,7 @@ class ColaboradoresController extends Controller
             }
 
             return new JsonResponse([
-                'aceptado' => $rechazado
+                'rechazado' => $rechazado
             ]);
         } catch(\Exception $e) {
             return new JsonResponse([

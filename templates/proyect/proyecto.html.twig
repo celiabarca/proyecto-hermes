@@ -39,6 +39,7 @@
             </div>
 
             <div class="steps ">
+{#<<<<<<< HEAD
                 {% set i = 0 %}
                 {% set seguimientos = proyecto.seguimientos|length %}
                 {% for i in 0..4 %}
@@ -55,6 +56,11 @@
          
                         {% endfor %}
                         #}
+                {# El for recorre el array que devuelve la funcion getLatestSeguimiento #}
+                {% for seguimiento in proyecto.getLatestSeguimiento() %}
+                    <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                    <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
+                {% endfor %}
             </div>
             <div>
                 {{proyecto.descripcion}}
@@ -63,6 +69,7 @@
                 <div>
                     <h1>colaboradores</h1>
                     {% for colaborador in proyecto.colaboradores%}
+                        {% if colaborador.estado == 'aceptado' %}
                         <div class = "colaborador">
                             <div>
                                 <img src="{{ asset(colaborador.usuario.img) }}" alt="">
@@ -73,6 +80,7 @@
                                 </h2>
                             </div>
                         </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

@@ -80,6 +80,10 @@ quitar_Colaboracion:
     path: /proyecto/{id}/quitar_colaboracion
     controller: App\Controller\ColaboradoresController::eliminarColaboracion
 
+quitar_colaborador:
+    path: /colaboracion/{proyecto}/{usuario}/eliminar_colaborador
+    controller: App\Controller\ColaboradoresController::eliminarColaborador
+
 buscar_tags:
     path: /tags/{nombre}
     controller: App\Controller\TagController::getTags

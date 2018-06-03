@@ -311,7 +311,75 @@ $(document).ready(function () {
     $("#project_meta").on("blur",function()
     {
        //aler($(this))
-    })
+    });
 
+    $('.aceptar-colaborador-btn').on('click', function(){
+        var usuario = $(this).data('usuario-id');
+        var proyecto = $(this).data('proyecto-id');
+
+        $.ajax({
+            url: '/colaboracion/' + proyecto + '/' + usuario + '/aceptar',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                var aceptado = data.aceptado;
+
+                if(aceptado) {
+                    window.location.reload(true);
+                } else {
+                    alert("No se ha podido aceptar a este colaborador");
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+    $('.rechazar-colaborador-btn').on('click', function(){
+        var usuario = $(this).data('usuario-id');
+        var proyecto = $(this).data('proyecto-id');
+
+        $.ajax({
+            url: '/colaboracion/' + proyecto + '/' + usuario + '/rechazar',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                var rechazado = data.rechazado;
+
+                if(rechazado) {
+                    window.location.reload(true);
+                } else {
+                    alert("No se ha podido rechazar a este colaborador");
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+    $('.eliminar-colaborador-btn').on('click', function(){
+        var usuario = $(this).data('usuario-id');
+        var proyecto = $(this).data('proyecto-id');
+
+        $.ajax({
+            url: '/colaboracion/' + proyecto + '/' + usuario + '/eliminar_colaborador',
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                var eliminado = data.eliminado;
+
+                if(eliminado) {
+                    window.location.reload(true);
+                } else {
+                    alert("No se ha podido eliminar a este colaborador");
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
 
 });
