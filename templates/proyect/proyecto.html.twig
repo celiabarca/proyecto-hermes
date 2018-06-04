@@ -72,7 +72,7 @@
                         {% if colaborador.estado == 'aceptado' %}
                         <div class = "colaborador">
                             <div>
-                                <img src="{{ asset(colaborador.usuario.img) }}" alt="">
+                                <img src="{{ asset(colaborador.usuario.img) }}" alt="Imagen de {{colaborador.usuario.titulo}}">
                             </div>
                             <div>
                                 <h2>
@@ -108,9 +108,19 @@
                                 {{comentario.autor.nombre}}
                             </div>
                             <div>
+<<<<<<< HEAD
+                                <div>
+                                    {{comentario.autor.nombre}}
+                                </div>
+                                <div>
+                                    <p> {{comentario.contenido}}</p>
+                                </div>
+                            </div>
+=======
                                 <p> {{comentario.contenido}}</p>
                             </div>
                         </div> 
+>>>>>>> d3a8bc8fd488049f7bf59581dfa24ba792e13bd6
 
                     </div>
                     <div>
