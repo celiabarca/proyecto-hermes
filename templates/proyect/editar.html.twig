@@ -1,14 +1,19 @@
 {% extends "base.html.twig" %}
 {% block contenido %}
-
-
-
-
-
-
+            <div class="steps ">
+                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                {% for seguimiento in proyecto.seguimientos %}
+                    <div class="step"><span class="arrowB"></span>{{seguimiento.situacion}}<span class="arrow"></span></div>
+                {% endfor %}
+                
+                <form action="{{path("addseguimiento",{'id':proyecto.id})}}" id="stepInput" method="POST">
+                    <div class="step"><span class="arrowB"></span><input type="text" class="emptyInput" name="seguimiento"><span class="arrow"></span></div>
+                    <input type="submit" value="enviar FEO"/>
+                </form>
+            </div>
     <div id="editarProjecto">
         <div>
-            {{ form_start(form) }}
+            {{ form_start(form,{'class':'dropzone'}) }}
             <div>
                 {{form_widget(form.titulo)}}
             </div>
@@ -22,15 +27,11 @@
                     {{form_widget(form.img)}}
                 </div>
             {%endif%}
-            <div class="steps ">
-                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
-            </div>
+
             <div>
+                <h1>Edita el resumen de tu proyecto</h1>
                 {{form_widget(form.descripcion)}}
+                <h1>Edita el contenido de tu proyecto</h1>
                 {{form_widget(form.contenido)}} 
             </div>
             <div>
@@ -38,19 +39,55 @@
                 <output id ="rangeEditar" for="foo" onforminput="value = foo.valueAsNumber;"></output>
             </div>
             <div>
+                <h2>Datos bamcarios</h2>
                 {{form_widget(form.iban)}}
             </div>
             <div>
+                <h2>Edita las etiquetas de tu post</h2>
                 {{form_widget(form.etiquetas)}}
             </div>
-
-
-
-            <div>
+            <div class ="allcolaboradores">
                 <div>
                     <h1>colaboradores</h1>
                     {% for colaborador in proyecto.colaboradores%}
-                        {% if colaborador.estado == 'aceptada' %}
+                        {% if colaborador.estado == "aceptado" %}
+                            <div class = "colaborador">
+                                <div>
+                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                </div>
+                                <div>
+                                    <h2>
+                                        {{ colaborador.usuario.nombre }}
+                                    </h2>
+                                </div>
+                                    <div>
+                                    <input type="button" value ="DELETE"/>
+                                </div>
+                            </div>
+                        {% elseif colaborador.estado == "Pendiente"%}   
+                            <div class = "colaborador colaboradorDenegado">
+                                <div>
+                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                </div>
+                                <div>
+                                    <h2>
+                                        {{ colaborador.usuario.nombre }}
+                                    </h2>
+                                </div>
+                                <div>
+                                    <input type="button" value =""/>
+                                    <input type="button" value =""/>
+                                </div>
+                            </div> 
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {#<div>
+                <div>
+                    <h1>colaboradores</h1>
+                    {% for colaborador in proyecto.colaboradores%}
+                        {% if colaborador.estado == 'aceptado' %}
                             <div class = "colaborador">
                                 <div>
                                     <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
@@ -71,62 +108,27 @@
                                         {{ colaborador.usuario.nombre }}
                                     </h2>
                                 </div>
+                                <div>
+                                    <input type="button" value =""/>
+                                    <input type="button" value =""/>
+                                </div>
                             </div> 
                         {% endif %}
                     {% endfor %}
                 </div>
-            </div>
+            </div>#}
             <div>
                 {{ form_end(form) }}
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {# <div>
+         <div>
              <h1>Proyecto</h1>
-            {# {{ form_start(form) }}
+             {{ form_start(form) }}
              {{ form_widget(form) }}
              {{ form_rest(form) }}
-             #}
-        {#</div>
+             
+        </div>
         <div>
             <div>
                 <h1>Colaboradores</h1>
@@ -144,9 +146,10 @@
             </div>
 
 
-        </div>#}
+        </div>
     {% endblock %}
     {% block js_especifico %}
         <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('/assets/js/proyecto.js') }}"></script>    
+        <script src="{{ asset('/assets/js/proyecto.js') }}"></script>
+        
     {% endblock %}

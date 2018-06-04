@@ -402,18 +402,18 @@ nav> ul > li {
     text-decoration: none;
     color: #000000;
 }
-#project > div:nth-child(1) > div:nth-child(7){
+.allcolaboradores{
     background-color: lightblue;
     border: solid 2px #79bbf8;
     display: flex;
     justify-content: center;
     margin: 20px 0px;
 }
-#project > div:nth-child(1) > div:nth-child(7)>div:nth-child(1)>h1{
+.allcolaboradores>div:nth-child(1)>h1{
     justify-content: center;
     display: flex;
 }
-#project > div:nth-child(1) > div:nth-child(7)>div:nth-child(1){
+.allcolaboradores>div:nth-child(1){
     width: 50%;
     display: flex;
     justify-content: center;
@@ -428,9 +428,9 @@ nav> ul > li {
     display: flex;
     margin: 10px;
 }
-.colaborador>div:nth-child(2)>h2{
+/*.colaborador>div:nth-child(2)>h2{
     color: #0e4a80;
-}
+}*/
 .colaborador>div:nth-child(1){
     height: 100px;
     width: 100px;
@@ -1400,11 +1400,11 @@ output:after {
 #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:nth-child(1){
     margin-bottom: 27px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(4){
+/*#editarProjecto>div:nth-child(1)>form>div:nth-child(4){
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+}*/
 #editarProjecto>div:nth-child(1)>form>div:nth-child(6), #editarProjecto>div:nth-child(1)>form>div:nth-child(7){
     display: flex;
     justify-content: center;
@@ -1420,25 +1420,57 @@ output:after {
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
     background-position: 500px;
-    width: 357px;
+    width: 548px;
     font-size: 20px;
 }
 #editarProjecto>div:nth-child(1)>form>div:nth-child(5){
     position: relative;
 }
 #editarProjecto>div:nth-child(1)>form>div:nth-child(2)>input{
-    
+
 }
-#editImg>input{
+/*#editImg>input{
     color:transparent;
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
     background-position: 250px;
+}*/
+.colaboradorDenegado > div>input:nth-child(1) {
+
+    background-image: url("../images/check-mark.png");
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    background-position: 5px;
+    border: 1px solid #2075a4;
+    background-color: #02445a;
 }
-
-
-
-
+.colaboradorDenegado > div>input:nth-child(2) {
+    background-image: url("../images/delete.png");
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    background-position: 5px;
+    border: 1px solid #2075a4;
+    background-color: #02445a;
+    margin-left: 10px;
+}
+.colaboradorDenegado > div:nth-child(3){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.colaboradorDenegado>div:nth-child(2)>h2{
+    color:red;
+}
+.colaboradorDenegado>div:nth-child(1)>img{
+    filter: grayscale(100%);
+}
+.colaboradorDenegado>div:nth-child(1)>img:hover{
+    filter: grayscale(0%);
+}
 
 
 

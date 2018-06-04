@@ -48,7 +48,7 @@
             <div>
                 {{proyecto.descripcion}}
             </div>
-            <div>
+            <div class ="allcolaboradores">
                 <div>
                     <h1>colaboradores</h1>
                     {% for colaborador in proyecto.colaboradores %}
@@ -136,6 +136,8 @@
 {% endblock %}
 
 {% block js_especifico %}
+        <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/proyecto.js') }}"></script>
     <script src="{{ asset('assets/js/emojionearea.js') }}"></script>
     <script type="text/javascript">
