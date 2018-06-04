@@ -34,12 +34,7 @@ class ProyectController extends Controller {
     {
         if($req->get("proyecto"))
         {
-           $proyectos = $this->getDoctrine()->getRepository(Project::class)->createQueryBuilder('o')
-                
-                ->where('o.titulo LIKE :nombre')
-                ->setParameter('nombre', "%".$req->get("proyecto")."%")
-                ->getQuery()
-                ->getResult();
+           
         }
         else
         {

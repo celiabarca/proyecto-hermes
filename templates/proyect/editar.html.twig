@@ -9,7 +9,7 @@
             </div>
             {% if proyecto.img %}
                 <div class ="imgProjec" id ="editImg">
-                    <img src="{{proyecto.img}}" alt="">
+                    <img src="{{proyecto.img}}" alt="Imagen de {{proyecto.titulo}}">
 
                 </div>{{form_widget(form.img)}}
             {% else %}
@@ -59,7 +59,7 @@
                         {% if colaborador.estado == "aceptado" %}
                             <div class = "colaborador">
                                 <div>
-                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="">
+                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="Imagen de {{colaborador.usuario.nombre}}">
                                 </div>
                                 <div>
                                     <h2>
@@ -73,7 +73,7 @@
                         {% elseif colaborador.estado == "Pendiente"%}   
                             <div class = "colaborador colaboradorDenegado">
                                 <div>
-                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="">
+                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="Imagen de {{colaborador.usuario.nombre}}">
                                 </div>
                                 <div>
                                     <h2>

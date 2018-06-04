@@ -53,12 +53,12 @@
                     {#                  primera parte            #}
                     <div>
                         <div>
-                            <img src="{{ asset(proyecto.img) }}" alt="">
+                            <img src="{{ asset(proyecto.img) }}" alt="Imagen de {{proyeto.titulo}}">
                         </div>
                         <div>
                             <div>
-                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
-                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="Me gusta">
+                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="No me gusta">
                             </div>
                             <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                             <p>{{proyecto.descripcion}}</p>
@@ -84,8 +84,8 @@
                         </div>
                         <div>
                             <div>
-                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
-                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="Me gusta el proyecto">
+                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="No me gusta el proyecto">
                             </div>
                             <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                             <p>{{proyecto.descripcion}}</p>
@@ -109,7 +109,7 @@
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <div class = "comm">
                                 <div>
-                                    <img src="{{ asset(app.user.img) }}" alt="">
+                                    <img src="{{ asset(app.user.img) }}" alt="Imagen de {{app.user.nombre}}">
                                 </div>
                                 {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
                             </div>
@@ -118,7 +118,7 @@
                             <div class="collapsible-element">
                                 <div id="comentario-{{ comentario.id }}" class="comm">
                                     <div>
-                                        <img src="{{ asset(comentario.autor.img) }}" alt="">
+                                        <img src="{{ asset(comentario.autor.img) }}" alt="Imagen de {{comentario.autor.nombre}}">
                                     </div>
                                     <div>
                                         <div>
@@ -144,7 +144,7 @@
                                             </div>
                                             <div class="comm res">
                                                 <div>
-                                                    <img src="{{ asset(respuesta.autor.img) }}" alt="">
+                                                    <img src="{{ asset(respuesta.autor.img) }}" alt="Imagen de {{respuesta.usuario.nombre}}">
                                                 </div>
                                                 <div>
                                                     <div>

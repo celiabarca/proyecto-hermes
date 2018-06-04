@@ -80,7 +80,7 @@
                                         <input id="mostrar-campos-opcionales" type="checkbox" value="1" name="check">
                                         <label for="mostrar-campos-opcionales" name="check">Añadir informacion adicional</label>
                                         <div class="alerta-popup">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dignissim, magna vel pellentesque accumsan, quam felis pulvinar arcu, non volutpat nisl diam ut felis. Nulla ultrices facilisis gravida.
+                                             Si quieres, introduce algún dato para generar mas interes en tus posibles inversores o colaboradores.
                                         </div>
                                     </div>
                                     <div class="campo-opcional">
@@ -157,7 +157,7 @@
                                 {#                                    <div><!-- envoltorio de la imagen -->#}
                                 
                                 <div><!-- contenedor de la imagen -->
-                                    <img src="{{ asset(usuario.img) }}" alt="">
+                                    <img src="{{ asset(usuario.img) }}" alt="Imagen de {{usuario.nombre}}">
                                 </div>
                                
                                 <div><!-- envoltorio del resumen -->
@@ -191,7 +191,7 @@
                                     <div class = "continer_project"><!-- envoltorio del proyecto -->
                                         <div><!-- contenedor del proyecto -->
                                             <div {#style="background-image:url('{{ asset('assets/images/tesla.jpg') }}')"#}><!-- contenedor de la imagen -->
-                                                <img src="{{ asset(proyecto.img) }}" alt="">
+                                                <img src="{{ asset(proyecto.img) }}" alt="Imagen de {{proyecto.titulo}}">
                                             </div>
                                             <div>
                                                 <div><!-- contenedor del titulo -->

@@ -9,6 +9,7 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\ORM\Query\Expr\Join;
+use App\Entity\Tag;
 
 /**
  * @method Project|null find($id, $lockMode = null, $lockVersion = null)
@@ -58,7 +59,8 @@ class ProjectRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('project')
                     ->select('project')
-                    ->where('project.titulo LIKE :name')
+                    ->innerJoin(Tag::class, 'tag')
+                    ->where('project.titulo LIKE :name OR tag.nombre like :name')
                     ->setParameter('name', '%'.$name.'%')
                     ->getQuery()
                     ->getResult();
