@@ -32,7 +32,9 @@
                                 </div>
                                 <div>
                                     <div>
-                                        <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                        {% if app.user %}
+                                            <a href="{{ path('editarProyecto', { id: proyecto.id }) }}"><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                        {% endif %}
                                     </div>
                                     <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                                     <p>{{proyecto.descripcion}}</p>

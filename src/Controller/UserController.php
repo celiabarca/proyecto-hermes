@@ -53,7 +53,7 @@ class UserController extends Controller {
      * 
      */
     public function test(){
-        return $this->render('error.html.twig');
+        return $this->render('error404.html.twig');
     }
 
     /**
