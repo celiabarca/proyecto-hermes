@@ -39,23 +39,7 @@
             </div>
 
             <div class="steps ">
-{#<<<<<<< HEAD
-                {% set i = 0 %}
-                {% set seguimientos = proyecto.seguimientos|length %}
-                {% for i in 0..4 %}
-                    {% if seguimientos>i %}
-                        {% set seguimiento = proyecto.seguimientos[i] %}
-                        <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                        <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
-                            {% endif %}
-                        {% endfor %}
-                        {# El for recorre el array que devuelve la funcion getLatestSeguimiento 
-                        {% for seguimiento in proyecto.getLatestSeguimiento() %}
-                            <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                            <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
-         
-                        {% endfor %}
-                        #}
+
                 {# El for recorre el array que devuelve la funcion getLatestSeguimiento #}
                 {% for seguimiento in proyecto.getLatestSeguimiento() %}
                     <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
@@ -105,22 +89,13 @@
                         </div>
                         <div>
                             <div>
-                                {{comentario.autor.nombre}}
+                                <h3>{{comentario.autor.nombre}}</h3>
                             </div>
                             <div>
-<<<<<<< HEAD
-                                <div>
-                                    {{comentario.autor.nombre}}
-                                </div>
-                                <div>
-                                    <p> {{comentario.contenido}}</p>
-                                </div>
-                            </div>
-=======
+
                                 <p> {{comentario.contenido}}</p>
                             </div>
                         </div> 
->>>>>>> d3a8bc8fd488049f7bf59581dfa24ba792e13bd6
 
                     </div>
                     <div>
