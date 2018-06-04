@@ -11,49 +11,85 @@
                 <div>
                     <div>
                         <h1>{{ usuario.username }}</h1>
-                        <input type="button">
+                        <a href="{{path('editar_usuario',{'id':usuario.id})}}"><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar Usuario"></a>
                     </div>
                     <div>
                         <a href="{{path("nuevoProyecto")}}">Empezar un nuevo proyecto
-                        <input type="button"></a>
+                            <input type="button"></a>
                     </div>
                 </div>
             </div>
 
             <div class="respuestas collapsible" data-limit="3" id="all-proj">
                 {% for proyecto in usuario.proyectos %}
-                    <div class="proj collapsible-element proj-perfil " >
-                        {#                  primera parte            #}
-                        <div>
+                    {% if  proyecto.img%}
+                        <div class="proj collapsible-element proj-perfil " >
+                            {#                  primera parte            #}
                             <div>
-                                <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+
+                                <div>
+                                    <img src="{{ asset(proyecto.img) }}" alt="imagen del proyecto {{proyecto.titulo}}">
+                                </div>
+                                <div>
+                                    <div>
+                                        <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                    </div>
+                                    <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                                    <p>{{proyecto.descripcion}}</p>
+                                    <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                                </div>
                             </div>
-                            <div>
-                                <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
-                                <p>{{proyecto.descripcion}}</p>
-                                <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
-                            </div>
-                        </div>
                             <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
-                    </div>
+                        </div>
+                        <div class="proj collapsible-element proj-perfil proj-perfil-nofoto" >
+                            {#                  primera parte            #}
+                            <div>
+
+                                <div>
+                                    <img src="{{ asset(proyecto.img) }}" alt="imagen del proyecto {{proyecto.titulo}}">
+                                </div>
+                                <div>
+                                    <div>
+                                        <a><img src="{{ asset('assets/images/lapiz.png') }}" alt="editar proyecro"></a>
+                                    </div>
+                                    <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                                    <p>{{proyecto.descripcion}}</p>
+                                    <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                                </div>
+                            </div>
+                                
+                            <a href="#" class="edit"><i class="fa fa-edit fa-3x"></i></a>
+                        </div>
+                    {%else%}
+                    {%endif%} 
                 {% endfor %}
+{#<<<<<<< HEAD
+
+
                 <button class="vermas-btn">Ver más +</button>
+=======#}
+                {% if usuario.proyectos|length > 3 %}
+                    <button class="vermas-btn">Ver más +</button>
+                {% endif %}
             </div>
             <div>
                 <div class="respuestas collapsible" data-limit="3" >
                     {% for actividad in usuario.actividades %}
-                        <div class = "collapsible-element">
+                        <div class = "collapsible-element actividad">
                             <div>
                                 <img src="{{ asset(usuario.img) }}" alt="">
                             </div>
                             <div>
                                 <div>{{ actividad.fecha|date('d/m/y') }}</div>
-                                <div>{{ actividad.actividad}}</div>
+                                <div>{{ actividad.actividad}} {{actividad.proyecto.titulo}}</div>
+
                             </div>
+                                
                         </div>
                     {% endfor %}
- 
-                    <button class="vermas-btn">Ver más +</button>   
+                    {% if usuario.actividades|length > 3 %}
+                        <button class="vermas-btn">Ver más +</button>
+                    {% endif %}
                 </div>
             </div>
         </div>

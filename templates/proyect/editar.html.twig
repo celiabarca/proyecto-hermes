@@ -1,4 +1,5 @@
 {% extends "base.html.twig" %}
+
 {% block contenido %}
             <div class="steps ">
                 <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
@@ -14,38 +15,54 @@
     <div id="editarProjecto">
         <div>
             {{ form_start(form,{'class':'dropzone'}) }}
-            <div>
+            <div id = "editTitle">
                 {{form_widget(form.titulo)}}
             </div>
             {% if proyecto.img %}
                 <div class ="imgProjec" id ="editImg">
                     <img src="{{proyecto.img}}" alt="">
-                    {{form_widget(form.img)}}
-                </div>
+
+                </div>{{form_widget(form.img)}}
             {% else %}
-                <div>
+                <div id ="editImg">
                     {{form_widget(form.img)}}
                 </div>
             {%endif%}
-
-            <div>
-                <h1>Edita el resumen de tu proyecto</h1>
+            {#<div class="steps ">
+                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+                <div class="step"><span class="arrowB"></span>Some Text<span class="arrow"></span></div>
+            </div>#}
+            <div id ="editDescripcion">
+                <h2>Edita el resumen de tu proyecto</h2>    
                 {{form_widget(form.descripcion)}}
-                <h1>Edita el contenido de tu proyecto</h1>
+                <h2>Edita el contenido de tu proyecto</h2>
                 {{form_widget(form.contenido)}} 
             </div>
-            <div>
-                {{form_widget(form.meta)}}
-                <output id ="rangeEditar" for="foo" onforminput="value = foo.valueAsNumber;"></output>
+            <div id ="editMeta" >
+                <div>
+                    <h1>Edita la meta</h1>
+                    {{form_widget(form.meta)}}
+                    <output id ="output2" for="foo" onforminput="value = foo.valueAsNumber;"></output>
+                </div>
+                <div>
+                    <p>5€<p>     
+                    <p>10.000€</p>
+                </div>
             </div>
-            <div>
+            <div id = "editBanco" >
                 <h2>Datos bamcarios</h2>
                 {{form_widget(form.iban)}}
             </div>
-            <div>
+            <div id ="editTag">
                 <h2>Edita las etiquetas de tu post</h2>
                 {{form_widget(form.etiquetas)}}
             </div>
+
+
+
             <div class ="allcolaboradores">
                 <div>
                     <h1>colaboradores</h1>
@@ -53,21 +70,21 @@
                         {% if colaborador.estado == "aceptado" %}
                             <div class = "colaborador">
                                 <div>
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="">
                                 </div>
                                 <div>
                                     <h2>
                                         {{ colaborador.usuario.nombre }}
                                     </h2>
                                 </div>
-                                    <div>
-                                    <input type="button" value ="DELETE"/>
+                                <div>
+                                    <input class="eliminar-colaborador-btn" data-usuario-id="{{ colaborador.usuario.id }}" data-proyecto-id="{{ proyecto.id }}" type="button" value ="DELETE"/>
                                 </div>
                             </div>
                         {% elseif colaborador.estado == "Pendiente"%}   
                             <div class = "colaborador colaboradorDenegado">
                                 <div>
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
+                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="">
                                 </div>
                                 <div>
                                     <h2>
@@ -75,81 +92,57 @@
                                     </h2>
                                 </div>
                                 <div>
-                                    <input type="button" value =""/>
-                                    <input type="button" value =""/>
+                                    <input class="aceptar-colaborador-btn" data-usuario-id="{{ colaborador.usuario.id }}" data-proyecto-id="{{ proyecto.id }}" type="button" value =""/>
+                                    <input class="rechazar-colaborador-btn" data-usuario-id="{{ colaborador.usuario.id }}" data-proyecto-id="{{ proyecto.id }}" type="button" value =""/>
                                 </div>
                             </div> 
                         {% endif %}
                     {% endfor %}
                 </div>
             </div>
-            {#<div>
+            <div class ="peligro">
                 <div>
-                    <h1>colaboradores</h1>
-                    {% for colaborador in proyecto.colaboradores%}
-                        {% if colaborador.estado == 'aceptado' %}
-                            <div class = "colaborador">
-                                <div>
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                <div>
-                                    <h2>
-                                        {{ colaborador.usuario.nombre }}
-                                    </h2>
-                                </div>
-                            </div>
-                        {% elseif colaborador.estado == 'pendiente'%}   
-                            <div class = "colaborador colaboradorDenegado">
-                                <div>
-                                    <img src="{{ asset('assets/images/tesla.jpg') }}" alt="">
-                                </div>
-                                <div>
-                                    <h2>
-                                        {{ colaborador.usuario.nombre }}
-                                    </h2>
-                                </div>
-                                <div>
-                                    <input type="button" value =""/>
-                                    <input type="button" value =""/>
-                                </div>
-                            </div> 
+                    <div>
+                        <h4>¿Quieres dejar de destacar este proyecto ?</h4>
+                        {% if proyecto.destacado %}
+                            <a href="{{ path('quitar_destacado', { id: proyecto.id }) }}">SI</a>
+                        {% else %}
+                            <a class="enlace-desactivado" href="#">SI</a>
                         {% endif %}
-                    {% endfor %}
+                        <h4>¿Borrar este proyecto?</h4>
+                        <a id="eliminar-proyecto-btn" href="{{ path('eliminar_proyecto', { id: proyecto.id }) }}" >Borrar</a>
+                    </div>
                 </div>
-            </div>#}
-            <div>
+            </div>
+            <div class = "btnEditar">
                 {{ form_end(form) }}
             </div>
-        </div>
-
-         <div>
-             <h1>Proyecto</h1>
-             {{ form_start(form) }}
-             {{ form_widget(form) }}
-             {{ form_rest(form) }}
-             
-        </div>
-        <div>
-            <div>
-                <h1>Colaboradores</h1>
-                <div></div>
+            <div class="steps ">
+                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                {% for seguimiento in proyecto.seguimientos %}
+                    <div class="step"><span class="arrowB"></span>{{seguimiento.situacion}}<span class="arrow"></span></div>
+                {% endfor %}
+                <form action="{{path("addseguimiento",{'id':proyecto.id})}}" id="stepInput" method="POST">
+                    <div class="step"><span class="arrowB"></span><input type="text" class="emptyInput" name="seguimiento"><span class="arrow"></span></div>
+                    <input type="submit" value="Actualizar Estado Del Proyecto"/>
+                </form>
             </div>
-
-            <div>
-                <h1>Zona de Peligro</h1>
-                <div>
-                    <h4>¿Dejar de destacar este proyecto?</h4>
-                    <a href="">Deja de destacar el proyecto.</a>
-                    <h4>¿Borrar este proyecto?</h4>
-                    <a href="#" id="borrar-proyecto" name="{{proyecto.id}}">Borrar el proyecto</a>
-                </div>
-            </div>
-
-
         </div>
+    </div>
     {% endblock %}
-    {% block js_especifico %}
-        <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('/assets/js/proyecto.js') }}"></script>
-        
-    {% endblock %}
+{% block js_especifico %}
+    <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/proyecto.js') }}"></script>
+    <script>
+        var eliminarButton = document.getElementById("eliminar-proyecto-btn");
+
+        eliminarButton.onclick = function(event) {
+            event.preventDefault();
+            var msg = "¿Estas seguro de eliminar el proyecto?";
+
+            if(confirm(msg)) {
+                window.location.href = this.href;
+            }
+        };
+    </script>
+{% endblock %}

@@ -3,43 +3,53 @@
 {% block  contenido %}
     <div id ="blog">
         <div>
-            <div>
+            <div class ="filter">
                 <div>
-                    <button>Por fecha</button>
-                    <ul>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'asc'}) }}">De mas bajo a mas alto</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'desc'}) }}">De mas alto a mas bajo</a>
-                        </li>
-                    </ul>
+                    <form id="buscar-form" action="/" method="GET">
+                        <input id="buscar-input" type ="text" name="proyecto" />
+                        <input type="submit">
+                    </form>
                 </div>
                 <div>
-                    <button>Por cantidad donada</button>
-                    <ul>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'asc'}) }}">De mas bajo a mas alto</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'desc'}) }}">De mas alto a mas bajo</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button>Por valoracion</button>
-                    <ul>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'asc'}) }}">Mejor valorado</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'desc'}) }}">Peor valorado</a>
-                        </li>
-                    </ul>
+                    <div>
+                        <button>Por fecha</button>
+                        <ul class  = "zoomIn animated ">
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'asc'}) }}">De mas bajo a mas alto</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'fechaCreacion', orden: 'desc'}) }}">De mas alto a mas bajo</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button>Por cantidad donada</button>
+                        <ul class  = "zoomIn animated ">
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'asc'}) }}">De mas bajo a mas alto</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'donaciones', orden: 'desc'}) }}">De mas alto a mas bajo</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button>Por valoracion</button>
+                        <ul class  = "zoomIn animated ">
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'asc'}) }}">Mejor valorado</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('filtraProyectos', {filtro: 'valoracion', orden: 'desc'}) }}">Peor valorado</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
             {% for proyecto in proyectos %}
-                <div class="proj tam">
+                {% if  proyecto.img%}
+                    <div class="proj tam">
                     {#                  primera parte            #}
                     <div>
                         <div>
@@ -53,19 +63,47 @@
                             <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
                             <p>{{proyecto.descripcion}}</p>
                             <div class ="autor">
-                                <h2>{{proyecto.autor.nombre}}</h2>
+                                <h2><a href="{{path('usuario_perfil',{'id':proyecto.autor.id})}}">{{proyecto.autor.nombre}}</a> </h2>
 
                             </div>
                             <div class ="options">
                                 <div>
-                                    <input type ="button" value="Ayudar">
+                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayudar</a>
                                 </div>
-                                <div><a href="{{path("Colaborar",{"id":proyecto.id})}}">Colaborar</a></div>
+                                <div><a class="colaborar-btn" data-proyectoid="{{ proyecto.id }}" href="#">Colaborar</a></div>
                                 <div>{{proyecto.getRecaudado()}}€</div>
                             </div>
                             <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
                         </div>
                     </div>
+                {% else %}
+                    <div class="proj tam sinFotto">
+                    {#                  primera parte            #}
+                    <div>
+                        <div>
+                        </div>
+                        <div>
+                            <div>
+                                <img src="{{ asset('assets/images/pulgares-abajo-silueta.png') }}" alt="">
+                                <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
+                            </div>
+                            <h1><a href="{{path('proyecto',{'id':proyecto.id})}}">{{proyecto.titulo}}</a></h1>
+                            <p>{{proyecto.descripcion}}</p>
+                            <div class ="autor">
+                                <h2><a href="{{path('usuario_perfil',{'id':proyecto.autor.id})}}">{{proyecto.autor.nombre}}</a></h2>
+
+                            </div>
+                            <div class ="options">
+                                <div>
+                                    <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Ayudar</a>
+                                </div>
+                                <div><a class="colaborar-btn" data-proyectoid="{{ proyecto.id }}" href="#">Colaborar</a></div>
+                                <div>{{proyecto.getRecaudado()}}€</div>
+                            </div>
+                            <div>{{proyecto.fechaCreacion|date("d-m-Y")}}</div>
+                        </div>
+                    </div>
+                {%endif%}
                     {#       comentarios                 #}
                     <div class="test collapsible" data-limit="1">
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -93,10 +131,10 @@
                                 </div>
                                 <div>
                                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <div class="responder">Responder</div>
-                                    <div class ="respuesta">
-                                        {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
-                                    </div>
+                                        <div class="responder">Responder</div>
+                                        <div class ="respuesta">
+                                            {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                                        </div>
                                     {% endif %}
                                 </div>
                                 <div class="respuestas collapsible" data-limit="1">
@@ -140,4 +178,44 @@
     </div>
 {% endblock %}
 
+{% block js_especifico %}
+    <script>
+        var searchForm = document.getElementById("buscar-form");
+        var searchInput = document.getElementById("buscar-input");
 
+        searchInput.onkeyup = function() {
+            searchForm.action = '/proyectos/buscar/' + encodeURI(this.value);
+        };
+
+        searchForm.onsubmit = function(event) {
+            event.preventDefault();
+            window.location.href = this.action;
+        };
+
+        $('.colaborar-btn').on('click', function () {
+            var proyectoId = this.dataset.proyectoid;
+            var _url = '/proyecto/' + proyectoId + '/colaborar';
+            var $this = $(this);
+
+
+            $.ajax({
+                url: _url,
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (data) {
+                    if (data.peticion_envidada) {
+                        $this.css('color', 'yellow');
+                    } else {
+                        $this.css('color', 'red');
+                    }
+                },
+                error: function (data) {
+                    console.log(data.responseJSON.error);
+                    $this.css('color', 'red');
+                }
+            });
+
+            return false;
+        });
+    </script>
+{% endblock %}

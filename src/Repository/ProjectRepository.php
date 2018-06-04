@@ -8,6 +8,7 @@ use App\Entity\Valoracion;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Project|null find($id, $lockMode = null, $lockVersion = null)
@@ -46,12 +47,23 @@ class ProjectRepository extends ServiceEntityRepository
     public function findByDonaciones(string $orden) {
         return $this->createQueryBuilder('project')
                     ->select('project')
-                    ->innerJoin(Donacion::class, 'donacion')
+                    ->leftJoin('project.donaciones', 'donacion')
                     ->groupBy('project')
-                    ->orderBy('SUM(donacion.cantidad)', strtoupper($orden))
+                    ->orderBy('SUM(donacion.cantidad)', $orden)
                     ->getQuery()
                     ->getResult();
     }
+    
+    public function findByName(string $name)
+    {
+        return $this->createQueryBuilder('project')
+                    ->select('project')
+                    ->where('project.titulo LIKE :name')
+                    ->setParameter('name', '%'.$name.'%')
+                    ->getQuery()
+                    ->getResult();
+    }
+   
 //    /**
 //     * @return Project[] Returns an array of Project objects
 //     */

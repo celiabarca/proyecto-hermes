@@ -25,7 +25,11 @@ topDonation:
 editar_usuario:
     path: /usuario/{id}/editar
     controller: App\Controller\UserController::editarUsuario
-    
+
+eliminar_usuario:
+    path: /usuario/{id}/eliminar
+    controller: App\Controller\UserController:eliminarUsuario
+
 #Proyecto
 nuevoProyecto:
     path: /nuevo/proyecto
@@ -44,8 +48,20 @@ editarProyecto:
     controller: App\Controller\ProyectController::editarProyecto
 
 filtraProyectos:
-    path: /proyectos/{filtro}/{orden}
+    path: /proyectos/filtrar/{filtro}/{orden}
     controller: App\Controller\ProyectController::getProyectorByFiltro
+
+eliminar_proyecto:
+    path: /proyecto/{id}/eliminar
+    controller: App\Controller\ProyectController::eliminarProyecto
+
+quitar_destacado:
+    path: /proyecto/{id}/quitar_destacado
+    controller: App\Controller\ProyectController:quitarDestacado
+
+buscar_por_nombre:
+    path: /proyectos/buscar/{nombre}
+    controller: App\Controller\ProyectController:buscarProyectos
 
 #Ajax (JsonResponse)
 valorar_proyecto:
@@ -60,13 +76,13 @@ quitar_valoracion:
     path: /proyecto/{id}/quitar_valoracion
     controller: App\Controller\ValoracionesController::quitarValoracion
 
-eliminar_proyecto:
-    path: /proyecto/{id}/eliminar
-    controller: App\Controller\ProyectController::eliminarProyecto
-
 quitar_Colaboracion:
     path: /proyecto/{id}/quitar_colaboracion
     controller: App\Controller\ColaboradoresController::eliminarColaboracion
+
+quitar_colaborador:
+    path: /colaboracion/{proyecto}/{usuario}/eliminar_colaborador
+    controller: App\Controller\ColaboradoresController::eliminarColaborador
 
 buscar_tags:
     path: /tags/{nombre}
@@ -134,4 +150,11 @@ commentar:
 responder:
     path: /comentario/{id}/responder
     controller: App\Controller\CommentController::responder
+    
+#Politicas
+
+privacidad:
+    path: /politica/privacidad
+    controller: App\Controller\HomeController::privacidad
+
 

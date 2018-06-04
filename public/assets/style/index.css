@@ -35,8 +35,10 @@ body{
 h1{
     font-family: title;
 }
-
-#editarProjecto,#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
+section{
+    margin-bottom: 64px;
+}
+#privacidad,.pago, #editarUser, #editarProjecto,#blog,#allcomentarios,footer, header, #info, #reguistro, #comentarios, #userstop, #projectop, #project, .loging, #error, #nuevoProjecto, #perfil {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -45,12 +47,16 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
-    /*    position: sticky;
-        bottom: 0;*/
+    position: absolute;
+    bottom: 0;
 }
-#editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
+#privacidad>div:nth-child(1), .pago>div:nth-child(1), #editarUser>div:nth-child(1), #editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error>div:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
     width: 1200px;
+    
 }
+#privacidad>div:nth-child(1), .pago>div:nth-child(1), #editarUser>div:nth-child(1), #editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error>div:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1){
+    margin-bottom: 100px;
+    }
 footer> div:nth-child(1){
 
     display: flex;
@@ -113,6 +119,7 @@ nav> ul > li {
 }
 #info{
     margin-bottom: 100px;
+    margin-top: 50px;
 }
 #info >div:nth-child(1)>div{
     width: 272px;
@@ -165,7 +172,7 @@ nav> ul > li {
     color: #fcfcfc;
     height: 39px;
 }
-#register>div:nth-child(8){
+#register>div:nth-child(9){
     align-items: flex-end;
 }
 #reguistro{
@@ -289,12 +296,13 @@ nav> ul > li {
     justify-content:center;
     flex-direction: column;
 }
+#projectop>div:nth-child(1)>div:nth-child(2) h1{
+    margin: 0;
+}
 .continer_project, .continer_projectn{
     background-color: #F2F2F2;
     overflow: hidden;
-    height: 228px;
     width: 854px;
-    height: 235px;
     margin-bottom: 20px;
 }
 .continer_project>div:nth-child(1)>div:nth-child(1){
@@ -302,17 +310,17 @@ nav> ul > li {
     width: 50%;
     display: flex;
     justify-content: center;
+    height: 200px;
 }
 .continer_project>div:nth-child(1){
     display: flex;
     flex-direction: row;
 }
 .continer_project>div:nth-child(1)>div:nth-child(2){
-    padding: 0px 16px 0px 41px;
+    padding: 5px 25px;
     width: 301px;
 }
 .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
-    height: 124px;
     overflow: hidden;
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(3) >a, .continer_project>div:nth-child(1)>div:nth-child(2)>div:nth-child(3){
@@ -337,6 +345,7 @@ nav> ul > li {
 .continer_projectn>div:nth-child(1){
     text-align: center;
     width: 100%;
+    padding: 15px;
 
 }
 .continer_projectn>div:nth-child(1)>div:nth-child(2){
@@ -356,6 +365,7 @@ nav> ul > li {
     max-width: 1200px;
     width: 100%;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 .imgProjec{
     width: 1200px;
@@ -363,6 +373,7 @@ nav> ul > li {
     height: 473px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 .imgProjec>img{
     width: 100%;
@@ -384,7 +395,7 @@ nav> ul > li {
 .options2{
     width: 300px;
 }
-.options>div, .options2>button, .options2>div{
+.options>div, .options>button, .options>div{
     border: 2px solid #2D9CDB;
     width: 126px;
     padding: 0px 2px;
@@ -392,9 +403,13 @@ nav> ul > li {
     background-position: 96px;
 }
 .options>div:nth-child(1){
-    background-image: url("../images/chat.png");
+    background-image: url("../images/money-bag-with-dollar-symbol.png");
 }
-.options>div:nth-child(2), .options2>button{
+.options>div:nth-child(1)>a{
+    text-decoration: none;
+    color: black;
+}
+.options>div:nth-child(2), .options>button{
     background-image: url("../images/icon.png");
 
 }
@@ -544,9 +559,11 @@ hr{
     flex-direction: column;
 
 }
+#reg{
+    color: white;
+}
 .loging {
-    padding-bottom: 17%;
-    padding-top: 50px;
+    padding-top: 131px;
 }
 .loging >div:nth-child(1){
     display: flex;
@@ -615,16 +632,13 @@ hr{
     margin-bottom: 15px;
 }
 .company{
-    background-image: url("../images/factory.png");
+    background-image: url("../images/company.png");
     background-repeat: no-repeat;
     border: none;
     height: 29px;
     background-position: 5px;
     padding-left: 31px;
     margin-bottom: 15px;
-}
-.loging{
-    background-image: url("../images/Captura.PNG")
 }
 .loging >div:nth-child(1)>div:nth-child(1)>section>form>h1{
     justify-content: center;
@@ -635,6 +649,84 @@ hr{
     display: none;
 }
 /****************************blog***************************/
+
+/***************************filtro************************/
+.filter{
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: column
+}
+.filter>div>div{
+    margin-right: 23px;
+}
+.filter >div>div>ul{
+    list-style: none;
+    padding-left: 0px;
+    display: none;
+    position: absolute;
+}
+.filter >div>div>ul>li>a{
+    text-decoration:none; 
+    color: black;
+}
+.filter >div>div>button{
+    border: 2px solid #2D9CDB;
+    height: 50px;
+    width: 182px;
+
+}
+.filter >div>div>ul>li{
+    background-color: #DFECFF;
+    height: 48px;
+    text-align: center;
+    width: 182px;
+}
+.filter >div>div>ul>li:nth-child(2){
+    margin-top: 9px;
+}
+
+.filter div>div > ul {
+    margin: 0;
+    padding: 9px 0px;
+}
+
+.filter div>div:hover > ul,
+.filter div>div > ul:hover {
+    display:block;
+}
+
+.filter >div:nth-child(2){
+    display: flex;
+
+}
+.filter >div:nth-child(1){
+    margin-bottom: 30px;
+}
+.filter >div:nth-child(1) > form{
+    display: flex;
+}
+
+.filter >div:nth-child(1) > form > input:nth-child(1){
+    border: 2px solid #2D9CDB;
+    height: 35px;
+    width: 89%;
+    background-image: url("../images/musica-searcher.png");
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    background-position: 10px;
+}
+.filter >div:nth-child(1) > form > input:nth-child(2){
+    background: transparent;
+    border: 2px solid #2D9CDB;
+    width: 104px;
+    width: 125px;
+    height: 40px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #2D9CDB;
+    color: white;
+}
 
 .proj{
     border:solid 3px #026f97;
@@ -657,12 +749,26 @@ hr{
     margin-top: 50px;
     margin-bottom: 92px;
 }
+.proj-perfil-nofoto > div:nth-child(1) > div:nth-child(1) {
+    width: 0% !important;
+    height: 0%!important;
+}
+.proj-perfil-nofoto > div:nth-child(1) > div:nth-child(2) {
+    width: 100% !important;
+}
 .proj>div:nth-child(1)>div:nth-child(1){
     width: 40%;
     height: auto;
     overflow: hidden;
     display: flex;
     justify-content: center;
+}
+.sinFotto > div:nth-child(1) > div:nth-child(1){
+    width: 0% !important;
+    height: auto !important;
+}
+.sinFotto > div:nth-child(1) > div:nth-child(2) {
+    width: 100% !important;
 }
 .proj>div:nth-child(1)>div:nth-child(2)>div:last-child{
     display: flex;
@@ -739,7 +845,10 @@ h2{
 /******************error******************/
 #error>div:nth-child(1)>div:nth-child(1){
     width: 50%;
-    height: 1000px;
+    height: 500px;
+}
+#error>div:nth-child(1){
+    display: flex;
 }
 #error>div:nth-child(1)>div:nth-child(2)>div:nth-child(1){
     display: flex;
@@ -747,9 +856,12 @@ h2{
 #error>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>img{
     width: 26%;
     height: 26%;
+    margin-top: 80px;
 }
-
-#error>div:nth-child(1)>div:nth-child(2)>div:nth-child(1){
+#error>div:nth-child(1)>div:nth-child(2){
+    margin-left: 50px;
+}
+#error>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>p{
     font-family: "cuatro";
     font-size: 104px;
     display: flex;
@@ -1084,27 +1196,6 @@ output:after {
 #nuevoProjecto > div:nth-child(1) > form > div:nth-child(4) > div:nth-child(2) > div:nth-child(1){
     position: relative;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #nuevoProjecto>div:nth-child(1)>form>div:nth-child(1){
     justify-content: center;
     display: flex;
@@ -1219,7 +1310,7 @@ output:after {
 #perfil>div:nth-child(1)>div:nth-child(1)>div:nth-child(2){
     margin-left: 19px;
 }
-#perfil>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>input{
+#perfil>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>a>input{
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
     width: 40px;
@@ -1227,6 +1318,7 @@ output:after {
     border: none;
     padding: 0px;
     background-position: 5px 6px;
+    cursor: pointer;
 }
 #perfil>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>input{
     background-image: url("../images/boton-redondo-de-anadir.png");
@@ -1250,6 +1342,7 @@ output:after {
     font-size: 20px;
     color: #2F80ED;
     width: 100%;
+    cursor: pointer;
 }
 #perfil>div:nth-child(1)>div:nth-child(2)>button, #perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button {
     width: 100%;
@@ -1257,7 +1350,7 @@ output:after {
 }#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>button{
     margin-bottom: 85px;
 }
-#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)  {
+.actividad>div:nth-child(1){
     height: 100px;
     width: 100px;
     overflow: hidden;
@@ -1265,26 +1358,35 @@ output:after {
     justify-content: center;
     border-radius: 100px;
 }
-#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1) {
+/*#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1) {
     display: flex;
 
-}
-#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(2) {
+}*/
+.actividad > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-#perfil>div:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1){
+.actividad {
+    display: flex;
+    margin-bottom: 9px;
+
+}
+
+.actividad>div:nth-child(2)>div:nth-child(1){
     display: flex;
     justify-content: flex-end;
 }
 .proj-perfil{
     position: relative;
 }
-.proj-perfil>div:nth-child(1)>div:nth-child(2)>div{
+.proj-perfil>div:nth-child(1)>div:nth-child(2)>div:nth-child(2){
     position: absolute;
     bottom: 0px;
 
+}
+.proj-perfil>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>a{
+    cursor: pointer;
 }
 #perfil > div:nth-child(1) > div:nth-child(3){
     display: flex;
@@ -1352,7 +1454,7 @@ output:after {
 }
 /*****************editarProjecto*************************************/
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(1){
+#editTitle{
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -1364,7 +1466,7 @@ output:after {
     bottom: 54%;
     /*margin-left: 0%;*/
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input{
+#editTitle>input{
     text-align: center;
     background: #f2f2f2;
     border-top: none;
@@ -1375,13 +1477,14 @@ output:after {
     font-size: 40px;
     background-image: url("../images/lapiz.png");
     background-repeat: no-repeat;
-    background-position: 500px;
+    background-position: 547px;
+    padding-right: 59px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(7):focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input:focus,#editarProjecto>div:nth-child(1)>form>div:nth-child(1)>input:focus, #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:focus{
+#editBanco>input:focus,#editTag>input:focus,#editTitle>input:focus{
     text-align: left;
 }
 
-#editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea{
+#editDescripcion >textarea{
     width: 94%;
     text-align: center;
     background: #f2f2f2;
@@ -1395,21 +1498,27 @@ output:after {
     background-repeat: no-repeat;
     background-position: 1030px;
     padding-right: 50px;
+    background-position: 1119px;
 
 }
+
+
 #editarProjecto>div:nth-child(1)>form>div:nth-child(4) >textarea:nth-child(1){
     margin-bottom: 27px;
 }
-/*#editarProjecto>div:nth-child(1)>form>div:nth-child(4){
+#editarProjecto>div:nth-child(1)>form>div:nth-child(4){
     display: flex;
     flex-direction: column;
     justify-content: center;
-}*/
-#editarProjecto>div:nth-child(1)>form>div:nth-child(6), #editarProjecto>div:nth-child(1)>form>div:nth-child(7){
+    margin-top: 20px;
+}
+#editBanco, #editTag{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(6)>input, #editarProjecto>div:nth-child(1)>form>div:nth-child(7)>input{
+
+#editBanco>input, #editTag>input{
     text-align: center;
     background: #f2f2f2;
     border-top: none;
@@ -1422,19 +1531,24 @@ output:after {
     background-position: 500px;
     width: 548px;
     font-size: 20px;
+    padding-right: 50px;
+    background-position: 571px;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(5){
+
+#editMeta{
     position: relative;
 }
-#editarProjecto>div:nth-child(1)>form>div:nth-child(2)>input{
+#output2{
+    bottom: 60%;
+}
+#editMeta>div:nth-child(2){
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+    color: #135792;
 
 }
-/*#editImg>input{
-    color:transparent;
-    background-image: url("../images/lapiz.png");
-    background-repeat: no-repeat;
-    background-position: 250px;
-}*/
 .colaboradorDenegado > div>input:nth-child(1) {
 
     background-image: url("../images/check-mark.png");
@@ -1471,6 +1585,270 @@ output:after {
 .colaboradorDenegado>div:nth-child(1)>img:hover{
     filter: grayscale(0%);
 }
+.peligro{
+    background-color: #fb5b5b;
+    border: 3px solid red;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.peligro>div:nth-child(1){
+    width: 28%;
+}
+.peligro>div:nth-child(1)>div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 36px;
+}
+.peligro>div:nth-child(1)>div:nth-child(1)>a{
+    background: #f00;
+    border: 3px solid white;
+    color: white;
+    width: 100px;
+    border-radius: 100px;
+    text-align: center;
+}
+.peligro>div:nth-child(1)>div:nth-child(1)>a:hover{
+    background: white;
+    border: 3px solid #f00;
+    color: red;
+}
+.btnEditar>div>button{
+    width: 100%;
+    height: 63px;
+    border-radius: 100px;
+    background-color: #87c6fc;
+    font-size: 40px;
+    border: 3px solid white;
+}
+.btnEditar>div>button:hover,#editarProjecto>div:nth-child(1)>div>form>input:hover{
+    background-color: white ;
+    border: 3px solid #87c6fc;
+}
+#editarProjecto>div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+}
+#editarProjecto>div:nth-child(1)>div{
+    order:-1;
+    margin-top: 40px;
+
+}
+#editarProjecto>div:nth-child(1)>div>form>input{
+    margin-top: 30px;
+    width: 384px;
+    height: 50px;
+    border-radius: 100px;
+    border: 3px solid white;
+    background-color: #87c6fc;
+}
+#editarProjecto>div:nth-child(1)>div>form>div>input{
+    background-color: lightblue;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 25px;
+    font-size: 16px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 240px;
+    width: 227px;
+    padding-right: 50px;
+}
+
+.enlace-desactivado{
+    background: #785d5d !important;
+}
+
+.enlace-desactivado:hover{
+    border: 3px solid #785d5d !important;
+    background-color: white !important ;
+    color:#785d5d !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************editar perfil**************************/
+
+#editarUser>div:nth-child(1) input[type='text'], #editarUser>div:nth-child(1) input[type='email'] {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 25px;
+    font-size: 20px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    background-position: 201px;
+    width: 227px;
+    background-color: #F2F2F2;
+    background-position: 283px;
+    padding-right: 50px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(2)>div:nth-child(3)>div>div{
+    display: flex;
+    flex-direction: column;   
+}
+#editar_usuario_password{
+    display: flex;
+}
+#editar_usuario_password>div>label{
+    font-weight: 100;
+    color: #026f97;
+    font-size: 20px;
+    font-weight: bold;
+}
+#editar_usuario_password>div>input{
+    width: 260px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div{
+    display: flex;
+
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(1)>div:nth-child(1){
+    height: 203px;
+    width: 203px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+#editarUser>div:nth-child(1){
+    margin-top: 50px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>img{
+    max-width: 100%;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div>div{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1){
+    margin-right: 50px;
+}
+#editarUser>div:nth-child(1) input[type='password'] {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 25px;
+    font-size: 20px;
+    background-image: url("../images/lapiz.png");
+    background-repeat: no-repeat;
+    padding-right: 50px;
+    width: 260px;
+    background-color: #F2F2F2;
+    background-position: 284px;
+}
+
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div:nth-child(2){
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#editarUser>div:nth-child(1) > form > div:nth-child(1)>div:nth-child(2)>div:nth-child(3)>div>input{
+    width: 260px;
+}
+#editarUser > div:nth-child(1) > form > div:nth-child(2) {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+/***************************pago**************************************/
+.promocion>div{
+    width: 333px;
+    height: 466px;
+    background-color: #71A9E4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.promocion>div:nth-child(2){
+    height: 525px;
+    margin-top: -27px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.promocion>div>div:nth-child(1){
+    display: flex;
+    justify-content: center;
+}
+.promocion>div>div:nth-child(2){
+    text-align: center;
+}
+
+.promocion
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.tarjeta{
+    width: 50%;
+    height: 188px;
+    border: 1px solid aqua;
+    border: solid 3px #026f97;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+.pago>div:nth-child(1){
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.pago>div:nth-child(1)>div:nth-child(2)>form >div > button{
+    background: transparent;
+    border: 2px solid #2D9CDB;
+    width: 104px;
+    width: 125px;
+    height: 38px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.pago>div:nth-child(1)>div:nth-child(2)>form >div > button:hover{
+    background-color: #2D9CDB;
+    color:white;
+}
+.donar input {
+    background: #f2f2f2;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #a8a8a8;
+    height: 51px;
+    width: 548px;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.donativos > div:nth-child(1){
+    height: 592px;
+}
+
+
+
 
 
 
@@ -1480,6 +1858,30 @@ output:after {
 
 
 @media (max-width: 1075px) {
+    #error > div:nth-child(1) {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    #error > div:nth-child(1) > div:nth-child(1) {
+        width: 50%;
+        height: auto;
+    }
+    #error > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > img {
+
+        margin-top: 0px;
+    }
+    #error > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > p {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    #error h3{
+        margin-bottom: 84px;
+    }
+    #error > div:nth-child(1) > div:nth-child(2) {
+        margin-left:0px;
+    }
+
+
     #reguistro > div:nth-child(1) {
 
         text-align: center;
@@ -1538,6 +1940,35 @@ output:after {
         justify-content: center;
     }
 
+    #editarUser > div:nth-child(1) {
+        width: 831px;
+    }
+    /*************plataforma de pago*********************/
+    .pago > div:nth-child(1){
+        justify-content: center;
+        display: flex;
+    }
+    .pago>div:nth-child(1)>div:nth-child(1){
+        width: 50%;
+        height: 600px;
+        padding-top: 50%;
+    }
+    .pago>div:nth-child(1)>div:nth-child(1)>form{
+        padding-top: 205px;
+    }
+    .tarjeta {
+        width: 85%;
+    }
+    .donar input {
+        width: 448px;
+    }
+    .sinFotto > div:nth-child(1) > div:nth-child(2) {
+        width: 91% !important;
+    }
+    .loging > div:nth-child(1) > div:nth-child(1) {
+        width: auto;
+        padding: 10px;
+    }
 
 }
 @media (max-width: 850px){
@@ -1582,6 +2013,20 @@ output:after {
 
     #perfil > div:nth-child(1) > div:nth-child(1) {
         width: 84%;
+    }
+    #editarUser > div:nth-child(1) {
+        width: 538px;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div {
+        flex-direction: column;
+    }
+    #editar_usuario_password {
+        display: flex;
+        flex-direction: column;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) {
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
 }
@@ -1656,10 +2101,43 @@ output:after {
     #perfil > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) {
         width: 100%;
     }
-
+    /*******************editar User********************/ 
+    #editarUser > div:nth-child(1) {
+        width: 344px;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div {
+        flex-direction: column;
+    }
+    #editar_usuario_password {
+        display: flex;
+        flex-direction: column;
+    }
+    #editarUser > div:nth-child(1) > form > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .donativos > div:nth-child(1) {
+        height: 492px;
+    }
 
 }
 @media screen and (max-width: 500px){
+    .filter {
+        display: flex;
+        margin-bottom: 30px;
+        flex-direction: column;
+        width: 69%;
+    }
+    .filter > div > div > button {
+        width: 128px;
+    }
+    .filter > div > div {
+        margin-right: 0px;
+    }
+    #blog > div:nth-child(1) {
+        align-items: flex-start;
+    }
+
     .continer_project, .continer_projectn {
 
         width: 50%;
@@ -1677,7 +2155,7 @@ output:after {
         margin-left: 43px;
     }
     .tam {
-        width: 27%;
+        width: 91%;
     }
     #nuevoProjecto > div:nth-child(1) > form > div:nth-child(2) > div:nth-child(2) {
         width: 208px;
@@ -1767,6 +2245,71 @@ output:after {
         flex-wrap: wrap;
 
     }
+    #error > div:nth-child(1) > div:nth-child(1) {
+        display: none;
+    }
+    #error > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) {
+        justify-content: center;
+    }
+    #error > div:nth-child(1) {
+        text-align: center;
+    }
+    /*    #error > div:nth-child(1) {
+            margin-bottom: 203px;
+        }*/
+    /************editar proyecto******/
+    /*    .btnEditar>div> button {
+            width: 60%;
+        }*/
+    #editBanco> input, #editTag > input {
+        background-position: 280px;
+        width: 310px;
+
+    }
+    #editarProjecto > div:nth-child(1){
+        width: 341px;
+    }
+    #editDescripcion > textare{
+        width: 60%;
+        margin-left: 40px;
+        height: auto;
+
+    }
+    #editarProjecto > div:nth-child(1) > form > div:nth-child(1) > input {
+        background-position: 253px;
+        width: 290px;
+    }
+    #editarProjecto > div:nth-child(1) > div > form > input {
+        width: 326px;
+    }
+    .step {
+        margin-bottom: 20px;
+    }
+    #editDescripcion > textarea {
+        background-position: 298px;
+    }
+    .peligro > div:nth-child(1) {
+        width: 99%;
+    }
+    .tarjeta {
+        width: 83%;
+    }
+    .donar input {
+        width: 248px;
+    }
+    .donar form{
+        width: 100%;
+
+    }
+    .donar form>div:nth-child(2){
+        display: flex;
+        flex-direction: column;
+    }
+
+    section {
+        margin-bottom: 253px;
+    }
+
 }
 @media screen and(max-width:400px) and (min-width: 280px){
     #reguistro > div:nth-child(1) > div:nth-child(1) {

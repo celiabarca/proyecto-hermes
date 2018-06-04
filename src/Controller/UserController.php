@@ -14,11 +14,12 @@ use App\Form\RegisterType;
 use App\Repository\UserRepository;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class UserController extends Controller {
 
@@ -45,7 +46,7 @@ class UserController extends Controller {
             'lastemail' => $nombreUsuarioAnterior
         ]);
     }
-   /**
+    /**
      * Cargar home
      *
      * @Route("/test/", name="test")
@@ -136,7 +137,8 @@ class UserController extends Controller {
         }
 
         return $this->render('usuario/editar.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'usuario' => $usuario
         ]);
     }
     
@@ -150,4 +152,21 @@ class UserController extends Controller {
         return $users;
     }
 
+    public function eliminarUsuario(User $usuario, TokenStorageInterface $tokenStorage, SessionInterface $session) {
+        if($this->getUser() == $usuario) {
+            // cerramos sesion antes de eliminar el usuario
+            $tokenStorage->setToken(null);
+            $session->invalidate();
+            // aliminamos el usuario
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($usuario);
+            $manager->flush();
+            // redirigimos a la pagina principal
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->redirectToRoute('editar_usuario', [
+            'id' => $usuario->getId()
+        ]);
+    }
 }

@@ -30,13 +30,26 @@ class ProyectController extends Controller {
      * Renderiza los proyectos ordenado por fecha de creación
      * @return mixed
      */
-    public function indice()
+    public function indice(Request $req = null)
     {
-    	$proyectos = $this->getDoctrine()
+        if($req->get("proyecto"))
+        {
+           $proyectos = $this->getDoctrine()->getRepository(Project::class)->createQueryBuilder('o')
+                
+                ->where('o.titulo LIKE :nombre')
+                ->setParameter('nombre', "%".$req->get("proyecto")."%")
+                ->getQuery()
+                ->getResult();
+        }
+        else
+        {
+            $proyectos = $this->getDoctrine()
                         ->getRepository(Project::class)
                         ->findBy([], [
                             'fechaCreacion' => 'desc'
                         ]);
+        }
+    	
 
         return $this->render('proyect/index.html.twig', [
             'proyectos' => $proyectos,
@@ -62,14 +75,19 @@ class ProyectController extends Controller {
                 $projecto->setImg($path);
             }
 
+            $date = new \DateTime();
+            // asigna fecha de creacion y el autor
+            $projecto->setFechaCreacion($date);
+            $projecto->setAutor($this->getUser());
+            // crea un seguimineto inicial para el proyecto creado
             $situacion = new Seguimiento();
             $situacion->setSituacion("Proyecto Iniciado");
             $situacion->setDescripcion("Situación añadida al crear el proyecto");
             $situacion->setProyecto($projecto);
             $situacion->setUsuario($this->getUser());
-            $date = new \DateTime();
             $situacion->setFecha($date);
             $projecto->addSeguimiento($situacion);
+            // guardar en base de datos el objeto proyecto con su seguimiento
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($projecto);
             $entityManager->flush();
@@ -98,6 +116,7 @@ class ProyectController extends Controller {
         
         return $proyectos;
     }
+
     /**
      * Renderiza la pagina del proyecto
      * @param Project $proyecto
@@ -169,10 +188,9 @@ class ProyectController extends Controller {
     }
 
     /**
-     * Preparado para AJAX.
      * Elimina un proyecto
      * @param Project $proyecto
-     * @return JsonResponse
+     * @return mixed
      */
     public function eliminarProyecto(Project $proyecto) {
         try {
@@ -182,22 +200,20 @@ class ProyectController extends Controller {
                 throw new \Exception('Debes iniciar sesion!');
             }
 
-            $eliminado = false;
-
             if($proyecto->getAutor() == $usuario) {
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($proyecto);
                 $manager->flush();
-                $eliminado = true;
             }
 
-            return new JsonResponse([
-                'eliminado' => $eliminado
+            return $this->redirectToRoute('usuario_perfil', [
+               'id' => $usuario->getId()
             ]);
         } catch(\Exception $e) {
-            return new JsonResponse([
+            return $this->redirectToRoute('editarProyecto', [
+                'id' => $proyecto->getId(),
                 'error' => $e->getMessage()
-            ], 500);
+            ]);
         }
     }
 
@@ -223,6 +239,32 @@ class ProyectController extends Controller {
                     ]);
                 break;
         }
+
+        return $this->render('proyect/index.html.twig', [
+            'proyectos' => $proyectos
+        ]);
+    }
+
+    /**
+     * Quita a un proyecto el estar destacado
+     * @param Project $proyecto
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function quitarDestacado(Project $proyecto) {
+        if($proyecto->getAutor() == $this->getUser()) {
+            $proyecto->setDestacado(false);
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($proyecto);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('editarProyecto', [
+           'id' => $proyecto->getId()
+        ]);
+    }
+
+    public function buscarProyectos(string $nombre) {
+        $proyectos = $this->projectRepository->findByName($nombre);
 
         return $this->render('proyect/index.html.twig', [
             'proyectos' => $proyectos

@@ -46,20 +46,20 @@ class EditarUsuarioType extends AbstractType {
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'required' => false,
+                'required' => true,
                 'first_options' => [
                     'required' => false,
                     'label' => 'Contraseña'
                 ],
                 'second_options' => [
                     'label' => 'Repetir contraseña',
-                    'required' => false,
+                    'required' => true,
                     'attr' => [
-                        'class' => 'passwd'
+//                        'class' => 'passwd'
                     ]
                 ],
                 'attr' => [
-                    'class' => 'passwd'
+//                    'class' => 'passwd'
                 ]
             ])
             ->add('telefono', TextType::class, [

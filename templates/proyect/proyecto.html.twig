@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block  contenido %}
-  
+
     <div id="project">
         <div>
             <div>
@@ -23,7 +23,10 @@
                         <img src="{{ asset('assets/images/pulgar-hacia-arriba-simbolo-de-la-mano.png') }}" alt="">
                     </button>
                 </div>
-                <div class ="options2">
+                <div class ="options">
+                    <div>
+                        <a href="{{path('donar_proyecto',{'id':proyecto.id})}}">Donar</a>
+                    </div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <button id="colaborar-btn" data-proyectoid="{{ proyecto.id }}">Colaborar</button>
                     {% endif %}
@@ -34,15 +37,29 @@
             <div>
                 {{proyecto.fechaCreacion|date('d/m/Y')}}
             </div>
-            
+
             <div class="steps ">
-                {% set index = 0 %}
-                {% for seguimiento in proyecto.seguimientos %}
-                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                    {% if index >= (proyecto.seguimientos|length - 4) or proyecto.seguimientos|length < 4 %}
+{#<<<<<<< HEAD
+                {% set i = 0 %}
+                {% set seguimientos = proyecto.seguimientos|length %}
+                {% for i in 0..4 %}
+                    {% if seguimientos>i %}
+                        {% set seguimiento = proyecto.seguimientos[i] %}
+                        <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
                         <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
-                    {% endif %}
-                    {% set index = index + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        {# El for recorre el array que devuelve la funcion getLatestSeguimiento 
+                        {% for seguimiento in proyecto.getLatestSeguimiento() %}
+                            <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                            <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
+         
+                        {% endfor %}
+                        #}
+                {# El for recorre el array que devuelve la funcion getLatestSeguimiento #}
+                {% for seguimiento in proyecto.getLatestSeguimiento() %}
+                    <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                    <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
                 {% endfor %}
             </div>
             <div>
@@ -51,18 +68,18 @@
             <div class ="allcolaboradores">
                 <div>
                     <h1>colaboradores</h1>
-                    {% for colaborador in proyecto.colaboradores %}
-                       {% if colaborador.estado == "aceptado" %}
-                            <div class = "colaborador">
-                                <div>
-                                    <img src="{{ asset(colaborador.usuario.img) }}" alt="">
-                                </div>
-                                <div>
-                                    <h2>
-                                        {{ colaborador.usuario.nombre }}
-                                    </h2>
-                                </div>
+                    {% for colaborador in proyecto.colaboradores%}
+                        {% if colaborador.estado == 'aceptado' %}
+                        <div class = "colaborador">
+                            <div>
+                                <img src="{{ asset(colaborador.usuario.img) }}" alt="">
                             </div>
+                            <div>
+                                <h2>
+                                    <a href="{{path('usuario_perfil',{'id':colaborador.usuario.id})}}">{{ colaborador.usuario.nombre }}</a>
+                                </h2>
+                            </div>
+                        </div>
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -71,22 +88,27 @@
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <h1>Comenta que te parece el proyecto </h1>
                     <div class = "comm">
-                            <div>
-                                <img src="{{ asset(app.user.img) }}" alt="">
-                            </div>
-                            {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
+                        <div>
+                            <img src="{{ asset(app.user.img) }}" alt="">
                         </div>
+                        {{ render(controller('App\\Controller\\CommentController::Comentar', { 'id': proyecto.id })) }}
+                    </div>
                 {% else %}
                     <h3> <a href="{{ path('login') }}">Inicia sesion</a> para comentar los proyectos</h3>
                 {% endif %}
-                    {% for comentario in proyecto.comentarios %}
+                {% for comentario in proyecto.comentarios %}
 
-                        <div id="comentario-{{ comentario.id }}" class="comm">
+                    <div id="comentario-{{ comentario.id }}" class="comm">
 
+                        <div>
+                            <img src="{{ asset(comentario.autor.img) }}" alt="">
+                        </div>
+                        <div>
                             <div>
-                                <img src="{{ asset(comentario.autor.img) }}" alt="">
+                                {{comentario.autor.nombre}}
                             </div>
                             <div>
+<<<<<<< HEAD
                                 <div>
                                     {{comentario.autor.nombre}}
                                 </div>
@@ -94,41 +116,46 @@
                                     <p> {{comentario.contenido}}</p>
                                 </div>
                             </div>
+=======
+                                <p> {{comentario.contenido}}</p>
+                            </div>
+                        </div> 
+>>>>>>> d3a8bc8fd488049f7bf59581dfa24ba792e13bd6
 
-                        </div>
-                        <div>
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <div class="responder">Responder</div>
-                                <div class ="respuesta">
-                                    {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                    </div>
+                    <div>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="responder">Responder</div>
+                            <div class ="respuesta">
+                                {{ render(controller('App\\Controller\\CommentController::responder', { 'id': comentario.id})) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="respuestas collapsible" data-limit="3">
+                        {% for respuesta in comentario.respuestas %}
+                            <div class="collapsible-element">
+                                <div id="triangulo">
                                 </div>
-                            {% endif %}
-                        </div>
-                        <div class="respuestas collapsible" data-limit="3">
-                            {% for respuesta in comentario.respuestas %}
-                                <div class="collapsible-element">
-                                    <div id="triangulo">
+                                <div class="comm res">
+                                    <div>
+                                        <img src="{{ asset(respuesta.autor.img) }}" alt="">
                                     </div>
-                                    <div class="comm res">
+                                    <div>
                                         <div>
-                                            <img src="{{ asset(respuesta.autor.img) }}" alt="">
+                                            {{respuesta.autor.nombre}}
                                         </div>
                                         <div>
-                                            <div>
-                                                {{respuesta.autor.nombre}}
-                                            </div>
-                                            <div>
-                                                <p> {{respuesta.contenido}}</p>
-                                            </div>
+                                            <p> {{respuesta.contenido}}</p>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
-                            {% if comentario.respuestas|length > 3 %}
-                                <button class="vermas-btn">Ver más</button>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+                            </div>
+                        {% endfor %}
+                        {% if comentario.respuestas|length > 3 %}
+                            <button class="vermas-btn">Ver más</button>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -136,7 +163,7 @@
 {% endblock %}
 
 {% block js_especifico %}
-        <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/jquery-ui.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/proyecto.js') }}"></script>
     <script src="{{ asset('assets/js/emojionearea.js') }}"></script>

@@ -1,35 +1,104 @@
-{% extends 'base.html.twig' %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('assets/style/jquery.Jcrop.min.css') }}" rel="stylesheet">
-{% endblock %}
-
+{% extends "base.html.twig" %}
 {% block contenido %}
-<div>
+
+    <div id = "editarUser">
+        <div>
+            {{ form_start(form) }}
+            <div>
+                <div>
+                    <div>
+                        <img src="{{ asset(usuario.img) }}" alt="imagen de perfil de {{usuario.username}}">
+                    </div>
+                    {{form_widget(form.img)}} 
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <h2>Nombre</h2>
+                            {{form_widget(form.nombre)}}
+                        </div>
+                        <div>
+                            <h2>Email</h2>
+                            {{form_widget(form.email)}}
+                        </div>
+                    </div>
+                    <div> 
+                        <div>
+                            {{form_widget(form.password)}}
+                        </div>
+                        <div>
+                            {{form_widget(form.password)}}
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h2>Telefono</h2>
+                            {{form_widget(form.telefono)}}
+                        </div>
+                        <div>
+                            <h2>Empresa</h2>
+                            {{form_widget(form.empresa)}}
+                        </div>
+                        <div>
+                            <h2>Sector</h2>
+                            {{form_widget(form.sector)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#      fin          #}
+            <div class = "btnEditar">
+                {{ form_end(form) }}
+            </div>
+            <div class ="peligro">
+                <div>
+                    <div>
+                        <h4>¿Quieres abandonar la aplicacion ?</h4>
+                        <a id="eliminar-usuario-btn" href="{{ path('eliminar_usuario', { id: usuario.id }) }}">SI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_rest(form) }}
-        {{ form_end(form) }}
-    </div>
-</div>
-<div class="flex-cropbox">
-    <div id="cropbox">
-        <div class="img-container">
-            <img id="crop-image" src="#" alt="crop-img">
-        </div>
-        <div class="crop-buttons">
-            <button id="aceptar-crop-btn">Recortar</button>
-            <button id="cancelar-crop-btn">Cancelar</button>
+        <div>
+
+            {#        {{ form_widget(form) }}#}
+            {{ form_rest(form) }}
+
         </div>
     </div>
-</div>
+    <div class="flex-cropbox">
+        <div id="cropbox">
+            <div class="img-container">
+                <img id="crop-image" src="#" alt="crop-img">
+            </div>
+            <div class="crop-buttons">
+                <button id="aceptar-crop-btn">Recortar</button>
+                <button id="cancelar-crop-btn">Cancelar</button>
+            </div>
+        </div>
+           
+        
+    </div>
 
 {% endblock %}
 
-    {% block js_especifico %}
-        <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.Jcrop.min.js') }}"></script>
-        <script src="{{ asset('assets/js/crop.js') }}"></script>
-    {% endblock %}
+{% block js_especifico %}
+    <script src="{{ asset('assets/js/jquery.color.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.Jcrop.min.js') }}"></script>
+    <script src="{{ asset('assets/js/crop.js') }}"></script>
+    <script>
+        var eliminar = document.getElementById("eliminar-usuario-btn");
+
+        eliminar.onclick = function(event) {
+            event.preventDefault();
+            var msg = "¿Estas seguro de eliminar tu usuario?";
+
+            if(confirm(msg)) {
+                window.location.href = this.href;
+            }
+        };
+    </script>
+{% endblock %}

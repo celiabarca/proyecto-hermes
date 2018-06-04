@@ -67,7 +67,7 @@ class StripeClient
     }
 
     public function setPrice($price) {
-        $this->price = $price;
+        $this->price = $price*100;
     }
 
 
