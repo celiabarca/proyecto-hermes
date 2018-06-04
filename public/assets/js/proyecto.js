@@ -176,7 +176,7 @@ $(document).ready(function () {
     
             },
             error: function (data) {
-                console.log(data.responseJSON.error);
+                console.log(data);
             }
         });
     });
@@ -213,7 +213,7 @@ $(document).ready(function () {
             }
             ,
             error: function (data) {
-                console.log(data.responseJSON.error);
+                console.log(data);
             }
         });
     });
@@ -243,7 +243,7 @@ $(document).ready(function () {
                 }
             },
             error: function (data) {
-                console.log(data.responseJSON.error);
+                console.log(data);
             }
         });
     });
@@ -257,7 +257,7 @@ $(document).ready(function () {
             $(".newProyect > form:nth-child(1) > div:nth-child(" + cont + ")").css("display", "none");
             cont++;
             $(".newProyect > form:nth-child(1) > div:nth-child(" + cont + ")").css("display", "flex");
-
+            showNextForm();
         }
     })
     $("#previous").on("click", function ()

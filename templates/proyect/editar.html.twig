@@ -1,6 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block contenido %}
+            <div class="steps ">
+                <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
+                {% for seguimiento in proyecto.seguimientos %}
+                    <div class="step"><span class="arrowB"></span>{{seguimiento.situacion}}<span class="arrow"></span></div>
+                {% endfor %}
+                
+                <form action="{{path("addseguimiento",{'id':proyecto.id})}}" id="stepInput" method="POST">
+                    <div class="step"><span class="arrowB"></span><input type="text" class="emptyInput" name="seguimiento"><span class="arrow"></span></div>
+                    <input type="submit" value="enviar FEO"/>
+                </form>
+            </div>
     <div id="editarProjecto">
         <div>
             {{ form_start(form,{'class':'dropzone'}) }}

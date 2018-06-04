@@ -1,8 +1,18 @@
 {% extends "base.html.twig"%}
 {% block contenido %}
     <div id ="nuevoProjecto">
+
         <div class="newProyect">
-            
+            <!--
+            <div class="form-progress">
+                <progress class="form-progress-bar" min="0" max="100" value="0" step="33" aria-labelledby="form-progress-completion"></progress>
+                <div class="form-progress-indicator one active"></div>
+                <div class="form-progress-indicator two"></div>
+                <div class="form-progress-indicator three"></div>
+                <div class="form-progress-indicator four"></div>
+                <div class="form-progress-indicator five"></div>
+            </div>
+            -->
             {{form_start(FormularioProyecto,{'action':path("nuevoProyecto")})}}
             <div>
                 <div>

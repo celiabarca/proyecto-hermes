@@ -40,11 +40,6 @@ class Seguimiento
     private $situacion;
 
     /**
-     * @ORM\Column(type="string", length=150)
-     */
-    private $descripcion;
-
-    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $proyectoFinalizado;
