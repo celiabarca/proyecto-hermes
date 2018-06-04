@@ -27,28 +27,30 @@
                             <header id="header" class=""><!-- Envoltorio del header -->
                                 <div class=""><!-- Header -->
                                     {% block header %}<!-- bloque del header contenedor de los hijos -->
-                                        <div><!-- hijo situado en la izquierda -->
-                                            {% block header_izquierda %}
+                                        <!-- hijo situado en la izquierda -->
+                                        {% block header_izquierda %}
+                                        {% endblock %}	
 
-                                            {% endblock %}	
-                                        </div>
                                         <div><!-- hijo situado a la derecha -->
                                             {% block header_derecha %}
                                                 <nav>
+                                                    <div class ="logo"><!-- hijo situado en la izquierda -->
+                                                        <img src="{{ asset('assets/images/hermes.png') }}" alt="una empresa">
+                                                    </div>
                                                     <ul>
                                                         {% block nav %}<!-- items de la barra de navegacion -->
                                                             <li><a href="{{path('index')}}" title="">Inicio</a></li>
                                                             <li><a href="{{path('listaProyectos')}}" title="">Proyectos</a></li>
-                                                            {% if app.user is null %}
-                                                            <li><a href="{{ path('registrarse') }}" title="">Crear Cuenta</a></li>
-                                                            {% endif %}
-                                                            {%if app.user %}
+                                                                {% if app.user is null %}
+                                                                <li><a href="{{ path('registrarse') }}" title="">Crear Cuenta</a></li>
+                                                                {% endif %}
+                                                                {%if app.user %}
                                                                 <li><a href="{{ path('usuario_perfil',{'id':app.user.id})}}" title="">Perfil</a></li>
                                                                 <li><a href="{{ path('logout') }}" title="">Cerrar Sesion</a></li>
-                                                            {% else %}
+                                                                {% else %}
                                                                 <li><a href="{{ path('login') }}" title="">Iniciar Sesion</a></li>
-                                                            {% endif %}
-                                                                
+                                                                {% endif %}
+
                                                         {% endblock %}<!-- fin bloque "nav"-->
                                                     </ul>
                                                 </nav>
@@ -69,7 +71,9 @@
                                     {% block footer %}
                                         <div><!-- hijo situado a la izquierda -->
                                             {% block footer_izquierda %}
-
+                                                <div class ="logo"><!-- hijo situado en la izquierda -->
+                                                    <img src="{{ asset('assets/images/hermes.png') }}" alt="una empresa">
+                                                </div>
                                             {% endblock %}	
                                         </div>
                                         <div><!-- hijo situado a la centro -->
@@ -85,10 +89,10 @@
                                         <div><!-- hijo situado en el derecha -->
                                             {% block footer_derecha %}
                                                 <ul>
-                                                    <li><a href=""><img src="{{ asset('assets/images/facebook.png') }}" alt=""></a></li>
-                                                    <li><a href=""><img src="{{ asset('assets/images/instagram.png') }}" alt=""></a></li>
-                                                    <li><a href=""><img src="{{ asset('assets/images/linkedin.png') }}" alt=""></a></li>
-                                                    <li><a href=""><img src="{{ asset('assets/images/twitter.png') }}" alt=""></a></li>
+                                                    <li><a href=""><img src="{{ asset('assets/images/facebook.png') }}" alt="Logo facebook"></a></li>
+                                                    <li><a href=""><img src="{{ asset('assets/images/instagram.png') }}" alt="Logo instagram"></a></li>
+                                                    <li><a href=""><img src="{{ asset('assets/images/linkedin.png') }}" alt="Logo Linkedin"></a></li>
+                                                    <li><a href=""><img src="{{ asset('assets/images/twitter.png') }}" alt="Logo twitter"></a></li>
                                                 </ul>
                                             {% endblock %}
                                         </div>

@@ -39,23 +39,7 @@
             </div>
 
             <div class="steps ">
-{#<<<<<<< HEAD
-                {% set i = 0 %}
-                {% set seguimientos = proyecto.seguimientos|length %}
-                {% for i in 0..4 %}
-                    {% if seguimientos>i %}
-                        {% set seguimiento = proyecto.seguimientos[i] %}
-                        <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                        <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
-                            {% endif %}
-                        {% endfor %}
-                        {# El for recorre el array que devuelve la funcion getLatestSeguimiento 
-                        {% for seguimiento in proyecto.getLatestSeguimiento() %}
-                            <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
-                            <div class="step"><span class="arrowB"></span>{{ seguimiento.situacion }}<span class="arrow"></span></div>
-         
-                        {% endfor %}
-                        #}
+
                 {# El for recorre el array que devuelve la funcion getLatestSeguimiento #}
                 {% for seguimiento in proyecto.getLatestSeguimiento() %}
                     <!-- Maquetacion para añadir las situaciones de un proyecto falta añadir el bucle For -->
@@ -72,7 +56,7 @@
                         {% if colaborador.estado == 'aceptado' %}
                         <div class = "colaborador">
                             <div>
-                                <img src="{{ asset(colaborador.usuario.img) }}" alt="">
+                                <img src="{{ asset(colaborador.usuario.img) }}" alt="Imagen de {{colaborador.usuario.titulo}}">
                             </div>
                             <div>
                                 <h2>
@@ -105,13 +89,12 @@
                         </div>
                         <div>
                             <div>
-                                {{comentario.autor.nombre}}
+                                <h3>{{comentario.autor.nombre}}</h3>
                             </div>
                             <div>
                                 <p> {{comentario.contenido}}</p>
                             </div>
                         </div>
-
                     </div>
                     <div>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}

@@ -3,21 +3,25 @@
 {% block contenido %}
     <div class="loging">
         <div>
+
             <div id="login-form-container">
-            <section>
-                <form action="{{path('login')}}" method="post" accept-charset="utf-8">
-                    <h1>inicia sesion</h1>
-                    {% if error %}
-                        <p id="errorLogin">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
-                    {% endif %}
-                    <label id="email-label">E-mail</label>
-                    <input type="text" name="_username" class="email"placeholder="Email" aria-labelledby="email-label">
-                    <label id="password-label">Contraseña</label>
-                    <input type="password" name="_password" class="passwd" placeholder="Contraseña" aria-labelledby="password-label">
-                    <input type="submit" name="" value="Inciar sesion" aria-label="Iniciar sesion">
-                </form>
-            </section>
-              </div>      
+                <section>
+                    <form action="{{path('login')}}" method="post" accept-charset="utf-8">
+                        <h1>inicia sesion</h1>
+                        <div>
+                            <img src="{{ asset('assets/images/hermes.png') }}" alt="logo de Hermes">
+                        </div>
+                        {% if error %}
+                            <p id="errorLogin">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                        {% endif %}
+                        <label id="email-label">E-mail</label>
+                        <input type="text" name="_username" class="email"placeholder="Email" aria-labelledby="email-label">
+                        <label id="password-label">Contraseña</label>
+                        <input type="password" name="_password" class="passwd" placeholder="Contraseña" aria-labelledby="password-label">
+                        <input type="submit" name="" value="Inciar sesion" aria-label="Iniciar sesion">
+                    </form>
+                </section>
+            </div>      
         </div>
     </div>
 {% endblock %}
