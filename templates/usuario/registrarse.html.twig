@@ -4,13 +4,16 @@
     <div class="loging" id ="reg">
         <div>
             <div id="login-form-container">
-            <section>
-                <h1>Registrate</h1>
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                {{ form_end(form) }}
-            </section>
-              </div>      
+                <section>
+                    <h1>Registrate</h1>
+                     <div class ="logo"><!-- hijo situado en la izquierda -->
+                        <img src="{{ asset('assets/images/hermes.png') }}" alt="una empresa">
+                    </div>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </section>
+            </div>      
         </div>
     </div>
 {% endblock %}

@@ -40,7 +40,7 @@ footer{
     background-color: #0A1218;
     /*    justify-content: center;*/
     display: flex;
-/*    position: absolute;*/
+    /*    position: absolute;*/
     bottom: 0;
 }
 #privacidad>div:nth-child(1), .pago>div:nth-child(1), #editarUser>div:nth-child(1), #editarProjecto>div:nth-child(1),#perfil>div:nth-child(1),#nuevoProjecto>div:nth-child(1),#error>div:nth-child(1),#blog>div:nth-child(1),.loging >div:nth-child(1), #allcomentarios> div:nth-child(1),#project> div:nth-child(1),#projectop > div:nth-child(1), #userstop> div:nth-child(1),footer> div:nth-child(1), header> div:nth-child(1), #info>div:nth-child(1), #reguistro>div:nth-child(1), #comentarios>div:nth-child(1){
@@ -1861,7 +1861,7 @@ output:after {
     text-decoration: none;
 }
 .sinFotto > div:nth-child(1) > div:nth-child(2)>h1>a:hover, .proj > div:nth-child(1) > div:nth-child(2)>h1>a:hover{
-        color: #1d97ff;
+    color: #1d97ff;
 }
 
 .autor>h2>a{
@@ -1973,8 +1973,8 @@ output:after {
         display: flex;
     }
     .pago>div:nth-child(1)>div:nth-child(1){
-        width: 50%;
-        height: 600px;
+        width: auto;
+        height: auto;
         padding-top: 50%;
     }
     .pago>div:nth-child(1)>div:nth-child(1)>form{
@@ -2165,8 +2165,39 @@ output:after {
     footer > div:nth-child(1) > div:nth-child(3) > ul > li {
         margin-left: 30px;
     }
+    .promocion {
+        flex-direction: column;
+    }
+    .promocion > div:nth-child(2) {
+        height: 525px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .promocion {
+        flex-direction: column;
+    }
+    .promocion > div:nth-child(2) {
+        height: 525px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .promocion > div {
+        margin-bottom: 30px;
+    }
 }
 @media screen and (max-width: 500px){
+    .promocion > div {
+        width: 333px;
+        height: 466px;
+        background-color: #71A9E4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 35px;
+    }
+
     .filter {
         display: flex;
         margin-bottom: 30px;
